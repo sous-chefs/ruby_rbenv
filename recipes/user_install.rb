@@ -25,10 +25,12 @@ Array(node['rbenv']['user_installs']).each do |rb_user|
   upgrade_strategy  = build_upgrade_strategy(rb_user['upgrade'])
   git_url           = rb_user['git_url'] || node['rbenv']['git_url']
   git_ref           = rb_user['git_ref'] || node['rbenv']['git_ref']
-  rbenv_prefix      = rb_user['home'] || ::File.join(
-    node['rbenv']['user_home_root'], rb_user['user'], '.rbenv')
+  home_dir          = rb_user['home'] || ::File.join(
+    node['rbenv']['user_home_root'], rb_user['user'])
+  rbenv_prefix      = rb_user['root_path'] || ::File.join(home_dir, '.rbenv')
 
   install_or_upgrade_rbenv  :rbenv_prefix => rbenv_prefix,
+                            :home_dir => home_dir,
                             :git_url => git_url,
                             :git_ref => git_ref,
                             :upgrade_strategy => upgrade_strategy,
