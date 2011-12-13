@@ -19,3 +19,29 @@
 # limitations under the License.
 #
 
+# git repository containing rbenv
+default['rbenv']['git_url'] = "git://github.com/sstephenson/rbenv.git"
+default['rbenv']['git_ref'] = "master"
+
+# upgrade action strategy
+default['rbenv']['upgrade'] = "none"
+
+# extra system-wide tunables
+default['rbenv']['root_path'] = "/usr/local/rbenv"
+default['rbenv']['vagrant']['system_chef_solo'] = "/opt/ruby/bin/chef-solo"
+
+# a list of user hashes, each an isolated per-user rbenv installation
+default['rbenv']['user_installs'] = []
+
+
+case platform
+when "redhat","centos","fedora", "amazon"
+  node.set['rbenv']['install_pkgs']   = %w{git grep}
+  default['rbenv']['user_home_root']  = '/home'
+when "debian","ubuntu","suse"
+  node.set['rbenv']['install_pkgs']   = %w{git-core grep}
+  default['rbenv']['user_home_root']  = '/home'
+when "mac_os_x"
+  node.set['rbenv']['install_pkgs']   = %w{git}
+  default['rbenv']['user_home_root']  = '/Users'
+end

@@ -35,6 +35,54 @@ class Chef
           Chef::Platform.find_provider_for_node(node, :package) !=
           Chef::Provider::Package::Homebrew
       end
+
+      def install_rbenv_pkg_prereqs
+        return if mac_with_no_homebrew
+
+        node['rbenv']['install_pkgs'].each do |pkg|
+          package pkg
+        end
+      end
+
+      def install_or_upgrade_rbenv(opts = {})
+        git_deploy_rbenv opts
+        initialize_rbenv opts
+      end
+
+      private
+
+      def git_deploy_rbenv(opts)
+        if opts[:upgrade_strategy] == "none"
+          git_exec_action = :checkout
+        else
+          git_exec_action = :sync
+        end
+
+        git opts[:rbenv_prefix] do
+          repository  opts[:git_url]
+          reference   opts[:git_ref]
+          user        opts[:user]  if opts[:user]
+          group       opts[:group] if opts[:group]
+
+          action      git_exec_action
+        end
+      end
+
+      def initialize_rbenv(opts)
+        prefix = opts[:rbenv_prefix]
+
+        if opts[:user]
+          user_dir = Etc.getpwnam(opts[:user]).dir
+          init_env = { 'USER' => opts[:user], 'HOME' => user_dir }
+        else
+          init_env = Hash.new
+        end
+
+        bash "Initialize rbenv (#{opts[:user] || 'system'})" do
+          code  %{PATH="#{prefix}/bin:$PATH" #{prefix}/libexec/rbenv-init -}
+          environment({'RBENV_ROOT' => prefix}.merge(init_env))
+        end
+      end
     end
   end
 end

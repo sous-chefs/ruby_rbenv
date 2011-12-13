@@ -17,3 +17,22 @@
 # limitations under the License.
 #
 
+include_recipe 'rbenv'
+
+upgrade_strategy  = build_upgrade_strategy(node['rbenv']['upgrade'])
+git_url           = node['rbenv']['git_url']
+git_ref           = node['rbenv']['git_ref']
+rbenv_prefix      = node['rbenv']['root_path']
+
+install_rbenv_pkg_prereqs
+
+template "/etc/profile.d/rbenv.sh" do
+  source  "rbenv.sh.erb"
+  owner   "root"
+  mode    "0755"
+end
+
+install_or_upgrade_rbenv  :rbenv_prefix => rbenv_prefix,
+                          :git_url => git_url,
+                          :git_ref => git_ref,
+                          :upgrade_strategy => upgrade_strategy

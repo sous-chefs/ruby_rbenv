@@ -17,3 +17,7 @@
 # limitations under the License.
 #
 
+class Chef::Recipe
+  # mix in recipe helpers
+  include Chef::Rbenv::RecipeHelpers
+end
