@@ -23,6 +23,7 @@ actions :run
 
 attribute :name,        :kind_of => String, :name_attribute => true
 attribute :version,     :kind_of => String, :default => "global"
+attribute :root_path,   :kind_of => String
 attribute :code,        :kind_of => String
 attribute :creates,     :kind_of => String
 attribute :cwd,         :kind_of => String

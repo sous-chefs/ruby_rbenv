@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rbenv
-# Resource:: ruby
+# Library:: Chef::Rbenv::ShellHelpers
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
@@ -19,13 +19,25 @@
 # limitations under the License.
 #
 
-actions :install, :reinstall
+class Chef
+  module Rbenv
+    module ShellHelpers
+      def rbenv_root
+        if new_resource.root_path
+          new_resource.root_path
+        elsif new_resource.user
+          ::File.join(user_home, '.rbenv')
+        else
+          node['rbenv']['root_path']
+        end
+      end
 
-attribute :definition,  :kind_of => String, :name_attribute => true
-attribute :root_path,   :kind_of => String
-attribute :user,        :kind_of => String
+      def user_dir
+        return nil unless new_resource.user
 
-def initialize(*args)
-  super
-  @action = :install
+        Etc.getpwnam(new_resource.user).dir
+      end
+    end
+  end
 end
+
