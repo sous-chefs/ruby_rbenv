@@ -32,12 +32,6 @@ this cookbook. All the methods listed below assume a tagged version release
 is the target, but omit the tags to get the head of development. A valid
 Chef repository structure like the [Opscode repo][chef_repo] is also assumed.
 
-## <a name="installation-platform"></a> From the Opscode Community Platform
-
-To install this cookbook from the Opscode platform, use the *knife* command:
-
-    knife cookbook site install rbenv
-
 ## <a name="installation-librarian"></a> Using Librarian
 
 The [Librarian][librarian] gem aims to be Bundler for your Chef cookbooks.
@@ -82,6 +76,11 @@ Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
     cd chef-repo/cookbooks
     curl -Ls https://github.com/fnichol/chef-rbenv/tarball/v0.6.0 | tar xfz - && \
       mv fnichol-chef-rbenv-* rbenv
+
+## <a name="installation-platform"></a> From the Opscode Community Platform
+
+This cookbook is not currently available on the site due to the flat
+namespace for cookbooks.
 
 # <a name="usage"></a> Usage
 
