@@ -32,7 +32,7 @@ class Chef
         end
       end
 
-      def user_dir
+      def user_home
         return nil unless new_resource.user
 
         Etc.getpwnam(new_resource.user).dir
