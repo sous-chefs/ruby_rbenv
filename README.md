@@ -84,7 +84,55 @@ namespace for cookbooks.
 
 # <a name="usage"></a> Usage
 
-Coming soon...
+## <a name="usage-system-rubies"></a> rbenv Installed System-Wide with Rubies
+
+Most likely, this is the typical case. Include `recipe[rbenv::system]` in your
+run\_list and override the defaults you want changed. See [below](#attributes)
+for more details.
+
+## <a name="usage-user-rubies"></a> rbenv Installed For A Specific User with Rubies
+
+If you want a per-user install (like on a Mac/Linux workstation for
+development, CI, etc.), include `recipe[rbenv::user]` in your run\_list and
+add a user hash to the `user_installs` attribute list. For example:
+
+    node['rbenv']['user_installs'] = [
+      { 'user'    => 'tflowers',
+        'rubies'  => ['1.9.3-p0', 'jruby-1.6.5']
+      }
+    ]
+
+See [below](#attributes) for more details.
+
+## <a name="usage-system"></a> rbenv Installed System-Wide and LWRPs Defined
+
+If you want to manage your own rbenv environment with the provided
+[LWRP][lwrp]s, then include `recipe[rbenv::system_install]` in your run\_list
+to prevent a default rbenv Ruby being installed. See the
+[Resources and Providers](#lwrp) section for more details.
+
+## <a name="usage-user"></a> rbenv Installed For A Specific User and LWRPs Defined
+
+If you want to manage your own rbenv environment for users with the provided
+LWRPs, then include `recipe[rbenv::user_install]` in your run\_list and add a
+user hash to the `user_installs` attribute list. For example:
+
+    node['rbenv']['user_installs'] = [
+      { 'user' => 'tflowers' }
+    ]
+
+See the [Resources and Providers](#lwrp) section for more details.
+
+## <a name="usage-minimal"></a> Ultra-Minimal Access To LWRPs
+
+Simply include `recipe[rbenv]` in your run\_list and the LWRPs will be
+available to use in other cookboks. See the [Resources and Providers](#lwrps)
+section for more details.
+
+## <a name="usage-other"></a> Other Use Cases
+
+* If node is running in a Vagrant VM, then including `recipe[rbenv::vagrant]`
+in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
 # <a name="recipes"></a> Recipes
 
