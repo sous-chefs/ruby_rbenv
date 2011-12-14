@@ -38,7 +38,10 @@ end
 private
 
 def perform_install
-  if ruby_installed?
+  if ruby_build_missing?
+    Chef::Log.warn(
+      "ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).")
+  elsif ruby_installed?
     Chef::Log.debug(
       "rbenv[#{@rubie}] #{which_rbenv} is already installed, so skipping")
   else
@@ -78,6 +81,10 @@ def ruby_installed?
   else
     ::File.directory?(::File.join(rbenv_root, 'versions', @rubie))
   end
+end
+
+def ruby_build_missing?
+  ! node.recipe?("ruby_build")
 end
 
 def install_ruby_dependencies
