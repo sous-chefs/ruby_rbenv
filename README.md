@@ -104,6 +104,15 @@ recipe includes *default*.
 Use this recipe by itself if you want rbenv installed system-wide but want
 to handle installing Rubies, invoking LWRPs, etc..
 
+## <a name="recipes-system"></a> system
+
+Installs the rbenv codebase system-wide (that is, into `/usr/local/rbenv`) and
+installs rubies driven off attribute metadata. This recipe includes *default*
+and *system_install*.
+
+Use this recipe by itself if you want rbenv installed system-wide with rubies
+installed.
+
 ## <a name="recipes-user-install"></a> user\_install
 
 Installs the rbenv codebase for a list of users (selected from the
@@ -111,6 +120,15 @@ Installs the rbenv codebase for a list of users (selected from the
 
 Use this recipe by itself if you want rbenv installed for specific users in
 isolation but want each user to handle installing Rubies, invoking LWRPs, etc.
+
+## <a name="recipes-user"></a> user
+
+Installs the rbenv codebase for a list of users (selected from the
+`node['rbenv']['user_installs']` hash) and installs rubies driven off attribte
+metadata. This recipe includes *default* and *user_install*.
+
+Use this recipe by itself if you want rbenv installed for specific users in
+isolation with rubies installed.
 
 ## <a name="recipes-vagrant"></a> vagrant
 
@@ -152,6 +170,27 @@ The default is `"none"`.
 The path prefix to rbenv in a system-wide installation.
 
 The default is `"/usr/local/rbenv"`.
+
+## <a name="attributes-rubies"></a> rubies
+
+An list of additional system-wide rubies to be built and installed. This list
+does no need to necessarily contain your global ruby as the
+`rbenv_global_ruby` resource will take care of installing itself. For example:
+
+    node['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
+
+The default is an empty array: `[]`.
+
+## <a name="attributes-user-rubies"></a> user\_rubies
+
+An list of additional system-wide rubies to be built and installed per-user
+when not explicitly set. This list does no need to necessarily contain your
+global ruby as the `rbenv_global_ruby` resource will take care of installing
+itself. For example:
+
+    node['rbenv']['user_rubies'] = [ "1.8.7-p352" ]
+
+The default is an empty array: `[]`.
 
 ## <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system\_chef\_solo
 

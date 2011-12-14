@@ -33,6 +33,9 @@ default['rbenv']['vagrant']['system_chef_solo'] = "/opt/ruby/bin/chef-solo"
 # a list of user hashes, each an isolated per-user rbenv installation
 default['rbenv']['user_installs'] = []
 
+# list of additional rubies that will be installed
+default['rbenv']['rubies']      = []
+default['rbenv']['user_rubies'] = []
 
 case platform
 when "redhat","centos","fedora", "amazon"
