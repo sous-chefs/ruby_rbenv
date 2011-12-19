@@ -220,9 +220,9 @@ The default is `"/usr/local/rbenv"`.
 
 ## <a name="attributes-rubies"></a> rubies
 
-An list of additional system-wide rubies to be built and installed. This list
-does no need to necessarily contain your global ruby as the
-`rbenv_global` resource will take care of installing itself. For example:
+A list of additional system-wide rubies to be built and installed using the
+[ruby\_build cookbook][ruby_build_cb]. You **must** include `recipe[ruby-build]`
+in your run\_list for the `rbenv_ruby` LWRP to work properly. For example:
 
     node['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
 
@@ -230,10 +230,9 @@ The default is an empty array: `[]`.
 
 ## <a name="attributes-user-rubies"></a> user\_rubies
 
-An list of additional system-wide rubies to be built and installed per-user
-when not explicitly set. This list does no need to necessarily contain your
-global ruby as the `rbenv_global` resource will take care of installing
-itself. For example:
+A list of additional system-wide rubies to be built and installed (using the
+[ruby\_build cookbook][ruby_build_cb]) per-user when not explicitly set.
+For example:
 
     node['rbenv']['user_rubies'] = [ "1.8.7-p352" ]
 
@@ -263,8 +262,8 @@ create    |Sets the global version of Ruby to be used in all shells. See [3.1 rb
 
 Attribute   |Description |Default value
 -------------|------------|-------------
-version      |**Name attribute:** a version of Ruby being managed by rbenv. |`nil`
-user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
+version      |**Name attribute:** a version of Ruby being managed by rbenv. **Note:** the version of Ruby must already be installed--this LWRP will not install it automatically. |`nil`
+user         |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 
 ### <a name="lwrps-rg-examples"></a> Examples
 
@@ -357,6 +356,32 @@ definition   |**Name attribute:** the name of a [built-in definition][rb_definit
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 
 ### <a name="lwrps-rbr-examples"></a> Examples
+
+Coming soon...
+
+## <a name="lwrps-rbgem"></a> rbenv\_gem
+
+This resource uses the [ruby-build][rb_site] framework to build and install
+Ruby versions from definition files.
+
+**Note:** this LWRP requires the [ruby\_build cookbook][ruby_build_cb] to be
+in the run list to perform the builds.
+
+### <a name="lwrps-rbgem-actions"></a> Actions
+
+Action    |Description                   |Default
+----------|------------------------------|-------
+install   |Build and install a Ruby from a definition file. See the ruby-build [readme][rb_readme] for more details. |Yes
+reinstall |Force a recompiliation of the Ruby from source. The :install action will skip a build if the target install directory already exists. |
+
+### <a name="lwrps-rbr-attributes"></a> Attributes
+
+Attribute   |Description |Default value
+-------------|------------|-------------
+definition   |**Name attribute:** the name of a [built-in definition][rb_definitions] or the path to a ruby-build definition file. |`nil`
+user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
+
+### <a name="lwrps-rbgem-examples"></a> Examples
 
 Coming soon...
 
