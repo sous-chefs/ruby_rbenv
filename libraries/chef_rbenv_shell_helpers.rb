@@ -37,6 +37,10 @@ class Chef
 
         Etc.getpwnam(new_resource.user).dir
       end
+
+      def which_rbenv
+        "(#{new_resource.user || 'system'})"
+      end
     end
   end
 end

@@ -222,7 +222,7 @@ The default is `"/usr/local/rbenv"`.
 
 An list of additional system-wide rubies to be built and installed. This list
 does no need to necessarily contain your global ruby as the
-`rbenv_global_ruby` resource will take care of installing itself. For example:
+`rbenv_global` resource will take care of installing itself. For example:
 
     node['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
 
@@ -232,7 +232,7 @@ The default is an empty array: `[]`.
 
 An list of additional system-wide rubies to be built and installed per-user
 when not explicitly set. This list does no need to necessarily contain your
-global ruby as the `rbenv_global_ruby` resource will take care of installing
+global ruby as the `rbenv_global` resource will take care of installing
 itself. For example:
 
     node['rbenv']['user_rubies'] = [ "1.8.7-p352" ]
@@ -248,25 +248,25 @@ The default is `"/opt/ruby/bin/chef-solo"`.
 
 # <a name="lwrps"></a> Resources and Providers
 
-## <a name="lwrps-rgr"></a> rbenv\_global\_ruby
+## <a name="lwrps-rg"></a> rbenv\_global
 
 This resource sets the global version of Ruby to be used in all shells, as per
 the [rbenv global docs][rbenv_3_1].
 
-### <a name="lwrps-rgr-actions"></a> Actions
+### <a name="lwrps-rg-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
 create    |Sets the global version of Ruby to be used in all shells. See [3.1 rbenv global][rbenv_3_1] for more details. |Yes
 
-### <a name="lwrps-rgr-attributes"></a> Attributes
+### <a name="lwrps-rg-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 -------------|------------|-------------
 version      |**Name attribute:** a version of Ruby being managed by rbenv. |`nil`
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 
-### <a name="lwrps-rgr-examples"></a> Examples
+### <a name="lwrps-rg-examples"></a> Examples
 
 Coming soon...
 

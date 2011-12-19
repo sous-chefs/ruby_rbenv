@@ -71,10 +71,6 @@ def perform_install
   end
 end
 
-def which_rbenv
-  "(#{@user || 'system'})"
-end
-
 def ruby_installed?
   if Array(new_resource.action).include?(:reinstall)
     false

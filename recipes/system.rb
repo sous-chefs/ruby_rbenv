@@ -22,3 +22,7 @@ include_recipe "rbenv::system_install"
 Array(node['rbenv']['rubies']).each do |rubie|
   rbenv_ruby rubie
 end
+
+if node['rbenv']['global']
+  rbenv_global node['rbenv']['global']
+end

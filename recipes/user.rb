@@ -27,5 +27,11 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
     rbenv_ruby rubie do
       user  rbenv_user['user']
     end
+
+    if rbenv_user['global']
+      rbenv_global rbenv_user['global'] do
+        user  rbenv_user['user']
+      end
+    end
   end
 end
