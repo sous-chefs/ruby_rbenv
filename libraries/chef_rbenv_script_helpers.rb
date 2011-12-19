@@ -21,7 +21,7 @@
 
 class Chef
   module Rbenv
-    module ShellHelpers
+    module ScriptHelpers
       def rbenv_root
         if new_resource.root_path
           new_resource.root_path

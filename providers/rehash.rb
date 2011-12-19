@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-include Chef::Rbenv::ShellHelpers
+include Chef::Rbenv::ScriptHelpers
 
 action :run do
   command = %{rbenv rehash}

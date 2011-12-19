@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-include Chef::Rbenv::ShellHelpers
+include Chef::Rbenv::ScriptHelpers
 
 action :create do
   resource = "rbenv_global[#{new_resource.rbenv_version}]"

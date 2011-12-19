@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-include Chef::Rbenv::ShellHelpers
+include Chef::Rbenv::ScriptHelpers
 
 def load_current_resource
   @rubie      = new_resource.definition
