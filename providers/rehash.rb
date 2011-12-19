@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rbenv
-# Resource:: rehash
+# Provider:: rehash
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
@@ -19,13 +19,16 @@
 # limitations under the License.
 #
 
-actions :run
+include Chef::Rbenv::ShellHelpers
 
-attribute :name,      :kind_of => String, :name_attribute => true
-attribute :user,      :kind_of => String
-attribute :root_path, :kind_of => String
+action :run do
+  command = %{rbenv rehash}
 
-def initialize(*args)
-  super
-  @action = :run
+  rbenv_shell "#{command} #{which_rbenv}" do
+    code        command
+    user        new_resource.user       if new_resource.user
+    root_path   new_resource.root_path  if new_resource.root_path
+
+    action      :nothing
+  end.run_action(:run)
 end
