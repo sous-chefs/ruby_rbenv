@@ -262,7 +262,7 @@ create    |Sets the global version of Ruby to be used in all shells. See [3.1 rb
 
 Attribute   |Description |Default value
 -------------|------------|-------------
-version      |**Name attribute:** a version of Ruby being managed by rbenv. **Note:** the version of Ruby must already be installed--this LWRP will not install it automatically. |`nil`
+rbenv\_version |**Name attribute:** a version of Ruby being managed by rbenv. **Note:** the version of Ruby must already be installed--this LWRP will not install it automatically. |`nil`
 user         |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 
 ### <a name="lwrps-rg-examples"></a> Examples
@@ -291,7 +291,7 @@ notifies it.
 Attribute   |Description |Default value
 ------------|------------|-------------
 name        |**Name Attribute:** Name of the command to execute. |name
-version     |A version of Ruby being managed by rbenv. |`"global"`
+rbenv\_version |A version of Ruby being managed by rbenv. |`"global"`
 code        |Quoted script of code to execute. |`nil`
 creates     |A file this command creates - if the file exists, the command will not be run. |`nil`
 cwd         |Current working director to run the command from. |`nil`

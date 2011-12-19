@@ -22,11 +22,12 @@
 include Chef::Rbenv::ShellHelpers
 
 action :create do
-  resource = "rbenv_global[#{new_resource.version}]"
+  resource = "rbenv_global[#{new_resource.rbenv_version}]"
 
-  if fetch_current_version != new_resource.version
-    Chef::Log.info("Setting rbenv global #{which_rbenv} to #{new_resource.version}")
-    command = %{rbenv global #{new_resource.version}}
+  if fetch_current_version != new_resource.rbenv_version
+    Chef::Log.info(
+      "Setting rbenv global #{which_rbenv} to #{new_resource.rbenv_version}")
+    command = %{rbenv global #{new_resource.rbenv_version}}
 
     rbenv_shell "#{command} #{which_rbenv}" do
       code        command

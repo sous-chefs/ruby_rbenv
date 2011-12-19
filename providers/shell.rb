@@ -48,7 +48,7 @@ def build_script_code
     export PATH="${RBENV_ROOT}/bin:$PATH"
     eval "$(rbenv init -)"
 
-    rbenv shell #{new_resource.version}
+    rbenv shell #{new_resource.rbenv_version}
 
     #{new_resource.code}
   SYSTEM_WIDE
