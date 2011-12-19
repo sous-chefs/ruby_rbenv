@@ -269,14 +269,14 @@ user         |A users's isolated rbenv installation on which to apply an action.
 
 Coming soon...
 
-## <a name="lwrps-rsh"></a> rbenv\_shell
+## <a name="lwrps-rsc"></a> rbenv\_script
 
 This resource is a wrapper for the `script` resource which wraps the code block
 in an rbenv-aware environment. See the Opscode
 [script resource][script_resource] page and the [rbenv shell][rbenv_3_3]
 documentation for more details.
 
-### <a name="lwrps-rsh-actions"></a> Actions
+### <a name="lwrps-rsc-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
@@ -286,7 +286,7 @@ nothing   |Do not run this command       |
 Use `action :nothing` to set a command to only run if another resource
 notifies it.
 
-### <a name="lwrps-rsh-attributes"></a> Attributes
+### <a name="lwrps-rsc-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 ------------|------------|-------------

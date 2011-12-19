@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rbenv
-# Resource:: shell
+# Resource:: script
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #

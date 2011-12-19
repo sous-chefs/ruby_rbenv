@@ -58,7 +58,7 @@ def perform_install
     rbenv_prefix  = @root_path
     command       = %{rbenv install #{rubie}}
 
-    rbenv_shell "#{command} #{which_rbenv}" do
+    rbenv_script "#{command} #{which_rbenv}" do
       code        command
       user        rbenv_user    if rbenv_user
       root_path   rbenv_prefix  if rbenv_prefix

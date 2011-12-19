@@ -29,7 +29,7 @@ action :create do
       "Setting rbenv global #{which_rbenv} to #{new_resource.rbenv_version}")
     command = %{rbenv global #{new_resource.rbenv_version}}
 
-    rbenv_shell "#{command} #{which_rbenv}" do
+    rbenv_script "#{command} #{which_rbenv}" do
       code        command
       user        new_resource.user       if new_resource.user
       root_path   new_resource.root_path  if new_resource.root_path

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rbenv
-# Provider:: shell
+# Provider:: script
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
