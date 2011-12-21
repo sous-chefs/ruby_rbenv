@@ -19,7 +19,19 @@ add a user hash to the `user_installs` attribute list. For example:
 
     node['rbenv']['user_installs'] = [
       { 'user'    => 'tflowers',
-        'rubies'  => ['1.9.3-p0', 'jruby-1.6.5']
+        'rubies'  => ['1.9.3-p0', 'jruby-1.6.5'],
+        'global'  => '1.9.3-p0',
+        'gems'    => {
+          '1.9.3-p0'    => [
+            { 'name'    => 'bundler'
+              'version' => '1.1.rc.5'
+            },
+            { 'name'    => 'rake' }
+          ],
+          'jruby-1.6.5' => [
+            { 'name'    => 'rest-client' }
+          ]
+        }
       }
     ]
 
@@ -238,6 +250,35 @@ For example:
 
 The default is an empty array: `[]`.
 
+## <a name="attributes-gems"></a> gems
+
+A hash of gems to be installed into arbitrary rbenv-managed rubies system wide.
+See the [rbenv_gem](#lwrps-rgem) resource for more details about the options
+for each gem hash and target Ruby environment. For example:
+
+    node['rbenv']['gems'] = {
+      '1.9.3-p0' => [
+        { 'name'    => 'vagrant' },
+        { 'name'    => 'bundler'
+          'version' => '1.1.rc.5'
+        }
+      ],
+      '1.8.7-p352' => [
+        { 'name'    => 'nokogiri' }
+      ]
+    }
+
+The default is an empty hash: `{}`.
+
+## <a name="attributes-user-gems"></a> user\_gems
+
+A hash of gems to installed into arbitrary rbenv-managed rubies for each user
+when not explicitly set. See the [rbenv_gem](#lwrps-rgem) resource for more
+details about the options for each gem hash and target Ruby environment. See
+the [gems attribute](#attributes-gems) for an example.
+
+The default is an empty hash: `{}`.
+
 ## <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system\_chef\_solo
 
 If using the `vagrant` recipe, this sets the path to the package-installed
@@ -264,10 +305,23 @@ Attribute   |Description |Default value
 -------------|------------|-------------
 rbenv\_version |**Name attribute:** a version of Ruby being managed by rbenv. **Note:** the version of Ruby must already be installed--this LWRP will not install it automatically. |`nil`
 user         |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
+root\_path   | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 
 ### <a name="lwrps-rg-examples"></a> Examples
 
-Coming soon...
+#### Set A Ruby As Global
+
+    rbenv_global "1.8.7-p352"
+
+#### Set System Ruby As Global
+
+    rbenv_global "system"
+
+#### Set A Ruby As Global For A User
+
+    rbenv_global "jruby-1.7.0-dev" do
+      user "tflowers"
+    end
 
 ## <a name="lwrps-rsc"></a> rbenv\_script
 
@@ -292,6 +346,7 @@ Attribute   |Description |Default value
 ------------|------------|-------------
 name        |**Name Attribute:** Name of the command to execute. |name
 rbenv\_version |A version of Ruby being managed by rbenv. |`"global"`
+root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 code        |Quoted script of code to execute. |`nil`
 creates     |A file this command creates - if the file exists, the command will not be run. |`nil`
 cwd         |Current working director to run the command from. |`nil`
@@ -305,7 +360,15 @@ umask       |Umask for files created by the command. |`nil`
 
 ### <a name="lwrps-rsc-examples"></a> Examples
 
-Coming soon...
+#### Run A Rake Task
+
+    rbenv_script "migrate_rails_database" do
+      rbenv_version "1.8.7-p352"
+      user          "deploy"
+      group         "deploy"
+      cwd           "/srv/webapp/current"
+      code          %{rake RAILS_ENV=production db:migrate}
+    end
 
 ## <a name="lwrps-rbgem"></a> rbenv\_gem
 
@@ -328,6 +391,7 @@ Attribute   |Description |Default value
 ------------|------------|-------------
 package\_name |**Name Attribute:** the name of the gem to install.|`nil`
 rbenv\_version |A version of Ruby being managed by rbenv. |`"global"`
+root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 version     |The specific version of the gem to install/upgrade. |`nil`
 options     |Add additional options to the underlying gem command. |`nil`
 source      |Provide an additional source for gem providers (such as RubyGems). This can also include a file system path to a `.gem` file such as `/tmp/json-1.5.1.gem`. |`nil`
@@ -335,7 +399,50 @@ user        |A users's isolated rbenv installation on which to apply an action. 
 
 ### <a name="lwrps-rbgem-examples"></a> Examples
 
-Coming soon...
+#### Install A Gem
+
+    rbenv_gem "thor" do
+      rbenv_version   "1.8.7-p352"
+      action          :install
+    end
+
+    rbenv_gem "json" do
+      rbenv_version   "1.8.7-p330"
+    end
+
+    rbenv_gem "nokogiri" do
+      rbenv_version   "jruby-1.5.6"
+      version         "1.5.0.beta.4"
+      action          :install
+    end
+
+**Note:** the install action is default, so the second example is a more common
+usage.
+
+#### Install A Gem From A Local File
+
+    rbenv_gem "json" do
+      rbenv_version   "ree-1.8.7-2011.03"
+      source          "/tmp/json-1.5.1.gem"
+      version         "1.5.1"
+    end
+
+#### Keep A Gem Up To Date
+
+    rbenv_gem "homesick" do
+      action :upgrade
+    end
+
+**Note:** the global rbenv Ruby will be targeted if no `rbenv_version` attribute
+is given.
+
+#### Remove A Gem
+
+    rbenv_gem "nokogiri" do
+      rbenv_version   "jruby-1.5.6"
+      version         "1.4.4.2"
+      action          :remove
+    end
 
 ## <a name="lwrps-rrh"></a> rbenv\_rehash
 
@@ -358,10 +465,19 @@ Attribute   |Description |Default value
 -------------|------------|-------------
 name        |**Name Attribute:** Name of the command to execute. |name
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
+root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 
 ### <a name="lwrps-rrh-examples"></a> Examples
 
-Coming soon...
+#### Rehash A System-Wide rbenv
+
+    rbenv_rehash "Doing the rehash dance"
+
+#### Rehash A User's rbenv
+
+    rbenv_rehash "Rehashing tflowers' rbenv" do
+      user  "tflowers"
+    end
 
 ## <a name="lwrps-rbr"></a> rbenv\_ruby
 
@@ -384,10 +500,26 @@ Attribute   |Description |Default value
 -------------|------------|-------------
 definition   |**Name attribute:** the name of a [built-in definition][rb_definitions] or the path to a ruby-build definition file. |`nil`
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
+root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 
 ### <a name="lwrps-rbr-examples"></a> Examples
 
-Coming soon...
+#### Install Ruby From ruby-build
+
+    rbenv_ruby "ree-1.8.7-2011.03" do
+      action :install
+    end
+
+    rbenv_ruby "jruby-1.6.5"
+
+**Note:** the install action is default, so the second example is a more common
+usage.
+
+#### Reinstall Ruby
+
+    rvm_ruby "ree-1.8.7-2011.03" do
+      action :reinstall
+    end
 
 # <a name="development"></a> Development
 
