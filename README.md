@@ -253,7 +253,7 @@ The default is an empty array: `[]`.
 ## <a name="attributes-gems"></a> gems
 
 A hash of gems to be installed into arbitrary rbenv-managed rubies system wide.
-See the [rbenv_gem](#lwrps-rgem) resource for more details about the options
+See the [rbenv_gem](#lwrps-rbgem) resource for more details about the options
 for each gem hash and target Ruby environment. For example:
 
     node['rbenv']['gems'] = {
@@ -273,7 +273,7 @@ The default is an empty hash: `{}`.
 ## <a name="attributes-user-gems"></a> user\_gems
 
 A hash of gems to installed into arbitrary rbenv-managed rubies for each user
-when not explicitly set. See the [rbenv_gem](#lwrps-rgem) resource for more
+when not explicitly set. See the [rbenv_gem](#lwrps-rbgem) resource for more
 details about the options for each gem hash and target Ruby environment. See
 the [gems attribute](#attributes-gems) for an example.
 
