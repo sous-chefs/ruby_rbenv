@@ -40,9 +40,9 @@ See [below](#attributes) for more details.
 ## <a name="usage-system"></a> rbenv Installed System-Wide and LWRPs Defined
 
 If you want to manage your own rbenv environment with the provided
-[LWRP][lwrp]s, then include `recipe[rbenv::system_install]` in your run\_list
+LWRPs, then include `recipe[rbenv::system_install]` in your run\_list
 to prevent a default rbenv Ruby being installed. See the
-[Resources and Providers](#lwrp) section for more details.
+[Resources and Providers](#lwrps) section for more details.
 
 ## <a name="usage-user"></a> rbenv Installed For A Specific User and LWRPs Defined
 
@@ -54,7 +54,7 @@ user hash to the `user_installs` attribute list. For example:
       { 'user' => 'tflowers' }
     ]
 
-See the [Resources and Providers](#lwrp) section for more details.
+See the [Resources and Providers](#lwrps) section for more details.
 
 ## <a name="usage-minimal"></a> Ultra-Minimal Access To LWRPs
 
@@ -86,7 +86,7 @@ Please [report][issues] any additional platforms so they can be added.
 ## <a name="requirements-cookbooks"></a> Cookbooks
 
 There are **no** external cookbook dependencies. However, if you
-want to manage Ruby installations or use the `rbenv\_ruby` LWRP then you will
+want to manage Ruby installations or use the `rbenv_ruby` LWRP then you will
 need to include the [ruby\_build cookbook][ruby_build_cb].
 
 # <a name="installation"></a> Installation
@@ -233,7 +233,7 @@ The default is `"/usr/local/rbenv"`.
 ## <a name="attributes-rubies"></a> rubies
 
 A list of additional system-wide rubies to be built and installed using the
-[ruby\_build cookbook][ruby_build_cb]. You **must** include `recipe[ruby-build]`
+[ruby\_build cookbook][ruby_build_cb]. You **must** include `recipe[ruby_build]`
 in your run\_list for the `rbenv_ruby` LWRP to work properly. For example:
 
     node['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
@@ -481,7 +481,7 @@ root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. 
 
 ## <a name="lwrps-rbr"></a> rbenv\_ruby
 
-This resource uses the [ruby-build][rb_site] framework to build and install
+This resource uses the [ruby-build][ruby_build_site] framework to build and install
 Ruby versions from definition files.
 
 **Note:** this LWRP requires the [ruby\_build cookbook][ruby_build_cb] to be
@@ -559,6 +559,7 @@ limitations under the License.
 [rbenv_3_3]:        https://github.com/sstephenson/rbenv#section_3.3
 [rbenv_3_6]:        https://github.com/sstephenson/rbenv#section_3.6
 [ruby_build_cb]:    http://community.opscode.com/cookbooks/ruby_build
+[ruby_build_site]:  https://github.com/sstephenson/ruby-build
 [script_resource]:  http://wiki.opscode.com/display/chef/Resources#Resources-Script
 
 [repo]:         https://github.com/fnichol/chef-rbenv
