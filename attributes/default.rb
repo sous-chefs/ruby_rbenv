@@ -37,6 +37,10 @@ default['rbenv']['user_installs'] = []
 default['rbenv']['rubies']      = []
 default['rbenv']['user_rubies'] = []
 
+# hash of gems and their list of additional gems to be installed.
+default['rbenv']['gems']      = Hash.new
+default['rbenv']['user_gems'] = Hash.new
+
 case platform
 when "redhat","centos","fedora", "amazon"
   node.set['rbenv']['install_pkgs']   = %w{git grep}

@@ -20,8 +20,8 @@
 include_recipe "rbenv::user_install"
 
 Array(node['rbenv']['user_installs']).each do |rbenv_user|
-  rubies                  = rbenv_user['rubies'] ||
-                            node['rbenv']['user_rubies']
+  rubies    = rbenv_user['rubies'] || node['rbenv']['user_rubies']
+  gem_hash  = rbenv_user['gems'] || node['rbenv']['user_gems']
 
   rubies.each do |rubie|
     rbenv_ruby rubie do
@@ -34,6 +34,20 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
     rbenv_global rbenv_user['global'] do
       user        rbenv_user['user']
       root_path   rbenv_user['root_path'] if rbenv_user['root_path']
+    end
+  end
+
+  gem_hash.each_pair do |rubie, gems|
+    Array(gems).each do |gem|
+      rbenv_gem gem['name'] do
+        user            rbenv_user['user']
+        root_path       rbenv_user['root_path'] if rbenv_user['root_path']
+        rbenv_version   rubie
+
+        %w{version action options source}.each do |attr|
+          send(attr, gem[attr]) if gem[attr]
+        end
+      end
     end
   end
 end

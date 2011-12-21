@@ -303,7 +303,37 @@ timeout     |How many seconds to let the command run before timing out. |`nil`
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 umask       |Umask for files created by the command. |`nil`
 
-### <a name="lwrps-rsh-examples"></a> Examples
+### <a name="lwrps-rsc-examples"></a> Examples
+
+Coming soon...
+
+## <a name="lwrps-rbgem"></a> rbenv\_gem
+
+This resource is a close analog of the `gem_package` resource/provider which
+is rbenv-aware. See the Opscode [package resource][package_resource] and
+[gem package options][gem_package_options] pages for more details.
+
+### <a name="lwrps-rbgem-actions"></a> Actions
+
+Action    |Description                   |Default
+----------|------------------------------|-------
+install   |Install a gem - if version is provided, install that specific version. |Yes
+upgrade   |Upgrade a gem - if version is provided, upgrade to that specific version.|
+remove    |Remove a gem.|
+purge     |Purge a gem.|
+
+### <a name="lwrps-rbr-attributes"></a> Attributes
+
+Attribute   |Description |Default value
+------------|------------|-------------
+package\_name |**Name Attribute:** the name of the gem to install.|`nil`
+rbenv\_version |A version of Ruby being managed by rbenv. |`"global"`
+version     |The specific version of the gem to install/upgrade. |`nil`
+options     |Add additional options to the underlying gem command. |`nil`
+source      |Provide an additional source for gem providers (such as RubyGems). This can also include a file system path to a `.gem` file such as `/tmp/json-1.5.1.gem`. |`nil`
+user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
+
+### <a name="lwrps-rbgem-examples"></a> Examples
 
 Coming soon...
 
@@ -359,32 +389,6 @@ user        |A users's isolated rbenv installation on which to apply an action. 
 
 Coming soon...
 
-## <a name="lwrps-rbgem"></a> rbenv\_gem
-
-This resource uses the [ruby-build][rb_site] framework to build and install
-Ruby versions from definition files.
-
-**Note:** this LWRP requires the [ruby\_build cookbook][ruby_build_cb] to be
-in the run list to perform the builds.
-
-### <a name="lwrps-rbgem-actions"></a> Actions
-
-Action    |Description                   |Default
-----------|------------------------------|-------
-install   |Build and install a Ruby from a definition file. See the ruby-build [readme][rb_readme] for more details. |Yes
-reinstall |Force a recompiliation of the Ruby from source. The :install action will skip a build if the target install directory already exists. |
-
-### <a name="lwrps-rbr-attributes"></a> Attributes
-
-Attribute   |Description |Default value
--------------|------------|-------------
-definition   |**Name attribute:** the name of a [built-in definition][rb_definitions] or the path to a ruby-build definition file. |`nil`
-user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
-
-### <a name="lwrps-rbgem-examples"></a> Examples
-
-Coming soon...
-
 # <a name="development"></a> Development
 
 * Source hosted at [GitHub][repo]
@@ -413,9 +417,11 @@ limitations under the License.
 
 [chef_repo]:        https://github.com/opscode/chef-repo
 [cheffile]:         https://github.com/applicationsonline/librarian/blob/master/lib/librarian/chef/templates/Cheffile
+[gem_package_options]: http://wiki.opscode.com/display/chef/Resources#Resources-GemPackageOptions
 [kgc]:              https://github.com/websterclay/knife-github-cookbooks#readme
 [librarian]:        https://github.com/applicationsonline/librarian#readme
 [lwrp]:             http://wiki.opscode.com/display/chef/Lightweight+Resources+and+Providers+%28LWRP%29
+[package_resource]: http://wiki.opscode.com/display/chef/Resources#Resources-Package
 [rbenv_site]:       https://github.com/sstephenson/rbenv
 [rbenv_3_1]:        https://github.com/sstephenson/rbenv#section_3.1
 [rbenv_3_3]:        https://github.com/sstephenson/rbenv#section_3.3

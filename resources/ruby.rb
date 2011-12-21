@@ -28,4 +28,9 @@ attribute :user,        :kind_of => String
 def initialize(*args)
   super
   @action = :install
+  @rbenv_version = @definition
+end
+
+def to_s
+  "#{super} (#{@user || 'system'})"
 end

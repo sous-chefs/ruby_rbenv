@@ -42,15 +42,13 @@ def perform_install
     Chef::Log.warn(
       "ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).")
   elsif ruby_installed?
-    Chef::Log.debug(
-      "rbenv[#{@rubie}] #{which_rbenv} is already installed, so skipping")
+    Chef::Log.debug("#{new_resource} is already installed - nothing to do")
   else
     install_start = Time.now
 
     install_ruby_dependencies
 
-    Chef::Log.info(
-      "Building rbenv[#{@rubie}] #{which_rbenv}, this could take a while...")
+    Chef::Log.info("Building #{new_resource}, this could take a while...")
 
     # bypass block scoping issues
     rbenv_user    = @user
@@ -66,7 +64,7 @@ def perform_install
       action      :nothing
     end.run_action(:run)
 
-    Chef::Log.debug("rbenv[#{@rubie}] #{which_rbenv} build time was " +
+    Chef::Log.debug("#{new_resource} build time was " +
       "#{(Time.now - install_start)/60.0} minutes")
   end
 end
