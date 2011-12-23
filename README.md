@@ -71,7 +71,7 @@ in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
 ## <a name="requirements-chef"></a> Chef
 
-Tested on 0.10.4 but newer and older version should work just
+Tested on 0.10.4 and 0.10.8 but newer and older version should work just
 fine. File an [issue][issues] if this isn't the case.
 
 ## <a name="requirements-platform"></a> Platform
@@ -79,7 +79,7 @@ fine. File an [issue][issues] if this isn't the case.
 The following platforms have been tested with this cookbook, meaning that
 the recipes and LWRPs run on these platforms without error:
 
-* ubuntu (10.04)
+* ubuntu (10.04/10.10/11.04/11.10)
 
 Please [report][issues] any additional platforms so they can be added.
 
