@@ -19,6 +19,9 @@
 # limitations under the License.
 #
 
+require File.join(File.dirname(__FILE__) + '/chef_rbenv_mixin')
+require File.join(File.dirname(__FILE__) + '/chef_rbenv_script_helpers')
+
 class Chef
   class Provider
     class Package
