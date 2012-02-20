@@ -65,6 +65,7 @@ class Chef
         def install_package(name, version)
           super
           rbenv_rehash new_resource do
+            user rbenv_user if rbenv_user
             action :nothing
           end.run_action(:run)
           true
@@ -73,6 +74,7 @@ class Chef
         def remove_package(name, version)
           super
           rbenv_rehash new_resource do
+            user rbenv_user if rbenv_user
             action :nothing
           end.run_action(:run)
           true
