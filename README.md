@@ -916,6 +916,8 @@ limitations under the License.
 [librarian]:        https://github.com/applicationsonline/librarian#readme
 [lwrp]:             http://wiki.opscode.com/display/chef/Lightweight+Resources+and+Providers+%28LWRP%29
 [package_resource]: http://wiki.opscode.com/display/chef/Resources#Resources-Package
+[rb_readme]:        https://github.com/sstephenson/ruby-build#readme
+[rb_definitions]:   https://github.com/sstephenson/ruby-build/tree/master/share/ruby-build
 [rbenv_site]:       https://github.com/sstephenson/rbenv
 [rbenv_3_1]:        https://github.com/sstephenson/rbenv#section_3.1
 [rbenv_3_3]:        https://github.com/sstephenson/rbenv#section_3.3
