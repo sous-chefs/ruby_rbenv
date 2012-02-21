@@ -157,7 +157,7 @@ and Providers ([LWRPs][lwrp]).
 
 Use this recipe explicitly if you only want access to the LWRPs provided.
 
-### <a name="recipes-system-install"></a> system\_install
+### <a name="recipes-system-install"></a> system_install
 
 Installs the rbenv codebase system-wide (that is, into `/usr/local/rbenv`). This
 recipe includes *default*.
@@ -174,7 +174,7 @@ and *system_install*.
 Use this recipe by itself if you want rbenv installed system-wide with rubies
 installed.
 
-### <a name="recipes-user-install"></a> user\_install
+### <a name="recipes-user-install"></a> user_install
 
 Installs the rbenv codebase for a list of users (selected from the
 `node['rbenv']['user_installs']` hash). This recipe includes *default*.
@@ -199,13 +199,13 @@ wrapper script so Chef doesn't need to be re-installed in the global rbenv Ruby.
 
 ## <a name="attributes"></a> Attributes
 
-### <a name="attributes-git-url"></a> git\_url
+### <a name="attributes-git-url"></a> git_url
 
 The Git URL which is used to install rbenv.
 
 The default is `"git://github.com/sstephenson/rbenv.git"`.
 
-### <a name="attributes-git-ref"></a> git\_ref
+### <a name="attributes-git-ref"></a> git_ref
 
 A specific Git branch/tag/reference to use when installing rbenv. For
 example, to pin rbenv to a specific release:
@@ -226,7 +226,7 @@ Determines how to handle installing updates to the rbenv. There are currently
 
 The default is `"none"`.
 
-### <a name="attributes-root-path"></a> root\_path
+### <a name="attributes-root-path"></a> root_path
 
 The path prefix to rbenv in a system-wide installation.
 
@@ -242,7 +242,7 @@ in your run\_list for the `rbenv_ruby` LWRP to work properly. For example:
 
 The default is an empty array: `[]`.
 
-### <a name="attributes-user-rubies"></a> user\_rubies
+### <a name="attributes-user-rubies"></a> user_rubies
 
 A list of additional system-wide rubies to be built and installed (using the
 [ruby\_build cookbook][ruby_build_cb]) per-user when not explicitly set.
@@ -272,7 +272,7 @@ for each gem hash and target Ruby environment. For example:
 
 The default is an empty hash: `{}`.
 
-### <a name="attributes-user-gems"></a> user\_gems
+### <a name="attributes-user-gems"></a> user_gems
 
 A hash of gems to installed into arbitrary rbenv-managed rubies for each user
 when not explicitly set. See the [rbenv_gem](#lwrps-rbgem) resource for more
@@ -281,7 +281,7 @@ the [gems attribute](#attributes-gems) for an example.
 
 The default is an empty hash: `{}`.
 
-### <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system\_chef\_solo
+### <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system_chef_solo
 
 If using the `vagrant` recipe, this sets the path to the package-installed
 *chef-solo* binary.
@@ -290,7 +290,7 @@ The default is `"/opt/ruby/bin/chef-solo"`.
 
 ## <a name="lwrps"></a> Resources and Providers
 
-### <a name="lwrps-rg"></a> rbenv\_global
+### <a name="lwrps-rg"></a> rbenv_global
 
 This resource sets the global version of Ruby to be used in all shells, as per
 the [rbenv global docs][rbenv_3_1].
@@ -325,7 +325,7 @@ root\_path   | The path prefix to rbenv installation, for example: `/opt/rbenv`.
       user "tflowers"
     end
 
-### <a name="lwrps-rsc"></a> rbenv\_script
+### <a name="lwrps-rsc"></a> rbenv_script
 
 This resource is a wrapper for the `script` resource which wraps the code block
 in an rbenv-aware environment. See the Opscode
@@ -372,7 +372,7 @@ umask       |Umask for files created by the command. |`nil`
       code          %{rake RAILS_ENV=production db:migrate}
     end
 
-### <a name="lwrps-rbgem"></a> rbenv\_gem
+### <a name="lwrps-rbgem"></a> rbenv_gem
 
 This resource is a close analog of the `gem_package` resource/provider which
 is rbenv-aware. See the Opscode [package resource][package_resource] and
@@ -446,7 +446,7 @@ is given.
       action          :remove
     end
 
-### <a name="lwrps-rrh"></a> rbenv\_rehash
+### <a name="lwrps-rrh"></a> rbenv_rehash
 
 This resource installs shims for all Ruby binaries known to rbenv, as per
 the [rbenv rehash docs][rbenv_3_6].
@@ -481,7 +481,7 @@ root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. 
       user  "tflowers"
     end
 
-### <a name="lwrps-rbr"></a> rbenv\_ruby
+### <a name="lwrps-rbr"></a> rbenv_ruby
 
 This resource uses the [ruby-build][ruby_build_site] framework to build and install
 Ruby versions from definition files.
