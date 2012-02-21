@@ -1,17 +1,19 @@
-# <a name="description"></a> Description
+# <a name="title"></a> chef-rbenv
+
+## <a name="description"></a> Description
 
 Manages [rbenv][rbenv_site] and its installed Rubies.
 Several lightweight resources and providers ([LWRPs][lwrp]) are also defined.
 
-# <a name="usage"></a> Usage
+## <a name="usage"></a> Usage
 
-## <a name="usage-system-rubies"></a> rbenv Installed System-Wide with Rubies
+### <a name="usage-system-rubies"></a> rbenv Installed System-Wide with Rubies
 
 Most likely, this is the typical case. Include `recipe[rbenv::system]` in your
 run\_list and override the defaults you want changed. See [below](#attributes)
 for more details.
 
-## <a name="usage-user-rubies"></a> rbenv Installed For A Specific User with Rubies
+### <a name="usage-user-rubies"></a> rbenv Installed For A Specific User with Rubies
 
 If you want a per-user install (like on a Mac/Linux workstation for
 development, CI, etc.), include `recipe[rbenv::user]` in your run\_list and
@@ -37,14 +39,14 @@ add a user hash to the `user_installs` attribute list. For example:
 
 See [below](#attributes) for more details.
 
-## <a name="usage-system"></a> rbenv Installed System-Wide and LWRPs Defined
+### <a name="usage-system"></a> rbenv Installed System-Wide and LWRPs Defined
 
 If you want to manage your own rbenv environment with the provided
 LWRPs, then include `recipe[rbenv::system_install]` in your run\_list
 to prevent a default rbenv Ruby being installed. See the
 [Resources and Providers](#lwrps) section for more details.
 
-## <a name="usage-user"></a> rbenv Installed For A Specific User and LWRPs Defined
+### <a name="usage-user"></a> rbenv Installed For A Specific User and LWRPs Defined
 
 If you want to manage your own rbenv environment for users with the provided
 LWRPs, then include `recipe[rbenv::user_install]` in your run\_list and add a
@@ -56,25 +58,25 @@ user hash to the `user_installs` attribute list. For example:
 
 See the [Resources and Providers](#lwrps) section for more details.
 
-## <a name="usage-minimal"></a> Ultra-Minimal Access To LWRPs
+### <a name="usage-minimal"></a> Ultra-Minimal Access To LWRPs
 
 Simply include `recipe[rbenv]` in your run\_list and the LWRPs will be
 available to use in other cookboks. See the [Resources and Providers](#lwrps)
 section for more details.
 
-## <a name="usage-other"></a> Other Use Cases
+### <a name="usage-other"></a> Other Use Cases
 
 * If node is running in a Vagrant VM, then including `recipe[rbenv::vagrant]`
 in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
-# <a name="requirements"></a> Requirements
+## <a name="requirements"></a> Requirements
 
-## <a name="requirements-chef"></a> Chef
+### <a name="requirements-chef"></a> Chef
 
 Tested on 0.10.4 and 0.10.8 but newer and older version should work just
 fine. File an [issue][issues] if this isn't the case.
 
-## <a name="requirements-platform"></a> Platform
+### <a name="requirements-platform"></a> Platform
 
 The following platforms have been tested with this cookbook, meaning that
 the recipes and LWRPs run on these platforms without error:
@@ -83,20 +85,20 @@ the recipes and LWRPs run on these platforms without error:
 
 Please [report][issues] any additional platforms so they can be added.
 
-## <a name="requirements-cookbooks"></a> Cookbooks
+### <a name="requirements-cookbooks"></a> Cookbooks
 
 There are **no** external cookbook dependencies. However, if you
 want to manage Ruby installations or use the `rbenv_ruby` LWRP then you will
 need to include the [ruby\_build cookbook][ruby_build_cb].
 
-# <a name="installation"></a> Installation
+## <a name="installation"></a> Installation
 
 Depending on the situation and use case there are several ways to install
 this cookbook. All the methods listed below assume a tagged version release
 is the target, but omit the tags to get the head of development. A valid
 Chef repository structure like the [Opscode repo][chef_repo] is also assumed.
 
-## <a name="installation-librarian"></a> Using Librarian
+### <a name="installation-librarian"></a> Using Librarian
 
 The [Librarian][librarian] gem aims to be Bundler for your Chef cookbooks.
 Include a reference to the cookbook in a [Cheffile][cheffile] and run
@@ -111,7 +113,7 @@ Include a reference to the cookbook in a [Cheffile][cheffile] and run
     END_OF_CHEFFILE
     librarian-chef install
 
-## <a name="installation-kgc"></a> Using knife-github-cookbooks
+### <a name="installation-kgc"></a> Using knife-github-cookbooks
 
 The [knife-github-cookbooks][kgc] gem is a plugin for *knife* that supports
 installing cookbooks directly from a GitHub repository. To install with the
@@ -121,7 +123,7 @@ plugin:
     cd chef-repo
     knife cookbook github install fnichol/chef-rbenv/v0.6.0
 
-## <a name="installation-gitsubmodule"></a> As a Git Submodule
+### <a name="installation-gitsubmodule"></a> As a Git Submodule
 
 A common practice (which is getting dated) is to add cookbooks as Git
 submodules. This is accomplishes like so:
@@ -132,7 +134,7 @@ submodules. This is accomplishes like so:
 
 **Note:** the head of development will be linked here, not a tagged release.
 
-## <a name="installation-tarball"></a> As a Tarball
+### <a name="installation-tarball"></a> As a Tarball
 
 If the cookbook needs to downloaded temporarily just to be uploaded to a Chef
 Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
@@ -141,21 +143,21 @@ Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
     curl -Ls https://github.com/fnichol/chef-rbenv/tarball/v0.6.0 | tar xfz - && \
       mv fnichol-chef-rbenv-* rbenv
 
-## <a name="installation-platform"></a> From the Opscode Community Platform
+### <a name="installation-platform"></a> From the Opscode Community Platform
 
 This cookbook is not currently available on the site due to the flat
 namespace for cookbooks.
 
-# <a name="recipes"></a> Recipes
+## <a name="recipes"></a> Recipes
 
-## <a name="recipes-default"></a> default
+### <a name="recipes-default"></a> default
 
 Installs the RVM gem and initializes Chef to use the Lightweight Resources
 and Providers ([LWRPs][lwrp]).
 
 Use this recipe explicitly if you only want access to the LWRPs provided.
 
-## <a name="recipes-system-install"></a> system\_install
+### <a name="recipes-system-install"></a> system\_install
 
 Installs the rbenv codebase system-wide (that is, into `/usr/local/rbenv`). This
 recipe includes *default*.
@@ -163,7 +165,7 @@ recipe includes *default*.
 Use this recipe by itself if you want rbenv installed system-wide but want
 to handle installing Rubies, invoking LWRPs, etc..
 
-## <a name="recipes-system"></a> system
+### <a name="recipes-system"></a> system
 
 Installs the rbenv codebase system-wide (that is, into `/usr/local/rbenv`) and
 installs rubies driven off attribute metadata. This recipe includes *default*
@@ -172,7 +174,7 @@ and *system_install*.
 Use this recipe by itself if you want rbenv installed system-wide with rubies
 installed.
 
-## <a name="recipes-user-install"></a> user\_install
+### <a name="recipes-user-install"></a> user\_install
 
 Installs the rbenv codebase for a list of users (selected from the
 `node['rbenv']['user_installs']` hash). This recipe includes *default*.
@@ -180,7 +182,7 @@ Installs the rbenv codebase for a list of users (selected from the
 Use this recipe by itself if you want rbenv installed for specific users in
 isolation but want each user to handle installing Rubies, invoking LWRPs, etc.
 
-## <a name="recipes-user"></a> user
+### <a name="recipes-user"></a> user
 
 Installs the rbenv codebase for a list of users (selected from the
 `node['rbenv']['user_installs']` hash) and installs rubies driven off attribte
@@ -189,21 +191,21 @@ metadata. This recipe includes *default* and *user_install*.
 Use this recipe by itself if you want rbenv installed for specific users in
 isolation with rubies installed.
 
-## <a name="recipes-vagrant"></a> vagrant
+### <a name="recipes-vagrant"></a> vagrant
 
 An optional recipe if Chef is installed in a non-rbenv Ruby in a
 [Vagrant][vagrant] virtual machine. This recipe installs a `chef-solo`
 wrapper script so Chef doesn't need to be re-installed in the global rbenv Ruby.
 
-# <a name="attributes"></a> Attributes
+## <a name="attributes"></a> Attributes
 
-## <a name="attributes-git-url"></a> git\_url
+### <a name="attributes-git-url"></a> git\_url
 
 The Git URL which is used to install rbenv.
 
 The default is `"git://github.com/sstephenson/rbenv.git"`.
 
-## <a name="attributes-git-ref"></a> git\_ref
+### <a name="attributes-git-ref"></a> git\_ref
 
 A specific Git branch/tag/reference to use when installing rbenv. For
 example, to pin rbenv to a specific release:
@@ -212,7 +214,7 @@ example, to pin rbenv to a specific release:
 
 The default is `"master"`.
 
-## <a name="attributes-upgrade"></a> upgrade
+### <a name="attributes-upgrade"></a> upgrade
 
 Determines how to handle installing updates to the rbenv. There are currently
 2 valid values:
@@ -224,13 +226,13 @@ Determines how to handle installing updates to the rbenv. There are currently
 
 The default is `"none"`.
 
-## <a name="attributes-root-path"></a> root\_path
+### <a name="attributes-root-path"></a> root\_path
 
 The path prefix to rbenv in a system-wide installation.
 
 The default is `"/usr/local/rbenv"`.
 
-## <a name="attributes-rubies"></a> rubies
+### <a name="attributes-rubies"></a> rubies
 
 A list of additional system-wide rubies to be built and installed using the
 [ruby\_build cookbook][ruby_build_cb]. You **must** include `recipe[ruby_build]`
@@ -240,7 +242,7 @@ in your run\_list for the `rbenv_ruby` LWRP to work properly. For example:
 
 The default is an empty array: `[]`.
 
-## <a name="attributes-user-rubies"></a> user\_rubies
+### <a name="attributes-user-rubies"></a> user\_rubies
 
 A list of additional system-wide rubies to be built and installed (using the
 [ruby\_build cookbook][ruby_build_cb]) per-user when not explicitly set.
@@ -250,7 +252,7 @@ For example:
 
 The default is an empty array: `[]`.
 
-## <a name="attributes-gems"></a> gems
+### <a name="attributes-gems"></a> gems
 
 A hash of gems to be installed into arbitrary rbenv-managed rubies system wide.
 See the [rbenv_gem](#lwrps-rbgem) resource for more details about the options
@@ -270,7 +272,7 @@ for each gem hash and target Ruby environment. For example:
 
 The default is an empty hash: `{}`.
 
-## <a name="attributes-user-gems"></a> user\_gems
+### <a name="attributes-user-gems"></a> user\_gems
 
 A hash of gems to installed into arbitrary rbenv-managed rubies for each user
 when not explicitly set. See the [rbenv_gem](#lwrps-rbgem) resource for more
@@ -279,27 +281,27 @@ the [gems attribute](#attributes-gems) for an example.
 
 The default is an empty hash: `{}`.
 
-## <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system\_chef\_solo
+### <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system\_chef\_solo
 
 If using the `vagrant` recipe, this sets the path to the package-installed
 *chef-solo* binary.
 
 The default is `"/opt/ruby/bin/chef-solo"`.
 
-# <a name="lwrps"></a> Resources and Providers
+## <a name="lwrps"></a> Resources and Providers
 
-## <a name="lwrps-rg"></a> rbenv\_global
+### <a name="lwrps-rg"></a> rbenv\_global
 
 This resource sets the global version of Ruby to be used in all shells, as per
 the [rbenv global docs][rbenv_3_1].
 
-### <a name="lwrps-rg-actions"></a> Actions
+#### <a name="lwrps-rg-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
 create    |Sets the global version of Ruby to be used in all shells. See [3.1 rbenv global][rbenv_3_1] for more details. |Yes
 
-### <a name="lwrps-rg-attributes"></a> Attributes
+#### <a name="lwrps-rg-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 -------------|------------|-------------
@@ -307,30 +309,30 @@ rbenv\_version |**Name attribute:** a version of Ruby being managed by rbenv. **
 user         |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 root\_path   | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 
-### <a name="lwrps-rg-examples"></a> Examples
+#### <a name="lwrps-rg-examples"></a> Examples
 
-#### Set A Ruby As Global
+##### Set A Ruby As Global
 
     rbenv_global "1.8.7-p352"
 
-#### Set System Ruby As Global
+##### Set System Ruby As Global
 
     rbenv_global "system"
 
-#### Set A Ruby As Global For A User
+##### Set A Ruby As Global For A User
 
     rbenv_global "jruby-1.7.0-dev" do
       user "tflowers"
     end
 
-## <a name="lwrps-rsc"></a> rbenv\_script
+### <a name="lwrps-rsc"></a> rbenv\_script
 
 This resource is a wrapper for the `script` resource which wraps the code block
 in an rbenv-aware environment. See the Opscode
 [script resource][script_resource] page and the [rbenv shell][rbenv_3_3]
 documentation for more details.
 
-### <a name="lwrps-rsc-actions"></a> Actions
+#### <a name="lwrps-rsc-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
@@ -340,7 +342,7 @@ nothing   |Do not run this command       |
 Use `action :nothing` to set a command to only run if another resource
 notifies it.
 
-### <a name="lwrps-rsc-attributes"></a> Attributes
+#### <a name="lwrps-rsc-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 ------------|------------|-------------
@@ -358,9 +360,9 @@ timeout     |How many seconds to let the command run before timing out. |`nil`
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 umask       |Umask for files created by the command. |`nil`
 
-### <a name="lwrps-rsc-examples"></a> Examples
+#### <a name="lwrps-rsc-examples"></a> Examples
 
-#### Run A Rake Task
+##### Run A Rake Task
 
     rbenv_script "migrate_rails_database" do
       rbenv_version "1.8.7-p352"
@@ -370,13 +372,13 @@ umask       |Umask for files created by the command. |`nil`
       code          %{rake RAILS_ENV=production db:migrate}
     end
 
-## <a name="lwrps-rbgem"></a> rbenv\_gem
+### <a name="lwrps-rbgem"></a> rbenv\_gem
 
 This resource is a close analog of the `gem_package` resource/provider which
 is rbenv-aware. See the Opscode [package resource][package_resource] and
 [gem package options][gem_package_options] pages for more details.
 
-### <a name="lwrps-rbgem-actions"></a> Actions
+#### <a name="lwrps-rbgem-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
@@ -385,7 +387,7 @@ upgrade   |Upgrade a gem - if version is provided, upgrade to that specific vers
 remove    |Remove a gem.|
 purge     |Purge a gem.|
 
-### <a name="lwrps-rbr-attributes"></a> Attributes
+#### <a name="lwrps-rbr-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 ------------|------------|-------------
@@ -397,9 +399,9 @@ options     |Add additional options to the underlying gem command. |`nil`
 source      |Provide an additional source for gem providers (such as RubyGems). This can also include a file system path to a `.gem` file such as `/tmp/json-1.5.1.gem`. |`nil`
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 
-### <a name="lwrps-rbgem-examples"></a> Examples
+#### <a name="lwrps-rbgem-examples"></a> Examples
 
-#### Install A Gem
+##### Install A Gem
 
     rbenv_gem "thor" do
       rbenv_version   "1.8.7-p352"
@@ -419,7 +421,7 @@ user        |A users's isolated rbenv installation on which to apply an action. 
 **Note:** the install action is default, so the second example is a more common
 usage.
 
-#### Install A Gem From A Local File
+##### Install A Gem From A Local File
 
     rbenv_gem "json" do
       rbenv_version   "ree-1.8.7-2011.03"
@@ -427,7 +429,7 @@ usage.
       version         "1.5.1"
     end
 
-#### Keep A Gem Up To Date
+##### Keep A Gem Up To Date
 
     rbenv_gem "homesick" do
       action :upgrade
@@ -436,7 +438,7 @@ usage.
 **Note:** the global rbenv Ruby will be targeted if no `rbenv_version` attribute
 is given.
 
-#### Remove A Gem
+##### Remove A Gem
 
     rbenv_gem "nokogiri" do
       rbenv_version   "jruby-1.5.6"
@@ -444,12 +446,12 @@ is given.
       action          :remove
     end
 
-## <a name="lwrps-rrh"></a> rbenv\_rehash
+### <a name="lwrps-rrh"></a> rbenv\_rehash
 
 This resource installs shims for all Ruby binaries known to rbenv, as per
 the [rbenv rehash docs][rbenv_3_6].
 
-### <a name="lwrps-rrh-actions"></a> Actions
+#### <a name="lwrps-rrh-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
@@ -459,7 +461,7 @@ nothing   |Do not run this command       |
 Use `action :nothing` to set a command to only run if another resource
 notifies it.
 
-### <a name="lwrps-rrh-attributes"></a> Attributes
+#### <a name="lwrps-rrh-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 -------------|------------|-------------
@@ -467,19 +469,19 @@ name        |**Name Attribute:** Name of the command to execute. |name
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 
-### <a name="lwrps-rrh-examples"></a> Examples
+#### <a name="lwrps-rrh-examples"></a> Examples
 
-#### Rehash A System-Wide rbenv
+##### Rehash A System-Wide rbenv
 
     rbenv_rehash "Doing the rehash dance"
 
-#### Rehash A User's rbenv
+##### Rehash A User's rbenv
 
     rbenv_rehash "Rehashing tflowers' rbenv" do
       user  "tflowers"
     end
 
-## <a name="lwrps-rbr"></a> rbenv\_ruby
+### <a name="lwrps-rbr"></a> rbenv\_ruby
 
 This resource uses the [ruby-build][ruby_build_site] framework to build and install
 Ruby versions from definition files.
@@ -487,14 +489,14 @@ Ruby versions from definition files.
 **Note:** this LWRP requires the [ruby\_build cookbook][ruby_build_cb] to be
 in the run list to perform the builds.
 
-### <a name="lwrps-rbr-actions"></a> Actions
+#### <a name="lwrps-rbr-actions"></a> Actions
 
 Action    |Description                   |Default
 ----------|------------------------------|-------
 install   |Build and install a Ruby from a definition file. See the ruby-build [readme][rb_readme] for more details. |Yes
 reinstall |Force a recompiliation of the Ruby from source. The :install action will skip a build if the target install directory already exists. |
 
-### <a name="lwrps-rbr-attributes"></a> Attributes
+#### <a name="lwrps-rbr-attributes"></a> Attributes
 
 Attribute   |Description |Default value
 -------------|------------|-------------
@@ -502,9 +504,9 @@ definition   |**Name attribute:** the name of a [built-in definition][rb_definit
 user        |A users's isolated rbenv installation on which to apply an action. The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist. |`nil`
 root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. |`nil`
 
-### <a name="lwrps-rbr-examples"></a> Examples
+#### <a name="lwrps-rbr-examples"></a> Examples
 
-#### Install Ruby From ruby-build
+##### Install Ruby From ruby-build
 
     rbenv_ruby "ree-1.8.7-2011.03" do
       action :install
@@ -515,13 +517,13 @@ root\_path  | The path prefix to rbenv installation, for example: `/opt/rbenv`. 
 **Note:** the install action is default, so the second example is a more common
 usage.
 
-#### Reinstall Ruby
+##### Reinstall Ruby
 
     rvm_ruby "ree-1.8.7-2011.03" do
       action :reinstall
     end
 
-# <a name="development"></a> Development
+## <a name="development"></a> Development
 
 * Source hosted at [GitHub][repo]
 * Report issues/Questions/Feature requests on [GitHub Issues][issues]
@@ -529,7 +531,7 @@ usage.
 Pull requests are very welcome! Make sure your patches are well tested.
 Ideally create a topic branch for every separate change you make.
 
-# <a name="license"></a> License and Author
+## <a name="license"></a> License and Author
 
 Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 
