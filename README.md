@@ -802,7 +802,7 @@ in the run list to perform the builds.
   </thead>
   <tbody>
     <tr>
-      <td><install/td>
+      <td>install</td>
       <td>
         Build and install a Ruby from a definition file. See the ruby-build
         readme<sup>(1)</sup> for more details.
