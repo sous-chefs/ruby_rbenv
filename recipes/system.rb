@@ -30,7 +30,9 @@ end
 node['rbenv']['gems'].each_pair do |rubie, gems|
   Array(gems).each do |gem|
     rbenv_gem gem['name'] do
-      %w{rbenv_version version action options source}.each do |attr|
+      rbenv_version rubie
+
+      %w{version action options source}.each do |attr|
         send(attr, gem[attr]) if gem[attr]
       end
     end
