@@ -9,3 +9,4 @@ recommends "ruby_build"   # if using the rbenv_ruby LWRP, ruby-build must be ins
 recommends "java"         # if using jruby, java is required on system
 
 supports "ubuntu"
+supports "debian"
