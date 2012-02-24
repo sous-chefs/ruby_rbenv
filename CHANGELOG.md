@@ -1,4 +1,16 @@
-## 0.6.3 (unreleased)
+## 0.6.5 (unreleased)
+
+
+## 0.6.4 (February 23, 2012)
+
+### Bug Fixes
+
+* Set `root_path` on rbenv\_rehash in rbenv\_gem provider. ([@fnichol][])
+
+### Improvements
+
+* Foodcritic lint-driven code updates. ([@fnichol][])
+* Update Git URL in README. ([@hedgehog][])
 
 
 ## 0.6.2 (February 22, 2012)
@@ -20,4 +32,5 @@
 The initial release.
 
 [@fnichol]: https://github.com/fnichol
+[@hedgehog]: https://github.com/hedgehog
 [@magnetised]: https://github.com/magnetised
