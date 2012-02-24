@@ -64,19 +64,13 @@ class Chef
 
         def install_package(name, version)
           super
-          rbenv_rehash new_resource do
-            user rbenv_user if rbenv_user
-            action :nothing
-          end.run_action(:run)
+          rehash
           true
         end
 
         def remove_package(name, version)
           super
-          rbenv_rehash new_resource do
-            user rbenv_user if rbenv_user
-            action :nothing
-          end.run_action(:run)
+          rehash
           true
         end
 
@@ -86,6 +80,14 @@ class Chef
           if @new_resource.rbenv_version == "global"
             @new_resource.rbenv_version(current_global_version)
           end
+        end
+
+        def rehash
+          rbenv_rehash new_resource do
+            root_path rbenv_root
+            user rbenv_user if rbenv_user
+            action :nothing
+          end.run_action(:run)
         end
       end
     end
