@@ -66,6 +66,8 @@ def perform_install
 
     Chef::Log.debug("#{new_resource} build time was " +
       "#{(Time.now - install_start)/60.0} minutes")
+
+    new_resource.updated_by_last_action(true)
   end
 end
 

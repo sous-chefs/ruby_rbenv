@@ -38,6 +38,8 @@ action :run do
     umask         new_resource.umask    if new_resource.umask
     environment(script_environment)
   end
+
+  new_resource.updated_by_last_action(true)
 end
 
 private
