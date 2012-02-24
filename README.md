@@ -109,7 +109,7 @@ Include a reference to the cookbook in a [Cheffile][cheffile] and run
     librarian-chef init
     cat >> Cheffile <<END_OF_CHEFFILE
     cookbook 'rbenv',
-      :git => 'git://github.com/fnichol/chef-rbenv.git', :ref => 'v0.6.2'
+      :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.2'
     END_OF_CHEFFILE
     librarian-chef install
 
