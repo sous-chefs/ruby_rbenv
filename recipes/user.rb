@@ -30,11 +30,11 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
     end
   end
 
-  if rbenv_user['global']
-    rbenv_global rbenv_user['global'] do
-      user        rbenv_user['user']
-      root_path   rbenv_user['root_path'] if rbenv_user['root_path']
-    end
+  rbenv_global rbenv_user['global'] do
+    user        rbenv_user['user']
+    root_path   rbenv_user['root_path'] if rbenv_user['root_path']
+
+    only_if     { rbenv_user['global'] }
   end
 
   gem_hash.each_pair do |rubie, gems|
