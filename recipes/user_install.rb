@@ -21,6 +21,12 @@ include_recipe 'rbenv'
 
 install_rbenv_pkg_prereqs
 
+template "/etc/profile.d/rbenv.sh" do
+  source  "rbenv.sh.erb"
+  owner   "root"
+  mode    "0755"
+end
+
 Array(node['rbenv']['user_installs']).each do |rb_user|
   upgrade_strategy  = build_upgrade_strategy(rb_user['upgrade'])
   git_url           = rb_user['git_url'] || node['rbenv']['git_url']
