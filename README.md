@@ -153,7 +153,7 @@ namespace for cookbooks.
 
 ### <a name="recipes-default"></a> default
 
-Installs the RVM gem and initializes Chef to use the Lightweight Resources
+Installs the rbenv gem and initializes Chef to use the Lightweight Resources
 and Providers ([LWRPs][lwrp]).
 
 Use this recipe explicitly if you only want access to the LWRPs provided.
@@ -880,7 +880,7 @@ usage.
 
 ##### Reinstall Ruby
 
-    rvm_ruby "ree-1.8.7-2011.03" do
+    rbenv_ruby "ree-1.8.7-2011.03" do
       action :reinstall
     end
 
