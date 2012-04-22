@@ -4,10 +4,12 @@
 # prefer a user rbenv over a system wide install
 if [[ -s "${HOME}/.rbenv/bin" ]]; then
   rbenv_root="${HOME}/.rbenv"
-else
+elif [[ -s "<%= node['rbenv']['root_path'] %>" ]]; then
   rbenv_root="<%= node['rbenv']['root_path'] %>"
   export RBENV_ROOT="$rbenv_root"
 fi
 
-export PATH="${rbenv_root}/bin:$PATH"
-eval "$(rbenv init -)"
+if [ "$rbenv_root" != "" ]; then
+  export PATH="${rbenv_root}/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
