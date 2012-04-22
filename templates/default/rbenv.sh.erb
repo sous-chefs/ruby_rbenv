@@ -9,7 +9,7 @@ elif [[ -s "<%= node['rbenv']['root_path'] %>" ]]; then
   export RBENV_ROOT="$rbenv_root"
 fi
 
-if [ "$rbenv_root" != "" ]; then
+if [[ -n "$rbenv_root" ]]; then
   export PATH="${rbenv_root}/bin:$PATH"
   eval "$(rbenv init -)"
 fi
