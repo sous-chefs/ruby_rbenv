@@ -101,13 +101,16 @@ Chef repository structure like the [Opscode repo][chef_repo] is also assumed.
 
 ### <a name="installation-librarian"></a> Using Librarian
 
-The [Librarian][librarian] gem aims to be Bundler for your Chef cookbooks.
+[Librarian-Chef][librarian] is a bundler for your Chef cookbooks.
 Include a reference to the cookbook in a [Cheffile][cheffile] and run
-`librarian-chef install`. To install with Librarian:
+`librarian-chef install`. To install Librarian-Chef:
 
     gem install librarian
     cd chef-repo
     librarian-chef init
+
+Or to reference the Git version:
+
     cat >> Cheffile <<END_OF_CHEFFILE
     cookbook 'rbenv',
       :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.4'
@@ -124,17 +127,6 @@ plugin:
     cd chef-repo
     knife cookbook github install fnichol/chef-rbenv/v0.6.4
 
-### <a name="installation-gitsubmodule"></a> As a Git Submodule
-
-A common practice (which is getting dated) is to add cookbooks as Git
-submodules. This is accomplishes like so:
-
-    cd chef-repo
-    git submodule add git://github.com/fnichol/chef-rbenv.git cookbooks/rbenv
-    git submodule init && git submodule update
-
-**Note:** the head of development will be linked here, not a tagged release.
-
 ### <a name="installation-tarball"></a> As a Tarball
 
 If the cookbook needs to downloaded temporarily just to be uploaded to a Chef
@@ -143,6 +135,17 @@ Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
     cd chef-repo/cookbooks
     curl -Ls https://github.com/fnichol/chef-rbenv/tarball/v0.6.4 | tar xfz - && \
       mv fnichol-chef-rbenv-* rbenv
+
+### <a name="installation-gitsubmodule"></a> As a Git Submodule
+
+A dated practice (which is discouraged) is to add cookbooks as Git
+submodules. This is accomplishes like so:
+
+    cd chef-repo
+    git submodule add git://github.com/fnichol/chef-rbenv.git cookbooks/rbenv
+    git submodule init && git submodule update
+
+**Note:** the head of development will be linked here, not a tagged release.
 
 ### <a name="installation-platform"></a> From the Opscode Community Platform
 
