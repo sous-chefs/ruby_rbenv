@@ -106,7 +106,7 @@ def ensure_java_environment
   begin
     resource_collection.find(
       "ruby_block[update-java-alternatives]"
-    ).run_action(:run)
+    ).run_action(:create)
   rescue Chef::Exceptions::ResourceNotFound
     # have pity on my soul
     Chef::Log.info "The java cookbook does not appear to in the run_list."
