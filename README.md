@@ -1,4 +1,4 @@
-# <a name="title"></a> chef-rbenv
+# <a name="title"></a> chef-rbenv [![Build Status](https://secure.travis-ci.org/fnichol/chef-rbenv.png?branch=master)](http://travis-ci.org/fnichol/chef-rbenv)
 
 ## <a name="description"></a> Description
 
