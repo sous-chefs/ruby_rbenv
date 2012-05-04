@@ -24,22 +24,25 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
   gem_hash  = rbenv_user['gems'] || node['rbenv']['user_gems']
 
   rubies.each do |rubie|
-    rbenv_ruby rubie do
+    rbenv_ruby "#{rubie} (#{rbenv_user['user']})" do
+      definition  rubie
       user        rbenv_user['user']
       root_path   rbenv_user['root_path'] if rbenv_user['root_path']
     end
   end
 
-  rbenv_global rbenv_user['global'] do
-    user        rbenv_user['user']
-    root_path   rbenv_user['root_path'] if rbenv_user['root_path']
+  rbenv_global "#{rbenv_user['global']} (#{rbenv_user['user']})" do
+    rbenv_version rbenv_user['global']
+    user          rbenv_user['user']
+    root_path     rbenv_user['root_path'] if rbenv_user['root_path']
 
     only_if     { rbenv_user['global'] }
   end
 
   gem_hash.each_pair do |rubie, gems|
     Array(gems).each do |gem|
-      rbenv_gem gem['name'] do
+      rbenv_gem "#{gem['name']} (#{rbenv_user['user']})" do
+        package_name    gem['name']
         user            rbenv_user['user']
         root_path       rbenv_user['root_path'] if rbenv_user['root_path']
         rbenv_version   rubie
