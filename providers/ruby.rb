@@ -84,7 +84,9 @@ def ruby_build_missing?
 end
 
 def install_ruby_dependencies
-  case ::File.basename(new_resource.definition)
+  definition = ::File.basename(new_resource.definition)
+
+  case definition
   when /^\d\.\d\.\d-/, /^rbx-/, /^ree-/
     pkgs = node['ruby_build']['install_pkgs_cruby']
   when /^jruby-/
@@ -95,5 +97,18 @@ def install_ruby_dependencies
     package pkg do
       action :nothing
     end.run_action(:install)
+  end
+
+  ensure_java_environment if definition =~ /^jruby-/
+end
+
+def ensure_java_environment
+  begin
+    resource_collection.find(
+      "execute[update-java-alternatives]"
+    ).run_action(:run)
+  rescue Chef::Exceptions::ResourceNotFound
+    # have pity on my soul
+    Chef::Log.info "The java cookbook does not appear to in the run_list."
   end
 end
