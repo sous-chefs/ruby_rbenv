@@ -113,7 +113,7 @@ To reference the Git version:
 
     cat >> Cheffile <<END_OF_CHEFFILE
     cookbook 'rbenv',
-      :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.4'
+      :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.6'
     END_OF_CHEFFILE
     librarian-chef install
 
@@ -125,7 +125,7 @@ plugin:
 
     gem install knife-github-cookbooks
     cd chef-repo
-    knife cookbook github install fnichol/chef-rbenv/v0.6.4
+    knife cookbook github install fnichol/chef-rbenv/v0.6.6
 
 ### <a name="installation-tarball"></a> As a Tarball
 
@@ -133,7 +133,7 @@ If the cookbook needs to downloaded temporarily just to be uploaded to a Chef
 Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
 
     cd chef-repo/cookbooks
-    curl -Ls https://github.com/fnichol/chef-rbenv/tarball/v0.6.4 | tar xfz - && \
+    curl -Ls https://github.com/fnichol/chef-rbenv/tarball/v0.6.6 | tar xfz - && \
       mv fnichol-chef-rbenv-* rbenv
 
 ### <a name="installation-gitsubmodule"></a> As a Git Submodule
