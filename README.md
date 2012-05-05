@@ -109,7 +109,7 @@ Include a reference to the cookbook in a [Cheffile][cheffile] and run
     cd chef-repo
     librarian-chef init
 
-Or to reference the Git version:
+To reference the Git version:
 
     cat >> Cheffile <<END_OF_CHEFFILE
     cookbook 'rbenv',
