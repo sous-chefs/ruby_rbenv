@@ -83,6 +83,8 @@ class Chef
           user  opts[:user]   if opts[:user]
           group opts[:group]  if opts[:group]
         end
+
+        log "rbenv-post-init-#{opts[:user] || 'system'}"
       end
     end
   end
