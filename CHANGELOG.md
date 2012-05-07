@@ -1,4 +1,11 @@
-## 0.6.7 (unreleased)
+## 0.6.9 (unreleased)
+
+
+## 0.6.8 (May 6, 2012)
+
+### Improvements
+
+* Add official hook resource log[rbenv-post-init-\*] for inter-cookbook integration. ([@fnichol][])
 
 
 ## 0.6.6 (May 4, 2012)
