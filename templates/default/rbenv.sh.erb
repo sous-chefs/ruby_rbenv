@@ -2,14 +2,14 @@
 # Local modifications will be overridden
 
 # prefer a user rbenv over a system wide install
-if [[ -s "${HOME}/.rbenv/bin" ]]; then
+if [ -s "${HOME}/.rbenv/bin" ]; then
   rbenv_root="${HOME}/.rbenv"
-elif [[ -s "<%= node['rbenv']['root_path'] %>" ]]; then
+elif [ -s "<%= node['rbenv']['root_path'] %>" ]; then
   rbenv_root="<%= node['rbenv']['root_path'] %>"
   export RBENV_ROOT="$rbenv_root"
 fi
 
-if [[ -n "$rbenv_root" ]]; then
+if [ -n "$rbenv_root" ]; then
   export PATH="${rbenv_root}/bin:$PATH"
   eval "$(rbenv init -)"
 fi
