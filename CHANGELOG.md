@@ -1,4 +1,7 @@
-## 0.6.9 (unreleased)
+## 0.6.11 (unreleased)
+
+
+## 0.6.10 (May 18, 2012)
 
 ### New features
 
