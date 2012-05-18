@@ -1,5 +1,13 @@
 ## 0.6.9 (unreleased)
 
+### New features
+
+* Pull request [#11](https://github.com/fnichol/chef-rbenv/pull/11): Add FreeBSD support. ([@jssjr][])
+
+### Improvements
+
+* Add other platform supports in metadata.rb and README. ([@fnichol][])
+
 
 ## 0.6.8 (May 6, 2012)
 
@@ -57,6 +65,7 @@ The initial release.
 
 [@fnichol]: https://github.com/fnichol
 [@jdsiegel]: https://github.com/jdsiegel
+[@jssjr]: https://github.com/jssjr
 [@hedgehog]: https://github.com/hedgehog
 [@magnetised]: https://github.com/magnetised
 [@thoughtless]: https://github.com/thoughtless
