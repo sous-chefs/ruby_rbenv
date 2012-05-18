@@ -10,3 +10,4 @@ recommends "java", "> 1.4.0"  # if using jruby, java is required on system
 
 supports "ubuntu"
 supports "debian"
+supports "freebsd"

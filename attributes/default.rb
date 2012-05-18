@@ -52,6 +52,6 @@ when "mac_os_x"
   node.set['rbenv']['install_pkgs']   = %w{git}
   default['rbenv']['user_home_root']  = '/Users'
 when "freebsd"
-  node.set['rbenv']['install_pkgs']   = %w(git)
+  node.set['rbenv']['install_pkgs']   = %w{git}
   default['rbenv']['user_home_root']  = '/usr/home'
 end

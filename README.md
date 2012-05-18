@@ -83,6 +83,7 @@ the recipes and LWRPs run on these platforms without error:
 
 * ubuntu (10.04/10.10/11.04/11.10)
 * debian (6.0)
+* freebsd
 
 Please [report][issues] any additional platforms so they can be added.
 
