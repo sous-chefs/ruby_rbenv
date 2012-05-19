@@ -905,7 +905,7 @@ Ideally create a topic branch for every separate change you make.
 
 ## <a name="license"></a> License and Author
 
-Author:: Fletcher Nichol (<fnichol@nichol.ca>)
+Author:: [Fletcher Nichol][fnichol] (<fnichol@nichol.ca>) [![endorse](http://api.coderwall.com/fnichol/endorsecount.png)](http://coderwall.com/fnichol)
 
 Copyright 2011, Fletcher Nichol
 
@@ -938,5 +938,6 @@ limitations under the License.
 [ruby_build_site]:  https://github.com/sstephenson/ruby-build
 [script_resource]:  http://wiki.opscode.com/display/chef/Resources#Resources-Script
 
+[fnichol]:      https://github.com/fnichol
 [repo]:         https://github.com/fnichol/chef-rbenv
 [issues]:       https://github.com/fnichol/chef-rbenv/issues
