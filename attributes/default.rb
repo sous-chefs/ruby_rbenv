@@ -41,6 +41,9 @@ default['rbenv']['user_rubies'] = []
 default['rbenv']['gems']      = Hash.new
 default['rbenv']['user_gems'] = Hash.new
 
+# whether to create profile.d shell script
+default['rbenv']['create_profiled'] = true
+
 case platform
 when "redhat","centos","fedora", "amazon", "scientific"
   node.set['rbenv']['install_pkgs']   = %w{git grep}

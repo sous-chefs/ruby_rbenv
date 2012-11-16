@@ -21,10 +21,12 @@ include_recipe 'rbenv'
 
 install_rbenv_pkg_prereqs
 
-template "/etc/profile.d/rbenv.sh" do
-  source  "rbenv.sh.erb"
-  owner   "root"
-  mode    "0755"
+if node['rbenv']['create_profiled']
+  template "/etc/profile.d/rbenv.sh" do
+    source  "rbenv.sh.erb"
+    owner   "root"
+    mode    "0755"
+  end
 end
 
 Array(node['rbenv']['user_installs']).each do |rb_user|
