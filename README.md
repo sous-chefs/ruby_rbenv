@@ -300,6 +300,23 @@ If using the `vagrant` recipe, this sets the path to the package-installed
 
 The default is `"/opt/ruby/bin/chef-solo"`.
 
+### <a name="attributes-create-profiled"></a> create_profiled
+
+The user's shell needs to know about rbenv's location and set up the
+PATH environment variable. This is handled in the
+[system_install](#recipes-system_install) and
+[user_install](#recipes-user_install) recipes by dropping off
+`/etc/profile.d/rbenv.sh`. However, this requires root privilege,
+which means that a user cannot use a "user install" for only their
+user.
+
+Set this attribute to `false` to skip creation of the
+`/etc/profile.d/rbenv.sh` template. For example:
+
+    node.default['rbenv']['create_profiled'] = false
+
+The default is `true`.
+
 ## <a name="lwrps"></a> Resources and Providers
 
 ### <a name="lwrps-rg"></a> rbenv_global
