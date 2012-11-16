@@ -19,7 +19,7 @@ If you want a per-user install (like on a Mac/Linux workstation for
 development, CI, etc.), include `recipe[rbenv::user]` in your run\_list and
 add a user hash to the `user_installs` attribute list. For example:
 
-    node['rbenv']['user_installs'] = [
+    node.default['rbenv']['user_installs'] = [
       { 'user'    => 'tflowers',
         'rubies'  => ['1.9.3-p0', 'jruby-1.6.5'],
         'global'  => '1.9.3-p0',
@@ -52,7 +52,7 @@ If you want to manage your own rbenv environment for users with the provided
 LWRPs, then include `recipe[rbenv::user_install]` in your run\_list and add a
 user hash to the `user_installs` attribute list. For example:
 
-    node['rbenv']['user_installs'] = [
+    node.default['rbenv']['user_installs'] = [
       { 'user' => 'tflowers' }
     ]
 
@@ -222,7 +222,7 @@ The default is `"git://github.com/sstephenson/rbenv.git"`.
 A specific Git branch/tag/reference to use when installing rbenv. For
 example, to pin rbenv to a specific release:
 
-    node['ruby_build']['git_ref'] = "v0.2.1"
+    node.default['ruby_build']['git_ref'] = "v0.2.1"
 
 The default is `"master"`.
 
@@ -250,7 +250,7 @@ A list of additional system-wide rubies to be built and installed using the
 [ruby\_build cookbook][ruby_build_cb]. You **must** include `recipe[ruby_build]`
 in your run\_list for the `rbenv_ruby` LWRP to work properly. For example:
 
-    node['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
+    node.default['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
 
 The default is an empty array: `[]`.
 
@@ -260,7 +260,7 @@ A list of additional system-wide rubies to be built and installed (using the
 [ruby\_build cookbook][ruby_build_cb]) per-user when not explicitly set.
 For example:
 
-    node['rbenv']['user_rubies'] = [ "1.8.7-p352" ]
+    node.default['rbenv']['user_rubies'] = [ "1.8.7-p352" ]
 
 The default is an empty array: `[]`.
 
@@ -270,7 +270,7 @@ A hash of gems to be installed into arbitrary rbenv-managed rubies system wide.
 See the [rbenv_gem](#lwrps-rbgem) resource for more details about the options
 for each gem hash and target Ruby environment. For example:
 
-    node['rbenv']['gems'] = {
+    node.default['rbenv']['gems'] = {
       '1.9.3-p0' => [
         { 'name'    => 'vagrant' },
         { 'name'    => 'bundler'
