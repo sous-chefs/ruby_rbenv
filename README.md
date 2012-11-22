@@ -113,53 +113,60 @@ this cookbook. All the methods listed below assume a tagged version release
 is the target, but omit the tags to get the head of development. A valid
 Chef repository structure like the [Opscode repo][chef_repo] is also assumed.
 
-### <a name="installation-librarian"></a> Using Librarian
+### <a name="installation-berkshelf"></a> Using Berkshelf
+
+[Berkshelf][berkshelf] is a cookbook dependency manager and development
+workflow assistant. To install Berkshelf:
+
+    cd chef-repo
+    gem install berkshelf
+    berks init
+
+To use the Community Site version:
+
+    echo "cookbook 'rbenv'" >> Berksfile
+    berks install
+
+Or to reference the Git version:
+
+    repo="fnichol/chef-rbenv"
+    latest_release=$(curl -s https://api.github.com/repos/$repo/git/refs/tags \
+    | ruby -rjson -e '
+      j = JSON.parse(STDIN.read);
+      puts j.map { |t| t["ref"].split("/").last }.sort.last
+    ')
+    cat >> Berksfile <<END_OF_BERKSFILE
+    cookbook 'rbenv',
+      :git => 'git://github.com/$repo.git', :branch => '$latest_release'
+    END_OF_BERKSFILE
+
+### <a name="installation-librarian"></a> Using Librarian-Chef
 
 [Librarian-Chef][librarian] is a bundler for your Chef cookbooks.
-Include a reference to the cookbook in a [Cheffile][cheffile] and run
-`librarian-chef install`. To install Librarian-Chef:
+To install Librarian-Chef:
 
-    gem install librarian
     cd chef-repo
+    gem install librarian
     librarian-chef init
 
-To reference the Git version:
+To use the Opscode platform version:
 
-    cat >> Cheffile <<END_OF_CHEFFILE
-    cookbook 'rbenv',
-      :git => 'https://github.com/fnichol/chef-rbenv', :ref => 'v0.6.10'
-    END_OF_CHEFFILE
+    echo "cookbook 'rbenv'" >> Cheffile
     librarian-chef install
 
-### <a name="installation-kgc"></a> Using knife-github-cookbooks
+Or to reference the Git version:
 
-The [knife-github-cookbooks][kgc] gem is a plugin for *knife* that supports
-installing cookbooks directly from a GitHub repository. To install with the
-plugin:
-
-    gem install knife-github-cookbooks
-    cd chef-repo
-    knife cookbook github install fnichol/chef-rbenv/v0.6.10
-
-### <a name="installation-tarball"></a> As a Tarball
-
-If the cookbook needs to downloaded temporarily just to be uploaded to a Chef
-Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
-
-    cd chef-repo/cookbooks
-    curl -Ls https://github.com/fnichol/chef-rbenv/tarball/v0.6.10 | tar xfz - && \
-      mv fnichol-chef-rbenv-* rbenv
-
-### <a name="installation-gitsubmodule"></a> As a Git Submodule
-
-A dated practice (which is discouraged) is to add cookbooks as Git
-submodules. This is accomplishes like so:
-
-    cd chef-repo
-    git submodule add git://github.com/fnichol/chef-rbenv.git cookbooks/rbenv
-    git submodule init && git submodule update
-
-**Note:** the head of development will be linked here, not a tagged release.
+    repo="fnichol/chef-rbenv"
+    latest_release=$(curl -s https://api.github.com/repos/$repo/git/refs/tags \
+    | ruby -rjson -e '
+      j = JSON.parse(STDIN.read);
+      puts j.map { |t| t["ref"].split("/").last }.sort.last
+    ')
+    cat >> Cheffile <<END_OF_CHEFFILE
+    cookbook 'rbenv',
+      :git => 'git://github.com/$repo.git', :ref => '$latest_release'
+    END_OF_CHEFFILE
+    librarian-chef install
 
 ### <a name="installation-platform"></a> From the Opscode Community Platform
 
