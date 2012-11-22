@@ -13,6 +13,9 @@ Most likely, this is the typical case. Include `recipe[rbenv::system]` in your
 run\_list and override the defaults you want changed. See [below](#attributes)
 for more details.
 
+If your platform is the Mac, you may need to modify your
+[profile](#mac-system-note).
+
 ### <a name="usage-user-rubies"></a> rbenv Installed For A Specific User with Rubies
 
 If you want a per-user install (like on a Mac/Linux workstation for
@@ -45,6 +48,9 @@ If you want to manage your own rbenv environment with the provided
 LWRPs, then include `recipe[rbenv::system_install]` in your run\_list
 to prevent a default rbenv Ruby being installed. See the
 [Resources and Providers](#lwrps) section for more details.
+
+If your platform is the Mac, you may need to modify your
+[profile](#mac-system-note).
 
 ### <a name="usage-user"></a> rbenv Installed For A Specific User and LWRPs Defined
 
@@ -912,6 +918,13 @@ usage.
       action :reinstall
     end
 
+## <a name="mac-system-note"></a> System-Wide Mac Installation Note
+
+This cookbook takes advantage of managing profile fragments in an
+`/etc/profile.d` directory, common on most Unix-flavored platforms.
+Unfortunately, Mac OS X does not support this idiom out of the box,
+so you may need to [modify][mac_profile_d] your user profile.
+
 ## <a name="development"></a> Development
 
 * Source hosted at [GitHub][repo]
@@ -944,6 +957,7 @@ limitations under the License.
 [kgc]:              https://github.com/websterclay/knife-github-cookbooks#readme
 [librarian]:        https://github.com/applicationsonline/librarian#readme
 [lwrp]:             http://wiki.opscode.com/display/chef/Lightweight+Resources+and+Providers+%28LWRP%29
+[mac_profile_d]:    http://hints.macworld.com/article.php?story=20011221192012445
 [package_resource]: http://wiki.opscode.com/display/chef/Resources#Resources-Package
 [rb_readme]:        https://github.com/sstephenson/ruby-build#readme
 [rb_definitions]:   https://github.com/sstephenson/ruby-build/tree/master/share/ruby-build

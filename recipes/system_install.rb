@@ -26,6 +26,11 @@ rbenv_prefix      = node['rbenv']['root_path']
 
 install_rbenv_pkg_prereqs
 
+directory "/etc/profile.d" do
+  owner   "root"
+  mode    "0755"
+end
+
 template "/etc/profile.d/rbenv.sh" do
   source  "rbenv.sh.erb"
   owner   "root"
