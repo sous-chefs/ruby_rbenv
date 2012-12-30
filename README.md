@@ -122,12 +122,7 @@ workflow assistant. To install Berkshelf:
     gem install berkshelf
     berks init
 
-To use the Community Site version:
-
-    echo "cookbook 'rbenv'" >> Berksfile
-    berks install
-
-Or to reference the Git version:
+To reference the Git version:
 
     repo="fnichol/chef-rbenv"
     latest_release=$(curl -s https://api.github.com/repos/$repo/git/refs/tags \
@@ -139,6 +134,7 @@ Or to reference the Git version:
     cookbook 'rbenv',
       :git => 'git://github.com/$repo.git', :branch => '$latest_release'
     END_OF_BERKSFILE
+    berks install
 
 ### <a name="installation-librarian"></a> Using Librarian-Chef
 
@@ -149,12 +145,7 @@ To install Librarian-Chef:
     gem install librarian
     librarian-chef init
 
-To use the Opscode platform version:
-
-    echo "cookbook 'rbenv'" >> Cheffile
-    librarian-chef install
-
-Or to reference the Git version:
+To reference the Git version:
 
     repo="fnichol/chef-rbenv"
     latest_release=$(curl -s https://api.github.com/repos/$repo/git/refs/tags \
