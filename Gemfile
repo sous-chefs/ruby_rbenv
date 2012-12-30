@@ -1,9 +1,10 @@
 source "https://rubygems.org"
 
 gem 'rake'
-gem 'foodcritic', :platforms => :ruby_19
+gem 'foodcritic'
 
 group :integration do
-  gem 'berkshelf', '>= 1.0.0'
+  gem 'berkshelf'
   gem 'jamie'
+  gem 'jamie-vagrant'
 end
