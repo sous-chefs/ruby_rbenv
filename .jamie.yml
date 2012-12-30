@@ -26,5 +26,5 @@ suites:
     attributes:
       rbenv:
         rubies:
-          - 1.9.3-p327
-        global: 1.9.3-p327
+          - 1.9.3-p362
+        global: 1.9.3-p362
