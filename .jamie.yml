@@ -19,11 +19,11 @@ platforms:
       - recipe[yum::epel]
 
 suites:
-  - name: system
+  - name: system_ruby
     run_list:
       - recipe[ruby_build]
       - recipe[rbenv::system]
-    json:
+    attributes:
       rbenv:
         rubies:
           - 1.9.3-p327
