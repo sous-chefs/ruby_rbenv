@@ -1,5 +1,13 @@
 ## 0.7.1 (unreleased)
 
+### Bug Fixes
+
+* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't call libexec commands directly. ([@mhoran][])
+
+### Improvements
+
+* Add integration tests for a system Ruby version. ([@fnichol][])
+
 
 ## 0.7.0 (November 21, 2012)
 
@@ -89,4 +97,5 @@ The initial release.
 [@jtimberman]: https://github.com/jtimberman
 [@hedgehog]: https://github.com/hedgehog
 [@magnetised]: https://github.com/magnetised
+[@mhoran]: https://github.com/mhoran
 [@thoughtless]: https://github.com/thoughtless
