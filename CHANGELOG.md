@@ -1,5 +1,8 @@
 ## 0.7.1 (unreleased)
 
+
+## 0.7.2 (December 31, 2012)
+
 ### Bug Fixes
 
 * Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't
