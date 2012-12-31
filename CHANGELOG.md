@@ -2,7 +2,8 @@
 
 ### Bug Fixes
 
-* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't call libexec commands directly. ([@mhoran][])
+* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't
+  call libexec commands directly. ([@mhoran][])
 
 ### Improvements
 
@@ -13,15 +14,18 @@
 
 ### Bug Fixes
 
-* Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create /etc/profile.d on system-wide and add note for Mac. ([@fnichol][])
+* Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create
+  /etc/profile.d on system-wide and add note for Mac. ([@fnichol][])
 
 ### New features
 
-* Pull request [#20](https://github.com/fnichol/chef-rbenv/pull/20): Set an attribute to create profile.d for user install. ([@jtimberman][])
+* Pull request [#20](https://github.com/fnichol/chef-rbenv/pull/20): Set an
+  attribute to create profile.d for user install. ([@jtimberman][])
 
 ### Improvements
 
-* Pull request [#12](https://github.com/fnichol/chef-rbenv/pull/12): Add name attribute to metadata. ([@jtimberman][])
+* Pull request [#12](https://github.com/fnichol/chef-rbenv/pull/12): Add name
+  attribute to metadata. ([@jtimberman][])
 * Update foodcritic configuration and update .travis.yml. ([@fnichol][])
 * Update Installation section of README (welcome Berkshelf). ([@fnichol][])
 
@@ -30,7 +34,8 @@
 
 ### New features
 
-* Pull request [#11](https://github.com/fnichol/chef-rbenv/pull/11): Add FreeBSD support. ([@jssjr][])
+* Pull request [#11](https://github.com/fnichol/chef-rbenv/pull/11): Add
+  FreeBSD support. ([@jssjr][])
 
 ### Improvements
 
@@ -41,22 +46,27 @@
 
 ### Improvements
 
-* Add official hook resource log[rbenv-post-init-\*] for inter-cookbook integration. ([@fnichol][])
+* Add official hook resource log[rbenv-post-init-\*] for inter-cookbook
+  integration. ([@fnichol][])
 
 
 ## 0.6.6 (May 4, 2012)
 
 ### Bug Fixes
 
-* Fix FC022: Resource condition within loop may not behave as expected. ([@fnichol][])
+* Fix FC022: Resource condition within loop may not behave as expected.
+  ([@fnichol][])
 * Add plaform equivalents in default attrs (FC024). ([@fnichol][])
-* Ensure update-java-alternatives is called before JRuby is built. ([@fnichol][])
-* Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add /etc/profile.d/rbenv.sh support for user installs. ([@thoughtless][])
+* Ensure update-java-alternatives is called before JRuby is built.
+  ([@fnichol][])
+* Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add
+  /etc/profile.d/rbenv.sh support for user installs. ([@thoughtless][])
 
 ### Improvements
 
 * Add TravisCI to run Foodcritic linter. ([@fnichol][])
-* Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README proofreading. ([@jdsiegel][])
+* Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README
+  proofreading. ([@jdsiegel][])
 * README updates. ([@fnichol][])
 * Confirm debian platform support. ([@fnichol][])
 
@@ -77,14 +87,19 @@
 
 ### Bug Fixes
 
-* Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1), [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in RbenvRubygems to avoid libraries load ordering issues. ([@fnichol][])
-* Pull request [#5](https://github.com/fnichol/chef-rbenv/pull/5): Include user setting in rehash calls. ([@magnetised][])
-* Issue [#4](https://github.com/fnichol/chef-rbenv/issues/4): Fix rbenv/gems hash parsing. ([@fnichol][])
+* Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1),
+  [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in
+  RbenvRubygems to avoid libraries load ordering issues. ([@fnichol][])
+* Pull request [#5](https://github.com/fnichol/chef-rbenv/pull/5): Include
+  user setting in rehash calls. ([@magnetised][])
+* Issue [#4](https://github.com/fnichol/chef-rbenv/issues/4): Fix rbenv/gems
+  hash parsing. ([@fnichol][])
 
 ### Improvements
 
 * Large formatting updates to README. ([@fnichol][])
-* Add gh-pages branch for sectioned README at https://fnichol.github.com/chef-rbenv
+* Add gh-pages branch for sectioned README at
+  https://fnichol.github.com/chef-rbenv
 
 
 ## 0.6.0 (December 21, 2011)
