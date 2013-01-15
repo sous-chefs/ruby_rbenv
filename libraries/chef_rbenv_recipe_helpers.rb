@@ -66,6 +66,26 @@ class Chef
 
           action      git_exec_action
         end
+
+        directory "#{opts[:rbenv_prefix]}/plugins" do
+          owner   opts[:user].nil? ? "root" : opts[:user]
+          mode    "0755"
+        end
+
+        Array(opts[:rbenv_plugins]).each do |plugin|
+          revision = plugin['revision'].nil? ? "master" : plugin['revision']
+          plugin_path = "#{opts[:rbenv_prefix]}/plugins/#{plugin['name']}"
+
+          git "Install rbenv plugin - #{plugin['name']}" do
+            repository  plugin['git_url']
+            destination plugin_path
+            reference   revision
+            user        opts[:user]  if opts[:user]
+            group       opts[:group] if opts[:group]
+            action      :sync
+          end
+          log "Installed rbenv plugin - #{plugin['name']}"
+        end
       end
 
       def initialize_rbenv(opts)
