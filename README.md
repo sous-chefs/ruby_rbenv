@@ -228,7 +228,7 @@ example, to pin rbenv to a specific release:
 
     node.default['ruby_build']['git_ref'] = "v0.2.1"
 
-The default is `"master"`.
+The default is `"v0.4.0"`.
 
 ### <a name="attributes-upgrade"></a> upgrade
 
