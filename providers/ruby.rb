@@ -23,6 +23,7 @@ include Chef::Rbenv::ScriptHelpers
 
 def load_current_resource
   @rubie      = new_resource.definition
+  @definition_file = new_resource.definition_file
   @root_path  = new_resource.root_path
   @user       = new_resource.user
   @environment = new_resource.environment
@@ -54,9 +55,10 @@ def perform_install
     # bypass block scoping issues
     rbenv_user    = @user
     rubie         = @rubie
+    definition    = @definition_file || @rubie
     rbenv_prefix  = @root_path
     rbenv_env     = @environment
-    command       = %{rbenv install #{rubie}}
+    command       = %{rbenv install #{definition}}
 
     rbenv_script "#{command} #{which_rbenv}" do
       code        command

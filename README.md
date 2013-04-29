@@ -889,7 +889,14 @@ in the run list to perform the builds.
       <td>definition</td>
       <td>
         <b>Name attribute:</b> the name of a built-in definition<sup>(1)</sup>
-        or the path to a ruby-build definition file.
+        or the name of the ruby installed by a ruby-build defintion file<sup>(2)</sup>
+      </td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>definition_file</td>
+      <td>
+        The path to a ruby-build definition file.  
       </td>
       <td><code>nil</code></td>
     </tr>
@@ -915,6 +922,7 @@ in the run list to perform the builds.
 </table>
 
 1. [built-in definition][rb_definitions]
+2. the recipe checks for the existence of the naming attribute under the root_path, and if not found invokes ruby-build with the definition file as an argument
 
 #### <a name="lwrps-rbr-examples"></a> Examples
 
@@ -933,6 +941,12 @@ usage.
 
     rbenv_ruby "ree-1.8.7-2011.03" do
       action :reinstall
+    end
+
+##### Install a custom ruby
+
+    rbenv_ruby "2.0.0p116" do
+      definition_file "/usr/local/rbenv/custom/2.0.0p116"
     end
 
 ## <a name="mac-system-note"></a> System-Wide Mac Installation Note
