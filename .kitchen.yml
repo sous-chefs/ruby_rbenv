@@ -29,8 +29,8 @@ suites:
   attributes:
     rbenv:
       rubies:
-      - 1.9.3-p362
+      - 1.9.3-p429
       - name: ree-1.8.7-2012.02
         environment:
           CONFIGURE_OPTS: --no-tcmalloc
-      global: 1.9.3-p362
+      global: 1.9.3-p429
