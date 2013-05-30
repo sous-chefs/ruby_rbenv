@@ -30,7 +30,7 @@ add a user hash to the `user_installs` attribute list. For example:
         'global'  => '1.9.3-p0',
         'gems'    => {
           '1.9.3-p0'    => [
-            { 'name'    => 'bundler'
+            { 'name'    => 'bundler',
               'version' => '1.1.rc.5'
             },
             { 'name'    => 'rake' }
