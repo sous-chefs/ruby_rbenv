@@ -83,7 +83,7 @@ def ruby_installed?
 end
 
 def ruby_build_missing?
-  ! node.recipe?("ruby_build")
+  ! run_context.loaded_recipe?("ruby_build")
 end
 
 def install_ruby_dependencies
