@@ -45,15 +45,15 @@ end
 private
 
 def build_script_code
-  <<-SYSTEM_WIDE.gsub(/^ +/, '')
-    export RBENV_ROOT="#{rbenv_root}"
-    export PATH="${RBENV_ROOT}/bin:$PATH"
-    eval "$(rbenv init -)"
-
-    rbenv shell #{new_resource.rbenv_version}
-
-    #{new_resource.code}
-  SYSTEM_WIDE
+  script = []
+  script << %{export RBENV_ROOT="#{rbenv_root}"}
+  script << %{export PATH="${RBENV_ROOT}/bin:$PATH"}
+  script << %{eval "$(rbenv init -)"}
+  if new_resource.rbenv_version
+    script << %{export RBENV_VERSION="#{new_resource.rbenv_version}"}
+  end
+  script << new_resource.code
+  script.join("\n")
 end
 
 def build_script_environment

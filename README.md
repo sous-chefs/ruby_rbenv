@@ -487,7 +487,7 @@ notifies it.
       <td>
         A version of Ruby being managed by rbenv.
       </td>
-      <td><code>"global"</code></td>
+      <td><code>nil</code></td>
     </tr>
     <tr>
       <td>root_path</td>
