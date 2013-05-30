@@ -22,6 +22,7 @@
 actions :install, :reinstall
 
 attribute :definition,  :kind_of => String, :name_attribute => true
+attribute :definition_file,	:kind_of => String
 attribute :root_path,   :kind_of => String
 attribute :user,        :kind_of => String
 attribute :environment, :kind_of => Hash
