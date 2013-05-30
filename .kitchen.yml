@@ -29,8 +29,10 @@ suites:
   attributes:
     rbenv:
       rubies:
-      - 1.9.3-p429
+      - name: 1.9.3-p429
+        environment:
+          CONFIGURE_OPTS: --disable-install-rdoc
       - name: ree-1.8.7-2012.02
         environment:
-          CONFIGURE_OPTS: --no-tcmalloc
+          CONFIGURE_OPTS: --no-tcmalloc --no-dev-docs
       global: 1.9.3-p429
