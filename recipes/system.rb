@@ -23,6 +23,7 @@ Array(node['rbenv']['rubies']).each do |rubie|
   if rubie.is_a?(Hash)
     rbenv_ruby rubie['name'] do
       environment rubie['environment'] if rubie['environment']
+      definition_file rubie['definition_file'] if rubie['definition_file']
     end
   else
     rbenv_ruby rubie
