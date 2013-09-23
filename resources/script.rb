@@ -22,7 +22,7 @@
 actions :run
 
 attribute :name,          :kind_of => String, :name_attribute => true
-attribute :rbenv_version, :kind_of => String, :default => "global"
+attribute :rbenv_version, :kind_of => String
 attribute :root_path,     :kind_of => String
 attribute :code,          :kind_of => String
 attribute :creates,       :kind_of => String
