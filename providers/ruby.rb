@@ -92,7 +92,7 @@ def install_ruby_dependencies
   definition = ::File.basename(new_resource.definition)
 
   case definition
-  when /^\d\.\d\.\d-/, /^rbx-/, /^ree-/
+  when /^\d\.\d\.\d/, /^rbx-/, /^ree-/
     pkgs = node['ruby_build']['install_pkgs_cruby']
   when /^jruby-/
     pkgs = node['ruby_build']['install_pkgs_jruby']
