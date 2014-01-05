@@ -26,7 +26,7 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
   rubies.each do |rubie|
     if rubie.is_a?(Hash)
       rbenv_ruby "#{rubie} (#{rbenv_user['user']})" do
-        definition  rubie
+        definition  rubie['name']
         user        rbenv_user['user']
         root_path   rbenv_user['root_path'] if rbenv_user['root_path']
         environment rubie['environment'] if rubie['environment']
