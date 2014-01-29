@@ -312,12 +312,33 @@ The default is an empty hash: `{}`.
 
 ### <a name="attributes-user-gems"></a> user_gems
 
-A hash of gems to installed into arbitrary rbenv-managed rubies for each user
+A hash of gems to be installed into arbitrary rbenv-managed rubies for each user
 when not explicitly set. See the [rbenv_gem](#lwrps-rbgem) resource for more
 details about the options for each gem hash and target Ruby environment. See
 the [gems attribute](#attributes-gems) for an example.
 
 The default is an empty hash: `{}`.
+
+### <a name="attributes-plugins"></a> plugins
+
+A list of plugins to be installed system-wide. See the [rbenv_plugin](#lwrps-plugin)
+resource for details about the options.
+
+    node.default['rbenv']['plugins'] = [
+      { 'name' => 'rbenv-vars',
+        'git_url' => 'https://github.com/sstephenson/rbenv-vars.git' },
+      { 'name' => 'rbenv-gem-rehash',
+        'git_url' => 'https://github.com/sstephenson/rbenv-gem-rehash.git',
+        'git_ref' => '4d7b92de4' }
+    ]
+
+The default is an empty array: `[]`.
+
+### <a name="attributes-user-gems"></a> user_plugins
+
+As with user_gems, a list of plugins to be installed for each user when not explicitly set.
+
+The default is an empty array: `[]`.
 
 ### <a name="attributes-vagrant-system-chef-solo"></a> vagrant/system_chef_solo
 
@@ -752,6 +773,70 @@ is given.
       rbenv_version   "jruby-1.5.6"
       version         "1.4.4.2"
       action          :remove
+    end
+
+### <a name="lwrps-plugin"></a> rbenv_plugin
+
+Installs rbenv plugins.
+
+#### <a name="lwrps-plugin-attributes"></a> Attributes
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td>
+        <b>Name attribute:</b> the name of the plugin to install.
+      </td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>root_path</td>
+      <td>
+        The path prefix to rbenv installation, for example:
+        <code>/opt/rbenv</code>.
+      </td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>git_url</td>
+      <td>
+        The git URL of the plugin repository to clone.
+      </td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>git_ref</td>
+      <td>
+        The git revision (branch name or SHA) of the repository to checkout.
+      </td>
+      <td><code>'master'</code></td>
+    </tr>
+    <tr>
+      <td>user</td>
+      <td>
+        A users's isolated rbenv installation on which to apply an action. The
+        default value of <code>nil</code> denotes a system-wide rbenv
+        installation is being targeted. <b>Note:</b> if specified, the user
+        must already exist.
+      </td>
+      <td><code>nil</code></td>
+    </tr>
+  </tbody>
+</table>
+
+##### Install a plugin
+
+    rbenv_plugin 'rbenv-vars' do
+      git_url 'https://github.com/sstephenson/rbenv-vars.git'
+      user 'deploy'
     end
 
 ### <a name="lwrps-rrh"></a> rbenv_rehash

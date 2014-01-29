@@ -37,9 +37,13 @@ default['rbenv']['user_installs'] = []
 default['rbenv']['rubies']      = []
 default['rbenv']['user_rubies'] = []
 
-# hash of gems and their list of additional gems to be installed.
+# hash of rubies and their list of additional gems to be installed.
 default['rbenv']['gems']      = Hash.new
 default['rbenv']['user_gems'] = Hash.new
+
+# list of rbenv plugins to install
+default['rbenv']['plugins']      = []
+default['rbenv']['user_plugins'] = []
 
 # whether to create profile.d shell script
 default['rbenv']['create_profiled'] = true
