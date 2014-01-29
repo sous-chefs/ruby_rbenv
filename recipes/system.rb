@@ -19,6 +19,13 @@
 
 include_recipe "rbenv::system_install"
 
+Array(node['rbenv']['plugins']).each do |plugin|
+  rbenv_plugin plugin['name'] do
+    git_url plugin['git_url']
+    git_ref plugin['git_ref'] if plugin['git_ref']
+  end
+end
+
 Array(node['rbenv']['rubies']).each do |rubie|
   if rubie.is_a?(Hash)
     rbenv_ruby rubie['name'] do
