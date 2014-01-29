@@ -814,7 +814,7 @@ Installs rbenv plugins.
     <tr>
       <td>git_ref</td>
       <td>
-        The git reversion (branch name or SHA) of the repository to checkout.
+        The git revision (branch name or SHA) of the repository to checkout.
       </td>
       <td><code>'master'</code></td>
     </tr>
