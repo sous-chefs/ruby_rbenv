@@ -13,7 +13,7 @@ end
 
 require 'foodcritic'
 FoodCritic::Rake::LintTask.new do |t|
-  t.options = { :fail_tags => [] }
+  t.options = { :fail_tags => ['any', '~FC017'] }
 end
 
 begin
