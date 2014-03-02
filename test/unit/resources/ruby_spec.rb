@@ -47,7 +47,7 @@ describe Chef::Resource::RbenvRuby do
     expect(resource.action).to eq(:install)
   end
 
-  it "actions include reinstall" do
+  it "actions include :reinstall" do
     expect(resource.allowed_actions).to include(:reinstall)
   end
 
