@@ -22,10 +22,10 @@ suites:
       - name: rbenv-vars
         git_url: https://github.com/sstephenson/rbenv-vars.git
       rubies:
-      - name: 1.9.3-p429
+      - name: 2.1.1
         environment:
           CONFIGURE_OPTS: --disable-install-rdoc
       - name: ree-1.8.7-2012.02
         environment:
           CONFIGURE_OPTS: --no-tcmalloc --no-dev-docs
-      global: 1.9.3-p429
+      global: 2.1.1
