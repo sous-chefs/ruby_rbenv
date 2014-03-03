@@ -1,14 +1,16 @@
 source "https://rubygems.org"
 
-gem 'rake'
-gem 'foodcritic'
+gem "berkshelf", "~> 3.0.0.beta7"
+gem "chefspec"
+gem "emeril"
+gem "foodcritic", "~> 3.0"
+gem "rake"
 
 group :development do
-  gem 'emeril'
+  gem "guard-rspec"
 end
 
 group :integration do
-  gem 'berkshelf'
-  gem 'test-kitchen', '~> 1.0.0.alpha.6'
-  gem 'kitchen-vagrant'
+  gem "test-kitchen"
+  gem "kitchen-vagrant"
 end
