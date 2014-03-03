@@ -99,6 +99,7 @@ the recipes and LWRPs run on these platforms without error:
 * scientific
 * suse
 * mac\_os\_x
+* gentoo
 
 Please [report][issues] any additional platforms so they can be added.
 
