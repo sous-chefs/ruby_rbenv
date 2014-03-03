@@ -28,6 +28,9 @@ suites:
   - recipe[rbenv::system]
   attributes:
     rbenv:
+      plugins:
+      - name: rbenv-vars
+        git_url: https://github.com/sstephenson/rbenv-vars.git
       rubies:
       - name: 1.9.3-p429
         environment:
