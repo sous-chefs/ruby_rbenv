@@ -69,7 +69,7 @@ See the [Resources and Providers](#lwrps) section for more details.
 ### <a name="usage-minimal"></a> Ultra-Minimal Access To LWRPs
 
 Simply include `recipe[rbenv]` in your run\_list and the LWRPs will be
-available to use in other cookboks. See the [Resources and Providers](#lwrps)
+available to use in other cookbooks. See the [Resources and Providers](#lwrps)
 section for more details.
 
 ### <a name="usage-other"></a> Other Use Cases
