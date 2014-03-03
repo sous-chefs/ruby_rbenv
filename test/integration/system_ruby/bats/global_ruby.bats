@@ -4,6 +4,9 @@ global_ruby="1.9.3-p429"
 https_url="https://google.com"
 
 setup() {
+  unset GEM_HOME
+  unset GEM_PATH
+  unset GEM_CACHE
   source /etc/profile.d/rbenv.sh
 }
 

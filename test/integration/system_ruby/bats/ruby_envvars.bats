@@ -7,6 +7,9 @@
 rubie="ree-1.8.7-2012.02"
 
 setup() {
+  unset GEM_HOME
+  unset GEM_PATH
+  unset GEM_CACHE
   source /etc/profile.d/rbenv.sh
 }
 
