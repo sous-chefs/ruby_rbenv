@@ -40,7 +40,9 @@ class Chef
         return if mac_with_no_homebrew
 
         node['rbenv']['install_pkgs'].each do |pkg|
-          package pkg
+          package "installing rbenv dependency: #{pkg}" do
+            package_name pkg
+          end
         end
       end
 
