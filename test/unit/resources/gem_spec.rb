@@ -1,15 +1,8 @@
-require "chef/resource/lwrp_base"
+require_relative "../spec_helper"
 require "chef/provider/package/rubygems"
 require_relative "../../../libraries/chef_rbenv_mixin"
 require_relative "../../../libraries/chef_provider_package_rbenvrubygems"
-
-unless Chef::Resource.const_defined?("RbenvGem")
-  Chef::Resource::LWRPBase.build_from_file(
-    "rbenv",
-    File.join(File.dirname(__FILE__), %w{.. .. .. resources gem.rb}),
-    nil
-  )
-end
+load_lw_resource("rbenv", "gem")
 
 describe Chef::Resource::RbenvGem do
 

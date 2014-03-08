@@ -1,12 +1,5 @@
-require "chef/resource/lwrp_base"
-
-unless Chef::Resource.const_defined?("RbenvGlobal")
-  Chef::Resource::LWRPBase.build_from_file(
-    "rbenv",
-    File.join(File.dirname(__FILE__), %w{.. .. .. resources global.rb}),
-    nil
-  )
-end
+require_relative "../spec_helper"
+load_lw_resource("rbenv", "global")
 
 describe Chef::Resource::RbenvGlobal do
 
