@@ -55,6 +55,11 @@ class Chef
           %{$RBENV_ROOT/shims/#{cmd}}
         ].join(' && ')
       end
+
+      def set_updated
+        r = yield
+        new_resource.updated_by_last_action(r.updated_by_last_action?)
+      end
     end
   end
 end
