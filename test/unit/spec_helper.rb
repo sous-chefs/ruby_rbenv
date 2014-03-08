@@ -1,3 +1,6 @@
+require "chefspec"
+require "chefspec/berkshelf"
+
 def load_lw_resource(cb, lwrp)
   require "chef/resource/lwrp_base"
   unless Chef::Resource.const_defined?(class_name_for_lwrp(cb, lwrp))

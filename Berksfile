@@ -7,3 +7,5 @@ group :integration do
   cookbook 'yum'
   cookbook 'ruby_build'
 end
+
+cookbook 'fixtures', path: 'test/unit/fixtures'
