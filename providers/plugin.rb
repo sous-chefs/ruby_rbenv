@@ -8,7 +8,7 @@ action :install do
     owner new_resource.user || 'root'
     mode  00755
   end
-  
+
   git "Install #{new_resource.name} plugin" do
     destination plugin_path
     repository  new_resource.git_url
