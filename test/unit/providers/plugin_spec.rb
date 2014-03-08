@@ -4,9 +4,10 @@ describe "rbenv_plugin provider" do
 
   let(:runner)    { ChefSpec::Runner.new(step_into: ["rbenv_plugin"]) }
   let(:node)      { runner.node}
-  let(:chef_run)  { runner.converge("fixtures::rbenv_plugin") }
 
   context "with a fully configured resource" do
+
+    let(:chef_run)  { runner.converge("fixtures::rbenv_plugin_full") }
 
     it "creates the parent directory for plugins" do
       expect(chef_run).to create_directory("/tmp/rootness/plugins").with(
@@ -26,6 +27,8 @@ describe "rbenv_plugin provider" do
   end
 
   context "with a minimally configured resource" do
+
+    let(:chef_run)  { runner.converge("fixtures::rbenv_plugin_defaults") }
 
     before { node.set["rbenv"]["root_path"] = "/ohyeah" }
 
