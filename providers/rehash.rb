@@ -4,7 +4,7 @@
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
-# Copyright 2011, Fletcher Nichol
+# Copyright 2011, 2014, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,18 +19,25 @@
 # limitations under the License.
 #
 
+def whyrun_supported?
+  true
+end
+
+use_inline_resources
+
 include Chef::Rbenv::ScriptHelpers
 
 action :run do
+  set_updated { run_script }
+end
+
+def run_script
   command = %{rbenv rehash}
 
   rbenv_script "#{command} #{which_rbenv}" do
     code        command
     user        new_resource.user       if new_resource.user
     root_path   new_resource.root_path  if new_resource.root_path
-
-    action      :nothing
-  end.run_action(:run)
-
-  new_resource.updated_by_last_action(true)
+    action      :run
+  end
 end
