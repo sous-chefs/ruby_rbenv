@@ -4,7 +4,7 @@
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
-# Copyright 2011, Fletcher Nichol
+# Copyright 2011, 2014, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,19 @@
 # limitations under the License.
 #
 
+def whyrun_supported?
+  true
+end
+
+use_inline_resources
+
 include Chef::Rbenv::ScriptHelpers
 
 action :run do
+  set_updated { run_script }
+end
+
+def run_script
   script_code         = build_script_code
   script_environment  = build_script_environment
 
@@ -38,11 +48,7 @@ action :run do
     umask         new_resource.umask    if new_resource.umask
     environment(script_environment)
   end
-
-  new_resource.updated_by_last_action(true)
 end
-
-private
 
 def build_script_code
   script = []
@@ -53,7 +59,7 @@ def build_script_code
     script << %{export RBENV_VERSION="#{new_resource.rbenv_version}"}
   end
   script << new_resource.code
-  script.join("\n")
+  script.join("\n").concat("\n")
 end
 
 def build_script_environment
