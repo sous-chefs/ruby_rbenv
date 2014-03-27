@@ -30,10 +30,15 @@
   Add a `definition_file` attribute to the `rbenv_ruby` resource to prevent
   continually trying to build a custom ruby when passed a build file name instead of a built-in definition
   ([@jf647][])
+* Pull request [#60](https://github.com/fnichol/chef-rbenv/pull/60):
+  Support `definition_file` in rubies definition
+  ([@cyu][])
 * Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75):
   Update testing support and add unit tests for existing resources
   ([@fnichol][])
-
+* Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70):
+  Support ruby 2.1.0
+  ([@WhyEee][])
 
 ## 0.7.2 (December 31, 2012)
 
@@ -158,3 +163,5 @@ The initial release.
 [@msaffitz]: https://github.com/msaffitz
 [@trinitronx]: https://github.com/trinitronx
 [@gentooboontoo]: https://github.com/gentooboontoo
+[@cyu]: https://github.com/cyu
+[@WhyEee]: https://github.com/WhyEee
