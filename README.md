@@ -257,7 +257,7 @@ A url to a patch file for your ruby install.
 
 The default is `nil`.
 
-### <a name="attributes-patch_file"></a> patch_file_
+### <a name="attributes-patch_file"></a> patch_file
 
 A path to a patch file for your ruby install.
 
