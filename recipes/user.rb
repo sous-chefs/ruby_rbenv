@@ -40,6 +40,8 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
         user        rbenv_user['user']
         root_path   rbenv_user['root_path'] if rbenv_user['root_path']
         environment rubie['environment'] if rubie['environment']
+        patch_url   rubie['patch_url'] if rubie['patch_url']
+        patch_file  rubie['patch_file'] if rubie['patch_file']
       end
     else
       rbenv_ruby "#{rubie} (#{rbenv_user['user']})" do
