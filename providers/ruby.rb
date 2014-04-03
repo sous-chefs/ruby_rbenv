@@ -27,6 +27,8 @@ def load_current_resource
   @root_path  = new_resource.root_path
   @user       = new_resource.user
   @environment = new_resource.environment
+  @patch_url = new_resource.patch_url
+  @patch_file = new_resource.patch_file
 end
 
 action :install do
@@ -58,7 +60,18 @@ def perform_install
     definition    = @definition_file || @rubie
     rbenv_prefix  = @root_path
     rbenv_env     = @environment
-    command       = %{rbenv install #{definition}}
+
+    patch_command = nil
+
+    if @patch_url
+      patch_command = "--patch < <(curl -sSL #{@patch_url})"
+    end
+
+    if @patch_file
+      patch_command = "--patch < #{@patch_file}"
+    end
+
+    command       = %{rbenv install #{definition} #{patch_command}}
 
     rbenv_script "#{command} #{which_rbenv}" do
       code        command
