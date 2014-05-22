@@ -97,6 +97,7 @@ the recipes and LWRPs run on these platforms without error:
 * fedora
 * amazon
 * scientific
+* oracle
 * suse
 * mac\_os\_x
 * gentoo
