@@ -49,7 +49,7 @@ default['rbenv']['user_plugins'] = []
 default['rbenv']['create_profiled'] = true
 
 case platform
-when "redhat","centos","fedora", "amazon", "scientific"
+when "redhat","centos","fedora", "amazon", "scientific","oracle"
   node.set['rbenv']['install_pkgs']   = %w{git grep}
   default['rbenv']['user_home_root']  = '/home'
 when "debian","ubuntu","suse"
