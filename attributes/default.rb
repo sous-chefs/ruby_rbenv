@@ -55,6 +55,9 @@ when "redhat","centos","fedora", "amazon", "scientific"
 when "debian","ubuntu","suse"
   node.set['rbenv']['install_pkgs']   = %w{git-core grep}
   default['rbenv']['user_home_root']  = '/home'
+when "linuxmint"
+  node.set['rbenv']['install_pkgs'] = %w{git-core grep build-essential libssl-dev}
+  default['rbenv']['user_home_root'] = '/home'
 when "mac_os_x"
   node.set['rbenv']['install_pkgs']   = %w{git}
   default['rbenv']['user_home_root']  = '/Users'
