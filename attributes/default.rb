@@ -20,7 +20,7 @@
 #
 
 # git repository containing rbenv
-default['rbenv']['git_url'] = "git://github.com/sstephenson/rbenv.git"
+default['rbenv']['git_url'] = "https://github.com/sstephenson/rbenv.git"
 default['rbenv']['git_ref'] = "v0.4.0"
 
 # upgrade action strategy
@@ -56,7 +56,7 @@ when "debian","ubuntu","suse"
   node.set['rbenv']['install_pkgs']   = %w{git-core grep}
   default['rbenv']['user_home_root']  = '/home'
 when "linuxmint"
-  node.set['rbenv']['install_pkgs'] = %w{git-core grep build-essential libssl-dev}
+  node.set['rbenv']['install_pkgs'] = %w{git-core grep autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev}
   default['rbenv']['user_home_root'] = '/home'
 when "mac_os_x"
   node.set['rbenv']['install_pkgs']   = %w{git}
