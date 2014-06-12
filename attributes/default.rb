@@ -70,4 +70,7 @@ when "freebsd"
 when "gentoo"
   node.set['rbenv']['install_pkgs']   = %w{git}
   default['rbenv']['user_home_root']  = '/home'
+when "arch"
+  node.set['rbenv']['install_pkgs']   = %w{git grep}
+  default['rbenv']['user_home_root']  = '/home'
 end
