@@ -85,7 +85,7 @@ def ruby_installed?
 end
 
 def ruby_build_missing?
-  ! run_context.loaded_recipe?("ruby_build")
+  ! run_context.loaded_recipe?("ruby_build") && ! ::File.directory?(::File.join(rbenv_root, 'plugins', 'ruby-build'))
 end
 
 def install_ruby_dependencies
