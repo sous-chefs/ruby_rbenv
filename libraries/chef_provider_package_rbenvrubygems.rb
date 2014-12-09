@@ -64,13 +64,11 @@ class Chef
 
         def install_package(name, version)
           super
-          rehash
           true
         end
 
         def remove_package(name, version)
           super
-          rehash
           true
         end
 
