@@ -84,11 +84,11 @@ class Chef
         end
 
         def rehash
-          rbenv_rehash new_resource do
-            root_path rbenv_root
-            user rbenv_user if rbenv_user
-            action :nothing
-          end.run_action(:run)
+          e = ::Chef::Resource::RbenvRehash.new(new_resource, @run_context)
+          e.root_path rbenv_root
+          e.user rbenv_user if rbenv_user
+          e.action :nothing
+          e.run_action(:run)
         end
       end
     end
