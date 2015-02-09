@@ -2,3 +2,5 @@ language: ruby
 rvm:
   - 2.1
 bundler_args: --without integration
+before_install: 
+  - sudo dpkg -P libyajl1 || true
