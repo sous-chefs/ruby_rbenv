@@ -23,6 +23,10 @@
 default['rbenv']['git_url'] = "git://github.com/sstephenson/rbenv.git"
 default['rbenv']['git_ref'] = "v0.4.0"
 
+default['rbenv']['rvm_download']['git_url'] = 'git://github.com/garnieretienne/rvm-download.git'
+default['rbenv']['rvm_download']['git_ref'] = 'master'
+default['rbenv']['rvm_download']['enable'] = true
+
 # upgrade action strategy
 default['rbenv']['upgrade'] = "none"
 
