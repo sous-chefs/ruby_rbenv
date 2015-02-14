@@ -1,8 +1,10 @@
 source "https://rubygems.org"
 
-gem "berkshelf", "~> 3.0.0.beta7"
+gem "berkshelf", "3.2.3"
 gem "chefspec"
 gem "emeril"
+gem "chef", "11.10.4"
+gem "rspec", "2.14.1"
 gem "foodcritic", "~> 3.0"
 gem "rake"
 
