@@ -47,7 +47,7 @@ def install_rvm_download
     git_ref   node['rbenv']['rvm_download']['git_ref'] if node['rbenv']['rvm_download']['git_ref']
     user      user
     root_path root_path if root_path
-  end
+  end.run_action(:install)
 end
 
 def download_enabled?
