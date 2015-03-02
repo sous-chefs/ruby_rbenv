@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/fnichol/chef-rbenv.png?branch=master)](http://travis-ci.org/fnichol/chef-rbenv)
 
+[TOC]
+
 ## <a name="description"></a> Description
 
 Manages [rbenv][rbenv_site] and its installed Rubies.
@@ -250,6 +252,27 @@ The default is `"none"`.
 The path prefix to rbenv in a system-wide installation.
 
 The default is `"/usr/local/rbenv"`.
+
+### <a name="attributes-rvm-download-enable"></a> rvm_download/enable
+
+Makes the `rbenv_ruby` LWRP to download ruby binaries instead of compiling them.
+
+The default is `false`.
+
+### <a name="attributes-rvm-download-git-url"></a> rvm_download/git_url
+
+The Git URL which is used to install rvm-download.
+
+The default is `"git://github.com/garnieretienne/rvm-download.git"`.
+
+### <a name="attributes-rvm-download-git-ref"></a> rvm_download/git_ref
+
+A specific Git branch/tag/reference to use when installing rvm-download. For
+example, to pin rvm-download to a specific release:
+
+    node.default['rbenv']['rvm_download']['git_ref'] = "v1.2.3"
+
+The default is `"master"`.
 
 ### <a name="attributes-rubies"></a> rubies
 

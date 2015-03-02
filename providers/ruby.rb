@@ -39,6 +39,21 @@ end
 
 private
 
+def install_rvm_download
+  user = @user
+  root_path = @root_path
+  rbenv_plugin 'rvm-download' do
+    git_url   node['rbenv']['rvm_download']['git_url']
+    git_ref   node['rbenv']['rvm_download']['git_ref'] if node['rbenv']['rvm_download']['git_ref']
+    user      user
+    root_path root_path if root_path
+  end.run_action(:install)
+end
+
+def download_enabled?
+  !!node['rbenv']['rvm_download']['enable']
+end
+
 def perform_install
   if ruby_build_missing?
     Chef::Log.warn(
@@ -52,13 +67,16 @@ def perform_install
 
     Chef::Log.info("Building #{new_resource}, this could take a while...")
 
+    download_or_install = download_enabled?? 'download' : 'install'
+    install_rvm_download if download_enabled?
+
     # bypass block scoping issues
     rbenv_user    = @user
     rubie         = @rubie
     definition    = @definition_file || @rubie
     rbenv_prefix  = @root_path
     rbenv_env     = @environment
-    command       = %{rbenv install #{definition}}
+    command       = %{rbenv #{download_or_install} #{definition}}
 
     rbenv_script "#{command} #{which_rbenv}" do
       code        command
