@@ -30,6 +30,7 @@ attribute :options,       :kind_of => [String, Hash]
 attribute :gem_binary,    :kind_of => String
 attribute :user,          :kind_of => String
 attribute :root_path,     :kind_of => String
+attribute :clear_sources, :kind_of => [TrueClass, FalseClass]
 
 include Chef::Rbenv::Mixin::ResourceString
 
