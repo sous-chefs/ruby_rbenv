@@ -30,8 +30,8 @@ attribute :options,       :kind_of => [String, Hash]
 attribute :gem_binary,    :kind_of => String
 attribute :user,          :kind_of => String
 attribute :root_path,     :kind_of => String
-attribute :timeout,       :kind_of => Integer
 attribute :clear_sources, :kind_of => [TrueClass, FalseClass]
+attribute :timeout,       :kind_of => Integer, :default => 300
 
 include Chef::Rbenv::Mixin::ResourceString
 
