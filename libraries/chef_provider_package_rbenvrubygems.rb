@@ -18,6 +18,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+require 'etc'
 
 class Chef
   module Rbenv
@@ -63,13 +64,13 @@ class Chef
         end
 
         def install_package(name, version)
-          super
+          run_as_user(rbenv_user) { super }
           rehash
           true
         end
 
         def remove_package(name, version)
-          super
+          run_as_user(rbenv_user) { super }
           rehash
           true
         end
