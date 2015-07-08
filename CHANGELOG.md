@@ -2,14 +2,26 @@
 
 ### Bug Fixes
 
-* [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) [#92](https://github.com/fnichol/chef-rbenv/pull/92): Add matchers for rbenv_gem and rbenv_ruby ([@tduffield][] and many others)
-* [#107](https://github.com/fnichol/chef-rbenv/issues/107): "Option name must be a kind of String!" when installing gems 
-* [#101](https://github.com/fnichol/chef-rbenv/issues/101): Use full class name for rbenv_rehash resource 
-* Fix undefined method `timeout' for LWRP resource rbenv_gem ([@nathantsoi][] and others)
-* [#110](https://github.com/fnichol/chef-rbenv/issues/110): Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem  ([@tatat][] and others)
+ * Issue [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) [#92](https://github.com/fnichol/chef-rbenv/pull/92):
+   Add matchers for rbenv_gem and rbenv_ruby.
+   ([@tduffield](https://github.com/tduffield) and many others)
+
+ * [#107](https://github.com/fnichol/chef-rbenv/issues/107): 
+   "Option name must be a kind of String!" when installing gems.
+
+ * Issue [#101](https://github.com/fnichol/chef-rbenv/issues/101):
+   Use full class name for rbenv_rehash resource
+
+ * Fix undefined method `timeout' for LWRP resource rbenv_gem.
+   ([@nathantsoi](https://github.com/nathantsoi) and others)
+
+ * Issue [#110](https://github.com/fnichol/chef-rbenv/issues/110):
+   Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem.
+   ([@tatat](https://github.com/tatat) and others)
 
 ### Improvements
-* Fork from https://github.com/fnichol/chef-rbenv
+
+ * Fork from https://github.com/fnichol/chef-rbenv
 
 
 ## 0.7.2 (December 31, 2012)
