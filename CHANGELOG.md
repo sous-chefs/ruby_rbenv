@@ -1,3 +1,28 @@
+## 0.7.3 (July 8, 2015)
+
+### Bug Fixes
+
+* Add matchers for rbenv_gem and rbenv_ruby [#92](https://github.com/fnichol/chef-rbenv/pull/92) [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) ([@tduffield][]) and many others
+* "Option name must be a kind of String!" when installing gems [#107](https://github.com/fnichol/chef-rbenv/issues/107)
+* Use full class name for rbenv_rehash resource [#101](https://github.com/fnichol/chef-rbenv/issues/101)
+* fix undefined method `timeout' for LWRP resource rbenv_gem ([@nathantsoi][] and others)
+* Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem [#110](https://github.com/fnichol/chef-rbenv/issues/110) ([@tatat][]) and others
+
+### Improvements
+* Fork from https://github.com/fnichol/chef-rbenv
+
+
+## 0.7.2 (December 31, 2012)
+
+### Bug Fixes
+
+* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't
+  call libexec commands directly. ([@mhoran][])
+
+### Improvements
+
+* Add integration tests for a system Ruby version. ([@fnichol][])
+
 ## 0.7.1 (unreleased)
 
 ### Bug Fixes
@@ -40,16 +65,6 @@
   Support ruby 2.1.0
   ([@WhyEee][])
 
-## 0.7.2 (December 31, 2012)
-
-### Bug Fixes
-
-* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't
-  call libexec commands directly. ([@mhoran][])
-
-### Improvements
-
-* Add integration tests for a system Ruby version. ([@fnichol][])
 
 
 ## 0.7.0 (November 21, 2012)
