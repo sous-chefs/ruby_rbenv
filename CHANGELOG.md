@@ -1,5 +1,44 @@
 ## 0.7.1 (unreleased)
 
+### Bug Fixes
+
+* Pull request [#36](https://github.com/fnichol/chef-rbenv/pull/36):
+  Use the ruby name as the definition to install
+  ([@gsandie][])
+* Pull request [#55](https://github.com/fnichol/chef-rbenv/pull/55):
+  Fix some CHEF-3694 warnings when using with ruby_build
+  ([@trinitronx][])
+
+### New features
+
+* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26):
+  Allow setting environment vars per ruby install
+  ([@jasherai][])
+* Pull request [#37](https://github.com/fnichol/chef-rbenv/pull/37):
+  Allows use `include_recipe("ruby_build")` instead of having to put it in the `run_list`
+  ([@tjwallace][])
+* Pull request [#42](https://github.com/fnichol/chef-rbenv/pull/42):
+  Load rbenv environment after install
+  ([@msaffitz][])
+* Pull request [#62](https://github.com/fnichol/chef-rbenv/pull/62):
+  Add Gentoo as supported platform
+  ([@gentooboontoo][])
+
+### Improvements
+
+* Pull request [#46](https://github.com/fnichol/chef-rbenv/pull/46):
+  Add a `definition_file` attribute to the `rbenv_ruby` resource to prevent
+  continually trying to build a custom ruby when passed a build file name instead of a built-in definition
+  ([@jf647][])
+* Pull request [#60](https://github.com/fnichol/chef-rbenv/pull/60):
+  Support `definition_file` in rubies definition
+  ([@cyu][])
+* Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75):
+  Update testing support and add unit tests for existing resources
+  ([@fnichol][])
+* Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70):
+  Support ruby 2.1.0
+  ([@WhyEee][])
 
 ## 0.7.2 (December 31, 2012)
 
@@ -117,3 +156,12 @@ The initial release.
 [@magnetised]: https://github.com/magnetised
 [@mhoran]: https://github.com/mhoran
 [@thoughtless]: https://github.com/thoughtless
+[@jasherai]: https://github.com/jasherai
+[@tjwallace]: https://github.com/tjwallace
+[@jf647]: https://github.com/jf647
+[@gsandie]: https://github.com/gsandie
+[@msaffitz]: https://github.com/msaffitz
+[@trinitronx]: https://github.com/trinitronx
+[@gentooboontoo]: https://github.com/gentooboontoo
+[@cyu]: https://github.com/cyu
+[@WhyEee]: https://github.com/WhyEee
