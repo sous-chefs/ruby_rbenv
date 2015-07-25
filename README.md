@@ -1101,24 +1101,24 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 [berkshelf]:        http://berkshelf.com/
-[chef_repo]:        https://github.com/opscode/chef-repo
+[chef_repo]:        https://github.com/chef/chef-repo
 [cheffile]:         https://github.com/applicationsonline/librarian/blob/master/lib/librarian/chef/templates/Cheffile
-[gem_package_options]: http://docs.opscode.com/resource_gem_package.html#attributes
+[gem_package_options]: https://docs.chef.io/resource_gem_package.html#attributes
 [kgc]:              https://github.com/websterclay/knife-github-cookbooks#readme
 [librarian]:        https://github.com/applicationsonline/librarian#readme
-[lwrp]:             http://docs.opscode.com/lwrp_custom.html
+[lwrp]:             https://docs.chef.io/lwrp_custom.html
 [mac_profile_d]:    http://hints.macworld.com/article.php?story=20011221192012445
-[package_resource]: http://docs.opscode.com/resource_package.html
+[package_resource]: https://docs.chef.io/resource_package.html
 [rb_readme]:        https://github.com/sstephenson/ruby-build#readme
 [rb_definitions]:   https://github.com/sstephenson/ruby-build/tree/master/share/ruby-build
 [rbenv_site]:       https://github.com/sstephenson/rbenv
 [rbenv_3_1]:        https://github.com/sstephenson/rbenv#section_3.1
 [rbenv_3_3]:        https://github.com/sstephenson/rbenv#section_3.3
 [rbenv_3_6]:        https://github.com/sstephenson/rbenv#section_3.6
-[ruby_build_cb]:    http://community.opscode.com/cookbooks/ruby_build
+[ruby_build_cb]:    https://supermarket.chef.io/cookbooks/ruby_build
 [ruby_build_site]:  https://github.com/sstephenson/ruby-build
-[script_resource]:  http://docs.opscode.com/resource_script.html
+[script_resource]:  http://docs.chef.io/resource_script.html
 
 [fnichol]:      https://github.com/fnichol
-[repo]:         https://github.com/fnichol/chef-rbenv
-[issues]:       https://github.com/fnichol/chef-rbenv/issues
+[repo]:         https://github.com/chef-rbenv/chef-rbenv
+[issues]:       https://github.com/chef-rbenv/chef-rbenv/issues
