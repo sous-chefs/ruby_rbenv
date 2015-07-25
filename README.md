@@ -26,10 +26,10 @@ add a user hash to the `user_installs` attribute list. For example:
 
     node.default['rbenv']['user_installs'] = [
       { 'user'    => 'tflowers',
-        'rubies'  => ['1.9.3-p0', 'jruby-1.6.5'],
-        'global'  => '1.9.3-p0',
+        'rubies'  => ['2.2.0', 'jruby-1.6.5'],
+        'global'  => '2.2.0',
         'gems'    => {
-          '1.9.3-p0'    => [
+          '2.2.0'    => [
             { 'name'    => 'bundler',
               'version' => '1.1.rc.5'
             },
@@ -470,7 +470,7 @@ the [rbenv global docs][rbenv_3_1].
 
 ##### Set A Ruby As Global
 
-    rbenv_global "1.8.7-p352"
+    rbenv_global "2.2.0"
 
 ##### Set System Ruby As Global
 
@@ -478,7 +478,7 @@ the [rbenv global docs][rbenv_3_1].
 
 ##### Set A Ruby As Global For A User
 
-    rbenv_global "jruby-1.7.0-dev" do
+    rbenv_global "2.2.0" do
       user "tflowers"
     end
 
@@ -1046,7 +1046,7 @@ in the run list to perform the builds.
 
 ##### Install Ruby From ruby-build
 
-    rbenv_ruby "ree-1.8.7-2011.03" do
+    rbenv_ruby "2.2.0" do
       action :install
     end
 
@@ -1057,14 +1057,14 @@ usage.
 
 ##### Reinstall Ruby
 
-    rbenv_ruby "ree-1.8.7-2011.03" do
+    rbenv_ruby "2.2.0" do
       action :reinstall
     end
 
 ##### Install a custom ruby
 
-    rbenv_ruby "2.0.0p116" do
-      definition_file "/usr/local/rbenv/custom/2.0.0p116"
+    rbenv_ruby "2.3.0beta" do
+      definition_file "/usr/local/rbenv/custom/2.3.0beta"
     end
 
 ## <a name="mac-system-note"></a> System-Wide Mac Installation Note
