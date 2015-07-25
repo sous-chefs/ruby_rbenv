@@ -1,6 +1,6 @@
 # <a name="title"></a> rbenv Chef Cookbook
 
-[![Build Status](https://secure.travis-ci.org/chef-rbenv/chef-rbenv.png?branch=master)](http://travis-ci.org/chef-rbenv/chef-rbenv)
+[![Build Status](https://travis-ci.org/chef-rbenv/chef-rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/chef-rbenv)
 
 ## <a name="description"></a> Description
 
@@ -1014,7 +1014,7 @@ in the run list to perform the builds.
     <tr>
       <td>definition_file</td>
       <td>
-        The path to a ruby-build definition file.  
+        The path to a ruby-build definition file.
       </td>
       <td><code>nil</code></td>
     </tr>
