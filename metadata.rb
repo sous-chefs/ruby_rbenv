@@ -7,7 +7,7 @@ long_description "Please refer to README.md (it's long)."
 version          "0.7.3"
 
 recommends "ruby_build"       # if using the rbenv_ruby LWRP, ruby-build must be installed
-recommends "java", "> 1.31"  # if using jruby, java is required on system
+recommends "java", "~> 1.31"  # if using jruby, java is required on system
 
 supports "ubuntu"
 supports "debian"
