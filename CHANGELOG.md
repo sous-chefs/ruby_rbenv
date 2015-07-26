@@ -1,4 +1,23 @@
-## 0.7.1 (unreleased)
+## 0.7.3 (July 8, 2015)
+
+### Bug Fixes
+
+ * Issue [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) [#92](https://github.com/fnichol/chef-rbenv/pull/92):
+   Add matchers for rbenv_gem and rbenv_ruby.
+   ([@tduffield](https://github.com/tduffield) and many others)
+ * Issue [#107](https://github.com/fnichol/chef-rbenv/issues/107): 
+   "Option name must be a kind of String!" when installing gems.
+ * Issue [#101](https://github.com/fnichol/chef-rbenv/issues/101):
+   Use full class name for rbenv_rehash resource
+ * Fix undefined method `timeout' for LWRP resource rbenv_gem.
+   ([@nathantsoi](https://github.com/nathantsoi) and others)
+ * Issue [#110](https://github.com/fnichol/chef-rbenv/issues/110):
+   Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem.
+   ([@tatat](https://github.com/tatat) and others)
+
+### Improvements
+
+ * Fork from https://github.com/fnichol/chef-rbenv
 
 
 ## 0.7.2 (December 31, 2012)
@@ -11,6 +30,49 @@
 ### Improvements
 
 * Add integration tests for a system Ruby version. ([@fnichol][])
+
+## 0.7.1 (unreleased)
+
+### Bug Fixes
+
+* Pull request [#36](https://github.com/fnichol/chef-rbenv/pull/36):
+  Use the ruby name as the definition to install
+  ([@gsandie][])
+* Pull request [#55](https://github.com/fnichol/chef-rbenv/pull/55):
+  Fix some CHEF-3694 warnings when using with ruby_build
+  ([@trinitronx][])
+
+### New features
+
+* Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26):
+  Allow setting environment vars per ruby install
+  ([@jasherai][])
+* Pull request [#37](https://github.com/fnichol/chef-rbenv/pull/37):
+  Allows use `include_recipe("ruby_build")` instead of having to put it in the `run_list`
+  ([@tjwallace][])
+* Pull request [#42](https://github.com/fnichol/chef-rbenv/pull/42):
+  Load rbenv environment after install
+  ([@msaffitz][])
+* Pull request [#62](https://github.com/fnichol/chef-rbenv/pull/62):
+  Add Gentoo as supported platform
+  ([@gentooboontoo][])
+
+### Improvements
+
+* Pull request [#46](https://github.com/fnichol/chef-rbenv/pull/46):
+  Add a `definition_file` attribute to the `rbenv_ruby` resource to prevent
+  continually trying to build a custom ruby when passed a build file name instead of a built-in definition
+  ([@jf647][])
+* Pull request [#60](https://github.com/fnichol/chef-rbenv/pull/60):
+  Support `definition_file` in rubies definition
+  ([@cyu][])
+* Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75):
+  Update testing support and add unit tests for existing resources
+  ([@fnichol][])
+* Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70):
+  Support ruby 2.1.0
+  ([@WhyEee][])
+
 
 
 ## 0.7.0 (November 21, 2012)
@@ -117,3 +179,12 @@ The initial release.
 [@magnetised]: https://github.com/magnetised
 [@mhoran]: https://github.com/mhoran
 [@thoughtless]: https://github.com/thoughtless
+[@jasherai]: https://github.com/jasherai
+[@tjwallace]: https://github.com/tjwallace
+[@jf647]: https://github.com/jf647
+[@gsandie]: https://github.com/gsandie
+[@msaffitz]: https://github.com/msaffitz
+[@trinitronx]: https://github.com/trinitronx
+[@gentooboontoo]: https://github.com/gentooboontoo
+[@cyu]: https://github.com/cyu
+[@WhyEee]: https://github.com/WhyEee
