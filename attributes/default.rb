@@ -26,6 +26,9 @@ default['rbenv']['git_ref'] = "v0.4.0"
 # upgrade action strategy
 default['rbenv']['upgrade'] = "none"
 
+# plugins to install
+default['rbenv']['plugins'] = []
+
 # extra system-wide tunables
 default['rbenv']['root_path'] = "/usr/local/rbenv"
 default['rbenv']['vagrant']['system_chef_solo'] = "/opt/ruby/bin/chef-solo"

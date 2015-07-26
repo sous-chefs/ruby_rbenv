@@ -23,6 +23,7 @@ upgrade_strategy  = build_upgrade_strategy(node['rbenv']['upgrade'])
 git_url           = node['rbenv']['git_url']
 git_ref           = node['rbenv']['git_ref']
 rbenv_prefix      = node['rbenv']['root_path']
+rbenv_plugins     = node['rbenv']['plugins']
 
 install_rbenv_pkg_prereqs
 
@@ -40,4 +41,5 @@ end
 install_or_upgrade_rbenv  :rbenv_prefix => rbenv_prefix,
                           :git_url => git_url,
                           :git_ref => git_ref,
-                          :upgrade_strategy => upgrade_strategy
+                          :upgrade_strategy => upgrade_strategy,
+                          :rbenv_plugins => rbenv_plugins

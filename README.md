@@ -283,6 +283,24 @@ For example:
       }
     ]
 
+### <a name="attributes-plugins"></a> plugins
+
+A list of plugins to be installed into the system (or user) install of rbenv.
+Provide a hash of name and git_url for each plugin to be installed, with optional revision.
+
+    node.default['rbenv']['plugins'] = [
+      {
+        :name => "rbenv-vars",
+        :git_url => 'git://github.com/sstephenson/rbenv-vars.git'
+      },
+      {
+        :name => 'rbenv-update',
+        :git_url => 'git://github.com/rkh/rbenv-update.git',
+        :revision => 'master'
+      } ]
+
+The same applies for user_installs.
+
 ### <a name="attributes-user-rubies"></a> user_rubies
 
 A list of additional system-wide rubies to be built and installed (using the
