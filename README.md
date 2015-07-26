@@ -251,6 +251,18 @@ The path prefix to rbenv in a system-wide installation.
 
 The default is `"/usr/local/rbenv"`.
 
+### <a name="attributes-patch_url"></a> patch_url
+
+A url to a patch file for your ruby install.
+
+The default is `nil`.
+
+### <a name="attributes-patch_file"></a> patch_file
+
+A path to a patch file for your ruby install.
+
+The default is `nil`.
+
 ### <a name="attributes-rubies"></a> rubies
 
 A list of additional system-wide rubies to be built and installed using the

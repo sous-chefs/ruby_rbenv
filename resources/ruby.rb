@@ -26,6 +26,8 @@ attribute :definition_file,	:kind_of => String
 attribute :root_path,   :kind_of => String
 attribute :user,        :kind_of => String
 attribute :environment, :kind_of => Hash
+attribute :patch_url,   :kind_of => String
+attribute :patch_file,  :kind_of => String
 
 def initialize(*args)
   super
