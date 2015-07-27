@@ -46,7 +46,7 @@ describe Chef::Resource::RbenvPlugin do
   end
 
   it "action defaults to :install" do
-    expect(resource.action).to eq(:install)
+    expect(resource.action).to eq([:install])
   end
 
   it "#to_s includes user if provided" do
