@@ -42,7 +42,6 @@ def run_script
     creates       new_resource.creates  if new_resource.creates
     cwd           new_resource.cwd      if new_resource.cwd
     group         new_resource.group    if new_resource.group
-    path          new_resource.path     if new_resource.path
     returns       new_resource.returns  if new_resource.returns
     timeout       new_resource.timeout  if new_resource.timeout
     umask         new_resource.umask    if new_resource.umask
@@ -64,7 +63,14 @@ end
 
 def build_script_environment
   script_env = { 'RBENV_ROOT' => rbenv_root }
-  script_env.merge!(new_resource.environment) if new_resource.environment
+  if new_resource.environment
+    script_env.merge!(new_resource.environment)
+  end
+
+  if new_resource.path
+    script_env.merge!({ 'PATH' =>  "#{new_resource.path.join(':')}:#{ENV["PATH"]}" })
+  end
+
   if new_resource.user
     script_env.merge!('USER' => new_resource.user, 'HOME' => user_home)
   end
