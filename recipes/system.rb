@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "rbenv::system_install"
+include_recipe 'rbenv::system_install'
 
 Array(node['rbenv']['plugins']).each do |plugin|
   rbenv_plugin plugin['name'] do
@@ -37,16 +37,14 @@ Array(node['rbenv']['rubies']).each do |rubie|
   end
 end
 
-if node['rbenv']['global']
-  rbenv_global node['rbenv']['global']
-end
+rbenv_global node['rbenv']['global'] if node['rbenv']['global']
 
 node['rbenv']['gems'].each_pair do |rubie, gems|
   Array(gems).each do |gem|
     rbenv_gem gem['name'] do
       rbenv_version rubie
 
-      %w{version action options source}.each do |attr|
+      %w(version action options source).each do |attr|
         send(attr, gem[attr]) if gem[attr]
       end
     end

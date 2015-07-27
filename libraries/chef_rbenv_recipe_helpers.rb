@@ -24,7 +24,7 @@ class Chef
     module RecipeHelpers
       def build_upgrade_strategy(strategy)
         if strategy.nil? || strategy == false
-          "none"
+          'none'
         else
           strategy
         end
@@ -33,7 +33,7 @@ class Chef
       def mac_with_no_homebrew
         node['platform'] == 'mac_os_x' &&
           Chef::Platform.find_provider_for_node(node, :package) !=
-          Chef::Provider::Package::Homebrew
+            Chef::Provider::Package::Homebrew
       end
 
       def install_rbenv_pkg_prereqs
@@ -55,7 +55,7 @@ class Chef
       private
 
       def git_deploy_rbenv(opts)
-        if opts[:upgrade_strategy] == "none"
+        if opts[:upgrade_strategy] == 'none'
           git_exec_action = :checkout
         else
           git_exec_action = :sync
@@ -71,12 +71,12 @@ class Chef
         end
 
         directory "#{opts[:rbenv_prefix]}/plugins" do
-          owner   opts[:user].nil? ? "root" : opts[:user]
-          mode    "0755"
+          owner   opts[:user].nil? ? 'root' : opts[:user]
+          mode    '0755'
         end
 
         Array(opts[:rbenv_plugins]).each do |plugin|
-          revision = plugin['revision'].nil? ? "master" : plugin['revision']
+          revision = plugin['revision'].nil? ? 'master' : plugin['revision']
           plugin_path = "#{opts[:rbenv_prefix]}/plugins/#{plugin['name']}"
 
           git "Install rbenv plugin - #{plugin['name']}" do
@@ -97,12 +97,12 @@ class Chef
         if opts[:user]
           init_env = { 'USER' => opts[:user], 'HOME' => opts[:home_dir] }
         else
-          init_env = Hash.new
+          init_env = {}
         end
 
         bash "Initialize rbenv (#{opts[:user] || 'system'})" do
-          code  %{PATH="#{prefix}/bin:$PATH" rbenv init -}
-          environment({'RBENV_ROOT' => prefix}.merge(init_env))
+          code  %(PATH="#{prefix}/bin:$PATH" rbenv init -)
+          environment({ 'RBENV_ROOT' => prefix }.merge(init_env))
           user  opts[:user]   if opts[:user]
           group opts[:group]  if opts[:group]
         end
@@ -111,7 +111,7 @@ class Chef
       end
 
       def add_rbenv_to_PATH
-        ruby_block "Add rbenv to PATH" do
+        ruby_block 'Add rbenv to PATH' do
           block do
             rbenv_root = node['rbenv']['root_path']
             ENV['PATH'] = "#{rbenv_root}/shims:#{rbenv_root}/bin:#{ENV['PATH']}"

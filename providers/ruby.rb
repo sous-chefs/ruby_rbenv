@@ -44,7 +44,7 @@ private
 def perform_install
   if ruby_build_missing?
     Chef::Log.warn(
-      "ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).")
+      'ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).')
   elsif ruby_installed?
     Chef::Log.debug("#{new_resource} is already installed - nothing to do")
   else
@@ -63,15 +63,11 @@ def perform_install
 
     patch_command = nil
 
-    if @patch_url
-      patch_command = "--patch < <(curl -sSL #{@patch_url})"
-    end
+    patch_command = "--patch < <(curl -sSL #{@patch_url})" if @patch_url
 
-    if @patch_file
-      patch_command = "--patch < #{@patch_file}"
-    end
+    patch_command = "--patch < #{@patch_file}" if @patch_file
 
-    command       = %{rbenv install #{definition} #{patch_command}}
+    command       = %(rbenv install #{definition} #{patch_command})
 
     rbenv_script "#{command} #{which_rbenv}" do
       code        command
@@ -82,8 +78,8 @@ def perform_install
       action      :nothing
     end.run_action(:run)
 
-    Chef::Log.debug("#{new_resource} build time was " +
-      "#{(Time.now - install_start)/60.0} minutes")
+    Chef::Log.debug("#{new_resource} build time was " \
+      "#{(Time.now - install_start) / 60.0} minutes")
 
     new_resource.updated_by_last_action(true)
   end
@@ -98,7 +94,7 @@ def ruby_installed?
 end
 
 def ruby_build_missing?
-  ! run_context.loaded_recipe?("ruby_build")
+  !run_context.loaded_recipe?('ruby_build')
 end
 
 def install_ruby_dependencies
@@ -121,12 +117,10 @@ def install_ruby_dependencies
 end
 
 def ensure_java_environment
-  begin
-    resource_collection.find(
-      "ruby_block[update-java-alternatives]"
-    ).run_action(:create)
-  rescue Chef::Exceptions::ResourceNotFound
-    # have pity on my soul
-    Chef::Log.info "The java cookbook does not appear to in the run_list."
-  end
+  resource_collection.find(
+    'ruby_block[update-java-alternatives]'
+  ).run_action(:create)
+rescue Chef::Exceptions::ResourceNotFound
+  # have pity on my soul
+  Chef::Log.info 'The java cookbook does not appear to in the run_list.'
 end

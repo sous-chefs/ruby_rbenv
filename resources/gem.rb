@@ -22,7 +22,7 @@
 actions :install, :upgrade, :remove, :purge
 
 attribute :package_name,  :kind_of => String, :name_attribute => true
-attribute :rbenv_version, :kind_of => String, :default => "global"
+attribute :rbenv_version, :kind_of => String, :default => 'global'
 attribute :version,       :kind_of => String
 attribute :response_file, :kind_of => String
 attribute :source,        :kind_of => String

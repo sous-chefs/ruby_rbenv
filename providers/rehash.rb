@@ -32,7 +32,7 @@ action :run do
 end
 
 def run_script
-  command = %{rbenv rehash}
+  command = %(rbenv rehash)
 
   rbenv_script "#{command} #{which_rbenv}" do
     code        command

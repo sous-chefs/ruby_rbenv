@@ -27,15 +27,15 @@ rbenv_plugins     = node['rbenv']['plugins']
 
 install_rbenv_pkg_prereqs
 
-directory "/etc/profile.d" do
-  owner   "root"
-  mode    "0755"
+directory '/etc/profile.d' do
+  owner   'root'
+  mode    '0755'
 end
 
-template "/etc/profile.d/rbenv.sh" do
-  source  "rbenv.sh.erb"
-  owner   "root"
-  mode    "0755"
+template '/etc/profile.d/rbenv.sh' do
+  source  'rbenv.sh.erb'
+  owner   'root'
+  mode    '0755'
 end
 
 install_or_upgrade_rbenv  :rbenv_prefix => rbenv_prefix,

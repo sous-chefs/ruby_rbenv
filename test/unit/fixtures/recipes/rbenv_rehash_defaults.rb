@@ -1,1 +1,1 @@
-rbenv_rehash "defaultness"
+rbenv_rehash 'defaultness'
