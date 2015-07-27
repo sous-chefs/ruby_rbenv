@@ -1,0 +1,32 @@
+Metrics/LineLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Style/AccessorMethodName:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/TrailingBlankLines:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/IndentHash:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Style/BarePercentLiterals:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false
+Style/FormatString:
+  Enabled: false
+Style/RegexpLiteral:
+  Enabled: false
+SingleSpaceBeforeFirstArg:
+  Enabled: false
