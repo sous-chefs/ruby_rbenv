@@ -2,7 +2,7 @@ require_relative "../spec_helper"
 
 describe "rbenv_plugin provider" do
 
-  let(:runner)    { ChefSpec::Runner.new(step_into: ["rbenv_plugin"]) }
+  let(:runner)    { ChefSpec::SoloRunner.new(step_into: ["rbenv_plugin"]) }
   let(:node)      { runner.node}
 
   context "with a fully configured resource" do

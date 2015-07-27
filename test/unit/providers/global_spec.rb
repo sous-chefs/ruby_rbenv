@@ -2,7 +2,7 @@ require_relative "../spec_helper"
 
 describe "rbenv_global provider" do
 
-  let(:runner)    { ChefSpec::Runner.new(step_into: ["rbenv_global"]) }
+  let(:runner)    { ChefSpec::SoloRunner.new(step_into: ["rbenv_global"]) }
   let(:node)      { runner.node}
 
   context "with a fully configured resource" do
