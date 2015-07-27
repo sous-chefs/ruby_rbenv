@@ -77,9 +77,7 @@ class Chef
         private
 
         def normalize_version
-          return unless @new_resource.rbenv_version == 'global'
-
-          @new_resource.rbenv_version(current_global_version)
+          @new_resource.rbenv_version(current_global_version) unless @new_resource.rbenv_version == 'global'
         end
 
         def rehash
