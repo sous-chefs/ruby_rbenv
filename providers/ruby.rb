@@ -57,7 +57,7 @@ def perform_install
     # bypass block scoping issues
     rbenv_user    = @user
     rubie         = @rubie
-    definition    = @definition_file || @rubie
+    definition    = @definition_file || rubie
     rbenv_prefix  = @root_path
     rbenv_env     = @environment
 

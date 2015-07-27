@@ -38,8 +38,8 @@ template '/etc/profile.d/rbenv.sh' do
   mode    '0755'
 end
 
-install_or_upgrade_rbenv  :rbenv_prefix => rbenv_prefix,
-                          :git_url => git_url,
-                          :git_ref => git_ref,
-                          :upgrade_strategy => upgrade_strategy,
-                          :rbenv_plugins => rbenv_plugins
+install_or_upgrade_rbenv  rbenv_prefix: rbenv_prefix,
+                          git_url: git_url,
+                          git_ref: git_ref,
+                          upgrade_strategy: upgrade_strategy,
+                          rbenv_plugins: rbenv_plugins

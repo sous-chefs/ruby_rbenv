@@ -13,7 +13,7 @@ end
 
 require 'foodcritic'
 FoodCritic::Rake::LintTask.new do |t|
-  t.options = { :fail_tags => ['any', '~FC017'] }
+  t.options = { fail_tags: ['any', '~FC017'] }
 end
 
 begin
@@ -23,4 +23,4 @@ rescue LoadError
   puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
 end
 
-task :default => [:foodcritic, :unit]
+task default: [:foodcritic, :unit]

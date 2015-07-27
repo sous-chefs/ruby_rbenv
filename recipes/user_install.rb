@@ -37,12 +37,12 @@ Array(node['rbenv']['user_installs']).each do |rb_user|
   rbenv_prefix      = rb_user['root_path'] || ::File.join(home_dir, '.rbenv')
   rbenv_plugins     = rb_user['plugins'] || []
 
-  install_or_upgrade_rbenv  :rbenv_prefix => rbenv_prefix,
-                            :home_dir => home_dir,
-                            :git_url => git_url,
-                            :git_ref => git_ref,
-                            :upgrade_strategy => upgrade_strategy,
-                            :user => rb_user['user'],
-                            :group => rb_user['group'],
-                            :rbenv_plugins => rbenv_plugins
+  install_or_upgrade_rbenv  rbenv_prefix: rbenv_prefix,
+                            home_dir: home_dir,
+                            git_url: git_url,
+                            git_ref: git_ref,
+                            upgrade_strategy: upgrade_strategy,
+                            user: rb_user['user'],
+                            group: rb_user['group'],
+                            rbenv_plugins: rbenv_plugins
 end
