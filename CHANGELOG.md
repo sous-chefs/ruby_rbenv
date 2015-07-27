@@ -1,3 +1,8 @@
+## 0.8.0 (July 27, 2015)
+ * Drop Chef versions prior to 12
+ * Add Arch linux support
+ * Add Linux mint support
+
 ## 0.7.3 (July 8, 2015)
 
 ### Bug Fixes

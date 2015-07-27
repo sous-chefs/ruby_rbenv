@@ -81,8 +81,7 @@ in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
 ### <a name="requirements-chef"></a> Chef
 
-Tested on 11.4.4 but newer and older version should work just
-fine. File an [issue][issues] if this isn't the case.
+This cookbook requires Chef 12+.
 
 ### <a name="requirements-platform"></a> Platform
 
