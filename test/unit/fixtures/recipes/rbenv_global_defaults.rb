@@ -1,1 +1,1 @@
-rbenv_global "1.6.5"
+rbenv_global '1.6.5'

@@ -20,18 +20,18 @@
 #
 
 # git repository containing rbenv
-default['rbenv']['git_url'] = "git://github.com/sstephenson/rbenv.git"
-default['rbenv']['git_ref'] = "v0.4.0"
+default['rbenv']['git_url'] = 'git://github.com/sstephenson/rbenv.git'
+default['rbenv']['git_ref'] = 'v0.4.0'
 
 # upgrade action strategy
-default['rbenv']['upgrade'] = "none"
+default['rbenv']['upgrade'] = 'none'
 
 # plugins to install
 default['rbenv']['plugins'] = []
 
 # extra system-wide tunables
-default['rbenv']['root_path'] = "/usr/local/rbenv"
-default['rbenv']['vagrant']['system_chef_solo'] = "/opt/ruby/bin/chef-solo"
+default['rbenv']['root_path'] = '/usr/local/rbenv'
+default['rbenv']['vagrant']['system_chef_solo'] = '/opt/ruby/bin/chef-solo'
 
 # a list of user hashes, each an isolated per-user rbenv installation
 default['rbenv']['user_installs'] = []
@@ -41,8 +41,8 @@ default['rbenv']['rubies']      = []
 default['rbenv']['user_rubies'] = []
 
 # hash of rubies and their list of additional gems to be installed.
-default['rbenv']['gems']      = Hash.new
-default['rbenv']['user_gems'] = Hash.new
+default['rbenv']['gems']      = {}
+default['rbenv']['user_gems'] = {}
 
 # list of rbenv plugins to install
 default['rbenv']['plugins']      = []
@@ -52,25 +52,25 @@ default['rbenv']['user_plugins'] = []
 default['rbenv']['create_profiled'] = true
 
 case platform
-when "redhat","centos","fedora", "amazon", "scientific"
-  node.set['rbenv']['install_pkgs']   = %w{git grep}
+when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
+  node.set['rbenv']['install_pkgs']   = %w(git grep)
   default['rbenv']['user_home_root']  = '/home'
-when "debian","ubuntu","suse"
-  node.set['rbenv']['install_pkgs']   = %w{git-core grep}
+when 'debian', 'ubuntu', 'suse'
+  node.set['rbenv']['install_pkgs']   = %w(git-core grep)
   default['rbenv']['user_home_root']  = '/home'
-when "linuxmint"
-  node.set['rbenv']['install_pkgs'] = %w{git-core grep autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev}
+when 'linuxmint'
+  node.set['rbenv']['install_pkgs'] = %w(git-core grep autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev)
   default['rbenv']['user_home_root'] = '/home'
-when "mac_os_x"
-  node.set['rbenv']['install_pkgs']   = %w{git}
+when 'mac_os_x'
+  node.set['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/Users'
-when "freebsd"
-  node.set['rbenv']['install_pkgs']   = %w{git}
+when 'freebsd'
+  node.set['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/usr/home'
-when "gentoo"
-  node.set['rbenv']['install_pkgs']   = %w{git}
+when 'gentoo'
+  node.set['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/home'
-when "arch"
-  node.set['rbenv']['install_pkgs']   = %w{git grep}
+when 'arch'
+  node.set['rbenv']['install_pkgs']   = %w(git grep)
   default['rbenv']['user_home_root']  = '/home'
 end

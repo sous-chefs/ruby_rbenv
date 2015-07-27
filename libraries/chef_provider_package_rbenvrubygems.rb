@@ -36,7 +36,6 @@ class Chef
   class Provider
     class Package
       class RbenvRubygems < Chef::Provider::Package::Rubygems
-
         class RbenvGemEnvironment < AlternateGemEnvironment
           attr_reader :rbenv_version, :rbenv_user
 
@@ -54,11 +53,11 @@ class Chef
         include Chef::Rbenv::Mixin::ShellOut
         include Chef::Rbenv::ScriptHelpers
 
-        def initialize(new_resource, run_context=nil)
+        def initialize(new_resource, run_context = nil)
           super
           normalize_version
-          @new_resource.gem_binary(wrap_shim_cmd("gem"))
-          @rbenv_user = new_resource.respond_to?("user") ? new_resource.user : nil
+          @new_resource.gem_binary(wrap_shim_cmd('gem'))
+          @rbenv_user = new_resource.respond_to?('user') ? new_resource.user : nil
           @gem_env = RbenvGemEnvironment.new(
             gem_binary_path, new_resource.rbenv_version, rbenv_user)
         end
@@ -78,7 +77,7 @@ class Chef
         private
 
         def normalize_version
-          if @new_resource.rbenv_version == "global"
+          if @new_resource.rbenv_version == 'global'
             @new_resource.rbenv_version(current_global_version)
           end
         end

@@ -24,8 +24,8 @@ class Chef
     module Mixin
       module ShellOut
         def shell_out!(*command_args)
-          options = command_args.last.is_a?(Hash) ? command_args.pop : Hash.new
-          options[:env] = shell_environment.merge(options[:env] || Hash.new)
+          options = command_args.last.is_a?(Hash) ? command_args.pop : {}
+          options[:env] = shell_environment.merge(options[:env] || {})
 
           super(*command_args.push(options))
         end

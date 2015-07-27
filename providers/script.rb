@@ -36,7 +36,7 @@ def run_script
   script_environment  = build_script_environment
 
   script new_resource.name do
-    interpreter   "bash"
+    interpreter   'bash'
     code          script_code
     user          new_resource.user     if new_resource.user
     creates       new_resource.creates  if new_resource.creates
@@ -52,11 +52,11 @@ end
 
 def build_script_code
   script = []
-  script << %{export RBENV_ROOT="#{rbenv_root}"}
-  script << %{export PATH="${RBENV_ROOT}/bin:$PATH"}
+  script << %(export RBENV_ROOT="#{rbenv_root}")
+  script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
   script << %{eval "$(rbenv init -)"}
   if new_resource.rbenv_version
-    script << %{export RBENV_VERSION="#{new_resource.rbenv_version}"}
+    script << %(export RBENV_VERSION="#{new_resource.rbenv_version}")
   end
   script << new_resource.code
   script.join("\n").concat("\n")
@@ -64,11 +64,9 @@ end
 
 def build_script_environment
   script_env = { 'RBENV_ROOT' => rbenv_root }
-  if new_resource.environment
-    script_env.merge!(new_resource.environment)
-  end
+  script_env.merge!(new_resource.environment) if new_resource.environment
   if new_resource.user
-    script_env.merge!({ 'USER' => new_resource.user,'HOME' => user_home })
+    script_env.merge!('USER' => new_resource.user, 'HOME' => user_home)
   end
 
   script_env

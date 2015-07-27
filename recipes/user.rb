@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "rbenv::user_install"
+include_recipe 'rbenv::user_install'
 
 Array(node['rbenv']['user_installs']).each do |rbenv_user|
   plugins   = rbenv_user['plugins'] || node['rbenv']['user_plugins']
@@ -68,7 +68,7 @@ Array(node['rbenv']['user_installs']).each do |rbenv_user|
         root_path       rbenv_user['root_path'] if rbenv_user['root_path']
         rbenv_version   rubie
 
-        %w{version action options source}.each do |attr|
+        %w(version action options source).each do |attr|
           send(attr, gem[attr]) if gem[attr]
         end
       end

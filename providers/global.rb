@@ -36,7 +36,7 @@ action :create do
 end
 
 def run_script
-  command = %{rbenv global #{new_resource.rbenv_version}}
+  command = %(rbenv global #{new_resource.rbenv_version})
 
   rbenv_script "#{command} #{which_rbenv}" do
     code        command
