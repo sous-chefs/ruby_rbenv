@@ -8,6 +8,7 @@ gem 'rake'
 
 group :development do
   gem 'guard-rspec'
+  gem 'rubocop'
 end
 
 group :integration do

@@ -4,3 +4,4 @@ rvm:
   - 2.1
 bundler_args: --without integration
 cache: bundler
+after_script: bundle exec rubocop
