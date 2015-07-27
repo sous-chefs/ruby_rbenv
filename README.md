@@ -89,7 +89,7 @@ fine. File an [issue][issues] if this isn't the case.
 The following platforms have been tested with this cookbook, meaning that
 the recipes and LWRPs run on these platforms without error:
 
-* ubuntu (10.04/12.04)
+* ubuntu (10.04/12.04/14.04)
 * debian (6.0)
 * freebsd
 * redhat
@@ -101,6 +101,7 @@ the recipes and LWRPs run on these platforms without error:
 * mac\_os\_x
 * gentoo
 * arch
+* linux mint
 
 Please [report][issues] any additional platforms so they can be added.
 
