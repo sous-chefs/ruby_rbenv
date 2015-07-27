@@ -31,10 +31,12 @@ def load_current_resource
   @patch_file = new_resource.patch_file
 end
 
+# ~FC017
 action :install do
   perform_install
 end
 
+# ~FC017
 action :reinstall do
   perform_install
 end
