@@ -66,7 +66,7 @@ def build_script_environment
   script_env = { 'RBENV_ROOT' => rbenv_root }
 
   script_env.merge!(new_resource.environment) if new_resource.environment
-  
+
   if new_resource.path
     script_env.merge!('PATH' => "#{new_resource.path.join(':')}:#{ENV['PATH']}")
   end
