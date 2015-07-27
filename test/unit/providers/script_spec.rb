@@ -21,20 +21,20 @@ describe 'rbenv_script provider' do
         rake doit:all
       CODE
       environment = {
-        "RBENV_ROOT"  => "/mnt/lockwood/.rbenv",
-        "USER"        => "lockwood",
-        "HOME"        => "/mnt/lockwood",
-        "FRUIT"       => "strawberry",
-        "PATH"        => "/opt/bin:#{ENV["PATH"]}"
+        'RBENV_ROOT'  => '/mnt/lockwood/.rbenv',
+        'USER'        => 'lockwood',
+        'HOME'        => '/mnt/lockwood',
+        'FRUIT'       => 'strawberry',
+        'PATH'        => "/opt/bin:#{ENV['PATH']}"
       }
 
       expect(chef_run).to run_script('all-the-things').with(
         interpreter:    'bash',
         code:           code,
-        user:           "lockwood",
-        group:          "inventor",
-        creates:        "/opt/success",
-        cwd:            "/usr/dir",
+        user:           'lockwood',
+        group:          'inventor',
+        creates:        '/opt/success',
+        cwd:            '/usr/dir',
         returns:        [0, 255],
         timeout:        600,
         umask:          0221,
