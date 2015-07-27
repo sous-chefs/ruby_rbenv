@@ -1,3 +1,7 @@
+Metrics/CyclomaticComplexity:
+  Max: 10
+Metrics/PerceivedComplexity:
+  Max: 10
 Metrics/LineLength:
   Enabled: false
 Metrics/MethodLength:

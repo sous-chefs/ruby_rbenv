@@ -49,7 +49,7 @@ class Chef
       def install_or_upgrade_rbenv(opts = {})
         git_deploy_rbenv opts
         initialize_rbenv opts
-        add_rbenv_to_PATH
+        add_rbenv_to_path
       end
 
       private
@@ -110,7 +110,7 @@ class Chef
         log "rbenv-post-init-#{opts[:user] || 'system'}"
       end
 
-      def add_rbenv_to_PATH
+      def add_rbenv_to_path
         ruby_block 'Add rbenv to PATH' do
           block do
             rbenv_root = node['rbenv']['root_path']
