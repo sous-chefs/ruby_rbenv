@@ -20,6 +20,7 @@
 #
 
 actions :run
+default_action :run
 
 attribute :name,          kind_of: String, name_attribute: true
 attribute :rbenv_version, kind_of: String
@@ -35,7 +36,3 @@ attribute :timeout,       kind_of: Integer
 attribute :user,          kind_of: String
 attribute :umask,         kind_of: [String, Integer]
 
-def initialize(*args)
-  super
-  @action = :run
-end
