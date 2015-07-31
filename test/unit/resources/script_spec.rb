@@ -122,6 +122,6 @@ describe Chef::Resource::RbenvScript do
   end
 
   it 'action defaults to :run' do
-    expect(resource.action).to eq(:run)
+    expect(resource.action).to eq([:run])
   end
 end
