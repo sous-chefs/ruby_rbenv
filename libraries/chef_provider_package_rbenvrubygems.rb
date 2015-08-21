@@ -76,9 +76,9 @@ class Chef
 
         private
 
+        # converts "global" to the current global ruby version
         def normalize_version
-          return if @new_resource.rbenv_version == 'global'
-          @new_resource.rbenv_version(current_global_version)
+          @new_resource.rbenv_version(current_global_version) if @new_resource.rbenv_version == 'global'
         end
 
         def rehash
