@@ -1037,6 +1037,13 @@ in the run list to perform the builds.
       </td>
       <td><code>nil</code></td>
     </tr>
+    <tr>
+      <td>rbenv_action</td>
+      <td>
+        The action that rbenv takes to install ruby via the command line. By default this is 'install' which results in a command such as <code>rbenv install ruby 2.2.0</code>. When using the rvm-download rbenv plugin use 'download' to have the provider execute a command such as <code>rbenv download 2.2.0</code>.
+      </td>
+      <td><code>install</code></td>
+    </tr>
   </tbody>
 </table>
 
