@@ -36,7 +36,7 @@ describe Chef::Resource::RbenvRuby do
   end
 
   it 'action defaults to :install' do
-    expect(resource.action).to eq(:install)
+    expect(resource.action).to eq([:install])
   end
 
   it 'actions include :reinstall' do

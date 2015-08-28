@@ -29,6 +29,7 @@ def load_current_resource
   @environment = new_resource.environment
   @patch_url = new_resource.patch_url
   @patch_file = new_resource.patch_file
+  @rbenv_action = new_resource.rbenv_action
 end
 
 action :install do # ~FC017
@@ -67,7 +68,7 @@ def perform_install
 
     patch_command = "--patch < #{@patch_file}" if @patch_file
 
-    command       = %(rbenv install #{definition} #{patch_command})
+    command       = %(rbenv #{@rbenv_action} #{definition} #{patch_command})
 
     rbenv_script "#{command} #{which_rbenv}" do
       code        command
