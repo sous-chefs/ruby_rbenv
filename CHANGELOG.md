@@ -1,5 +1,12 @@
+## 0.8.1 (August 28, 2015)
+ * Add rbenv_action attribute to rbenv_ruby LWRP so to allow using rvm-download rbenv plugin to download ruby vs. installing ruby
+ * Fix the ability to install gems to a specific version of ruby
+ * Remove Chef version checks around use_inline_resources since we require Chef 12
+ * Use default_action method in the LWRPs
+ * Fix various rubocop warnings
+
 ## 0.8.0 (July 27, 2015)
- * Drop Chef versions prior to 12
+ * Drop support for Chef versions prior to 12
  * Add Arch linux support
  * Add Linux mint support
 
