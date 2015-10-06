@@ -26,3 +26,10 @@ group :kitchen_cloud do
   gem 'kitchen-digitalocean'
   gem 'kitchen-ec2'
 end
+
+group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'emeril'
+end
