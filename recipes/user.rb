@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rbenv
+# Cookbook Name:: ruby_rbenv
 # Recipe:: user
 #
 # Copyright 2010, 2011 Fletcher Nichol

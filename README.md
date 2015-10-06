@@ -1,4 +1,4 @@
-# <a name="title"></a> rbenv Chef Cookbook
+# <a name="title"></a> ruby_rbenv Chef Cookbook
 
 [![Build Status](https://travis-ci.org/chef-rbenv/chef-rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/chef-rbenv)
 
@@ -140,33 +140,9 @@ To reference the Git version:
     END_OF_BERKSFILE
     berks install
 
-### <a name="installation-librarian"></a> Using Librarian-Chef
-
-[Librarian-Chef][librarian] is a bundler for your Chef cookbooks.
-To install Librarian-Chef:
-
-    cd chef-repo
-    gem install librarian
-    librarian-chef init
-
-To reference the Git version:
-
-    repo="fnichol/chef-rbenv"
-    latest_release=$(curl -s https://api.github.com/repos/$repo/git/refs/tags \
-    | ruby -rjson -e '
-      j = JSON.parse(STDIN.read);
-      puts j.map { |t| t["ref"].split("/").last }.sort.last
-    ')
-    cat >> Cheffile <<END_OF_CHEFFILE
-    cookbook 'rbenv',
-      :git => 'git://github.com/$repo.git', :ref => '$latest_release'
-    END_OF_CHEFFILE
-    librarian-chef install
-
 ### <a name="installation-platform"></a> From the Community Site
 
-This cookbook is not currently available on the site due to the flat
-namespace for cookbooks.
+This cookbook is available on the cookbook site as ruby_rbenv
 
 ## <a name="recipes"></a> Recipes
 
