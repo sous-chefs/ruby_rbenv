@@ -22,10 +22,10 @@
 include Chef::Rbenv::ScriptHelpers
 
 def load_current_resource
-  @rubie      = new_resource.definition
+  @rubie = new_resource.definition
   @definition_file = new_resource.definition_file
-  @root_path  = new_resource.root_path
-  @user       = new_resource.user
+  @root_path = new_resource.root_path
+  @user = new_resource.user
   @environment = new_resource.environment
   @patch_url = new_resource.patch_url
   @patch_file = new_resource.patch_file
@@ -56,27 +56,23 @@ def perform_install
     Chef::Log.info("Building #{new_resource}, this could take a while...")
 
     # bypass block scoping issues
-    rbenv_user    = @user
-    rubie         = @rubie
-    definition    = @definition_file || rubie
-    rbenv_prefix  = @root_path
-    rbenv_env     = @environment
+    rbenv_user = @user
+    rubie = @rubie
+    definition = @definition_file || rubie
+    rbenv_prefix = @root_path
+    rbenv_env = @environment
 
     patch_command = nil
-
     patch_command = "--patch < <(curl -sSL #{@patch_url})" if @patch_url
-
     patch_command = "--patch < #{@patch_file}" if @patch_file
-
-    command       = %(rbenv #{@rbenv_action} #{definition} #{patch_command})
+    command = %(rbenv #{@rbenv_action} #{definition} #{patch_command})
 
     rbenv_script "#{command} #{which_rbenv}" do
-      code        command
-      user        rbenv_user    if rbenv_user
-      root_path   rbenv_prefix  if rbenv_prefix
-      environment rbenv_env     if rbenv_env
-
-      action      :nothing
+      code command
+      user rbenv_user if rbenv_user
+      root_path rbenv_prefix if rbenv_prefix
+      environment rbenv_env if rbenv_env
+      action :nothing
     end.run_action(:run)
 
     Chef::Log.debug("#{new_resource} build time was " \

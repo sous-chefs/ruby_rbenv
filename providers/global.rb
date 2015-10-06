@@ -39,10 +39,10 @@ def run_script
   command = %(rbenv global #{new_resource.rbenv_version})
 
   rbenv_script "#{command} #{which_rbenv}" do
-    code        command
-    user        new_resource.user       if new_resource.user
-    root_path   new_resource.root_path  if new_resource.root_path
-    action      :run
+    code command
+    user new_resource.user if new_resource.user
+    root_path new_resource.root_path if new_resource.root_path
+    action :run
   end
 end
 

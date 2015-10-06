@@ -37,14 +37,14 @@ def run_script
 
   script new_resource.name do
     interpreter 'bash'
-    code        script_code
-    user        new_resource.user     if new_resource.user
-    creates     new_resource.creates  if new_resource.creates
-    cwd         new_resource.cwd      if new_resource.cwd
-    group       new_resource.group    if new_resource.group
-    returns     new_resource.returns  if new_resource.returns
-    timeout     new_resource.timeout  if new_resource.timeout
-    umask       new_resource.umask    if new_resource.umask
+    code script_code
+    user new_resource.user if new_resource.user
+    creates new_resource.creates if new_resource.creates
+    cwd new_resource.cwd if new_resource.cwd
+    group new_resource.group if new_resource.group
+    returns new_resource.returns if new_resource.returns
+    timeout new_resource.timeout if new_resource.timeout
+    umask new_resource.umask if new_resource.umask
 
     environment(script_environment)
   end
