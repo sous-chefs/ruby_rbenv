@@ -22,6 +22,8 @@
 actions :install, :reinstall
 default_action :install
 
+provides :rbenv_ruby
+
 attribute :definition,  kind_of: String, name_attribute: true
 attribute :definition_file,	kind_of: String
 attribute :root_path,   kind_of: String

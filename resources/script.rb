@@ -22,6 +22,8 @@
 actions :run
 default_action :run
 
+provides :rbenv_script
+
 attribute :name,          kind_of: String, name_attribute: true
 attribute :rbenv_version, kind_of: String
 attribute :root_path,     kind_of: String
