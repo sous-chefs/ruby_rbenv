@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rbenv
+# Cookbook Name:: ruby_rbenv
 # Provider:: ruby
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
@@ -18,6 +18,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+provides :rbenv_ruby
 
 include Chef::Rbenv::ScriptHelpers
 
