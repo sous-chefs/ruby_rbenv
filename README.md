@@ -1,6 +1,7 @@
 # <a name="title"></a> ruby_rbenv Chef Cookbook
 
 [![Build Status](https://travis-ci.org/chef-rbenv/chef-rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/chef-rbenv)
+[![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 
 ## <a name="description"></a> Description
 
