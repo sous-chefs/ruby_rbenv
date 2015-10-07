@@ -51,16 +51,13 @@ default['rbenv']['user_plugins'] = []
 # whether to create profile.d shell script
 default['rbenv']['create_profiled'] = true
 
-case platform
-when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
+case node['platform_family']
+when 'rhel', 'fedora'
   node.set['rbenv']['install_pkgs']   = %w(git grep)
   default['rbenv']['user_home_root']  = '/home'
-when 'debian', 'ubuntu', 'suse'
+when 'debian', 'suse'
   node.set['rbenv']['install_pkgs']   = %w(git-core grep)
   default['rbenv']['user_home_root']  = '/home'
-when 'linuxmint'
-  node.set['rbenv']['install_pkgs'] = %w(git-core grep autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev)
-  default['rbenv']['user_home_root'] = '/home'
 when 'mac_os_x'
   node.set['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/Users'
