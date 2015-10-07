@@ -20,6 +20,7 @@
 #
 
 actions :install, :upgrade, :remove, :purge
+default_action :install
 
 provides :rbenv_gem
 
@@ -39,6 +40,5 @@ include Chef::Rbenv::Mixin::ResourceString
 
 def initialize(*args)
   super
-  @action = :install
   @provider = Chef::Provider::Package::RbenvRubygems
 end
