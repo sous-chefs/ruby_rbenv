@@ -31,9 +31,8 @@ Please [report][issues] any additional platforms so they can be added.
 
 ### <a name="requirements-cookbooks"></a> Cookbooks
 
-There are **no** external cookbook dependencies. However, if you
-want to manage Ruby installations or use the `rbenv_ruby` LWRP then you will
-need to include the [ruby\_build cookbook][ruby_build_cb].
+* [ruby\_build cookbook][ruby_build_cb]
+* java cookbook if installing jruby (recommended, but not required in the metadata)
 
 ## <a name="usage"></a> Usage
 

@@ -6,7 +6,7 @@ description      'Manages rbenv and its installed rubies. Several LWRPs are also
 long_description "Please refer to README.md (it's long)."
 version          '0.8.1'
 
-recommends 'ruby_build'       # if using the rbenv_ruby LWRP, ruby-build must be installed
+depends 'ruby_build'       # if using the rbenv LWRP, ruby-build must be installed
 recommends 'java', '> 1.4.0'  # if using jruby, java is required on system
 
 supports 'ubuntu'
