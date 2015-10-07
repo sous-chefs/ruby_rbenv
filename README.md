@@ -19,19 +19,13 @@ This cookbook requires Chef 12.1+.
 The following platforms have been tested with this cookbook, meaning that
 the recipes and LWRPs run on these platforms without error:
 
-* ubuntu (10.04/12.04/14.04)
-* debian (6.0)
-* freebsd
-* redhat
-* centos
-* fedora
-* amazon
-* scientific
-* suse
-* mac\_os\_x
-* gentoo
-* arch
-* linux mint
+* Arch
+* Debian derivitives (Debian 7+, Ubuntu 10.04+, Linux Mint)
+* Freebsd
+* Fedora
+* Gentoo
+* Mac OS X
+* RHEL deritivites (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 
 Please [report][issues] any additional platforms so they can be added.
 
