@@ -53,21 +53,21 @@ default['rbenv']['create_profiled'] = true
 
 case node['platform_family']
 when 'rhel', 'fedora'
-  node.set['rbenv']['install_pkgs']   = %w(git grep)
+  default['rbenv']['install_pkgs']   = %w(git grep)
   default['rbenv']['user_home_root']  = '/home'
 when 'debian', 'suse'
-  node.set['rbenv']['install_pkgs']   = %w(git-core grep)
+  default['rbenv']['install_pkgs']   = %w(git-core grep)
   default['rbenv']['user_home_root']  = '/home'
 when 'mac_os_x'
-  node.set['rbenv']['install_pkgs']   = %w(git)
+  default['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/Users'
 when 'freebsd'
-  node.set['rbenv']['install_pkgs']   = %w(git)
+  default['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/usr/home'
 when 'gentoo'
-  node.set['rbenv']['install_pkgs']   = %w(git)
+  default['rbenv']['install_pkgs']   = %w(git)
   default['rbenv']['user_home_root']  = '/home'
 when 'arch'
-  node.set['rbenv']['install_pkgs']   = %w(git grep)
+  default['rbenv']['install_pkgs']   = %w(git grep)
   default['rbenv']['user_home_root']  = '/home'
 end
