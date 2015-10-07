@@ -8,6 +8,39 @@
 Manages [rbenv][rbenv_site] and its installed Rubies.
 Several lightweight resources and providers ([LWRPs][lwrp]) are also defined.
 
+## <a name="requirements"></a> Requirements
+
+### <a name="requirements-chef"></a> Chef
+
+This cookbook requires Chef 12.1+.
+
+### <a name="requirements-platform"></a> Platform
+
+The following platforms have been tested with this cookbook, meaning that
+the recipes and LWRPs run on these platforms without error:
+
+* ubuntu (10.04/12.04/14.04)
+* debian (6.0)
+* freebsd
+* redhat
+* centos
+* fedora
+* amazon
+* scientific
+* suse
+* mac\_os\_x
+* gentoo
+* arch
+* linux mint
+
+Please [report][issues] any additional platforms so they can be added.
+
+### <a name="requirements-cookbooks"></a> Cookbooks
+
+There are **no** external cookbook dependencies. However, if you
+want to manage Ruby installations or use the `rbenv_ruby` LWRP then you will
+need to include the [ruby\_build cookbook][ruby_build_cb].
+
 ## <a name="usage"></a> Usage
 
 ### <a name="usage-system-rubies"></a> rbenv Installed System-Wide with Rubies
@@ -77,39 +110,6 @@ section for more details.
 
 * If node is running in a Vagrant VM, then including `recipe[rbenv::vagrant]`
 in your run\_list can help with resolving the *chef-solo* binary on subsequent
-
-## <a name="requirements"></a> Requirements
-
-### <a name="requirements-chef"></a> Chef
-
-This cookbook requires Chef 12.1+.
-
-### <a name="requirements-platform"></a> Platform
-
-The following platforms have been tested with this cookbook, meaning that
-the recipes and LWRPs run on these platforms without error:
-
-* ubuntu (10.04/12.04/14.04)
-* debian (6.0)
-* freebsd
-* redhat
-* centos
-* fedora
-* amazon
-* scientific
-* suse
-* mac\_os\_x
-* gentoo
-* arch
-* linux mint
-
-Please [report][issues] any additional platforms so they can be added.
-
-### <a name="requirements-cookbooks"></a> Cookbooks
-
-There are **no** external cookbook dependencies. However, if you
-want to manage Ruby installations or use the `rbenv_ruby` LWRP then you will
-need to include the [ruby\_build cookbook][ruby_build_cb].
 
 ## <a name="recipes"></a> Recipes
 
