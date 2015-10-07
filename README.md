@@ -1,6 +1,6 @@
 # <a name="title"></a> ruby_rbenv Chef Cookbook
 
-[![Build Status](https://travis-ci.org/chef-rbenv/chef-rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/chef-rbenv)
+[![Build Status](https://travis-ci.org/chef-rbenv/ruby_rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/ruby_rbenv)
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 
 ## <a name="description"></a> Description
@@ -82,7 +82,7 @@ in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
 ### <a name="requirements-chef"></a> Chef
 
-This cookbook requires Chef 12+.
+This cookbook requires Chef 12.1+.
 
 ### <a name="requirements-platform"></a> Platform
 
@@ -110,40 +110,6 @@ Please [report][issues] any additional platforms so they can be added.
 There are **no** external cookbook dependencies. However, if you
 want to manage Ruby installations or use the `rbenv_ruby` LWRP then you will
 need to include the [ruby\_build cookbook][ruby_build_cb].
-
-## <a name="installation"></a> Installation
-
-Depending on the situation and use case there are several ways to install
-this cookbook. All the methods listed below assume a tagged version release
-is the target, but omit the tags to get the head of development. A valid
-Chef repository structure like the [Opscode repo][chef_repo] is also assumed.
-
-### <a name="installation-berkshelf"></a> Using Berkshelf
-
-[Berkshelf][berkshelf] is a cookbook dependency manager and development
-workflow assistant. To install Berkshelf:
-
-    cd chef-repo
-    gem install berkshelf
-    berks init
-
-To reference the Git version:
-
-    repo="fnichol/chef-rbenv"
-    latest_release=$(curl -s https://api.github.com/repos/$repo/git/refs/tags \
-    | ruby -rjson -e '
-      j = JSON.parse(STDIN.read);
-      puts j.map { |t| t["ref"].split("/").last }.sort.last
-    ')
-    cat >> Berksfile <<END_OF_BERKSFILE
-    cookbook 'rbenv',
-      :git => 'git://github.com/$repo.git', :branch => '$latest_release'
-    END_OF_BERKSFILE
-    berks install
-
-### <a name="installation-platform"></a> From the Community Site
-
-This cookbook is available on the cookbook site as ruby_rbenv
 
 ## <a name="recipes"></a> Recipes
 
