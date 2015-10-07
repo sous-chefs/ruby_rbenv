@@ -4,7 +4,7 @@ metadata
 group :integration do
   cookbook 'apt'
   cookbook 'yum'
-  cookbook 'ruby_build'
+  cookbook 'java'
 end
 
 cookbook 'fixtures', path: 'test/unit/fixtures'
