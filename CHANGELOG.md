@@ -1,3 +1,14 @@
+## UNRELEASED
+* Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook)
+* Removed Berkshelf and Librarian-Chef setup instructions since the cookbook is now on Supermarket
+* Fixed base platform case statement in the cookbook that set install_pkgs and user_home_root attributes.  This has been converted to a platform_family statement to better support derivitive operating systems and the attributes are set at default levels so they can be overwritten in wrapper cookbooks
+* Updated Travis to test using Chef DK vs. Gem installs
+* Added the Apache 2.0 license file
+* Updated and added new development dependencies to the Gemfile
+* Use Chef 12.1+ multi-package installs for the dependency packages to speed up installs
+* Removed the empty Vagrant recipe
+
+
 ## 0.8.1 (August 28, 2015)
  * Add rbenv_action attribute to rbenv_ruby LWRP so to allow using rvm-download rbenv plugin to download ruby vs. installing ruby
  * Fix the ability to install gems to a specific version of ruby
@@ -17,7 +28,7 @@
  * Issue [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) [#92](https://github.com/fnichol/chef-rbenv/pull/92):
    Add matchers for rbenv_gem and rbenv_ruby.
    ([@tduffield](https://github.com/tduffield) and many others)
- * Issue [#107](https://github.com/fnichol/chef-rbenv/issues/107): 
+ * Issue [#107](https://github.com/fnichol/chef-rbenv/issues/107):
    "Option name must be a kind of String!" when installing gems.
  * Issue [#101](https://github.com/fnichol/chef-rbenv/issues/101):
    Use full class name for rbenv_rehash resource
