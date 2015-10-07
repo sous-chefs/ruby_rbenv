@@ -39,11 +39,7 @@ class Chef
       def install_rbenv_pkg_prereqs
         return if mac_with_no_homebrew
 
-        node['rbenv']['install_pkgs'].each do |pkg|
-          package "installing rbenv dependency: #{pkg}" do
-            package_name pkg
-          end
-        end
+        package node['rbenv']['install_pkgs']
       end
 
       def install_or_upgrade_rbenv(opts = {})
@@ -66,7 +62,6 @@ class Chef
           reference   opts[:git_ref]
           user        opts[:user]  if opts[:user]
           group       opts[:group] if opts[:group]
-
           action      git_exec_action
         end
 
