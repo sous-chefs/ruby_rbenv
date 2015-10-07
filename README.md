@@ -1065,5 +1065,5 @@ limitations under the License.
 [script_resource]:  http://docs.chef.io/resource_script.html
 
 [fnichol]:      https://github.com/fnichol
-[repo]:         https://github.com/chef-rbenv/chef-rbenv
-[issues]:       https://github.com/chef-rbenv/chef-rbenv/issues
+[repo]:         https://github.com/chef-rbenv/ruby-rbenv
+[issues]:       https://github.com/chef-rbenv/ruby-rbenv/issues
