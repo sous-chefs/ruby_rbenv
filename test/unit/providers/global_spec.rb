@@ -5,7 +5,7 @@ describe 'rbenv_global provider' do
   let(:node)      { runner.node }
 
   context 'with a fully configured resource' do
-    let(:chef_run)  { runner.converge('fixtures::rbenv_global_full') }
+    let(:chef_run) { runner.converge('fixtures::rbenv_global_full') }
 
     it 'runs an rbenv_script' do
       expect(chef_run).to run_rbenv_script('rbenv global 9.1.2 (claire)').with(
@@ -17,7 +17,7 @@ describe 'rbenv_global provider' do
   end
 
   context 'with a default configured resource' do
-    let(:chef_run)  { runner.converge('fixtures::rbenv_global_defaults') }
+    let(:chef_run) { runner.converge('fixtures::rbenv_global_defaults') }
 
     it 'runs an rbenv_script' do
       expect(chef_run).to run_rbenv_script('rbenv global 1.6.5 (system)').with(

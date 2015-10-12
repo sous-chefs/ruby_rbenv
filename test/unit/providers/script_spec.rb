@@ -5,7 +5,7 @@ describe 'rbenv_script provider' do
   let(:node)      { runner.node }
 
   context 'with a fully configured resource' do
-    let(:chef_run)  { runner.converge('fixtures::rbenv_script_full') }
+    let(:chef_run) { runner.converge('fixtures::rbenv_script_full') }
 
     before do
       user = double(dir: '/mnt/lockwood')
@@ -44,7 +44,7 @@ describe 'rbenv_script provider' do
   end
 
   context 'with a default configured resource' do
-    let(:chef_run)  { runner.converge('fixtures::rbenv_script_defaults') }
+    let(:chef_run) { runner.converge('fixtures::rbenv_script_defaults') }
 
     before do
       node.set['rbenv']['root_path'] = '/zz'
@@ -57,7 +57,7 @@ describe 'rbenv_script provider' do
         eval "$(rbenv init -)"
         rake nadda
       CODE
-      environment = { 'RBENV_ROOT'  => '/zz' }
+      environment = { 'RBENV_ROOT' => '/zz' }
 
       expect(chef_run).to run_script('not-much').with(
         interpreter:  'bash',

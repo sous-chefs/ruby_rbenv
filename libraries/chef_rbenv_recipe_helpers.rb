@@ -58,16 +58,16 @@ class Chef
         end
 
         git opts[:rbenv_prefix] do
-          repository  opts[:git_url]
-          reference   opts[:git_ref]
-          user        opts[:user]  if opts[:user]
-          group       opts[:group] if opts[:group]
-          action      git_exec_action
+          repository opts[:git_url]
+          reference opts[:git_ref]
+          user opts[:user] if opts[:user]
+          group opts[:group] if opts[:group]
+          action git_exec_action
         end
 
         directory "#{opts[:rbenv_prefix]}/plugins" do
-          owner   opts[:user].nil? ? 'root' : opts[:user]
-          mode    '0755'
+          owner opts[:user].nil? ? 'root' : opts[:user]
+          mode '0755'
         end
 
         Array(opts[:rbenv_plugins]).each do |plugin|
@@ -75,19 +75,19 @@ class Chef
           plugin_path = "#{opts[:rbenv_prefix]}/plugins/#{plugin['name']}"
 
           git "Install rbenv plugin - #{plugin['name']}" do
-            repository  plugin['git_url']
+            repository plugin['git_url']
             destination plugin_path
-            reference   revision
-            user        opts[:user]  if opts[:user]
-            group       opts[:group] if opts[:group]
-            action      :sync
+            reference revision
+            user opts[:user] if opts[:user]
+            group opts[:group] if opts[:group]
+            action :sync
           end
           log "Installed rbenv plugin - #{plugin['name']}"
         end
       end
 
       def initialize_rbenv(opts)
-        prefix  = opts[:rbenv_prefix]
+        prefix = opts[:rbenv_prefix]
 
         if opts[:user]
           init_env = { 'USER' => opts[:user], 'HOME' => opts[:home_dir] }
@@ -96,10 +96,10 @@ class Chef
         end
 
         bash "Initialize rbenv (#{opts[:user] || 'system'})" do
-          code  %(PATH="#{prefix}/bin:$PATH" rbenv init -)
+          code %(PATH="#{prefix}/bin:$PATH" rbenv init -)
           environment({ 'RBENV_ROOT' => prefix }.merge(init_env))
-          user  opts[:user]   if opts[:user]
-          group opts[:group]  if opts[:group]
+          user opts[:user] if opts[:user]
+          group opts[:group] if opts[:group]
         end
 
         log "rbenv-post-init-#{opts[:user] || 'system'}"

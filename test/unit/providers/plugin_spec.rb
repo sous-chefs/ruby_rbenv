@@ -25,7 +25,7 @@ describe 'rbenv_plugin provider' do
   end
 
   context 'with a minimally configured resource' do
-    let(:chef_run)  { runner.converge('fixtures::rbenv_plugin_defaults') }
+    let(:chef_run) { runner.converge('fixtures::rbenv_plugin_defaults') }
 
     before { node.set['rbenv']['root_path'] = '/ohyeah' }
 

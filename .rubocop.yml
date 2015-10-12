@@ -34,5 +34,3 @@ Style/FormatString:
   Enabled: false
 Style/RegexpLiteral:
   Enabled: false
-SingleSpaceBeforeFirstArg:
-  Enabled: false

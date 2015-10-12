@@ -1,5 +1,5 @@
 rbenv_global '9.1.2' do
-  user      'claire'
+  user 'claire'
   root_path '/mnt/roobies'
-  action    :create
+  action :create
 end
