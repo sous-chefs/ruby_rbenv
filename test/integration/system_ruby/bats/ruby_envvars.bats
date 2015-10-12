@@ -4,7 +4,7 @@
 # it will fails these tests. For more background, see:
 # https://github.com/sstephenson/rbenv/issues/297
 
-rubie="ree-1.8.7-2012.02"
+rubie="2.2.2"
 
 setup() {
   unset GEM_HOME

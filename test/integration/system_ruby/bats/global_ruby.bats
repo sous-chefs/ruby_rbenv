@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-global_ruby="2.1.1"
+global_ruby="2.1.6"
 https_url="https://google.com"
 
 setup() {
