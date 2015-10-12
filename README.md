@@ -1,6 +1,6 @@
 # <a name="title"></a> rbenv Chef Cookbook
 
-[![Build Status](https://travis-ci.org/chef-rbenv/chef-rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/chef-rbenv)
+[![Build Status](https://travis-ci.org/chef-rbenv/ruby_rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/ruby_rbenv)
 
 ## <a name="description"></a> Description
 
