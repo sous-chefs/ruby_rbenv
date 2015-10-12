@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Library:: Chef::Rbenv::Mixin
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>

@@ -1,6 +1,4 @@
 ## UNRELEASED
-* Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook)
-* Removed Berkshelf and Librarian-Chef setup instructions since the cookbook is now on Supermarket
 * Fixed base platform case statement in the cookbook that set install_pkgs and user_home_root attributes.  This has been converted to a platform_family statement to better support derivitive operating systems and the attributes are set at default levels so they can be overwritten in wrapper cookbooks
 * Updated Travis to test using Chef DK vs. Gem installs
 * Added the Apache 2.0 license file

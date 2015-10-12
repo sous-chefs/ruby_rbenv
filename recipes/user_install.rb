@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Recipe:: user_install
 #
 # Copyright 2011, Fletcher Nichol
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe 'ruby_rbenv'
+include_recipe 'rbenv'
 
 install_rbenv_pkg_prereqs
 

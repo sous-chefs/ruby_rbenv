@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Resource:: script
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
@@ -21,8 +21,6 @@
 
 actions :run
 default_action :run
-
-provides :rbenv_script
 
 attribute :name,          kind_of: String, name_attribute: true
 attribute :rbenv_version, kind_of: String

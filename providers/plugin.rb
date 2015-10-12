@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Provider:: plugin
 #
 # Author:: Joshua Yotty <jyotty@bluebox.net>
@@ -24,8 +24,6 @@ def whyrun_supported?
 end
 
 use_inline_resources
-
-provides :rbenv_plugin
 
 include Chef::Rbenv::ScriptHelpers
 

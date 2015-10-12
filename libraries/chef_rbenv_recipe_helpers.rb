@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Library:: Chef::RubyBuild::RecipeHelpers
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>

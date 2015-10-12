@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Recipe:: system_install
 #
 # Copyright 2011, Fletcher Nichol
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe 'ruby_rbenv'
+include_recipe 'rbenv'
 
 upgrade_strategy = build_upgrade_strategy(node['rbenv']['upgrade'])
 git_url = node['rbenv']['git_url']

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Recipe:: system
 #
 # Copyright 2010, 2011 Fletcher Nichol
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe 'ruby_rbenv::system_install'
+include_recipe 'rbenv::system_install'
 
 Array(node['rbenv']['plugins']).each do |plugin|
   rbenv_plugin plugin['name'] do

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook Name:: rbenv
 # Provider:: rehash
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
@@ -24,8 +24,6 @@ def whyrun_supported?
 end
 
 use_inline_resources
-
-provides :rbenv_rehash
 
 include Chef::Rbenv::ScriptHelpers
 
