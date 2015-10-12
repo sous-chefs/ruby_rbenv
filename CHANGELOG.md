@@ -1,3 +1,6 @@
+## UNRELEASED
+* Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook)
+
 ## 0.9.0 (October 12, 2015)
 * Fixed base platform case statement in the cookbook that set install_pkgs and user_home_root attributes.  This has been converted to a platform_family statement to better support derivitive operating systems and the attributes are set at default levels so they can be overwritten in wrapper cookbooks
 * Updated Travis to test using Chef DK vs. Gem installs
@@ -6,6 +9,7 @@
 * Updated and added new development dependencies to the Gemfile
 * Use Chef 12.1+ multi-package installs for the dependency packages to speed up installs
 * Removed the empty Vagrant recipe
+* Actually depend on ruby_version vs. suggests since suggests isn't implemented in Chef
 
 ## 0.8.1 (August 28, 2015)
  * Add rbenv_action attribute to rbenv_ruby LWRP so to allow using rvm-download rbenv plugin to download ruby vs. installing ruby

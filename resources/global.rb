@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rbenv
+# Cookbook Name:: ruby_rbenv
 # Resource:: global
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
@@ -21,6 +21,8 @@
 
 actions :create
 default_action :create
+
+provides :rbenv_global
 
 attribute :rbenv_version, kind_of: String, name_attribute: true
 attribute :user,          kind_of: String

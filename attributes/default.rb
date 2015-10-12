@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rbenv
+# Cookbook Name:: ruby_rbenv
 # Attributes:: default
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
