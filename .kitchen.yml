@@ -9,8 +9,8 @@ platforms:
 - name: ubuntu-14.04
   run_list:
   - recipe[apt]
-- name: centos-6.5
-- name: centos-7.0
+- name: centos-6.7
+- name: centos-7.1
 
 suites:
 - name: system_ruby
