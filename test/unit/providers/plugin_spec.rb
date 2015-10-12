@@ -10,7 +10,7 @@ describe 'rbenv_plugin provider' do
     it 'creates the parent directory for plugins' do
       expect(chef_run).to create_directory('/tmp/rootness/plugins').with(
         owner: 'sam',
-        mode: 00755
+        mode: '0755'
       )
     end
 
@@ -32,7 +32,7 @@ describe 'rbenv_plugin provider' do
     it 'creates the parent directory for plugins' do
       expect(chef_run).to create_directory('/ohyeah/plugins').with(
         owner: 'root',
-        mode: 00755
+        mode: '0755'
       )
     end
 
