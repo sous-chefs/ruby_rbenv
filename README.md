@@ -8,6 +8,8 @@
 Manages [rbenv][rbenv_site] and its installed Rubies.
 Several lightweight resources and providers ([LWRPs][lwrp]) are also defined.
 
+**WARNING**: As of version 1.0 this cookbook was renamed from rbenv to ruby_rbenv so it could be uploaded to the Supermarket. Attributes and resources (LWRPs) retain the rbenv namespace for compatibility, but if you wrap this cookbook you'll need to update the recipes you include. Use 0.9.0 if you need the existing name.
+
 ## <a name="requirements"></a> Requirements
 
 ### <a name="requirements-chef"></a> Chef

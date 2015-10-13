@@ -1,5 +1,7 @@
-## UNRELEASED
-* Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook)
+## 1.0.0 (October 12, 2015)
+
+### WARNING: Cookbook has been renamed
+* Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook). If you wrap this cookbook you're going to need to update the recipes you include.  All providers have been updated to keep their existing rbenv_xyz names for backwards compatibility and attributes still maintain the rbenv namespace.
 * Updated Travis config to run integration tests in Travis using kitchen-docker
 
 ## 0.9.0 (October 12, 2015)
