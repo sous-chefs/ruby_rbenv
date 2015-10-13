@@ -1,11 +1,14 @@
-# <a name="title"></a> rbenv Chef Cookbook
+# <a name="title"></a> ruby_rbenv Chef Cookbook
 
 [![Build Status](https://travis-ci.org/chef-rbenv/ruby_rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/ruby_rbenv)
+[![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 
 ## <a name="description"></a> Description
 
 Manages [rbenv][rbenv_site] and its installed Rubies.
 Several lightweight resources and providers ([LWRPs][lwrp]) are also defined.
+
+**WARNING**: As of version 1.0 this cookbook was renamed from rbenv to ruby_rbenv so it could be uploaded to the Supermarket. Attributes and resources (LWRPs) retain the rbenv namespace for compatibility, but if you wrap this cookbook you'll need to update the recipes you include. Use 0.9.0 if you need the existing name.
 
 ## <a name="requirements"></a> Requirements
 
@@ -37,7 +40,7 @@ Please [report][issues] any additional platforms so they can be added.
 
 ### <a name="usage-system-rubies"></a> rbenv Installed System-Wide with Rubies
 
-Most likely, this is the typical case. Include `recipe[rbenv::system]` in your
+Most likely, this is the typical case. Include `recipe[ruby_rbenv::system]` in your
 run\_list and override the defaults you want changed. See [below](#attributes)
 for more details.
 
@@ -47,7 +50,7 @@ If your platform is the Mac, you may need to modify your
 ### <a name="usage-user-rubies"></a> rbenv Installed For A Specific User with Rubies
 
 If you want a per-user install (like on a Mac/Linux workstation for
-development, CI, etc.), include `recipe[rbenv::user]` in your run\_list and
+development, CI, etc.), include `recipe[ruby_rbenv::user]` in your run\_list and
 add a user hash to the `user_installs` attribute list. For example:
 
     node.default['rbenv']['user_installs'] = [
@@ -73,7 +76,7 @@ See [below](#attributes) for more details.
 ### <a name="usage-system"></a> rbenv Installed System-Wide and LWRPs Defined
 
 If you want to manage your own rbenv environment with the provided
-LWRPs, then include `recipe[rbenv::system_install]` in your run\_list
+LWRPs, then include `recipe[ruby_rbenv::system_install]` in your run\_list
 to prevent a default rbenv Ruby being installed. See the
 [Resources and Providers](#lwrps) section for more details.
 
@@ -83,7 +86,7 @@ If your platform is the Mac, you may need to modify your
 ### <a name="usage-user"></a> rbenv Installed For A Specific User and LWRPs Defined
 
 If you want to manage your own rbenv environment for users with the provided
-LWRPs, then include `recipe[rbenv::user_install]` in your run\_list and add a
+LWRPs, then include `recipe[ruby_rbenv::user_install]` in your run\_list and add a
 user hash to the `user_installs` attribute list. For example:
 
     node.default['rbenv']['user_installs'] = [
@@ -97,11 +100,6 @@ See the [Resources and Providers](#lwrps) section for more details.
 Simply include `recipe[rbenv]` in your run\_list and the LWRPs will be
 available to use in other cookbooks. See the [Resources and Providers](#lwrps)
 section for more details.
-
-### <a name="usage-other"></a> Other Use Cases
-
-* If node is running in a Vagrant VM, then including `recipe[rbenv::vagrant]`
-in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
 ## <a name="recipes"></a> Recipes
 

@@ -16,7 +16,7 @@ suites:
 - name: system_ruby
   run_list:
   - recipe[ruby_build]
-  - recipe[rbenv::system]
+  - recipe[ruby_rbenv::system]
   attributes:
     rbenv:
       plugins:

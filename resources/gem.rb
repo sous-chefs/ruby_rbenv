@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rbenv
+# Cookbook Name:: ruby_rbenv
 # Resource:: gem
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
@@ -21,6 +21,8 @@
 
 actions :install, :upgrade, :remove, :purge
 default_action :install
+
+provides :rbenv_gem
 
 attribute :package_name,  kind_of: String, name_attribute: true
 attribute :rbenv_version, kind_of: String, default: 'global'

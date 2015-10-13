@@ -1,0 +1,53 @@
+settings:
+  parallel: true
+
+driver:
+  name: docker
+  # privileged is required otherwise the container doesn't boot right
+  privileged: true
+
+platforms:
+- name: centos-7.1
+  driver:
+    image: centos:7
+    platform: rhel
+    run_command: /usr/lib/systemd/systemd
+    provision_command:
+      - /bin/yum install -y initscripts net-tools wget
+- name: ubuntu-12.04
+  driver:
+    image: ubuntu-upstart:12.04
+    platform: ubuntu
+    disable_upstart: false
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/apt-get update
+      - /usr/bin/apt-get install apt-transport-https net-tools -y
+- name: ubuntu-14.04
+  driver:
+    image: ubuntu-upstart:14.04
+    platform: ubuntu
+    disable_upstart: false
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/apt-get update
+      - /usr/bin/apt-get install apt-transport-https net-tools -y
+
+suites:
+- name: system_ruby
+  run_list:
+  - recipe[ruby_build]
+  - recipe[ruby_rbenv::system]
+  attributes:
+    rbenv:
+      plugins:
+      - name: rbenv-vars
+        git_url: https://github.com/sstephenson/rbenv-vars.git
+      rubies:
+      - name: 2.1.6
+        environment:
+          CONFIGURE_OPTS: --disable-install-rdoc
+      - name: 2.2.2
+        environment:
+          CONFIGURE_OPTS: --disable-install-rdoc
+      global: 2.1.6

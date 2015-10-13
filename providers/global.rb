@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rbenv
+# Cookbook Name:: ruby_rbenv
 # Provider:: global
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
@@ -24,6 +24,8 @@ def whyrun_supported?
 end
 
 use_inline_resources
+
+provides :rbenv_global
 
 include Chef::Rbenv::ScriptHelpers
 
