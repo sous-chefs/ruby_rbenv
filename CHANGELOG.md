@@ -1,5 +1,6 @@
 ## UNRELEASED
 * Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook)
+* Updated Travis config to run integration tests in Travis using kitchen-docker
 
 ## 0.9.0 (October 12, 2015)
 * Fixed base platform case statement in the cookbook that set install_pkgs and user_home_root attributes.  This has been converted to a platform_family statement to better support derivitive operating systems and the attributes are set at default levels so they can be overwritten in wrapper cookbooks
