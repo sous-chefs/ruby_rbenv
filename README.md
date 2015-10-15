@@ -144,12 +144,6 @@ metadata. This recipe includes *default* and *user_install*.
 Use this recipe by itself if you want rbenv installed for specific users in
 isolation with rubies installed.
 
-### <a name="recipes-vagrant"></a> vagrant
-
-An optional recipe if Chef is installed in a non-rbenv Ruby in a
-[Vagrant][vagrant] virtual machine. This recipe installs a `chef-solo`
-wrapper script so Chef doesn't need to be re-installed in the global rbenv Ruby.
-
 ## <a name="attributes"></a> Attributes
 
 ### <a name="attributes-git-url"></a> git_url
