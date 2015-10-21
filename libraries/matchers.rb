@@ -1,25 +1,18 @@
 if defined?(ChefSpec)
-  def install_rbenv_plugin(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:rbenv_plugin, :install, name)
+
+  {
+    rbenv_gem: [:install, :upgrade, :remove, :purge],
+    rbenv_global: [:create],
+    rbenv_plugin: [:install],
+    rbenv_rehash: [:run],
+    rbenv_ruby: [:install, :reinstall],
+    rbenv_script: [:run]
+  }.each do |resource, actions|
+    actions.each do |action|
+      define_method("#{action}_#{resource}") do |name|
+        ChefSpec::Matchers::ResourceMatcher.new(resource, action, name)
+      end
+    end
   end
 
-  def run_rbenv_script(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:rbenv_script, :run, name)
-  end
-
-  def install_rbenv_gem(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:rbenv_gem, :install, name)
-  end
-
-  def upgrade_rbenv_gem(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:rbenv_gem, :upgrade, name)
-  end
-
-  def remove_rbenv_gem(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:rbenv_gem, :remove, name)
-  end
-
-  def purge_rbenv_gem(name)
-    ChefSpec::Matchers::ResourceMatcher.new(:rbenv_gem, :purge, name)
-  end
 end
