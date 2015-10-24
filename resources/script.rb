@@ -37,4 +37,3 @@ attribute :returns,       kind_of: Array, default: [0]
 attribute :timeout,       kind_of: Integer
 attribute :user,          kind_of: String
 attribute :umask,         kind_of: [String, Integer]
-
