@@ -1,3 +1,6 @@
+## 1.0.1 (October 24, 2015)
+* Fixed failure with rehashing after the cookbook was renamed
+
 ## 1.0.0 (October 12, 2015)
 
 ### WARNING: Cookbook has been renamed
