@@ -19,7 +19,10 @@
 # limitations under the License.
 #
 
-provides :rbenv_ruby
+# Chef 11 backwards compability for OpsWorks
+if respond_to?(:provides)
+ provides :rbenv_ruby
+end
 
 include Chef::Rbenv::ScriptHelpers
 
