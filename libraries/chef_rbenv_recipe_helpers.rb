@@ -39,7 +39,11 @@ class Chef
       def install_rbenv_pkg_prereqs
         return if mac_with_no_homebrew
 
-        package node['rbenv']['install_pkgs']
+        node['rbenv']['install_pkgs'].each do |pkg|
+          package "installing rbenv dependency: #{pkg}" do
+            package_name pkg
+          end
+        end
       end
 
       def install_or_upgrade_rbenv(opts = {})
