@@ -157,7 +157,7 @@ The default is `"git://github.com/sstephenson/rbenv.git"`.
 A specific Git branch/tag/reference to use when installing rbenv. For
 example, to pin rbenv to a specific release:
 
-    node.default['ruby_build']['git_ref'] = "v0.2.1"
+    node.default['rbenv']['git_ref'] = "v0.2.1"
 
 The default is `"v0.4.0"`.
 
