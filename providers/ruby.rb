@@ -19,7 +19,10 @@
 # limitations under the License.
 #
 
-provides :rbenv_ruby
+# Chef 11 backwards compability for OpsWorks
+if respond_to?(:provides)
+ provides :rbenv_ruby
+end
 
 include Chef::Rbenv::ScriptHelpers
 
@@ -106,9 +109,11 @@ def install_ruby_dependencies
     pkgs = node['ruby_build']['install_pkgs_jruby']
   end
 
-  package Array(pkgs) do
-    action :nothing
-  end.run_action(:install)
+  Array(pkgs).each do |pkg|
+    package "Installing rbenv dependency: #{pkg}" do
+      package_name pkg
+    end
+  end
 
   ensure_java_environment if definition =~ /^jruby-/
 end

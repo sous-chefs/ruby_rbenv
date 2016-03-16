@@ -25,7 +25,10 @@ end
 
 use_inline_resources
 
-provides :rbenv_global
+# Chef 11 backwards compability for OpsWorks
+if respond_to?(:provides)
+  provides :rbenv_global
+end
 
 include Chef::Rbenv::ScriptHelpers
 
