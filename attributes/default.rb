@@ -62,7 +62,7 @@ when 'mac_os_x'
   default['rbenv']['install_pkgs'] = %w(git)
   default['rbenv']['user_home_root'] = '/Users'
 when 'freebsd'
-  default['rbenv']['install_pkgs'] = %w(git)
+  default['rbenv']['install_pkgs'] = %w(git bash)
   default['rbenv']['user_home_root'] = '/usr/home'
 when 'gentoo'
   default['rbenv']['install_pkgs'] = %w(git)
