@@ -20,8 +20,12 @@ services: docker
 
 env:
   matrix:
-    - INSTANCE=system-ruby-centos-6
     - INSTANCE=system-ruby-centos-7
+    - INSTANCE=system-ruby-debian-7
+    - INSTANCE=system-ruby-debian-8
+    - INSTANCE=system-ruby-fedora-latest
+    - INSTANCE=system-ruby-opensuse-132
+    - INSTANCE=system-ruby-opensuse-421
     - INSTANCE=system-ruby-ubuntu-1204
     - INSTANCE=system-ruby-ubuntu-1404
     - INSTANCE=system-ruby-ubuntu-1604
