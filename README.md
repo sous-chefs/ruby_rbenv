@@ -1019,7 +1019,7 @@ Ideally create a topic branch for every separate change you make.
 
 ## <a name="license"></a> License and Author
 
-Author:: [Fletcher Nichol][fnichol] (<fnichol@nichol.ca>) [![endorse](http://api.coderwall.com/fnichol/endorsecount.png)](http://coderwall.com/fnichol)
+Author:: [Fletcher Nichol][fnichol] (<fnichol@nichol.ca>)
 
 Copyright 2011, Fletcher Nichol
 
