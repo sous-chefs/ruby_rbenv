@@ -29,3 +29,8 @@ def class_name_for_lwrp(cb, lwrp)
     Chef::Mixin::ConvertToClassName.filename_to_qualified_string(cb, lwrp)
   )
 end
+
+RSpec.configure do |config|
+  config.color = true
+  config.log_level = :error
+end
