@@ -2,7 +2,7 @@
 # Cookbook Name:: ruby_rbenv
 # Recipe:: user_install
 #
-# Copyright 2011, Fletcher Nichol
+# Copyright 2011-2016, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

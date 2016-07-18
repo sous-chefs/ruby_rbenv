@@ -4,7 +4,7 @@
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
-# Copyright 2011, Fletcher Nichol
+# Copyright 2011-2016, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,11 +51,11 @@ class Chef
       private
 
       def git_deploy_rbenv(opts)
-        if opts[:upgrade_strategy] == 'none'
-          git_exec_action = :checkout
-        else
-          git_exec_action = :sync
-        end
+        git_exec_action = if opts[:upgrade_strategy] == 'none'
+                            :checkout
+                          else
+                            :sync
+                          end
 
         git opts[:rbenv_prefix] do
           repository opts[:git_url]
@@ -89,11 +89,11 @@ class Chef
       def initialize_rbenv(opts)
         prefix = opts[:rbenv_prefix]
 
-        if opts[:user]
-          init_env = { 'USER' => opts[:user], 'HOME' => opts[:home_dir] }
-        else
-          init_env = {}
-        end
+        init_env = if opts[:user]
+                     { 'USER' => opts[:user], 'HOME' => opts[:home_dir] }
+                   else
+                     {}
+                   end
 
         bash "Initialize rbenv (#{opts[:user] || 'system'})" do
           code %(PATH="#{prefix}/bin:$PATH" rbenv init -)

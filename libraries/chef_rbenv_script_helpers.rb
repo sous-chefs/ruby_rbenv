@@ -4,7 +4,7 @@
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
-# Copyright 2011, Fletcher Nichol
+# Copyright 2011-2016, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -62,16 +62,16 @@ class Chef
       end
 
       # Execute the supplied block of code as the given user.
-      def run_as_user(username, &block)
+      def run_as_user(username)
         if username
           user = Etc.getpwnam(username)
           Process.fork do
             Process.uid = user.uid
-            block.call
+            yield
           end
           Process.wait
         else
-          block.call
+          yield
         end
       end
     end
