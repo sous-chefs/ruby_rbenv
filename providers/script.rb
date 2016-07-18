@@ -70,11 +70,12 @@ def build_script_environment
   script_env.merge!(new_resource.environment) if new_resource.environment
 
   if new_resource.path
-    script_env.merge!('PATH' => "#{new_resource.path.join(':')}:#{ENV['PATH']}")
+    script_env['PATH'] = "#{new_resource.path.join(':')}:#{ENV['PATH']}"
   end
 
   if new_resource.user
-    script_env.merge!('USER' => new_resource.user, 'HOME' => user_home)
+    script_env['USER'] = new_resource.user
+    script_env['HOME'] = user_home
   end
 
   script_env
