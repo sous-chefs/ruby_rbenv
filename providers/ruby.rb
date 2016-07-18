@@ -106,9 +106,11 @@ def install_ruby_dependencies
     pkgs = node['ruby_build']['install_pkgs_jruby']
   end
 
-  package Array(pkgs) do
-    action :nothing
-  end.run_action(:install)
+  pkgs.each do |pkg|
+    package pkg do
+      action :nothing
+    end.run_action(:install)
+  end
 
   ensure_java_environment if definition =~ /^jruby-/
 end
