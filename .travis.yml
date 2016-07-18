@@ -20,10 +20,11 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=system-ruby-ubuntu-1404
-  - INSTANCE=system-ruby-ubuntu-1204
-  - INSTANCE=system-ruby-ubuntu-1604
-  - INSTANCE=system-ruby-centos-71
+    - INSTANCE=system-ruby-centos-6
+    - INSTANCE=system-ruby-centos-7
+    - INSTANCE=system-ruby-ubuntu-1204
+    - INSTANCE=system-ruby-ubuntu-1404
+    - INSTANCE=system-ruby-ubuntu-1604
 
   fast_finish: true
 
