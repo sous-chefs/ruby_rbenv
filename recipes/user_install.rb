@@ -29,6 +29,11 @@ template '/etc/profile.d/rbenv.sh' do
 end
 
 Array(node['rbenv']['user_installs']).each do |rb_user|
+  if rb_user['home'].nil?
+    next unless ::File.exist?(File.join(node['rbenv']['user_home_root'], rb_user['user']))
+  else
+    next unless ::File.exist?(rb_user['home'])
+  end
   upgrade_strategy  = build_upgrade_strategy(rb_user['upgrade'])
   git_url           = rb_user['git_url'] || node['rbenv']['git_url']
   git_ref           = rb_user['git_ref'] || node['rbenv']['git_ref']

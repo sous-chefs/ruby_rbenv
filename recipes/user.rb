@@ -20,6 +20,11 @@
 include_recipe 'ruby_rbenv::user_install'
 
 Array(node['rbenv']['user_installs']).each do |rbenv_user|
+  if rbenv_user['home'].nil?
+    next unless ::File.exist?(File.join(node['rbenv']['user_home_root'], rbenv_user['user']))
+  else
+    next unless ::File.exist?(rbenv_user['home'])
+  end
   plugins   = rbenv_user['plugins'] || node['rbenv']['user_plugins']
   rubies    = rbenv_user['rubies'] || node['rbenv']['user_rubies']
   gem_hash  = rbenv_user['gems'] || node['rbenv']['user_gems']
