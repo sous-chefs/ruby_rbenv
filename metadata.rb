@@ -1,6 +1,6 @@
 name 'ruby_rbenv'
-maintainer 'Fletcher Nichol'
-maintainer_email 'fnichol@nichol.ca'
+maintainer 'Sous Chefs'
+maintainer_email 'help@sous-chefs.org'
 license 'Apache 2.0'
 description 'Manages rbenv and its installed rubies. Several LWRPs are also defined.'
 long_description "Please refer to README.md (it's long)."
@@ -20,7 +20,6 @@ supports 'scientific'
 supports 'suse'
 supports 'mac_os_x'
 
-source_url 'https://github.com/chef-rbenv/ruby_rbenv'
-issues_url 'https://github.com/chef-rbenv/ruby_rbenv/issues'
-
-chef_version '>= 12.0' if respond_to?(:chef_version)
+source_url "https://github.com/sous-chefs/#{name}"
+issues_url "https://github.com/sous-chefs/#{name}/issues"
+chef_version '>= 12.1' if respond_to?(:chef_version)
