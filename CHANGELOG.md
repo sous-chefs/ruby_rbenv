@@ -1,3 +1,7 @@
+# [Unreleased]
+
+- added checks to user install recipes to avoid breaking if the rbenv_home does not exist
+
 # 1.1.0 (July 17, 2016)
 
 - Restored compatibility for platforms that don't yet support multipackage installs in Chef (BSD and OS X in particular)
