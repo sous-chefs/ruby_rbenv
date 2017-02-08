@@ -19,8 +19,6 @@ supports 'amazon'
 supports 'scientific'
 supports 'suse'
 supports 'mac_os_x'
-supports 'gentoo'
-supports 'arch'
 
 source_url 'https://github.com/chef-rbenv/ruby_rbenv'
 issues_url 'https://github.com/chef-rbenv/ruby_rbenv/issues'
