@@ -7,7 +7,6 @@ long_description "Please refer to README.md (it's long)."
 version '1.1.0'
 
 depends 'ruby_build' # if using the rbenv LWRP, ruby-build must be installed
-recommends 'java', '> 1.4.0' # if using jruby, java is required on system
 
 supports 'ubuntu'
 supports 'linuxmint'
