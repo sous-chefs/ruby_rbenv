@@ -1,0 +1,10 @@
+name              'test'
+maintainer        'Sous Chefs'
+maintainer_email  'help@sous-chefs.org'
+license           'Apache 2.0'
+description       'Test recipe for ruby_rbenv'
+version           '1.0.0'
+
+depends 'ruby_build'
+depends 'java'
+depends 'ruby_rbenv'
