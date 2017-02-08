@@ -4,32 +4,24 @@ driver:
 provisioner:
   name: chef_zero
 
+verifier:
+  name: inspec
+
 platforms:
-  - name: centos-5.11
-  - name: centos-6.7
+  - name: centos-6.8
   - name: centos-7.2
+  - name: debian-7.11
+  - name: debian-8.6
+  - name: fedora-25
+  - name: opensuse-13.2
+  - name: opensuse-leap-42.1
   - name: ubuntu-12.04
-    run_list: apt::default
   - name: ubuntu-14.04
-    run_list: apt::default
   - name: ubuntu-16.04
-    run_list: apt::default
+  - name: freebsd-9.3
+  - name: freebsd-10.3
 
 suites:
 - name: system_ruby
   run_list:
-  - recipe[ruby_build]
-  - recipe[ruby_rbenv::system]
-  attributes:
-    rbenv:
-      plugins:
-      - name: rbenv-vars
-        git_url: https://github.com/sstephenson/rbenv-vars.git
-      rubies:
-      - name: 2.1.6
-        environment:
-          CONFIGURE_OPTS: --disable-install-rdoc
-      - name: 2.2.2
-        environment:
-          CONFIGURE_OPTS: --disable-install-rdoc
-      global: 2.1.6
+  - recipe[test]
