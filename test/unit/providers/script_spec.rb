@@ -25,7 +25,7 @@ describe 'rbenv_script provider' do
         'USER'        => 'lockwood',
         'HOME'        => '/mnt/lockwood',
         'FRUIT'       => 'strawberry',
-        'PATH'        => "/opt/bin:#{ENV['PATH']}"
+        'PATH'        => "/opt/bin:#{ENV['PATH']}",
       }
 
       expect(chef_run).to run_script('all-the-things').with(

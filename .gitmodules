@@ -1,0 +1,3 @@
+[submodule "foodcritic/sc"]
+	path = foodcritic/sc
+	url = https://github.com/sous-chefs/sc-foodcritic-rules.git
