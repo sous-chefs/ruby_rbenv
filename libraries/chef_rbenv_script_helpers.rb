@@ -52,7 +52,7 @@ class Chef
         [%(export RBENV_ROOT="#{rbenv_root}"),
          %(export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"),
          %(export RBENV_VERSION="#{new_resource.rbenv_version}"),
-         %($RBENV_ROOT/shims/#{cmd})
+         %($RBENV_ROOT/shims/#{cmd}),
         ].join(' && ')
       end
 
