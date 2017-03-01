@@ -1,6 +1,6 @@
 # <a name="title"></a> ruby_rbenv Chef Cookbook
 
-[![Build Status](https://travis-ci.org/chef-rbenv/ruby_rbenv.svg?branch=master)](https://travis-ci.org/chef-rbenv/ruby_rbenv)
+[![Build Status](https://travis-ci.org/sous-chefs/ruby_rbenv.svg?branch=master)](https://travis-ci.org/sous-chefs/ruby_rbenv)
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 
 ## <a name="description"></a> Description
@@ -22,7 +22,7 @@ The following platforms have been tested with this cookbook, meaning that
 the recipes and LWRPs run on these platforms without error:
 
 * Arch
-* Debian derivitives (Debian 7+, Ubuntu 10.04+, Linux Mint)
+* Debian derivitives (Debian 7+, Ubuntu 12.04+, Linux Mint)
 * Freebsd
 * Fedora
 * Gentoo
