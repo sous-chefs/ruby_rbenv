@@ -32,7 +32,7 @@ class Chef
 
       def mac_with_no_homebrew
         node['platform'] == 'mac_os_x' &&
-          Chef::Platform.find_provider_for_node(node, :package) !=
+          Chef::Resource.resource_for_node(:service, node) !=
             Chef::Provider::Package::Homebrew
       end
 
