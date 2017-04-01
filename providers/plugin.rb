@@ -1,10 +1,10 @@
 #
-# Cookbook Name:: ruby_rbenv
+# Cookbook:: ruby_rbenv
 # Provider:: plugin
 #
 # Author:: Joshua Yotty <jyotty@bluebox.net>
 #
-# Copyright 2014, Joshua Yotty
+# Copyright:: 2014-2017, Joshua Yotty
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
