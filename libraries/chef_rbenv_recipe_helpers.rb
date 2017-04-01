@@ -30,15 +30,7 @@ class Chef
         end
       end
 
-      def mac_with_no_homebrew
-        node['platform'] == 'mac_os_x' &&
-          Chef::Resource.resource_for_node(:service, node) !=
-            Chef::Provider::Package::Homebrew
-      end
-
       def install_rbenv_pkg_prereqs
-        return if mac_with_no_homebrew
-
         node['rbenv']['install_pkgs'].each { |pkg| package pkg }
       end
 
