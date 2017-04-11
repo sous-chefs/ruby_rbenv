@@ -1,17 +1,17 @@
 driver:
   name: dokken
-  chef_version: latest
   privileged: true # because Docker and SystemD/Upstart
+  chef_version: current
 
 transport:
   name: dokken
 
 provisioner:
   name: dokken
+  deprecations_as_errors: true
 
 verifier:
   name: inspec
-  format: doc
 
 platforms:
 - name: debian-7
@@ -29,14 +29,6 @@ platforms:
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
       - RUN /usr/bin/apt-get install lsb-release -y
-
-- name: centos-5
-  driver:
-    image: centos:5
-    platform: rhel
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN yum install -y which initscripts
 
 - name: centos-6
   driver:
@@ -61,13 +53,6 @@ platforms:
     intermediate_instructions:
       - RUN dnf -y install yum which systemd-sysv initscripts
 
-- name: ubuntu-12.04
-  driver:
-    image: ubuntu-upstart:12.04
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-
 - name: ubuntu-14.04
   driver:
     image: ubuntu-upstart:14.04
@@ -81,17 +66,11 @@ platforms:
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
-- name: opensuse-13.2
+- name: opensuse-leap
   driver:
-    image: opensuse:13.2
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-      - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive
-
-- name: opensuse-42.1
-  driver:
-    image: opensuse:42.1
+    image: opensuse:leap
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive
