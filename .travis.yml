@@ -1,11 +1,10 @@
 sudo: required
 dist: trusty
 
-# install the pre-release chef-dk.  Use chef-stable-precise to install the stable release
 addons:
   apt:
     sources:
-      - chef-current-precise
+      - chef-stable-trusty
     packages:
       - chefdk
 
@@ -14,29 +13,30 @@ install: echo "skip bundle install"
 
 branches:
   only:
-  - master
+    - master
 
 services: docker
 
 env:
   matrix:
-    - INSTANCE=system-ruby-centos-6
+    #    - INSTANCE=system-ruby-centos-6
     - INSTANCE=system-ruby-centos-7
-    - INSTANCE=system-ruby-ubuntu-1204
     - INSTANCE=system-ruby-ubuntu-1404
     - INSTANCE=system-ruby-ubuntu-1604
-
-  fast_finish: true
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
-
-script:
   - /opt/chefdk/embedded/bin/chef --version
   - /opt/chefdk/embedded/bin/cookstyle --version
-  - /opt/chefdk/embedded/bin/cookstyle
   - /opt/chefdk/embedded/bin/foodcritic --version
-  - /opt/chefdk/embedded/bin/foodcritic . --exclude spec -f any -P
-  - /opt/chefdk/embedded/bin/rspec
-  - KITCHEN_LOCAL_YAML=.kitchen.docker.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+
+script: KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+
+matrix:
+  include:
+    - script:
+      - /opt/chefdk/embedded/bin/cookstyle
+      - /opt/chefdk/embedded/bin/foodcritic .
+      - /opt/chefdk/embedded/bin/rspec
+      env: UNIT_AND_LINT=1

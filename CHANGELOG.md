@@ -1,6 +1,11 @@
-# [Unreleased]
+# 1.2.0 (April 11, 2017)
 
-- added checks to user install recipes to avoid breaking if the rbenv_home does not exist
+- Migrated maintenance of this cookbook to Sous Chefs
+- Remove the check to see if the homebrew provider exists since this always exists in Chef 12 and the code failed on Chef 13
+- Added checks to user install recipes to avoid breaking if the rbenv_home does not exist
+- Removed test deps from the Gemfile as we should be testing with ChefDK
+- Removed the "suggests 'java'" metadata as suggests was never implemented in Chef and has been removed from Chef 13
+- Bumped the required Chef release from 12.0 to 12.1
 
 # 1.1.0 (July 17, 2016)
 
