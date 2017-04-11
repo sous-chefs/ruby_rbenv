@@ -10,7 +10,6 @@ version '1.1.0'
 chef_version '>= 12.0' if respond_to?(:chef_version)
 
 depends 'ruby_build' # if using the rbenv LWRP, ruby-build must be installed
-recommends 'java', '> 1.4.0' # if using jruby, java is required on system
 
 supports 'ubuntu'
 supports 'linuxmint'
