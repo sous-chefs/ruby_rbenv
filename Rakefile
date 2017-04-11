@@ -10,11 +10,7 @@ namespace :style do
   RuboCop::RakeTask.new(:ruby)
 
   desc 'Run Chef style checks'
-  FoodCritic::Rake::LintTask.new(:chef) do |t|
-    t.options = {
-      fail_tags: ['any'],
-    }
-  end
+  FoodCritic::Rake::LintTask.new(:chef)
 end
 
 desc 'Run all style checks'
