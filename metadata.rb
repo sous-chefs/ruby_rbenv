@@ -1,8 +1,8 @@
 name 'ruby_rbenv'
 maintainer 'Sous Chefs'
 maintainer_email 'help@sous-chefs.org'
-issues_url 'https://github.com/sous-chefs/ruby_rbenv/issues' if respond_to?(:issues_url)
-source_url 'https://github.com/sous-chefs/ruby_rbenv' if respond_to?(:source_url)
+issues_url 'https://github.com/sous-chefs/ruby_rbenv/issues'
+source_url 'https://github.com/sous-chefs/ruby_rbenv'
 license 'Apache 2.0'
 description 'Manages rbenv and its installed rubies. Several LWRPs are also defined.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
