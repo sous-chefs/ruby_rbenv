@@ -7,7 +7,7 @@ license 'Apache 2.0'
 description 'Manages rbenv and its installed rubies. Several LWRPs are also defined.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '1.1.0'
-chef_version '>= 12.0' if respond_to?(:chef_version)
+chef_version '>= 12.1' if respond_to?(:chef_version)
 
 depends 'ruby_build' # if using the rbenv LWRP, ruby-build must be installed
 
