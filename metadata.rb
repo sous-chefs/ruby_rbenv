@@ -9,7 +9,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '1.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
-depends 'ruby_build' # if using the rbenv LWRP, ruby-build must be installed
+depends 'ruby_build', '>= 1.1.0' # if using the rbenv LWRP, ruby-build must be installed
 
 supports 'ubuntu'
 supports 'linuxmint'
