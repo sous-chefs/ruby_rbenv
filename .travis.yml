@@ -4,7 +4,7 @@ dist: trusty
 addons:
   apt:
     sources:
-      - chef-current-precise
+      - chef-stable-trusty
     packages:
       - chefdk
 
