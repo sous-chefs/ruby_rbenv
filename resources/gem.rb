@@ -24,17 +24,18 @@ default_action :install
 
 provides :rbenv_gem
 
-attribute :package_name,  kind_of: String, name_attribute: true
-attribute :rbenv_version, kind_of: String, default: 'global'
-attribute :version,       kind_of: String
-attribute :response_file, kind_of: String
-attribute :source,        kind_of: String
-attribute :options,       kind_of: [String, Hash]
-attribute :gem_binary,    kind_of: String
-attribute :user,          kind_of: String
-attribute :root_path,     kind_of: String
-attribute :clear_sources, kind_of: [TrueClass, FalseClass]
-attribute :timeout,       kind_of: Integer, default: 300
+attribute :package_name,           kind_of: String, name_attribute: true
+attribute :rbenv_version,          kind_of: String, default: 'global'
+attribute :version,                kind_of: String
+attribute :response_file,          kind_of: String
+attribute :source,                 kind_of: String
+attribute :options,                kind_of: [String, Hash]
+attribute :gem_binary,             kind_of: String
+attribute :user,                   kind_of: String
+attribute :root_path,              kind_of: String
+attribute :clear_sources,          kind_of: [TrueClass, FalseClass]
+attribute :timeout,                kind_of: Integer, default: 300
+attribute :include_default_source, kind_of: [TrueClass, FalseClass]
 
 include Chef::Rbenv::Mixin::ResourceString
 
