@@ -20,6 +20,10 @@
 #
 require 'etc'
 
+# on os x, this file throws an exception without those requires 
+require File.expand_path("../chef_rbenv_mixin", __FILE__)
+require File.expand_path("../chef_rbenv_script_helpers", __FILE__)
+
 class Chef
   module Rbenv
     module Mixin
