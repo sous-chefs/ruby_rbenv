@@ -1,0 +1,9 @@
+[local_phases]
+unit = "rspec"
+lint = 'cookstyle --display-cop-names --extra-details'
+syntax = "foodcritic ."
+provision = "echo skipping"
+deploy = "echo skipping"
+smoke = "echo skipping"
+functional = "echo skipping"
+cleanup = "echo skipping"
