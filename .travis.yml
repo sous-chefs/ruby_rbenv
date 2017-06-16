@@ -23,6 +23,7 @@ env:
     - INSTANCE=system-ruby-centos-7
     - INSTANCE=system-ruby-ubuntu-1404
     - INSTANCE=system-ruby-ubuntu-1604
+    - INSTANCE=system-ruby-ubuntu-1604-chef-12
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
