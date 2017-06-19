@@ -4,7 +4,7 @@ dist: trusty
 addons:
   apt:
     sources:
-      - chef-stable-trusty
+      - chef-current-trusty
     packages:
       - chefdk
 
@@ -19,10 +19,10 @@ services: docker
 
 env:
   matrix:
-    #    - INSTANCE=system-ruby-centos-6
     - INSTANCE=system-ruby-centos-7
     - INSTANCE=system-ruby-ubuntu-1404
     - INSTANCE=system-ruby-ubuntu-1604
+    - INSTANCE=system-ruby-ubuntu-1604 CHEF_VERSION=12.7.2
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
