@@ -93,3 +93,7 @@ suites:
         environment:
           CONFIGURE_OPTS: --disable-install-rdoc
       global: 2.1.6
+      gems:
+        '2.4.1':
+          - name: bundler
+            action: upgrade
