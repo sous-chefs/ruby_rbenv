@@ -37,7 +37,7 @@ suites:
       - name: 2.1.6
         environment:
           CONFIGURE_OPTS: --disable-install-rdoc
-      - name: 2.2.2
+      - name: 2.4.1
         environment:
           CONFIGURE_OPTS: --disable-install-rdoc
       global: 2.1.6
