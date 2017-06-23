@@ -1,3 +1,10 @@
+# 1.2.1 (June 23, 2017)
+
+- Fixed resource failures on Chef 13
+- Updated the Apache license string to a SPDX compliant string
+- Added Travis testing for Chef 12 and 13
+- Switched testing from Rake to local delivery
+
 # 1.2.0 (April 11, 2017)
 
 - Migrated maintenance of this cookbook to Sous Chefs
