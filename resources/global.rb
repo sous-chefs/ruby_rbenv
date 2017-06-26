@@ -25,7 +25,6 @@ property :rbenv_version, String, name_property: true
 property :user, String
 property :root_path, String
 
-
 action :create do
   if current_global_version_correct?
     command = %(rbenv global #{new_resource.rbenv_version})
