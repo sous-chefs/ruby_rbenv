@@ -3,7 +3,8 @@ title 'Should install Ruby globally'
 
 global_ruby="2.1.6"
 https_url="https://google.com"
-expr="puts OpenSSL::PKey::RSA.new(32).to_pem"
+expr_1="puts OpenSSL::PKey::RSA.new(32).to_pem"
+expr_2="puts Nokogiri::HTML(open('$https_url')).css('input')"
 
 # setup() {
 #   unset GEM_HOME
@@ -20,28 +21,25 @@ control 'Install Ruby globally' do
   end
 end
 
-control 'A global Ruby version is set' do
-  desc "Sets global Ruby version to #{global_ruby}"
+control 'Global Ruby' do
+  desc "can set global Ruby version to #{global_ruby}"
   describe command('rbenv versions --bare') do
     its('exit_status') { should eq 0 }
     its('stdout') { should match /#{Regexp.quote(global_ruby)}/ }
   end
 
-  desc 'global Ruby can use openssl from stdlib'
-  describe command("ruby -ropenssl -e #{expr}") do
+  desc 'can use openssl from stdlib'
+  describe command("ruby -ropenssl -e #{expr_1}") do
+    its('exit_status') { should eq 0 }
+  end
+
+  desc 'can install nokogiri gem'
+  describe command('gem install nokogiri --no-ri --no-rdoc') do
+    its('exit_status') { should eq 0 }
+  end
+
+  desc 'can use Nokogiri with OpenSSL'
+  describe command('ruby -ropen-uri -rnokogiri -e #{expr_2}') do
     its('exit_status') { should eq 0 }
   end
 end
-
-# @test "global Ruby can install nokogiri gem" {
-#   export RBENV_VERSION=$global_ruby
-#   run gem install nokogiri --no-ri --no-rdoc
-#   [ $status -eq 0 ]
-# }
-#
-# @test "global Ruby can use nokogiri with openssl" {
-#   export RBENV_VERSION=$global_ruby
-#   expr="puts Nokogiri::HTML(open('$https_url')).css('input')"
-#   run ruby -ropen-uri -rnokogiri -e "$expr"
-#   [ $status -eq 0 ]
-# }
