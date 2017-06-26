@@ -8,7 +8,7 @@ control 'Global Ruby' do
   title 'Should install Ruby globally'
 
   desc "can set global Ruby version to #{global_ruby}"
-  describe command('which ruby') do
+  describe command('source /etc/profile.d/rbenv.sh') do
     its('exit_status') { should eq 0 }
     its('stdout') { should match /#{Regexp.quote(global_ruby)}/ }
   end
