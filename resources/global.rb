@@ -19,15 +19,32 @@
 # limitations under the License.
 #
 
-actions :create
-default_action :create
-
 provides :rbenv_global
 
-attribute :rbenv_version, kind_of: String, name_attribute: true
-attribute :user,          kind_of: String
-attribute :root_path,     kind_of: String
+property :rbenv_version, String, name_property: true
+property :user, String
+property :root_path, String
 
-def to_s
-  "#{super} (#{@user || 'system'})"
+
+action :create do
+  if current_global_version_correct?
+    command = %(rbenv global #{new_resource.rbenv_version})
+
+    rbenv_script "#{command} #{which_rbenv}" do
+      code command
+      user new_resource.user if new_resource.user
+      root_path new_resource.root_path if new_resource.root_path
+      action :run
+    end
+  else
+    Chef::Log.debug("#{new_resource} is already set - nothing to do")
+  end
+end
+
+action_class do
+  include Chef::Rbenv::ScriptHelpers
+
+  def current_global_version_correct?
+    current_global_version != new_resource.rbenv_version
+  end
 end

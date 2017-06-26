@@ -1,15 +1,32 @@
-actions :install
-
-default_action :install
 
 provides :rbenv_plugin
 
-attribute :name,      kind_of: String, name_attribute: true
-attribute :git_url,   kind_of: String
-attribute :git_ref,   kind_of: String
-attribute :user,      kind_of: String
-attribute :root_path, kind_of: String
+property :name, String, name_property: true
+property :git_url, String
+property :git_ref, String, default: 'master'
+property :user, String
+property :root_path, String, default: 'root'
 
-def to_s
-  "#{super} (#{@user || 'system'})"
+default_action :install
+
+action_class do
+  include Chef::Rbenv::ScriptHelpers
+end
+
+action :install do
+  directory ::File.join(rbenv_root, 'plugins') do
+    owner new_resource.user
+    mode '0755'
+    action :create
+  end
+
+  plugin_path = ::File.join(rbenv_root, 'plugins', new_resource.name)
+
+  git "Install #{new_resource.name} plugin" do
+    destination plugin_path
+    repository new_resource.git_url
+    reference new_resource.git_ref
+    user new_resource.user if new_resource.user
+    action :sync
+  end
 end

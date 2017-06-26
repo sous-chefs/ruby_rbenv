@@ -18,36 +18,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-def whyrun_supported?
-  true
-end
-
-use_inline_resources
-
-provides :rbenv_global
-
-include Chef::Rbenv::ScriptHelpers
-
-action :create do
-  if current_global_version_correct?
-    set_updated { run_script }
-  else
-    Chef::Log.debug("#{new_resource} is already set - nothing to do")
-  end
-end
-
-def run_script
-  command = %(rbenv global #{new_resource.rbenv_version})
-
-  rbenv_script "#{command} #{which_rbenv}" do
-    code command
-    user new_resource.user if new_resource.user
-    root_path new_resource.root_path if new_resource.root_path
-    action :run
-  end
-end
-
-def current_global_version_correct?
-  current_global_version != new_resource.rbenv_version
-end

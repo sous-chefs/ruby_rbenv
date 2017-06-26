@@ -25,7 +25,6 @@ platforms:
 suites:
 - name: system_ruby
   run_list:
-  - recipe[apt]
   - recipe[ruby_build]
   - recipe[ruby_rbenv::system]
   attributes:
