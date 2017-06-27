@@ -20,10 +20,8 @@
 # limitations under the License.
 #
 
-default_action :install
-
 property :definition, String, name_property: true
-property :definition_file,String
+property :definition_file, String
 property :root_path, String
 property :user, String
 property :environment, Hash
@@ -44,10 +42,9 @@ action :install do
 
     Chef::Log.info("Building #{new_resource}, this could take a while...")
 
-    patch_command = nil
     patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
     patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-    command = %(rbenv #{new_resource.rebenv_action} #{new_resource.definition} #{new_resource.patch_command})
+    command = %(rbenv #{new_resource.rebenv_action} #{new_resource.definition} #{patch_command})
 
     rbenv_script "#{command} #{which_rbenv}" do
       code command
@@ -63,7 +60,6 @@ action :install do
 end
 
 action :reinstall do
-
 end
 
 action_class do
@@ -106,5 +102,4 @@ action_class do
     # have pity on my soul
     Chef::Log.info 'The java cookbook does not appear to in the run_list.'
   end
-
 end
