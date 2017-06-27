@@ -10,7 +10,7 @@ control 'Global Ruby' do
   desc "can set global Ruby version to #{global_ruby}"
   describe bash('source /etc/profile.d/rbenv.sh && rbenv versions --bare') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match /#{Regexp.quote(global_ruby)}/ }
+    its('stdout') { should match(/#{Regexp.quote(global_ruby)}/) }
   end
 
   desc 'can use openssl from stdlib'

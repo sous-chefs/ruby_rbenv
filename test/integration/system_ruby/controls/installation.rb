@@ -17,6 +17,6 @@ control 'Installs rbenv' do
   desc 'rbenv is a function'
   describe bash('source /etc/profile.d/rbenv.sh && type rbenv') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match /rbenv is a function/ }
+    its('stdout') { should match(/rbenv is a function/) }
   end
 end
