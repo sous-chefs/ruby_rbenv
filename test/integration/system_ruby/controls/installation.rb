@@ -14,10 +14,8 @@ control 'Installs rbenv' do
     it { should be_directory}
   end
 
-  # desc 'loads environment'
-  # describe
   desc 'rbenv is a function'
-  describe command('type rbenv') do
+  describe bash('source /etc/profile.d/rbenv.sh && type rbenv') do
     its('exit_status') { should eq 0 }
     its('stdout') { should match /rbenv is a function/ }
   end
