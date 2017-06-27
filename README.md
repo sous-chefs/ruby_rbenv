@@ -1,4 +1,4 @@
-# Chef Cookbook
+# Chef rbenv Cookbook
 
 [![Build Status](https://travis-ci.org/sous-chefs/ruby_rbenv.svg?branch=master)](https://travis-ci.org/sous-chefs/ruby_rbenv) [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 
@@ -25,7 +25,7 @@ This cookbook requires Chef 12.9+.
 - Mac OS X
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 
-Please [report][issues] any additional platforms so they can be added.
+This cookbook requires Chef 12.1+.
 
 ### Cookbooks
 
@@ -44,7 +44,7 @@ If your platform is the Mac, you may need to modify your [profile](#mac-system-n
 
 If you want a per-user install (like on a Mac/Linux workstation for development, CI, etc.), include `recipe[ruby_rbenv::user]` in your run_list and add a user hash to the `user_installs` attribute list. For example:
 
-```
+```ruby
 node.default['rbenv']['user_installs'] = [
   { 'user'    => 'tflowers',
     'rubies'  => ['1.9.3-p0', 'jruby-1.6.5'],
@@ -62,6 +62,7 @@ node.default['rbenv']['user_installs'] = [
     }
   }
 ]
+`
 ```
 
 See [below](#attributes) for more details.
@@ -76,45 +77,39 @@ If your platform is the Mac, you may need to modify your [profile](#mac-system-n
 
 If you want to manage your own rbenv environment for users with the provided custom resources, then include `recipe[ruby_rbenv::user_install]` in your run_list and add a user hash to the `user_installs` attribute list. For example:
 
-```
-node.default['rbenv']['user_installs'] = [
-  { 'user' => 'tflowers' }
-]
-```
+node.default['rbenv']['user_installs'] = [ { 'user' => 'tflowers' } ]
+
+````
 
 See the [Custom Resources](#Custom_Resources) section for more details.
 
 ### Ultra-Minimal Access To Custom Resources
 
-Simply include `recipe[ruby_rbenv]` in your run_list and the Custom Resources will be available to use in other cookbooks. See the Custom Resources section for more details.
-
 ## Recipes
 
 ### default
 
-Installs the rbenv gem and initializes Chef to use the Custom Resources.
-
 Use this recipe explicitly if you only want access to the LWRPs provided.
 
-### system_install
+## system_install
 
 Installs the rbenv codebase system-wide (that is, into `/usr/local/rbenv`). This recipe includes _default_.
 
 Use this recipe by itself if you want rbenv installed system-wide but want to handle installing Rubies, invoking LWRPs, etc..
 
-### system
+## system
 
 Installs the rbenv codebase system-wide (that is, into `/usr/local/rbenv`) and installs rubies driven off attribute metadata. This recipe includes _default_ and _system_install_.
 
 Use this recipe by itself if you want rbenv installed system-wide with rubies installed.
 
-### user_install
+## user_install
 
 Installs the rbenv codebase for a list of users (selected from the `node['rbenv']['user_installs']` hash). This recipe includes _default_.
 
 Use this recipe by itself if you want rbenv installed for specific users in isolation but want each user to handle installing Rubies, invoking LWRPs, etc.
 
-### user
+## user
 
 Installs the rbenv codebase for a list of users (selected from the `node['rbenv']['user_installs']` hash) and installs rubies driven off attribte metadata. This recipe includes _default_ and _user_install_.
 
@@ -130,11 +125,9 @@ The default is `"git://github.com/sstephenson/rbenv.git"`.
 
 ### git_ref
 
-A specific Git branch/tag/reference to use when installing rbenv. For example, to pin rbenv to a specific release: `node.default['rbenv']['git_ref'] = "v0.2.1"`
-
 The default is `"v0.4.0"`.
 
-### upgrade
+## upgrade
 
 Determines how to handle installing updates to the rbenv. There are currently 2 valid values:
 
@@ -143,50 +136,52 @@ Determines how to handle installing updates to the rbenv. There are currently 2 
 
 The default is `"none"`.
 
-### root_path
+## root_path
 
 The path prefix to rbenv in a system-wide installation.
 
 The default is `"/usr/local/rbenv"`.
 
-### patch_url
+## patch_url
 
 A url to a patch file for your ruby install.
 
 The default is `nil`.
 
-### patch_file
+## patch_file
 
 A path to a patch file for your ruby install.
 
 The default is `nil`.
 
-### rubies
+## rubies
 
 A list of additional system-wide rubies to be built and installed using the [ruby_build cookbook][ruby_build_cb]. You **must** include `recipe[ruby_build]` in your run_list for the `rbenv_ruby` LWRP to work properly. For example:
 
-```
+```ruby
 node.default['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5" ]
-```
+`
+````
 
 The default is an empty array: `[]`.
 
 Additional environment variables can be passed to ruby_build via the environment variable. For example:
 
-```
+```ruby
 node.default['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5",
   {
   :name => '1.9.3-327',
   :environment => { 'CFLAGS' => '-march=native -O2 -pipe' }
   }
 ]
+`
 ```
 
-### plugins
+## plugins
 
 A list of plugins to be installed into the system (or user) install of rbenv. Provide a hash of name and git_url for each plugin to be installed, with optional revision.
 
-```
+```ruby
 node.default['rbenv']['plugins'] = [
   {
     :name => "rbenv-vars",
@@ -197,98 +192,72 @@ node.default['rbenv']['plugins'] = [
     :git_url => 'git://github.com/rkh/rbenv-update.git',
     :revision => 'master'
   } ]
+`
 ```
 
 The same applies for user_installs.
 
-### user_rubies
+## user_rubies
 
 A list of additional system-wide rubies to be built and installed (using the [ruby_build cookbook][ruby_build_cb]) per-user when not explicitly set. For example:
 
-```
+```ruby
 node.default['rbenv']['user_rubies'] = [ "1.8.7-p352" ]
+`
 ```
 
 The default is an empty array: `[]`.
 
 Additional environment variables can be passed to ruby_build via the environment variable. For example:
 
-```
-node.default['rbenv']['user_rubies'] = [ "1.8.7-p352",
-  {
-  :name => '1.9.3-327',
-  :environment => { 'CFLAGS' => '-march=native -O2 -pipe' }
-  }
-]
-```
-
-### gems
-
-A hash of gems to be installed into arbitrary rbenv-managed rubies system wide. See the rbenv_gem resource for more details about the options for each gem hash and target Ruby environment. For example:
+node.default['rbenv']['user_rubies'] = [ "1.8.7-p352", { :name => '1.9.3-327', :environment => { 'CFLAGS' => '-march=native -O2 -pipe' } } ]
 
 ```
-node.default['rbenv']['gems'] = {
-  '1.9.3-p0' => [
-    { 'name'    => 'vagrant' },
-    { 'name'    => 'bundler'
-      'version' => '1.1.rc.5'
-    }
-  ],
-  '1.8.7-p352' => [
-    { 'name'    => 'nokogiri' }
-  ]
-}
+
+## gems
+
+node.default['rbenv']['gems'] = { '1.9.3-p0' => [ { 'name' => 'vagrant' }, { 'name' => 'bundler' 'version' => '1.1.rc.5' } ], '1.8.7-p352' => [ { 'name' => 'nokogiri' } ] }
 ```
 
 The default is an empty hash: `{}`.
 
-### user_gems
+## user_gems
 
-A hash of gems to be installed into arbitrary rbenv-managed rubies for each user when not explicitly set. See the rbenv_gem resource for more details about the options for each gem hash and target Ruby environment. See the gems attribute for an example.
+A hash of gems to be installed into arbitrary rbenv-managed rubies for each user when not explicitly set. See the [rbenv_gem](#lwrps-rbgem) resource for more details about the options for each gem hash and target Ruby environment. See the [gems attribute](#attributes-gems) for an example.
 
 The default is an empty hash: `{}`.
 
-### plugins
+## plugins
 
-A list of plugins to be installed system-wide. See the rbenv_plugin resource for details about the options.
+node.default['rbenv']['plugins'] = [ { 'name' => 'rbenv-vars', 'git_url' => '<https://github.com/sstephenson/rbenv-vars.git>' }, { 'name' => 'rbenv-gem-rehash', 'git_url' => '<https://github.com/sstephenson/rbenv-gem-rehash.git>', 'git_ref' => '4d7b92de4' } ] `
 
-```
-node.default['rbenv']['plugins'] = [
-  { 'name' => 'rbenv-vars',
-    'git_url' => 'https://github.com/sstephenson/rbenv-vars.git' },
-  { 'name' => 'rbenv-gem-rehash',
-    'git_url' => 'https://github.com/sstephenson/rbenv-gem-rehash.git',
-    'git_ref' => '4d7b92de4' }
-]
-```
+````
 
 The default is an empty array: `[]`.
 
-### user_plugins
+## user_plugins
 
 As with user_gems, a list of plugins to be installed for each user when not explicitly set.
 
 The default is an empty array: `[]`.
 
-### vagrant/system_chef_solo
+## vagrant/system_chef_solo
 
 If using the `vagrant` recipe, this sets the path to the package-installed _chef-solo_ binary.
 
 The default is `"/opt/ruby/bin/chef-solo"`.
 
-### create_profiled
+## create_profiled
 
 The user's shell needs to know about rbenv's location and set up the PATH environment variable. This is handled in the [system_install](#recipes-system_install) and [user_install](#recipes-user_install) recipes by dropping off `/etc/profile.d/rbenv.sh`. However, this requires root privilege, which means that a user cannot use a "user install" for only their user.
 
 Set this attribute to `false` to skip creation of the `/etc/profile.d/rbenv.sh` template. For example:
 
-```
+```ruby
 node.default['rbenv']['create_profiled'] = false
-```
+````
 
 The default is `true`.
-
-## Custom Resources
 
 ### rbenv_global
 
@@ -296,21 +265,20 @@ This resource sets the global version of Ruby to be used in all shells, as per t
 
 #### Examples
 
-##### Set A Ruby As Global
+### Set A Ruby As Global
 
 ```
 rbenv_global "1.8.7-p352"
 ```
 
-##### Set System Ruby As Global
+### Set System Ruby As Global
 
-```
 rbenv_global "system"
-```
-
-##### Set A Ruby As Global For A User
 
 ```
+
+### Set A Ruby As Global For A User
+
 rbenv_global "jruby-1.7.0-dev" do
   user "tflowers"
 end
@@ -320,9 +288,7 @@ end
 
 This resource is a wrapper for the `script` resource which wraps the code block in an rbenv-aware environment. See the Opscode [script resource][script_resource] page and the [rbenv shell][rbenv_3_3] documentation for more details.
 
-#### Examples
-
-##### Run A Rake Task
+### Run A Rake Task
 
 ```
 rbenv_script "migrate_rails_database" do
@@ -338,9 +304,9 @@ end
 
 This resource is a close analog of the `gem_package` resource/provider which is rbenv-aware. See the Opscode [package resource][package_resource] and [gem package options][gem_package_options] pages for more details.
 
-#### Examples
+#### Actions
 
-##### Install A Gem
+### Install A Gem
 
 ```
 rbenv_gem "thor" do
@@ -361,7 +327,7 @@ end
 
 **Note:** the install action is default, so the second example is a more common usage.
 
-##### Install A Gem From A Local File
+### Install A Gem From A Local File
 
 ```
 rbenv_gem "json" do
@@ -371,7 +337,7 @@ rbenv_gem "json" do
 end
 ```
 
-##### Keep A Gem Up To Date
+### Keep A Gem Up To Date
 
 ```
 rbenv_gem "homesick" do
@@ -381,7 +347,7 @@ end
 
 **Note:** the global rbenv Ruby will be targeted if no `rbenv_version` attribute is given.
 
-##### Remove A Gem
+### Remove A Gem
 
 ```
 rbenv_gem "nokogiri" do
@@ -395,9 +361,9 @@ end
 
 Installs rbenv plugins.
 
-The default value of `nil` denotes a system-wide rbenv installation is being targeted. **Note:** if specified, the user must already exist.
-
 #### Install a plugin
+
+> > > > > > > master
 
 ```
 rbenv_plugin 'rbenv-vars' do
@@ -412,13 +378,13 @@ This resource installs shims for all Ruby binaries known to rbenv, as per the [r
 
 #### Examples
 
-##### Rehash A System-Wide rbenv
+### Rehash A System-Wide rbenv
 
 ```
 rbenv_rehash "Doing the rehash dance"
 ```
 
-##### Rehash A User's rbenv
+### Rehash A User's rbenv
 
 ```
 rbenv_rehash "Rehashing tflowers' rbenv" do
@@ -430,11 +396,9 @@ end
 
 This resource uses the [ruby-build][ruby_build_site] framework to build and install Ruby versions from definition files.
 
-**Note:** this resource requires the [ruby_build cookbook][ruby_build_cb] to be in the run list to perform the builds.
+## Examples
 
-#### Examples
-
-##### Install Ruby From ruby-build
+### Install Ruby From ruby-build
 
 ```
 rbenv_ruby "ree-1.8.7-2011.03" do
@@ -446,7 +410,7 @@ rbenv_ruby "jruby-1.6.5"
 
 **Note:** the install action is default, so the second example is a more common usage.
 
-##### Reinstall Ruby
+### Reinstall Ruby
 
 ```
 rbenv_ruby "ree-1.8.7-2011.03" do
@@ -454,7 +418,7 @@ rbenv_ruby "ree-1.8.7-2011.03" do
 end
 ```
 
-##### Install a custom ruby
+### Install a custom ruby
 
 ```
 rbenv_ruby "2.0.0p116" do
@@ -479,15 +443,11 @@ Author:: [Fletcher Nichol][fnichol] ([fnichol@nichol.ca](mailto:fnichol@nichol.c
 
 Copyright 2011, Fletcher Nichol
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
 ```
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-.html
 
 [fnichol]: https://github.com/fnichol
 [gem_package_options]: https://docs.chef.io/resource_gem_package.html#attributes
@@ -503,7 +463,6 @@ Unless required by applicable law or agreed to in writing, software distributed 
 [rbenv_3_6]: https://github.com/sstephenson/rbenv#section_3.6
 [rbenv_site]: https://github.com/sstephenson/rbenv
 [repo]: https://github.com/chef-rbenv/ruby-rbenv
-[resource]: https://docs.chef.io/custom_resources
 [ruby_build_cb]: https://supermarket.chef.io/cookbooks/ruby_build
 [ruby_build_site]: https://github.com/sstephenson/ruby-build
 [script_resource]: http://docs.chef.io/resource_script.html
