@@ -2,7 +2,7 @@
 control 'Installs rbenv' do
   title 'Should install rbenv'
 
-  desc "creates the rbenv profile"
+  desc 'creates the rbenv profile'
   describe file('/etc/profile.d/rbenv.sh') do
     it { should exist }
     it { should be_file }
@@ -11,7 +11,7 @@ control 'Installs rbenv' do
   desc 'create the directory'
   describe file('/usr/local/rbenv') do
     it { should exist }
-    it { should be_directory}
+    it { should be_directory }
   end
 
   desc 'rbenv is a function'
