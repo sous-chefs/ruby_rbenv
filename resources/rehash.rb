@@ -19,11 +19,21 @@
 # limitations under the License.
 #
 
-actions :run
-default_action :run
+property :name, String, name_property: true
+property :user, String
+property :root_path, String
 
-resource_name :rbenv_rehash
+action :run do
+  command = %(rbenv rehash)
 
-attribute :name,      kind_of: String, name_attribute: true
-attribute :user,      kind_of: String
-attribute :root_path, kind_of: String
+  rbenv_script "#{command} #{which_rbenv}" do
+    code command
+    user new_resource.user if new_resource.user
+    root_path new_resource.root_path if new_resource.root_path
+    action :run
+  end
+end
+
+action_class do
+  include Chef::Rbenv::ScriptHelpers
+end
