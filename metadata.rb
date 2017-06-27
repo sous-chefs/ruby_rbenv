@@ -14,7 +14,6 @@ depends 'ruby_build', '>= 1.1.0' # if using the rbenv LWRP, ruby-build must be i
 supports 'ubuntu'
 supports 'linuxmint'
 supports 'debian'
-supports 'freebsd'
 supports 'redhat'
 supports 'centos'
 supports 'fedora'
