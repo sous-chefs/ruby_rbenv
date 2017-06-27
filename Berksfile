@@ -1,4 +1,7 @@
 source 'https://supermarket.chef.io'
+
 metadata
 
-cookbook 'fixtures', path: 'test/unit/fixtures'
+group :integration do
+  cookbook 'test', path: 'test/fixtures/cookbooks/test'
+end

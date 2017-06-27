@@ -44,3 +44,35 @@ suites:
         '2.4.1':
           - name: bundler
             action: upgrade
+
+- name: rbenv_global_defaults
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+- name: rbenv_global_full
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+
+
+- name: rbenv_plugin_defaults
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+
+- name: rbenv_plugin_full
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+
+- name: rbenv_rehash_defaults
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+
+- name: rbenv_rehash_full
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+
+- name: rbenv_script_defaults
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
+
+- name: rbenv_script_full
+  run_list: recipe[test::rbenv_global_defaults]
+  includes: [centos-7.3]
