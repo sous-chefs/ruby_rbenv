@@ -1,9 +1,9 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 
-describe 'ruby_rbenv::rbenv_plugin_defaults' do
+describe 'ruby_rbenv::default' do
   let(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
+    ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
   end
 
   it 'converges successfully' do

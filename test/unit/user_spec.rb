@@ -1,9 +1,9 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 
-describe 'ruby_rbenv::system_install' do
+describe 'ruby_rbenv::user' do
   let(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
+    ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
   end
 
   it 'converges successfully' do
