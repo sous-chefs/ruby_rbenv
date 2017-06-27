@@ -23,6 +23,8 @@ property :name, String, name_property: true
 property :user, String
 property :root_path, String
 
+provides :rbenv_rehash
+
 action :run do
   command = %(rbenv rehash)
 

@@ -29,13 +29,13 @@ property :patch_url, String
 property :patch_file, String
 property :rbenv_action, String, default: 'install'
 
+provides :rbenv_ruby
+
 action :install do
-  if ruby_build_missing?
-    Chef::Log.warn(
-      'ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).')
-  elsif ruby_installed?
-    Chef::Log.debug("#{new_resource} is already installed - nothing to do")
-  else
+  begin
+    raise Chef::Log.warn('ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).') if ruby_build_missing?
+    raise if ruby_installed?
+
     install_start = Time.now
 
     install_ruby_dependencies
@@ -44,18 +44,20 @@ action :install do
 
     patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
     patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-    command = %(rbenv #{new_resource.rebenv_action} #{new_resource.definition} #{patch_command})
+    command = %(rbenv #{new_resource.rbenv_action} #{new_resource.definition} #{patch_command})
 
     rbenv_script "#{command} #{which_rbenv}" do
       code command
-      user new_resource.rbenv_user if new_resource.rbenv_user
+      user new_resource.user if new_resource.user
       root_path new_resource.root_path if new_resource.root_path
-      environment new_resource.rbenv_env if new_resource.rbenv_env
+      environment new_resource.environment if new_resource.environment
       action :nothing
     end.run_action(:run)
 
     Chef::Log.debug("#{new_resource} build time was " \
       "#{(Time.now - install_start) / 60.0} minutes")
+  rescue
+    Chef::Log.warn('Ruby version already installed')
   end
 end
 
@@ -63,6 +65,8 @@ action :reinstall do
 end
 
 action_class do
+  include Chef::Rbenv::ScriptHelpers
+
   def ruby_build_missing?
     !run_context.loaded_recipe?('ruby_build')
   end
@@ -76,9 +80,7 @@ action_class do
   end
 
   def install_ruby_dependencies
-    definition = ::File.basename(new_resource.definition)
-
-    case definition
+    case ::File.basename(new_resource.definition)
     when /^\d\.\d\.\d/, /^rbx-/, /^ree-/
       pkgs = node['ruby_build']['install_pkgs_cruby']
     when /^jruby-/

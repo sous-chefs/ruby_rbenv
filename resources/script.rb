@@ -33,6 +33,8 @@ property :timeout, Integer
 property :user, String
 property :umask, [String, Integer]
 
+provides :rbenv_script
+
 action :run do
   script_code        = build_script_code
   script_environment = build_script_environment
