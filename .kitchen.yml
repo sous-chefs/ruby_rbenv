@@ -33,13 +33,13 @@ suites:
       - name: rbenv-vars
         git_url: https://github.com/sstephenson/rbenv-vars.git
       rubies:
-      - name: 2.1.6
+      - name: 2.3.4
         environment:
           CONFIGURE_OPTS: --disable-install-rdoc
       - name: 2.4.1
         environment:
           CONFIGURE_OPTS: --disable-install-rdoc
-      global: 2.1.6
+      global: 2.3.4
       gems:
         '2.4.1':
           - name: bundler

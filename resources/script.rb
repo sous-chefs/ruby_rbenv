@@ -19,7 +19,6 @@
 # limitations under the License.
 #
 
-property :name, String, name_property: true
 property :rbenv_version, String
 property :root_path, String
 property :code, String

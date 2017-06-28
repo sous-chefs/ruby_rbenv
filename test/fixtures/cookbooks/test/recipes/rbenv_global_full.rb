@@ -1,4 +1,4 @@
-rbenv_global '9.1.2' do
+rbenv_global '2.3.4' do
   user 'claire'
   root_path '/mnt/roobies'
   action :create

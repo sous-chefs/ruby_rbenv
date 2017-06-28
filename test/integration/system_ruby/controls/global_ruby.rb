@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-global_ruby = '2.1.6'
+global_ruby = '2.3.4'
 require 'openssl'
 require 'open-uri'
 require 'nokogiri'
