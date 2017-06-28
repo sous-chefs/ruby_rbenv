@@ -19,7 +19,6 @@
 # limitations under the License.
 #
 
-
 property :git_url, String
 property :git_ref, String, default: 'master'
 property :user, String

@@ -48,6 +48,6 @@ provides :rbenv_gem
 # action :purge do
 # end
 
-action_class
+action_class do
   include Chef::Rbenv::Mixin::ResourceString
 end
