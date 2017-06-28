@@ -38,3 +38,6 @@ matrix:
     - script:
       - /opt/chefdk/bin/chef exec delivery local all
       env: UNIT_AND_LINT=1
+
+notifications:
+    slack: northops:FsfnzghB9NkVWXanv0RivJZZ
