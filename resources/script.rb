@@ -35,11 +35,7 @@ property :umask, [String, Integer]
 provides :rbenv_script
 
 action :run do
-  script_code        = build_script_code
-  script_environment = build_script_environment
-
-  script new_resource.name do
-    interpreter 'bash'
+  bash new_resource.name do
     code script_code
     user new_resource.user if new_resource.user
     creates new_resource.creates if new_resource.creates
@@ -48,7 +44,6 @@ action :run do
     returns new_resource.returns if new_resource.returns
     timeout new_resource.timeout if new_resource.timeout
     umask new_resource.umask if new_resource.umask
-
     environment(script_environment)
   end
 end
@@ -56,7 +51,7 @@ end
 action_class do
   include Chef::Rbenv::ScriptHelpers
 
-  def build_script_code
+  def script_code
     script = []
     script << %(export RBENV_ROOT="#{rbenv_root}")
     script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
@@ -68,7 +63,7 @@ action_class do
     script.join("\n").concat("\n")
   end
 
-  def build_script_environment
+  def script_environment
     script_env = { 'RBENV_ROOT' => rbenv_root }
 
     script_env.merge!(new_resource.environment) if new_resource.environment

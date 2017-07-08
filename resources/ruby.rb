@@ -74,8 +74,10 @@ action_class do
   def ruby_installed?
     if Array(new_resource.action).include?(:reinstall)
       false
-    else
-      ::File.directory?(::File.join(rbenv_root, 'versions', new_resource.definition))
+    elsif ::File.directory?(::File.join(rbenv_root,
+      'versions',
+      new_resource.definition))
+      true
     end
   end
 

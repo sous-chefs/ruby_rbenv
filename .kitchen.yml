@@ -3,7 +3,7 @@ driver:
 
 provisioner:
   name: chef_zero
-  deprecations_as_errors: true
+  require_chef_omnibus: <%= ENV['CHEF_VERSION'] || 'latest' %>
 
 verifier:
   name: inspec
@@ -15,12 +15,8 @@ platforms:
   - name: ubuntu-14.04
   - name: ubuntu-16.04
   - name: ubuntu-16.04-chef-12
-    driver_config:
-      box: bento/ubuntu-16.04
     provisioner:
       require_chef_omnibus: 12
-    transport:
-      username: ubuntu
 
 suites:
 - name: system_ruby

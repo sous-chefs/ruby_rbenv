@@ -35,19 +35,20 @@ property :include_default_source, [true, false]
 default_action :install
 
 provides :rbenv_gem
-#
-# action :install do
-# end
-#
-# action :upgrade do
-# end
-#
-# action :remove do
-# end
-#
-# action :purge do
-# end
+
+action :install do
+end
+
+action :upgrade do
+end
+
+action :remove do
+end
+
+action :purge do
+end
 
 action_class do
   include Chef::Rbenv::Mixin::ResourceString
+  include Chef::Provider::Package::RbenvRubygems
 end
