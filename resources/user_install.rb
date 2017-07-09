@@ -4,8 +4,6 @@ property :git_url, String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref, String, default: 'master'
 property :user, String, name_property: true
 property :home_dir, String, default: lazy { ::File.expand_path("~#{user}") }
-property :group, String
-
 property :user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv')}
 property :global_prefix, String, default: '/usr/local/rbenv'
 property :update_rbenv, [true, false], default: true
@@ -33,7 +31,6 @@ action :install do
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
-    # notifies :run, "bash[Initialize user #{new_resource.user} rbenv]", :immediately
   end
 
   directory "#{new_resource.user_prefix}/plugins" do
@@ -54,6 +51,7 @@ action :install do
     environment('RBENV_ROOT' => new_resource.user_prefix)
     action :nothing
     subscribes :run, "git[#{new_resource.user_prefix}]", :immediately
+    # Subscribe because it's easier to find the resource ;)
   end
 end
 
