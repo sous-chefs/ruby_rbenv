@@ -18,11 +18,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+provides :rbenv_rehash
 
 property :user, String
 property :root_path, String
-
-provides :rbenv_rehash
 
 action :run do
   command = %(rbenv rehash)

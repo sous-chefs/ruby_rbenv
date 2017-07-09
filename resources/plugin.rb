@@ -18,13 +18,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+provides :rbenv_plugin
 
 property :git_url, String
 property :git_ref, String, default: 'master'
 property :user, String
 property :root_path, String, default: 'root'
-
-provides :rbenv_plugin
 
 action_class do
   include Chef::Rbenv::ScriptHelpers

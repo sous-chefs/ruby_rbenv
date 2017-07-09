@@ -18,6 +18,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+provides :rbenv_script
 
 property :rbenv_version, String
 property :root_path, String
@@ -31,8 +32,6 @@ property :returns, Array, default: [0]
 property :timeout, Integer
 property :user, String
 property :umask, [String, Integer]
-
-provides :rbenv_script
 
 action :run do
   bash new_resource.name do

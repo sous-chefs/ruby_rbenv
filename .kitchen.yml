@@ -17,6 +17,8 @@ platforms:
   - name: ubuntu-16.04-chef-12
     provisioner:
       require_chef_omnibus: 12
+    driver_config:
+      box: bento/ubuntu-16.04
 
 suites:
 - name: system_ruby
@@ -41,34 +43,31 @@ suites:
           - name: bundler
             action: upgrade
 
-- name: rbenv_global_defaults
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
-- name: rbenv_global_full
-  run_list: recipe[test::rbenv_global_defaults]
+- name: rbenv_gem
+  run_list: recipe[test::rbenv_gem]
   includes: [centos-7.3]
 
-
-- name: rbenv_plugin_defaults
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
-
-- name: rbenv_plugin_full
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
-
-- name: rbenv_rehash_defaults
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
-
-- name: rbenv_rehash_full
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
-
-- name: rbenv_script_defaults
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
-
-- name: rbenv_script_full
-  run_list: recipe[test::rbenv_global_defaults]
-  includes: [centos-7.3]
+# These are the same suite right now
+# - name: rbenv_plugin_defaults
+#   run_list: recipe[test::rbenv_global_defaults]
+#   includes: [centos-7.3]
+#
+# - name: rbenv_plugin_full
+#   run_list: recipe[test::rbenv_global_defaults]
+#   includes: [centos-7.3]
+#
+# - name: rbenv_rehash_defaults
+#   run_list: recipe[test::rbenv_global_defaults]
+#   includes: [centos-7.3]
+#
+# - name: rbenv_rehash_full
+#   run_list: recipe[test::rbenv_global_defaults]
+#   includes: [centos-7.3]
+#
+# - name: rbenv_script_defaults
+#   run_list: recipe[test::rbenv_global_defaults]
+#   includes: [centos-7.3]
+#
+# - name: rbenv_script_full
+#   run_list: recipe[test::rbenv_global_defaults]
+#   includes: [centos-7.3]

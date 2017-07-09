@@ -19,6 +19,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+provides :rbenv_ruby
 
 property :definition, String, name_property: true
 property :definition_file, String
@@ -28,8 +29,6 @@ property :environment, Hash
 property :patch_url, String
 property :patch_file, String
 property :rbenv_action, String, default: 'install'
-
-provides :rbenv_ruby
 
 action :install do
   begin

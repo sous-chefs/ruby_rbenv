@@ -19,36 +19,38 @@
 # limitations under the License.
 #
 
-property :package_name, String, name_property: true
-property :rbenv_version, String, default: 'global'
-property :version, String
-property :response_file, String
-property :source, String
-property :options, [String, Hash]
-property :gem_binary, String
-property :user, String
-property :root_path, String
+provides :rbenv_gem
+# Standard Gem Package Options
+# https://docs.chef.io/resource_gem_package.html#attributes
 property :clear_sources, [true, false]
-property :timeout, Integer, default: 300
 property :include_default_source, [true, false]
+property :gem_binary, String
+property :options, [String, Hash]
+property :package_name, [String, Array], name_property: true
+property :source, [String, Array]
+property :timeout, [String, Integer], default: 300
+property :version, [String, Array]
+
+attribute :response_file, String # Only used to reconfig
+attribute :user, String
+attribute :root_path, String
+attribute :rbenv_version, String, default: 'global'
 
 default_action :install
-
-provides :rbenv_gem
+# TODO: nothing, purge, reconfig, remove, upgrade
+# actions :install, :upgrade, :remove, :purge
 
 action :install do
-end
-
-action :upgrade do
-end
-
-action :remove do
-end
-
-action :purge do
-end
-
-action_class do
-  include Chef::Rbenv::Mixin::ResourceString
-  include Chef::Provider::Package::RbenvRubygems
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    notifies if new_resource.notifies
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    subscribes if new_resource.subscribes
+    timeout if new_resource.timeout
+    version if new_resource.version
+  end
 end
