@@ -30,20 +30,16 @@ property :patch_url, String
 property :patch_file, String
 property :rbenv_action, String, default: 'install'
 property :ruby_build_ref, String, default: 'master'
+property :global, [true, false], default: false
 
 action :install do
   begin
-    if ruby_build_cookbok_missing?
-      Chef::Log.info('ruby_build cookbook is missing, using rbenv_plugin instead.')
-      rbenv_plugin 'ruby-build' do
-        git_url 'https://github.com/rbenv/ruby-build.git'
-        git_ref new_resource.ruby_build_version
-      end
-    end
-
-    # raise if ruby_installed?
-
     install_start = Time.now
+
+    rbenv_plugin 'ruby-build' do
+      git_url 'https://github.com/rbenv/ruby-build.git'
+      git_ref new_resource.ruby_build_version
+    end
 
     install_ruby_dependencies
 
@@ -74,10 +70,6 @@ end
 action_class do
   include Chef::Rbenv::ScriptHelpers
 
-  def ruby_build_missing?
-    !run_context.loaded_recipe?('ruby_build')
-  end
-
   def ruby_installed?
     if Array(new_resource.action).include?(:reinstall)
       false
@@ -90,14 +82,12 @@ action_class do
 
   def install_ruby_dependencies
     case ::File.basename(new_resource.definition)
-    when /^\d\.\d\.\d/, /^rbx-/, /^ree-/
-      pkgs = node['ruby_build']['install_pkgs_cruby']
     when /^jruby-/
-      pkgs = node['ruby_build']['install_pkgs_jruby']
-    end
-
-    pkgs.each do |pkg|
-      package pkg do
+      package jruby_package_deps do
+        action :nothing
+      end.run_action(:install)
+    when /^rbx-/
+      package rbx_package_deps do
         action :nothing
       end.run_action(:install)
     end

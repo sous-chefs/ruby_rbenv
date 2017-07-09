@@ -43,6 +43,62 @@ default_action :install
 # Ideally here we want to just rely on the underlying gem_package resource
 # Which hands off to Ruby Gems in a sensible way where it can.
 
+# %w(install purge reconfig remove upgrade) do |act|
+action :install do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :install
+  end
+end
+
+action :purge do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :purge
+  end
+end
+
+action :reconfig do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :reconfig
+  end
+end
+
+action :remove do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :remove
+  end
+end
 action :upgrade do
   gem_package new_resource.package_name do
     clear_sources if new_resource.clear_sources
@@ -53,5 +109,6 @@ action :upgrade do
     source if new_resource.source
     timeout if new_resource.timeout
     version if new_resource.version
+    action :upgrade
   end
 end

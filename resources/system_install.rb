@@ -41,28 +41,28 @@ action :install do
     action :nothing
   end
 
-  bash "Initialize system rbenv" do
+  bash 'Initialize system rbenv' do
     code %(PATH="#{new_resource.rbenv_prefix}/bin:$PATH" rbenv init -)
-    environment({ 'RBENV_ROOT' => new_resource.rbenv_prefix })
+    environment('RBENV_ROOT' => new_resource.rbenv_prefix)
     action :nothing
   end
 end
 
 action_class do
   def package_prerequisites
-   case node['platform_family']
-   when 'rhel', 'fedora', 'amazon'
-     %w(git grep)
-   when 'debian', 'suse'
-     %w(git-core grep)
-   when 'mac_os_x'
-     %w(git)
-   when 'freebsd'
-     %w(git bash)
-   when 'gentoo'
-     %w(git)
-   when 'arch'
-     %w(git grep)
-   end
+    case node['platform_family']
+    when 'rhel', 'fedora', 'amazon'
+      %w(git grep)
+    when 'debian', 'suse'
+      %w(git-core grep)
+    when 'mac_os_x'
+      %w(git)
+    when 'freebsd'
+      %w(git bash)
+    when 'gentoo'
+      %w(git)
+    when 'arch'
+      %w(git grep)
+    end
   end
 end
