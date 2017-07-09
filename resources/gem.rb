@@ -40,16 +40,17 @@ default_action :install
 # TODO: nothing, purge, reconfig, remove, upgrade
 # actions :install, :upgrade, :remove, :purge
 
-action :install do
+# Ideally here we want to just rely on the underlying gem_package resource
+# Which hands off to Ruby Gems in a sensible way where it can.
+
+action :upgrade do
   gem_package new_resource.package_name do
     clear_sources if new_resource.clear_sources
     include_default_source if new_resource.include_default_source
     gem_binary if new_resource.gem_binary
-    notifies if new_resource.notifies
     options if new_resource.options
     package_name if new_resource.package_name
     source if new_resource.source
-    subscribes if new_resource.subscribes
     timeout if new_resource.timeout
     version if new_resource.version
   end

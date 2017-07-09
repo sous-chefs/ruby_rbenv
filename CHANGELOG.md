@@ -1,3 +1,8 @@
+# 2.0.0 (tbc)
+
+- Switch libraries to custom resources
+- Use gem install from core Chef
+
 # 1.2.1 (June 23, 2017)
 
 - Fixed resource failures on Chef 13

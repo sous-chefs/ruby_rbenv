@@ -43,8 +43,11 @@ suites:
           - name: bundler
             action: upgrade
 
-- name: rbenv_gem
+- name: gem
   run_list: recipe[test::rbenv_gem]
+  includes: [centos-7.3]
+- name: system_install
+  run_list: recipe[test::system_install]
   includes: [centos-7.3]
 
 # These are the same suite right now

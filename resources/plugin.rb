@@ -25,6 +25,9 @@ property :git_ref, String, default: 'master'
 property :user, String
 property :root_path, String, default: 'root'
 
+# https://github.com/rbenv/rbenv/wiki/Plugins
+# The most useful one here is ruby-build
+
 action_class do
   include Chef::Rbenv::ScriptHelpers
 end

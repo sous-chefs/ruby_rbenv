@@ -29,11 +29,19 @@ property :environment, Hash
 property :patch_url, String
 property :patch_file, String
 property :rbenv_action, String, default: 'install'
+property :ruby_build_ref, String, default: 'master'
 
 action :install do
   begin
-    raise Chef::Log.warn('ruby_build cookbook is missing. Please add to the run_list (Action will be skipped).') if ruby_build_missing?
-    raise if ruby_installed?
+    if ruby_build_cookbok_missing?
+      Chef::Log.info('ruby_build cookbook is missing, using rbenv_plugin instead.')
+      rbenv_plugin 'ruby-build' do
+        git_url 'https://github.com/rbenv/ruby-build.git'
+        git_ref new_resource.ruby_build_version
+      end
+    end
+
+    # raise if ruby_installed?
 
     install_start = Time.now
 
