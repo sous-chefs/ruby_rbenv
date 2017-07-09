@@ -1,6 +1,6 @@
 property :git_url, String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref, String, default: 'master'
-property :rbenv_prefix, String, default: '/usr/local/rbenv'
+property :global_prefix, String, default: '/usr/local/rbenv'
 property :update_rbenv, [true, false], default: true
 
 provides :rbenv_system_install
@@ -20,7 +20,7 @@ action :install do
     mode '0755'
   end
 
-  git new_resource.rbenv_prefix do
+  git new_resource.global_prefix do
     repository new_resource.git_url
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
@@ -28,7 +28,7 @@ action :install do
     notifies :run, 'bash[Initialize system rbenv]', :immediately
   end
 
-  directory "#{new_resource.rbenv_prefix}/plugins" do
+  directory "#{new_resource.global_prefix}/plugins" do
     owner 'root'
     mode '0755'
   end
@@ -36,14 +36,14 @@ action :install do
   # Initialize rbenv
   ruby_block 'Add rbenv to PATH' do
     block do
-      ENV['PATH'] = "#{new_resource.rbenv_prefix}/shims:#{new_resource.rbenv_prefix}/bin:#{ENV['PATH']}"
+      ENV['PATH'] = "#{new_resource.global_prefix}/shims:#{new_resource.global_prefix}/bin:#{ENV['PATH']}"
     end
     action :nothing
   end
 
   bash 'Initialize system rbenv' do
-    code %(PATH="#{new_resource.rbenv_prefix}/bin:$PATH" rbenv init -)
-    environment('RBENV_ROOT' => new_resource.rbenv_prefix)
+    code %(PATH="#{new_resource.global_prefix}/bin:$PATH" rbenv init -)
+    environment('RBENV_ROOT' => new_resource.global_prefix)
     action :nothing
   end
 end

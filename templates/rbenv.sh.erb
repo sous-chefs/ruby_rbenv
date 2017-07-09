@@ -4,8 +4,8 @@
 # prefer a user rbenv over a system wide install
 if [ -s "${HOME}/.rbenv/bin" ]; then
   rbenv_root="${HOME}/.rbenv"
-elif [ -s "<%= node['rbenv']['root_path'] %>" ]; then
-  rbenv_root="<%= node['rbenv']['root_path'] %>"
+elif [ -s "<%= @global_prefix %>" ]; then
+  rbenv_root="<%= @global_prefix %>"
   export RBENV_ROOT="$rbenv_root"
 fi
 

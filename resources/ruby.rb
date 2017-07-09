@@ -21,15 +21,17 @@
 #
 provides :rbenv_ruby
 
-property :definition, String, name_property: true
-property :definition_file, String
+property :version, String, name_property: true
+property :version_file, String
 property :root_path, String
 property :user, String
 property :environment, Hash
 property :patch_url, String
 property :patch_file, String
 property :rbenv_action, String, default: 'install'
-property :ruby_build_ref, String, default: 'master'
+
+property :git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
+property :build_ref, String, default: 'master'
 property :global, [true, false], default: false
 
 action :install do
@@ -37,8 +39,9 @@ action :install do
     install_start = Time.now
 
     rbenv_plugin 'ruby-build' do
-      git_url 'https://github.com/rbenv/ruby-build.git'
-      git_ref new_resource.ruby_build_version
+      git_url new_resource.git_url
+      git_ref new_resource.build_ref
+      directory if new_resource.user
     end
 
     install_ruby_dependencies
@@ -47,7 +50,7 @@ action :install do
 
     patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
     patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-    command = %(rbenv #{new_resource.rbenv_action} #{new_resource.definition} #{patch_command})
+    command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{patch_command})
 
     rbenv_script "#{command} #{which_rbenv}" do
       code command
@@ -75,13 +78,13 @@ action_class do
       false
     elsif ::File.directory?(::File.join(rbenv_root,
       'versions',
-      new_resource.definition))
+      new_resource.version))
       true
     end
   end
 
   def install_ruby_dependencies
-    case ::File.basename(new_resource.definition)
+    case ::File.basename(new_resource.version)
     when /^jruby-/
       package jruby_package_deps do
         action :nothing
@@ -92,7 +95,7 @@ action_class do
       end.run_action(:install)
     end
 
-    ensure_java_environment if definition =~ /^jruby-/
+    ensure_java_environment if new_resource.version =~ /^jruby-/
   end
 
   def ensure_java_environment

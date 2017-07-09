@@ -33,13 +33,13 @@ action_class do
 end
 
 action :install do
-  directory ::File.join(rbenv_root, 'plugins') do
+  directory ::File.join(new_resource.root_path, 'plugins') do
     owner new_resource.user
     mode '0755'
     action :create
   end
 
-  plugin_path = ::File.join(rbenv_root, 'plugins', new_resource.name)
+  plugin_path = ::File.join(new_resource.rbenv_root, 'plugins', new_resource.name)
 
   git "Install #{new_resource.name} plugin" do
     destination plugin_path
