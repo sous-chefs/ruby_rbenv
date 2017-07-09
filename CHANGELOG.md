@@ -2,6 +2,7 @@
 
 - Switch libraries to custom resources
 - Use gem install from core Chef
+- Add rbenv_system_install resource
 
 # 1.2.1 (June 23, 2017)
 
