@@ -18,6 +18,9 @@ action :install do
     source 'rbenv.sh.erb'
     owner 'root'
     mode '0755'
+    variables({
+      global_prefix: new_resource.global_prefix,
+    })
   end
 
   git new_resource.global_prefix do

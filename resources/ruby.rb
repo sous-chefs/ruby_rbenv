@@ -72,6 +72,7 @@ end
 
 action_class do
   include Chef::Rbenv::ScriptHelpers
+  include Chef::Rbenv::PackageDeps
 
   def ruby_installed?
     if Array(new_resource.action).include?(:reinstall)
