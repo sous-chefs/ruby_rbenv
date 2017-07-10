@@ -30,11 +30,12 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
+    user new_resource.user
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
   end
 
   directory "#{new_resource.user_prefix}/plugins" do
-    owner 'root'
+    owner new_resource.owner
     mode '0755'
   end
 
