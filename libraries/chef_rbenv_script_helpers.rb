@@ -30,6 +30,12 @@ class Chef
         end
       end
 
+      def user_home
+        return nil unless new_resource.user
+
+        Etc.getpwnam(new_resource.user).dir
+      end
+
       def which_rbenv
         "(#{new_resource.user || 'system'})"
       end
@@ -46,11 +52,6 @@ class Chef
          %(export RBENV_VERSION="#{new_resource.rbenv_version}"),
          %($RBENV_ROOT/shims/#{cmd}),
         ].join(' && ')
-      end
-
-      def set_updated
-        r = yield
-        new_resource.updated_by_last_action(r.updated_by_last_action?)
       end
 
       # Execute the supplied block of code as the given user.
