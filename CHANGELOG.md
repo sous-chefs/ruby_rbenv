@@ -3,6 +3,9 @@
 - Switch libraries to custom resources
 - Use gem install from core Chef
 - Add rbenv_system_install resource
+- Remove system_install recipe. Please see the system_install test recipe for usage.
+- Remove user_install recipe. Please see the user_install test recipe for usage.
+- Removed all other recipes for consistent usage.
 
 # 1.2.1 (June 23, 2017)
 
