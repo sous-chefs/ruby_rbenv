@@ -35,7 +35,7 @@ action :install do
   end
 
   directory "#{new_resource.user_prefix}/plugins" do
-    owner new_resource.owner
+    owner new_resource.user
     mode '0755'
   end
 
