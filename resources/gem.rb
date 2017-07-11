@@ -37,13 +37,7 @@ attribute :root_path, String
 attribute :rbenv_version, String, default: 'global'
 
 default_action :install
-# TODO: nothing, purge, reconfig, remove, upgrade
-# actions :install, :upgrade, :remove, :purge
 
-# Ideally here we want to just rely on the underlying gem_package resource
-# Which hands off to Ruby Gems in a sensible way where it can.
-
-# %w(install purge reconfig remove upgrade) do |act|
 action :install do
   gem_package new_resource.package_name do
     clear_sources if new_resource.clear_sources
@@ -81,6 +75,7 @@ action :reconfig do
     package_name if new_resource.package_name
     source if new_resource.source
     timeout if new_resource.timeout
+    response if new_resource.response_file
     version if new_resource.version
     action :reconfig
   end
