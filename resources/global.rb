@@ -39,10 +39,8 @@ property :root_path, String, default: lazy {
 
 action :create do
   if current_global_version_correct?
-    command = %(rbenv global #{new_resource.rbenv_version})
-
-    rbenv_script "#{command} #{which_rbenv}" do
-      code command
+    rbenv_script "globals #{which_rbenv}" do
+      code "rbenv global #{new_resource.rbenv_version}"
       user new_resource.user if new_resource.user
       root_path new_resource.root_path
       action :run
@@ -53,12 +51,14 @@ action :create do
 end
 
 action_class do
+  include Chef::Rbenv::ScriptHelpers
+
   def current_global_version_correct?
     current_global_version != new_resource.rbenv_version
   end
 
   def current_global_version
-    version_file = ::File.join(root_path, 'version')
+    version_file = ::File.join(new_resource.root_path, 'version')
 
     ::File.exist?(version_file) && ::IO.read(version_file).chomp
   end

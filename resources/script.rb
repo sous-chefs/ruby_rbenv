@@ -21,7 +21,6 @@
 provides :rbenv_script
 
 property :rbenv_version, String
-property :root_path, String
 property :code, String
 property :creates, String
 property :cwd, String
@@ -52,7 +51,7 @@ action_class do
 
   def script_code
     script = []
-    script << %(export RBENV_ROOT="#{rbenv_root}")
+    script << %(export RBENV_ROOT="#{root_path}")
     script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
     script << %{eval "$(rbenv init -)"}
     if new_resource.rbenv_version
@@ -63,7 +62,7 @@ action_class do
   end
 
   def script_environment
-    script_env = { 'RBENV_ROOT' => rbenv_root }
+    script_env = { 'RBENV_ROOT' => root_path }
 
     script_env.merge!(new_resource.environment) if new_resource.environment
 

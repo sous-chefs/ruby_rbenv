@@ -1,4 +1,6 @@
-rbenv_ruby '2.3.4'
+rbenv_ruby '2.3.4' do
+  install_ruby_build false
+end
 
 rbenv_global '2.3.4'
 

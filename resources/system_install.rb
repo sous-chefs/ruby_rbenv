@@ -6,6 +6,10 @@ property :update_rbenv, [true, false], default: true
 provides :rbenv_system_install
 
 action :install do
+
+  node.run_state['root_path'] ||= {}
+  node.run_state['root_path']['system'] = new_resource.global_prefix
+
   package package_prerequisites
 
   directory '/etc/profile.d' do

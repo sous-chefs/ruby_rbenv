@@ -43,6 +43,20 @@ class Chef
           yield
         end
       end
+
+      def root_path
+        node.run_state['root_path'] ||= {}
+
+        if new_resource.user
+          node.run_state['root_path'][new_resource.user]
+        else
+          node.run_state['root_path']['system']
+        end
+      end
+
+      def which_rbenv
+        "(#{new_resource.user || 'system'})"
+      end
     end
   end
 end

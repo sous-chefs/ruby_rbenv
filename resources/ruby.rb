@@ -29,41 +29,39 @@ property :environment, Hash
 property :patch_url, String
 property :patch_file, String
 property :rbenv_action, String, default: 'install'
-
 property :git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
 property :build_ref, String, default: 'master'
 
 action :install do
-  begin
-    install_start = Time.now
+  install_start = Time.now
 
-    rbenv_plugin 'ruby-build' do
-      git_url new_resource.git_url
-      git_ref new_resource.build_ref
-      plugin_path if new_resource.user
-    end
+  Chef::Log.info("Building Ruby #{new_resource.version}, this could take a while...")
 
-    install_ruby_dependencies
-
-    Chef::Log.info("Building #{new_resource}, this could take a while...")
-
-    patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
-    patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-    command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{patch_command})
-
-    rbenv_script "#{command} #{which_rbenv}" do
-      code command
-      user new_resource.user if new_resource.user
-      root_path new_resource.root_path if new_resource.root_path
-      environment new_resource.environment if new_resource.environment
-      action :nothing
-    end.run_action(:run)
-
-    Chef::Log.debug("#{new_resource} build time was " \
-      "#{(Time.now - install_start) / 60.0} minutes")
-  rescue
-    Chef::Log.warn('Ruby version already installed')
+  rbenv_plugin 'ruby-build' do
+    git_url 'https://github.com/rbenv/ruby-build.git'
   end
+
+  install_ruby_dependencies
+
+  patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
+  patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
+  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{patch_command})
+
+begin
+  raise Chef::Log.info('Ruby version already installed') if ruby_installed?
+
+  rbenv_script "#{command} #{which_rbenv}" do
+    code command
+    user new_resource.user if new_resource.user
+    environment new_resource.environment if new_resource.environment
+    action :run
+  end
+rescue
+  Chef::Log.info('Ruby version already installed')
+end
+  # .run_action(:run)
+
+  Chef::Log.debug("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")
 end
 
 action :reinstall do
@@ -86,13 +84,11 @@ action_class do
   def install_ruby_dependencies
     case ::File.basename(new_resource.version)
     when /^jruby-/
-      package jruby_package_deps do
-        action :nothing
-      end.run_action(:install)
+      package jruby_package_deps
     when /^rbx-/
-      package rbx_package_deps do
-        action :nothing
-      end.run_action(:install)
+      package rbx_package_deps
+    else
+      package package_deps
     end
 
     ensure_java_environment if new_resource.version =~ /^jruby-/

@@ -13,9 +13,9 @@ provides :rbenv_user_install
 action :install do
   package package_prerequisites
 
-# Make sure this is installed.
-# It's also managed by system_install.rb
-# So global_prefix should match in both files (TODO: helper)
+  node.run_state['root_path'] ||= {}
+  node.run_state['root_path'][new_resource.user] = new_resource.user_prefix
+
   template '/etc/profile.d/rbenv.sh' do
     cookbook 'ruby_rbenv'
     source 'rbenv.sh.erb'
