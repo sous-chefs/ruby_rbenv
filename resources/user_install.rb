@@ -4,7 +4,7 @@ property :git_url, String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref, String, default: 'master'
 property :user, String, name_property: true
 property :home_dir, String, default: lazy { ::File.expand_path("~#{user}") }
-property :user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv')}
+property :user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv') }
 property :global_prefix, String, default: '/usr/local/rbenv'
 property :update_rbenv, [true, false], default: true
 
@@ -19,9 +19,7 @@ action :install do
   template '/etc/profile.d/rbenv.sh' do
     cookbook 'ruby_rbenv'
     source 'rbenv.sh.erb'
-    variables({
-      global_prefix: new_resource.global_prefix,
-    })
+    variables(global_prefix: new_resource.global_prefix)
     owner 'root'
     mode '0755'
   end

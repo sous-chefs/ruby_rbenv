@@ -6,7 +6,6 @@ property :update_rbenv, [true, false], default: true
 provides :rbenv_system_install
 
 action :install do
-
   node.run_state['root_path'] ||= {}
   node.run_state['root_path']['system'] = new_resource.global_prefix
 
@@ -22,9 +21,7 @@ action :install do
     source 'rbenv.sh.erb'
     owner 'root'
     mode '0755'
-    variables({
-      global_prefix: new_resource.global_prefix,
-    })
+    variables(global_prefix: new_resource.global_prefix)
   end
 
   git new_resource.global_prefix do

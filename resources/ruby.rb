@@ -47,18 +47,18 @@ action :install do
   patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
   command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{patch_command})
 
-begin
-  raise Chef::Log.info('Ruby version already installed') if ruby_installed?
+  begin
+    raise Chef::Log.info('Ruby version already installed') if ruby_installed?
 
-  rbenv_script "#{command} #{which_rbenv}" do
-    code command
-    user new_resource.user if new_resource.user
-    environment new_resource.environment if new_resource.environment
-    action :run
+    rbenv_script "#{command} #{which_rbenv}" do
+      code command
+      user new_resource.user if new_resource.user
+      environment new_resource.environment if new_resource.environment
+      action :run
+    end
+  rescue
+    Chef::Log.info('Ruby version already installed')
   end
-rescue
-  Chef::Log.info('Ruby version already installed')
-end
   # .run_action(:run)
 
   Chef::Log.debug("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")

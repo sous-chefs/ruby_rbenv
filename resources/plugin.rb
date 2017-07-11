@@ -24,7 +24,7 @@ property :git_url, String, required: true
 property :git_ref, String, default: 'master'
 property :user, String
 property :home_dir, String, default: lazy { ::File.expand_path("~#{user}") }
-property :user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv')}
+property :user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv') }
 property :global_prefix, String, default: '/usr/local/rbenv'
 
 # https://github.com/rbenv/rbenv/wiki/Plugins
