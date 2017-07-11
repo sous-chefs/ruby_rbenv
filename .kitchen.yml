@@ -52,7 +52,13 @@ suites:
 - name: user_install
   run_list: recipe[test::user_install]
   includes: [centos-7.3]
-
+- name: set_global
+  run_list: recipe[test::global]
+  includes: [centos-7.3]
+- name: set_global_full
+  run_list: recipe[test::global_full]
+  includes: [centos-7.3]
+  
 # These are the same suite right now
 # - name: rbenv_plugin_defaults
 #   run_list: recipe[test::rbenv_global_defaults]

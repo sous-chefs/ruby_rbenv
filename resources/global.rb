@@ -19,11 +19,20 @@
 # limitations under the License.
 #
 
+# Check for the user or system global verison
+# If we pass in a user check that users global
+
 provides :rbenv_global
 
 property :rbenv_version, String, name_property: true
 property :user, String
-property :root_path, String
+property :root_path, String, default: lazy {
+  if user
+    node.run_state['root_path'][user]
+  else
+    node.run_state['root_path']['system']
+  end
+}
 
 # This sets the Global rbenv version
 # e.g. "rbenv global" should return the version we set
@@ -35,18 +44,22 @@ action :create do
     rbenv_script "#{command} #{which_rbenv}" do
       code command
       user new_resource.user if new_resource.user
-      root_path new_resource.root_path if new_resource.root_path
+      root_path new_resource.root_path
       action :run
     end
   else
-    Chef::Log.debug("#{new_resource} is already set - nothing to do")
+    Chef::Log.info("#{new_resource} is already set - nothing to do")
   end
 end
 
 action_class do
-  include Chef::Rbenv::ScriptHelpers
-
   def current_global_version_correct?
     current_global_version != new_resource.rbenv_version
+  end
+
+  def current_global_version
+    version_file = ::File.join(root_path, 'version')
+
+    ::File.exist?(version_file) && ::IO.read(version_file).chomp
   end
 end

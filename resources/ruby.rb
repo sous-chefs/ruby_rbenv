@@ -32,7 +32,6 @@ property :rbenv_action, String, default: 'install'
 
 property :git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
 property :build_ref, String, default: 'master'
-property :global, [true, false], default: false
 
 action :install do
   begin

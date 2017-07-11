@@ -32,7 +32,25 @@ This cookbook requires Chef 12.1+.
 - [ruby_build cookbook][ruby_build_cb]
 - java cookbook if installing jruby (recommended, but not required in the metadata)
 
-## Usage
+# Usage
+
+## Gem
+
+## Global
+
+### Plugin
+
+## Rehash
+
+### Ruby
+
+### Script
+
+### System_install
+
+### User_install
+
+Installs rbenv to the user path, making rbenv available to that user only.
 
 ### rbenv Installed System-Wide with Rubies
 
@@ -43,29 +61,6 @@ If your platform is the Mac, you may need to modify your [profile](#mac-system-n
 ### rbenv Installed For A Specific User with Rubies
 
 If you want a per-user install (like on a Mac/Linux workstation for development, CI, etc.), include `recipe[ruby_rbenv::user]` in your run_list and add a user hash to the `user_installs` attribute list. For example:
-
-```ruby
-node.default['rbenv']['user_installs'] = [
-  { 'user'    => 'tflowers',
-    'rubies'  => ['1.9.3-p0', 'jruby-1.6.5'],
-    'global'  => '1.9.3-p0',
-    'gems'    => {
-      '1.9.3-p0'    => [
-        { 'name'    => 'bundler',
-          'version' => '1.1.rc.5'
-        },
-        { 'name'    => 'rake' }
-      ],
-      'jruby-1.6.5' => [
-        { 'name'    => 'rest-client' }
-      ]
-    }
-  }
-]
-`
-```
-
-See [below](#attributes) for more details.
 
 ### rbenv Installed System-Wide and Custom Resources Defined
 
