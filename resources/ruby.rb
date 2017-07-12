@@ -23,14 +23,9 @@ provides :rbenv_ruby
 
 property :version, String, name_property: true
 property :version_file, String
-property :root_path, String
 property :user, String
 property :environment, Hash
-property :patch_url, String
-property :patch_file, String
 property :rbenv_action, String, default: 'install'
-property :git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
-property :build_ref, String, default: 'master'
 
 action :install do
   install_start = Time.now

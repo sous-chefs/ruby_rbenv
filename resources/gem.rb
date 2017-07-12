@@ -31,10 +31,9 @@ property :source, [String, Array]
 property :timeout, [String, Integer], default: 300
 property :version, [String, Array]
 
-attribute :response_file, String # Only used to reconfig
-attribute :user, String
-attribute :root_path, String
-attribute :rbenv_version, String, default: 'global'
+property :response_file, String # Only used to reconfig
+property :user, String
+property :rbenv_version, String, default: 'global'
 
 default_action :install
 
@@ -106,4 +105,8 @@ action :upgrade do
     version if new_resource.version
     action :upgrade
   end
+end
+
+action_class do
+  include Chef::Rbenv::ScriptHelpers
 end

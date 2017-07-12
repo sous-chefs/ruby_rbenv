@@ -21,12 +21,9 @@
 provides :rbenv_rehash
 
 property :user, String
-property :root_path, String
 
 action :run do
-  command = %(rbenv rehash)
-
-  rbenv_script "#{command} #{which_rbenv}" do
+  rbenv_script "rbenv rehash #{which_rbenv}" do
     code command
     user new_resource.user if new_resource.user
     root_path new_resource.root_path if new_resource.root_path
