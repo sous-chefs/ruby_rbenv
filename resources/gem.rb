@@ -28,8 +28,8 @@ property :gem_binary, String
 property :options, [String, Hash]
 property :package_name, [String, Array], name_property: true
 property :source, [String, Array]
-property :timeout, [String, Integer], default: 300
-property :version, [String, Array]
+property :timeout, Integer, default: 300
+property :version, String
 
 property :response_file, String # Only used to reconfig
 property :user, String

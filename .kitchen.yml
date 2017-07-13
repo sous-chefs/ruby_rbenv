@@ -22,65 +22,14 @@ platforms:
       box: bento/ubuntu-16.04
 
 suites:
-- name: system_ruby
-  run_list:
-  - recipe[ruby_build]
-  - recipe[ruby_rbenv::system]
-  attributes:
-    rbenv:
-      plugins:
-      - name: rbenv-vars
-        git_url: https://github.com/sstephenson/rbenv-vars.git
-      rubies:
-      - name: 2.3.4
-        environment:
-          CONFIGURE_OPTS: --disable-install-rdoc
-      - name: 2.4.1
-        environment:
-          CONFIGURE_OPTS: --disable-install-rdoc
-      global: 2.3.4
-      gems:
-        '2.4.1':
-          - name: bundler
-            action: upgrade
-
 - name: gem
   run_list: recipe[test::gem]
   includes: [centos-7.3]
+- name: global
+  run_list: recipe[test::global]
 - name: system_install
   run_list: recipe[test::system_install]
   includes: [centos-7.3]
 - name: user_install
   run_list: recipe[test::user_install]
   includes: [centos-7.3]
-- name: set_global
-  run_list: recipe[test::global]
-  includes: [centos-7.3]
-- name: set_global_full
-  run_list: recipe[test::global_full]
-  includes: [centos-7.3]
-
-# These are the same suite right now
-# - name: rbenv_plugin_defaults
-#   run_list: recipe[test::rbenv_global_defaults]
-#   includes: [centos-7.3]
-#
-# - name: rbenv_plugin_full
-#   run_list: recipe[test::rbenv_global_defaults]
-#   includes: [centos-7.3]
-#
-# - name: rbenv_rehash_defaults
-#   run_list: recipe[test::rbenv_global_defaults]
-#   includes: [centos-7.3]
-#
-# - name: rbenv_rehash_full
-#   run_list: recipe[test::rbenv_global_defaults]
-#   includes: [centos-7.3]
-#
-# - name: rbenv_script_defaults
-#   run_list: recipe[test::rbenv_global_defaults]
-#   includes: [centos-7.3]
-#
-# - name: rbenv_script_full
-#   run_list: recipe[test::rbenv_global_defaults]
-#   includes: [centos-7.3]

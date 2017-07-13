@@ -38,25 +38,23 @@ action :install do
 
   install_ruby_dependencies
 
-  patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
-  patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{patch_command})
+  # patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
+  # patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
+  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version})
 
-  begin
-    raise Chef::Log.info('Ruby version already installed') if ruby_installed?
+  # begin
 
-    rbenv_script "#{command} #{which_rbenv}" do
-      code command
-      user new_resource.user if new_resource.user
-      environment new_resource.environment if new_resource.environment
-      action :run
-    end
-  rescue
-    Chef::Log.info('Ruby version already installed')
-  end
-  # .run_action(:run)
+  rbenv_script "#{command} #{which_rbenv}" do
+    code command
+    user new_resource.user if new_resource.user
+    environment new_resource.environment if new_resource.environment
+    action :run
+  end unless ruby_installed?
+  # rescue
+  # Chef::Log.info('Ruby version already installed')
+  # end
 
-  Chef::Log.debug("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")
+  Chef::Log.info("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")
 end
 
 action :reinstall do
@@ -69,7 +67,7 @@ action_class do
   def ruby_installed?
     if Array(new_resource.action).include?(:reinstall)
       false
-    elsif ::File.directory?(::File.join(rbenv_root,
+    elsif ::File.directory?(::File.join(root_path,
       'versions',
       new_resource.version))
       true

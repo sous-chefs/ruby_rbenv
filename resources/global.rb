@@ -42,7 +42,6 @@ action :create do
     rbenv_script "globals #{which_rbenv}" do
       code "rbenv global #{new_resource.rbenv_version}"
       user new_resource.user if new_resource.user
-      root_path new_resource.root_path
       action :run
     end
   else
