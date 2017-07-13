@@ -20,7 +20,7 @@ This cookbook requires Chef 12.9+.
 
 - Debian derivatives (Debian 7+, Ubuntu 12.04+, Linux Mint)
 - Fedora
-- Mac OS X
+- macOS
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 
 This cookbook requires Chef 12.1+.
