@@ -4,12 +4,10 @@ maintainer_email 'help@sous-chefs.org'
 issues_url 'https://github.com/sous-chefs/ruby_rbenv/issues'
 source_url 'https://github.com/sous-chefs/ruby_rbenv'
 license 'Apache-2.0'
-description 'Manages rbenv and its installed rubies. Several LWRPs are also defined.'
+description 'Manages rbenv and installs Rbenv based Rubies'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '1.2.1'
-chef_version '>= 12.1' if respond_to?(:chef_version)
-
-depends 'ruby_build', '>= 1.1.0' # if using the rbenv LWRP, ruby-build must be installed
+version '2.0.0'
+chef_version '>= 12.19' if respond_to?(:chef_version)
 
 supports 'ubuntu'
 supports 'linuxmint'

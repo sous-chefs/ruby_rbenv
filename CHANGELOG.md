@@ -7,6 +7,7 @@
 - Remove user_install recipe. Please see the user_install test recipe for usage.
 - Removed all other recipes for consistent usage.
 - Remove FreeBSD "support" (the platform isn't currently tested)
+- Update required chef-version to the one we test with (Chef 12.19+)
 
 # 1.2.1 (June 23, 2017)
 

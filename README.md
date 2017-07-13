@@ -1,4 +1,4 @@
-# Chef rbenv Cookbook
+# Chef ruby_rbenv Cookbook
 
 [![Build Status](https://travis-ci.org/sous-chefs/ruby_rbenv.svg?branch=master)](https://travis-ci.org/sous-chefs/ruby_rbenv) [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 
@@ -18,10 +18,8 @@ This cookbook requires Chef 12.9+.
 
 ### Platform
 
-- Arch
 - Debian derivatives (Debian 7+, Ubuntu 12.04+, Linux Mint)
 - Fedora
-- Gentoo
 - Mac OS X
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 
