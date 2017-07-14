@@ -1,8 +1,10 @@
+version = '2.4.1'
+
 # Install Rbenv Globally
 rbenv_system_install 'system'
 
 # Install a Ruby version
-rbenv_ruby '2.3.4'
+rbenv_ruby version
 
 # Set that Ruby as the global Ruby
-rbenv_global '2.3.4'
+rbenv_global version

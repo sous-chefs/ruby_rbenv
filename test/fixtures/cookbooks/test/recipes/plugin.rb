@@ -1,13 +1,15 @@
+version = '2.4.1'
+
 rbenv_user_install 'vagrant'
 
 rbenv_system_install 'system'
 
-rbenv_ruby '2.3.4' do
+rbenv_ruby version do
   install_ruby_build false
   user 'vagrant'
 end
 
-rbenv_global '2.3.4' do
+rbenv_global version do
   user 'vagrant'
 end
 

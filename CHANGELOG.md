@@ -10,6 +10,10 @@
 - Remove Arch Linux support in README. We never really supported this, and it isn't tested
 - Update required chef-version to the one we test with (Chef 12.19+)
 
+## Known Current Bugs
+
+- Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1. As patching is currently unavailable please pin to a prior version if you need this installing. 
+
 # 1.2.1 (June 23, 2017)
 
 - Fixed resource failures on Chef 13
