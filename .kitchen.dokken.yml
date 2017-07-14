@@ -59,6 +59,7 @@ platforms:
     pid_one_command: /sbin/init
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install curl apt-transport-https lsb-release procps net-tools -y
 
 - name: ubuntu-16.04
   driver:
@@ -66,7 +67,7 @@ platforms:
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
+      - RUN /usr/bin/apt-get install curl apt-transport-https lsb-release procps net-tools -y
 
 - name: opensuse-leap
   driver:
