@@ -34,31 +34,25 @@ platforms:
 - name: centos-6
   driver:
     image: dokken/centos-6
-    platform: rhel
+    # platform: rhel
     pid_one_command: /sbin/init
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
-
+      - RUN yum -y install sudo
 
 - name: centos-7
   driver:
     image: dokken/centos-7
-    platform: rhel
+    # platform: rhel
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
-
+      - RUN yum -y install sudo
 
 - name: fedora-latest
   driver:
     image: dokken/fedora-latest
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
-
+      - RUN dnf -y install sudo
 
 - name: ubuntu-14.04
   driver:
