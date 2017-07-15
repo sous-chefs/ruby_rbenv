@@ -12,6 +12,12 @@ rbenv_gem 'mail' do
   options '--no-rdoc --no-ri'
 end
 
+rbenv_gem 'mail' do
+  # rbenv_version version
+  version '2.6.6'
+  action :remove
+end
+
 gem_package 'mail' do
   version '2.6.5'
   options '--no-rdoc --no-ri'
