@@ -18,17 +18,28 @@ platforms:
   driver:
     image: dokken/debian-8
     pid_one_command: /sbin/init
+    intermediate_instructions:
+       - RUN /usr/bin/apt-get update
+       - RUN /usr/bin/apt-get install sudo -y
 
 - name: debian-9
   driver:
     image: dokken/debian-9
     pid_one_command: /bin/systemd
+    # intermediate_instructions:
+    #    - RUN /usr/bin/apt-get update
+    #    - RUN /usr/bin/apt-get install sudo -y
+
 
 - name: centos-6
   driver:
     image: dokken/centos-6
     platform: rhel
     pid_one_command: /sbin/init
+    # intermediate_instructions:
+    #    - RUN /usr/bin/apt-get update
+    #    - RUN /usr/bin/apt-get install sudo -y
+
 
 - name: centos-7
   driver:
@@ -67,5 +78,5 @@ suites:
   run_list: recipe[test::system_install]
 - name: user_install
   run_list:
-    - recipe[test::user_install]
     - recipe[test::dokken]
+    - recipe[test::user_install]
