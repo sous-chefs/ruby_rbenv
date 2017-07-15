@@ -14,67 +14,67 @@ verifier:
   name: inspec
 
 platforms:
-- name: debian-8
+- name: dokken/debian-8
   driver:
     image: debian:8
     pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install lsb-release curl -y
+    # intermediate_instructions:
+      # - RUN /usr/bin/apt-get update
+      # - RUN /usr/bin/apt-get install lsb-release curl -y
 
 - name: debian-9
   driver:
-    image: debian:9
+    image: dokken/debian-9
     pid_one_command: /bin/systemd
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install lsb-release curl -y
+    # intermediate_instructions:
+    #   - RUN /usr/bin/apt-get update
+    #   - RUN /usr/bin/apt-get install lsb-release curl -y
 
 - name: centos-6
   driver:
-    image: centos:6
+    image: dokken/centos-6
     platform: rhel
     pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN yum -y install which initscripts make
+    # intermediate_instructions:
+    #   - RUN yum -y install which initscripts make
 
 - name: centos-7
   driver:
-    image: centos:7
+    image: dokken/centos-7
     platform: rhel
     pid_one_command: /usr/lib/systemd/systemd
-    intermediate_instructions:
-      - RUN yum -y install lsof which systemd-sysv initscripts make
+    # intermediate_instructions:
+    #   - RUN yum -y install lsof which systemd-sysv initscripts make
 
 - name: fedora-latest
   driver:
-    image: fedora:latest
+    image: dokken/fedora-latest
     pid_one_command: /usr/lib/systemd/systemd
-    intermediate_instructions:
-      - RUN dnf -y install yum which systemd-sysv initscripts
+    # intermediate_instructions:
+    #   - RUN dnf -y install yum which systemd-sysv initscripts
 
 - name: ubuntu-14.04
   driver:
-    image: ubuntu-upstart:14.04
+    image: dokken/ubuntu-14.04
     pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install curl apt-transport-https lsb-release procps net-tools -y
+    # intermediate_instructions:
+    #   - RUN /usr/bin/apt-get update
+    #   - RUN /usr/bin/apt-get install curl apt-transport-https lsb-release procps net-tools -y
 
 - name: ubuntu-16.04
   driver:
-    image: ubuntu:16.04
+    image: dokken/ubuntu-16.04
     pid_one_command: /bin/systemd
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install curl apt-transport-https lsb-release procps net-tools -y
+    # intermediate_instructions:
+    #   - RUN /usr/bin/apt-get update
+    #   - RUN /usr/bin/apt-get install curl apt-transport-https lsb-release procps net-tools -y
 
 - name: opensuse-leap
   driver:
-    image: opensuse:leap
+    image: dokken/opensuse-leap
     pid_one_command: /bin/systemd
-    intermediate_instructions:
-      - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive
+    # intermediate_instructions:
+    #   - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive
 
 suites:
 - name: gem

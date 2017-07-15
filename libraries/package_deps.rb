@@ -17,7 +17,8 @@ class Chef
         when 'debian'
           %w(gcc autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev)
         when 'suse'
-          %(gcc automake gdbm-devel libffi-devel libyaml-devel libopenssl-devel ncurses-devel readline-devel zlib-devel)
+          %w(gcc make libssl-dev libsqlite3-dev)
+          # %(gcc automake gdbm-devel libffi-devel libyaml-devel libopenssl-devel ncurses-devel readline-devel zlib-devel)
         end
       end
 
