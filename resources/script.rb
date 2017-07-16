@@ -31,7 +31,7 @@ property :returns, Array, default: [0]
 property :timeout, Integer
 property :user, String
 property :umask, [String, Integer]
-property :live_stream, [true, false], default: false
+property :live_stream, [true, false], default: true
 
 action :run do
   bash new_resource.name do
