@@ -34,7 +34,6 @@ platforms:
 - name: centos-6
   driver:
     image: dokken/centos-6
-    # platform: rhel
     pid_one_command: /sbin/init
     intermediate_instructions:
       - RUN yum -y install sudo
@@ -42,7 +41,6 @@ platforms:
 - name: centos-7
   driver:
     image: dokken/centos-7
-    # platform: rhel
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
       - RUN yum -y install sudo
@@ -67,10 +65,10 @@ platforms:
        - RUN /usr/bin/apt-get update
        - RUN /usr/bin/apt-get install sudo -y
 
-# - name: opensuse-leap
-#   driver:
-#     image: dokken/opensuse-leap
-#     pid_one_command: /bin/systemd
+- name: opensuse-leap
+  driver:
+    image: dokken/opensuse-leap
+    pid_one_command: /bin/systemd
 
 suites:
 - name: gem
@@ -79,6 +77,7 @@ suites:
   includes: [centos-7]
 - name: global
   run_list: recipe[test::global]
+  excludes: centos-6
 - name: system_install
   run_list: recipe[test::system_install]
 - name: user_install

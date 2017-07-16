@@ -31,6 +31,7 @@ property :returns, Array, default: [0]
 property :timeout, Integer
 property :user, String
 property :umask, [String, Integer]
+property :live_stream, [true, false], default: false
 
 action :run do
   bash new_resource.name do
@@ -43,6 +44,7 @@ action :run do
     timeout new_resource.timeout if new_resource.timeout
     umask new_resource.umask if new_resource.umask
     environment(script_environment)
+    live_stream new_resource.live_stream
   end
 end
 
