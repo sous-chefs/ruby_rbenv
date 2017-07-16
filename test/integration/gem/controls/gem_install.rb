@@ -20,6 +20,6 @@ control 'Gem Install' do
   desc 'gem home should be rbenv in an rbenv directory'
   describe bash('source /etc/profile.d/rbenv.sh && gem env home') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match(%r{/usr/local/rbenv/versions/2.4.1/lib/ruby/gems/2.4.0}) }
+    its('stdout') { should match(%r{/usr/local/rbenv/versions/#{Regexp.quote(global_ruby)}/lib/ruby/gems/2.4.0}) }
   end
 end
