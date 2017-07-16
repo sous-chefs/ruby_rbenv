@@ -7,6 +7,6 @@ control 'Rbenv should be installed' do
   desc "Can set global Ruby version to #{global_ruby}"
   describe bash('source /etc/profile.d/rbenv.sh && rbenv versions --bare') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should contain(/#{Regexp.quote(global_ruby}/) }
+    its('stdout') { should contain(/#{Regexp.quote(global_ruby)}/) }
   end
 end

@@ -26,7 +26,7 @@ property :version_file, String
 property :user, String
 property :environment, Hash
 property :rbenv_action, String, default: 'install'
-property :verbose, [true,false], default: false
+property :verbose, [true, false], default: false
 
 action :install do
   install_start = Time.now
