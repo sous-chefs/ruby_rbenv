@@ -70,7 +70,7 @@ platforms:
     image: dokken/opensuse-leap
     pid_one_command: /bin/systemd
     intermediate_instructions:
-    - RUN zypper --non-interactive install sudo
+    - RUN zypper --non-interactive install sudo curl tar
 
 suites:
 - name: gem

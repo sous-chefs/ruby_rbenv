@@ -13,7 +13,6 @@ rbenv_gem 'mail' do
 end
 
 rbenv_gem 'mail' do
-  # rbenv_version version
   version '2.6.6'
   action :remove
 end

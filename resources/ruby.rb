@@ -26,6 +26,7 @@ property :version_file, String
 property :user, String
 property :environment, Hash
 property :rbenv_action, String, default: 'install'
+property :verbose, [true,false], default: false
 
 action :install do
   install_start = Time.now
@@ -38,9 +39,10 @@ action :install do
 
   install_ruby_dependencies
 
+  # TODO: ?
   # patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
   # patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version})
+  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{verbose})
 
   # begin
 
@@ -49,6 +51,7 @@ action :install do
     user new_resource.user if new_resource.user
     environment new_resource.environment if new_resource.environment
     action :run
+    live_stream true if new_resource.verbose
   end unless ruby_installed?
   # rescue
   # Chef::Log.info('Ruby version already installed')
@@ -94,5 +97,9 @@ action_class do
   rescue Chef::Exceptions::ResourceNotFound
     # have pity on my soul
     Chef::Log.info 'The java cookbook does not appear to in the run_list.'
+  end
+
+  def verbose
+    return '-v' if new_resource.verbose
   end
 end
