@@ -21,7 +21,7 @@ env:
     - INSTANCE=gem-centos-7
     - INSTANCE=global-debian-8
     - INSTANCE=global-debian-9
-    - INSTANCE=global-centos-6
+   # - INSTANCE=global-centos-6
     - INSTANCE=global-centos-7
     - INSTANCE=global-centos-7 CHEF_VERSION=12.19.36
     - INSTANCE=global-fedora-latest
