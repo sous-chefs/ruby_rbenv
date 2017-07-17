@@ -69,11 +69,9 @@ If user is passed in, the plugin is installed to the users install of rbenv.
 
 ```ruby
 rbenv_rehash 'rehash' do
-  user 'vagrant'
+  user 'vagrant' # Optional: if passed rehashes the user Ruby otherwise rehashes the system rbenv
 end
 ```
-
-If an optional user is passed in the users rbenv is rehashed.
 
 ## Ruby
 
@@ -81,13 +79,12 @@ Installs a given Ruby version to the system or user location.
 
 ```ruby
 rbenv_ruby '2.3.4' do
-  version_file
-  user # If passed the user rbenv to install to
-  rbenv_action # The action to perform, install, remove etc
+  user # Optional: If passed the user rbenv to install to
+  rbenv_action # Optional: the action to perform, install, remove etc
 end
 ```
 
-Example `rbenv_ruby '2.4.1'`
+Shorter example `rbenv_ruby '2.4.1'`
 
 ## Script
 
@@ -96,11 +93,12 @@ Runs a rbenv aware script.
 ```ruby
 rbenv_script 'foo' do
   rbenv_version #rbenv version to run the script against
-  environment # Environment to setup to run the script
-  user # User to run as
-  group # Group to run as
-  path # User to run as
-  returns # Expected return code
+  environment # Optional: Environment to setup to run the script
+  user # Optional: User to run as
+  group # Optional: Group to run as
+  path # Optional: User to run as
+  returns # Optional: Expected return code
+  code # Script code to run
 end
 ```
 
@@ -111,8 +109,9 @@ Installs rbenv to the system location, by default `/usr/local/rbenv`
 ```ruby
 rbenv_system_install 'foo'
   git_url # URL of the plugin repo you want to checkout
-  git_ref # Git reference to checkout 'master'
-  update_rbenv # Keeps the git repo up to date
+  git_ref # Optional: Git reference to checkout
+  update_rbenv # Optional: Keeps the git repo up to date
+end
 ```
 
 ## User_install
