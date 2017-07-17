@@ -18,6 +18,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+provides :rbenv_script
+
 property :rbenv_version, String
 property :code, String
 property :creates, String
