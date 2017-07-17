@@ -23,7 +23,7 @@ env:
     - INSTANCE=global-debian-9
    # - INSTANCE=global-centos-6
     - INSTANCE=global-centos-7
-    - INSTANCE=global-centos-7 CHEF_VERSION=12.9
+    - INSTANCE=global-centos-7 CHEF_VERSION=12.9.41
     - INSTANCE=global-fedora-latest
     - INSTANCE=global-ubuntu-1404
     - INSTANCE=global-ubuntu-1604
