@@ -18,8 +18,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-provides :rbenv_rehash
-
 property :user, String
 
 action :run do

@@ -18,8 +18,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-provides :rbenv_plugin
-
 property :git_url, String, required: true
 property :git_ref, String, default: 'master'
 property :user, String
