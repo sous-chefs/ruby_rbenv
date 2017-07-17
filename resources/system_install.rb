@@ -25,7 +25,6 @@ property :git_ref, String, default: 'master'
 property :global_prefix, String, default: '/usr/local/rbenv'
 property :update_rbenv, [true, false], default: true
 
-
 action :install do
   node.run_state['root_path'] ||= {}
   node.run_state['root_path']['system'] = new_resource.global_prefix
