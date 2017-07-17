@@ -5,5 +5,3 @@
 # Run 'chef exec bundle install' to install these dependencies
 
 source 'https://rubygems.org'
-
-gem 'stove'
