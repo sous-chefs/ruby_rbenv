@@ -18,17 +18,11 @@ This cookbook requires Chef 12.9+.
 
 ### Platform
 
-- Debian derivatives (Debian 7+, Ubuntu 12.04+, Linux Mint)
+- Debian derivatives
 - Fedora
 - macOS
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
-
-This cookbook requires Chef 12.1+.
-
-### Cookbooks
-
-- [ruby_build cookbook][ruby_build_cb]
-- java cookbook if installing jruby (recommended, but not required in the metadata)
+- openSUSE and openSUSE leap
 
 # Usage
 
@@ -38,18 +32,12 @@ Used to install a gem into the selected rbenv environment.
 
 ```ruby
 rbenv_gem 'gem_name' do
-  clear_sources, [true, false]
-  include_default_source, [true, false]
-  gem_binary, String
-  options, [String, Hash]
-  package_name, [String, Array], name_property: true
-  source, [String, Array]
-  timeout, [String, Integer], default: 300
-  version, [String, Array]
-  response_file, String # Only used to reconfig
-  user, String
-  root_path, String
-  rbenv_version, String, default: 'global'
+  options # Optional: Options to pass to the gem command e.g. '--no-rdoc --no-ri'
+  source # Optional: source URL/location for gem.
+  timeout # Optional: Gem install timeout
+  version # Optional: Gem version to install
+  response_file # Optional: response file to reconfigure a gem
+  rbenv_version # Which rbenv verison to install the gem to. Defaults to global
 end
 ```
 
@@ -57,8 +45,7 @@ end
 
 ```ruby
 rbenv_global '2.3.4' do
-  rbenv_version, String, name_property: true
-  user, String
+  user # Optional: if passed sets the users global version. Do not set, to set the systems global version
 end
 ```
 
@@ -70,9 +57,9 @@ Installs a rbenv plugin.
 
 ```ruby
 rbenv_plugin 'ruby-build' do
-  git_url, String, required: true
-  git_ref, String, default: 'master'
-  user, String
+  git_url # Git URL of the plugin
+  git_ref # Git reference of the plugin
+  user # Optional: if passed installs to the users rbenv. Do not set, to set installs to the system rbenv.
 end
 ```
 
@@ -82,11 +69,11 @@ If user is passed in, the plugin is installed to the users install of rbenv.
 
 ```ruby
 rbenv_rehash 'rehash' do
-  user, String
+  user 'vagrant'
 end
 ```
 
-If user is passed in the user rbenv is rehashed.
+If an optional user is passed in the users rbenv is rehashed.
 
 ## Ruby
 
@@ -94,11 +81,9 @@ Installs a given Ruby version to the system or user location.
 
 ```ruby
 rbenv_ruby '2.3.4' do
-  version, String, name_property: true
-  version_file, String
-  user, String
-  environment, Hash
-  rbenv_action, String, default: 'install'
+  version_file
+  user # If passed the user rbenv to install to
+  rbenv_action # The action to perform, install, remove etc
 end
 ```
 
@@ -108,21 +93,27 @@ Example `rbenv_ruby '2.4.1'`
 
 Runs a rbenv aware script.
 
-``ruby rbenv_script 'foo' do rbenv_version, String code, String creates, String cwd, String environment, Hash group, String path, Array returns, Array, default: [0] timeout, Integer user, String umask, [String, Integer] end
-
-```` `
+```ruby
+rbenv_script 'foo' do
+  rbenv_version #rbenv version to run the script against
+  environment # Environment to setup to run the script
+  user # User to run as
+  group # Group to run as
+  path # User to run as
+  returns # Expected return code
+end
+```
 
 ## System_install
 
 Installs rbenv to the system location, by default `/usr/local/rbenv`
 
 ```ruby
-rbenv_system_install ''
-  git_url, String, default: 'https://github.com/rbenv/rbenv.git'
-  git_ref, String, default: 'master'
-  global_prefix, String, default: '/usr/local/rbenv'
-  update_rbenv, [true, false] # Keeps the git repo up to date
-````
+rbenv_system_install 'foo'
+  git_url # URL of the plugin repo you want to checkout
+  git_ref # Git reference to checkout 'master'
+  update_rbenv # Keeps the git repo up to date
+```
 
 ## User_install
 
@@ -130,12 +121,9 @@ Installs rbenv to the user path, making rbenv available to that user only.
 
 ```ruby
 rbenv_user_install 'vagrant' do
-  git_url, String, default: 'https://github.com/rbenv/rbenv.git'
-  git_ref, String, default: 'master'
-  user, String, name_property: true
-  home_dir, String, default: lazy { ::File.expand_path("~#{user}") }
-  user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv') }
-  update_rbenv, [true, false], default: true
+  git_url # Optional: Git URL to checkout rbenv from.
+  git_ref # Optional: Git reference to checkout e.g. 'master'
+  user # Which user to install rbenv to (also specified in the resources name above)
 end
 ```
 
