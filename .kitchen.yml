@@ -4,6 +4,7 @@ driver:
 provisioner:
   name: chef_zero
   deprecations_as_errors: true
+  require_chef_omnibus: <%= ENV['CHEF_VERSION'] || 'latest' %>
 
 verifier:
   name: inspec
@@ -12,36 +13,25 @@ platforms:
   - name: centos-6.9
   - name: centos-7.3
   - name: fedora-25
+  - name: debian-8.8
+  - name: debian-9.0
   - name: ubuntu-14.04
   - name: ubuntu-16.04
   - name: ubuntu-16.04-chef-12
-    driver_config:
-      box: bento/ubuntu-16.04
     provisioner:
       require_chef_omnibus: 12
-    transport:
-      username: ubuntu
+    driver_config:
+      box: bento/ubuntu-16.04
 
 suites:
-- name: system_ruby
-  run_list:
-  - recipe[apt]
-  - recipe[ruby_build]
-  - recipe[ruby_rbenv::system]
-  attributes:
-    rbenv:
-      plugins:
-      - name: rbenv-vars
-        git_url: https://github.com/sstephenson/rbenv-vars.git
-      rubies:
-      - name: 2.1.6
-        environment:
-          CONFIGURE_OPTS: --disable-install-rdoc
-      - name: 2.4.1
-        environment:
-          CONFIGURE_OPTS: --disable-install-rdoc
-      global: 2.1.6
-      gems:
-        '2.4.1':
-          - name: bundler
-            action: upgrade
+- name: gem
+  run_list: recipe[test::gem]
+  includes: [centos-7.3]
+- name: global
+  run_list: recipe[test::global]
+- name: system_install
+  run_list: recipe[test::system_install]
+  includes: [centos-7.3]
+- name: user_install
+  run_list: recipe[test::user_install]
+  includes: [centos-7.3]

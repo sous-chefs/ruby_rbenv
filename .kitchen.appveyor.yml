@@ -1,0 +1,21 @@
+driver:
+  name: proxy
+  host: localhost
+  reset_command: "exit 0"
+  port: <%= ENV["winrm_port"] %>
+  username: <%= ENV["winrm_user"] %>
+  password: <%= ENV["winrm_pass"] %>
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: windows-2012R2
+
+verifier:
+  name: inspec
+
+suites:
+  - name: default
+    run_list:
+      - recipe[test::default]

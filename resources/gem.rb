@@ -19,27 +19,94 @@
 # limitations under the License.
 #
 
-actions :install, :upgrade, :remove, :purge
+provides :rbenv_gem
+# Standard Gem Package Options
+# https://docs.chef.io/resource_gem_package.html#attributes
+property :clear_sources, [true, false]
+property :include_default_source, [true, false]
+property :gem_binary, String
+property :options, [String, Hash]
+property :package_name, [String, Array], name_property: true
+property :source, [String, Array]
+property :timeout, Integer, default: 300
+property :version, String
+
+property :response_file, String # Only used to reconfig
+property :user, String
+property :rbenv_version, String, default: 'global'
+
 default_action :install
 
-provides :rbenv_gem
+action :install do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :install
+  end
+end
 
-attribute :package_name,           kind_of: String, name_attribute: true
-attribute :rbenv_version,          kind_of: String, default: 'global'
-attribute :version,                kind_of: String
-attribute :response_file,          kind_of: String
-attribute :source,                 kind_of: String
-attribute :options,                kind_of: [String, Hash]
-attribute :gem_binary,             kind_of: String
-attribute :user,                   kind_of: String
-attribute :root_path,              kind_of: String
-attribute :clear_sources,          kind_of: [TrueClass, FalseClass]
-attribute :timeout,                kind_of: Integer, default: 300
-attribute :include_default_source, kind_of: [TrueClass, FalseClass]
+action :purge do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :purge
+  end
+end
 
-include Chef::Rbenv::Mixin::ResourceString
+action :reconfig do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    response if new_resource.response_file
+    version if new_resource.version
+    action :reconfig
+  end
+end
 
-def initialize(*args)
-  super
-  @provider = Chef::Provider::Package::RbenvRubygems
+action :remove do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :remove
+  end
+end
+action :upgrade do
+  gem_package new_resource.package_name do
+    clear_sources if new_resource.clear_sources
+    include_default_source if new_resource.include_default_source
+    gem_binary if new_resource.gem_binary
+    options if new_resource.options
+    package_name if new_resource.package_name
+    source if new_resource.source
+    timeout if new_resource.timeout
+    version if new_resource.version
+    action :upgrade
+  end
+end
+
+action_class do
+  include Chef::Rbenv::ScriptHelpers
 end

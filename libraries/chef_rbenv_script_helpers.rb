@@ -22,43 +22,12 @@
 class Chef
   module Rbenv
     module ScriptHelpers
-      def rbenv_root
-        if new_resource.root_path
-          new_resource.root_path
-        elsif new_resource.user
-          ::File.join(user_home, '.rbenv')
-        else
-          node['rbenv']['root_path']
-        end
-      end
-
-      def user_home
-        return nil unless new_resource.user
-
-        Etc.getpwnam(new_resource.user).dir
-      end
-
-      def which_rbenv
-        "(#{new_resource.user || 'system'})"
-      end
-
-      def current_global_version
-        version_file = ::File.join(rbenv_root, 'version')
-
-        ::File.exist?(version_file) && ::IO.read(version_file).chomp
-      end
-
       def wrap_shim_cmd(cmd)
         [%(export RBENV_ROOT="#{rbenv_root}"),
          %(export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"),
          %(export RBENV_VERSION="#{new_resource.rbenv_version}"),
          %($RBENV_ROOT/shims/#{cmd}),
         ].join(' && ')
-      end
-
-      def set_updated
-        r = yield
-        new_resource.updated_by_last_action(r.updated_by_last_action?)
       end
 
       # Execute the supplied block of code as the given user.
@@ -73,6 +42,20 @@ class Chef
         else
           yield
         end
+      end
+
+      def root_path
+        node.run_state['root_path'] ||= {}
+
+        if new_resource.user
+          node.run_state['root_path'][new_resource.user]
+        else
+          node.run_state['root_path']['system']
+        end
+      end
+
+      def which_rbenv
+        "(#{new_resource.user || 'system'})"
       end
     end
   end

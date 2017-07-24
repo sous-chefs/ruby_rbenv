@@ -3,6 +3,7 @@
 # Resource:: ruby
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
+# Author:: Dan Webb <dan.wenn@damacus.io>
 #
 # Copyright:: 2011-2017, Fletcher Nichol
 #
@@ -18,26 +19,87 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-actions :install, :reinstall
-default_action :install
-
 provides :rbenv_ruby
 
-attribute :definition, kind_of: String, name_attribute: true
-attribute :definition_file,	kind_of: String
-attribute :root_path,   kind_of: String
-attribute :user,        kind_of: String
-attribute :environment, kind_of: Hash
-attribute :patch_url,   kind_of: String
-attribute :patch_file,  kind_of: String
-attribute :rbenv_action, kind_of: String, default: 'install'
+property :version, String, name_property: true
+property :version_file, String
+property :user, String
+property :environment, Hash
+property :rbenv_action, String, default: 'install'
+property :verbose, [true, false], default: false
 
-def initialize(*args)
-  super
-  @rbenv_version = @definition
+action :install do
+  install_start = Time.now
+
+  Chef::Log.info("Building Ruby #{new_resource.version}, this could take a while...")
+
+  rbenv_plugin 'ruby-build' do
+    git_url 'https://github.com/rbenv/ruby-build.git'
+  end
+
+  install_ruby_dependencies
+
+  # TODO: ?
+  # patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
+  # patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
+  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{verbose})
+
+  # begin
+
+  rbenv_script "#{command} #{which_rbenv}" do
+    code command
+    user new_resource.user if new_resource.user
+    environment new_resource.environment if new_resource.environment
+    action :run
+    live_stream true if new_resource.verbose
+  end unless ruby_installed?
+  # rescue
+  # Chef::Log.info('Ruby version already installed')
+  # end
+
+  Chef::Log.info("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")
 end
 
-def to_s
-  "#{super} (#{@user || 'system'})"
+action :reinstall do
+end
+
+action_class do
+  include Chef::Rbenv::ScriptHelpers
+  include Chef::Rbenv::PackageDeps
+
+  def ruby_installed?
+    if Array(new_resource.action).include?(:reinstall)
+      false
+    elsif ::File.directory?(::File.join(root_path,
+      'versions',
+      new_resource.version))
+      true
+    end
+  end
+
+  def install_ruby_dependencies
+    case ::File.basename(new_resource.version)
+    when /^jruby-/
+      package jruby_package_deps
+    when /^rbx-/
+      package rbx_package_deps
+    else
+      package package_deps
+    end
+
+    ensure_java_environment if new_resource.version =~ /^jruby-/
+  end
+
+  def ensure_java_environment
+    resource_collection.find(
+      'ruby_block[update-java-alternatives]'
+    ).run_action(:create)
+  rescue Chef::Exceptions::ResourceNotFound
+    # have pity on my soul
+    Chef::Log.info 'The java cookbook does not appear to in the run_list.'
+  end
+
+  def verbose
+    return '-v' if new_resource.verbose
+  end
 end

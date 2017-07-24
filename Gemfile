@@ -5,7 +5,3 @@
 # Run 'chef exec bundle install' to install these dependencies
 
 source 'https://rubygems.org'
-
-gem 'tomlrb'
-gem 'stove'
-gem 'community_cookbook_releaser'

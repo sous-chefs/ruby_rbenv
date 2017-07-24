@@ -1,3 +1,19 @@
+# 2.0.0 (tbc)
+
+- Switch libraries to custom resources
+- Use gem install from core Chef
+- Add rbenv_system_install resource
+- Remove system_install recipe. Please see the system_install test recipe for usage.
+- Remove user_install recipe. Please see the user_install test recipe for usage.
+- Removed all other recipes for consistent usage.
+- Remove FreeBSD "support" (the platform isn't currently tested)
+- Remove Arch Linux support in README. We never really supported this, and it isn't tested
+- Update required chef-version to the one we test with (Chef 12.19+)
+
+## Known Current Bugs
+
+- Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1. As patching is currently unavailable please pin to a prior version if you need this installing. 
+
 # 1.2.1 (June 23, 2017)
 
 - Fixed resource failures on Chef 13
