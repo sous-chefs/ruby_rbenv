@@ -1,6 +1,6 @@
 *.rbc
 .config
-.gitignore
+.envrc
 coverage
 InstalledFiles
 lib/bundler/man
