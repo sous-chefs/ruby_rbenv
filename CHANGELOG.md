@@ -1,4 +1,4 @@
-# 2.0.0 (tbc)
+# 2.0.0 (2017-07-24)
 
 - Switch libraries to custom resources
 - Use gem install from core Chef

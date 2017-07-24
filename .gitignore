@@ -1,5 +1,6 @@
 *.rbc
 .config
+.gitignore
 coverage
 InstalledFiles
 lib/bundler/man
