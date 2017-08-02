@@ -59,6 +59,18 @@ action :install do
     mode '0755'
   end
 
+  directory "#{new_resource.user_prefix}/shims" do
+    owner new_resource.user
+    group new_resource.user
+    mode '0755'
+  end
+
+  directory "#{new_resource.user_prefix}/versions" do
+    owner new_resource.user
+    group new_resource.user
+    mode '0755'
+  end
+
   # Initialize rbenv
   ruby_block 'Add rbenv to PATH' do
     block do

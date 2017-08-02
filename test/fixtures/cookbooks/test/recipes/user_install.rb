@@ -13,6 +13,6 @@ rbenv_ruby '2.4.1' do
   user 'vagrant'
 end
 
-# rbenv_global version do
-#   user 'vagrant'
-# end
+rbenv_global version do
+  user 'vagrant'
+end

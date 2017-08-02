@@ -75,7 +75,6 @@ action_class do
     if new_resource.user
       script_env['USER'] = new_resource.user
       script_env['HOME'] = ::File.expand_path("~#{new_resource.user}")
-      Chef::Log.info("----- user is #{script_env['USER']}")
     end
 
     script_env
