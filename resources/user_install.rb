@@ -53,22 +53,12 @@ action :install do
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
   end
 
-  directory "#{new_resource.user_prefix}/plugins" do
-    owner new_resource.user
-    group new_resource.user
-    mode '0755'
-  end
-
-  directory "#{new_resource.user_prefix}/shims" do
-    owner new_resource.user
-    group new_resource.user
-    mode '0755'
-  end
-
-  directory "#{new_resource.user_prefix}/versions" do
-    owner new_resource.user
-    group new_resource.user
-    mode '0755'
+  %w(plugins shims versions).each do |d|
+    directory "#{new_resource.user_prefix}/#{d}" do
+      owner new_resource.user
+      group new_resource.user
+      mode '0755'
+    end
   end
 
   # Initialize rbenv

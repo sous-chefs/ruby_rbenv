@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-global_ruby = "2.4.1"
+global_ruby = '2.4.1'
 
 control 'Rbenv should be installed' do
   title 'Rbenv should be installed to the users home directory'
