@@ -74,7 +74,7 @@ action_class do
 
     if new_resource.user
       script_env['USER'] = new_resource.user
-      script_env['HOME'] = user_home
+      script_env['HOME'] = ::File.expand_path("~#{new_resource.user}")
     end
 
     script_env
