@@ -32,7 +32,7 @@ action :install do
   package package_prerequisites
 
   node.run_state['root_path'] ||= {}
-  node.run_state['root_path'][new_resource.user] = new_resource.user_prefix
+  node.run_state['root_path'][new_resource.user] ||= new_resource.user_prefix
 
   system_prefix = node.run_state['root_path']['system']
 
@@ -49,12 +49,16 @@ action :install do
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
     user new_resource.user
+    group new_resource.user
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
   end
 
-  directory "#{new_resource.user_prefix}/plugins" do
-    owner new_resource.user
-    mode '0755'
+  %w(plugins shims versions).each do |d|
+    directory "#{new_resource.user_prefix}/#{d}" do
+      owner new_resource.user
+      group new_resource.user
+      mode '0755'
+    end
   end
 
   # Initialize rbenv

@@ -35,6 +35,7 @@ action :install do
 
   rbenv_plugin 'ruby-build' do
     git_url 'https://github.com/rbenv/ruby-build.git'
+    user new_resource.user if new_resource.user
   end
 
   install_ruby_dependencies

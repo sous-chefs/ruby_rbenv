@@ -1,3 +1,11 @@
+# 2.0.2 (2017-08-02)
+
+- Fix  gem_install resource so it can install gems to a non-global ruby gem.
+
+# 2.0.1 (2017-08-02)
+
+- Fix user_install resource bug where the script wasn't being called with the correct environment. Fixes #175
+
 # 2.0.0 (2017-07-24)
 
 - Switch libraries to custom resources
@@ -12,7 +20,7 @@
 
 ## Known Current Bugs
 
-- Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1. As patching is currently unavailable please pin to a prior version if you need this installing. 
+- Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1\. As patching is currently unavailable please pin to a prior version if you need this installing.
 
 # 1.2.1 (June 23, 2017)
 
