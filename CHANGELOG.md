@@ -1,3 +1,7 @@
+# 2.0.2 (2017-08-02)
+
+- Fix  gem_install resource so it can install gems to a non-global ruby gem.
+
 # 2.0.1 (2017-08-02)
 
 - Fix user_install resource bug where the script wasn't being called with the correct environment. Fixes #175

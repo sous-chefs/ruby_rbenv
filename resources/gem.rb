@@ -24,89 +24,92 @@ provides :rbenv_gem
 # https://docs.chef.io/resource_gem_package.html#attributes
 property :clear_sources, [true, false]
 property :include_default_source, [true, false]
-property :gem_binary, String
 property :options, [String, Hash]
 property :package_name, [String, Array], name_property: true
 property :source, [String, Array]
 property :timeout, Integer, default: 300
 property :version, String
-
 property :response_file, String # Only used to reconfig
 property :user, String
-property :rbenv_version, String, default: 'global'
+property :rbenv_version, String
 
 default_action :install
 
 action :install do
   gem_package new_resource.package_name do
-    clear_sources if new_resource.clear_sources
-    include_default_source if new_resource.include_default_source
-    gem_binary if new_resource.gem_binary
-    options if new_resource.options
-    package_name if new_resource.package_name
-    source if new_resource.source
-    timeout if new_resource.timeout
-    version if new_resource.version
+    clear_sources new_resource.clear_sources if new_resource.clear_sources
+    include_default_source new_resource.include_default_source if new_resource.include_default_source
+    gem_binary binary
+    options new_resource.options if new_resource.options
+    package_name new_resource.package_name if new_resource.package_name
+    source new_resource.source if new_resource.source
+    timeout new_resource.timeout if new_resource.timeout
+    version new_resource.version if new_resource.version
     action :install
   end
 end
 
 action :purge do
   gem_package new_resource.package_name do
-    clear_sources if new_resource.clear_sources
-    include_default_source if new_resource.include_default_source
-    gem_binary if new_resource.gem_binary
-    options if new_resource.options
-    package_name if new_resource.package_name
-    source if new_resource.source
-    timeout if new_resource.timeout
-    version if new_resource.version
+    clear_sources new_resource.clear_sources if new_resource.clear_sources
+    include_default_source new_resource.include_default_source if new_resource.include_default_source
+    gem_binary binary
+    options new_resource.options if new_resource.options
+    package_name new_resource.package_name if new_resource.package_name
+    source new_resource.source if new_resource.source
+    timeout new_resource.timeout if new_resource.timeout
+    version new_resource.version if new_resource.version
     action :purge
   end
 end
 
 action :reconfig do
   gem_package new_resource.package_name do
-    clear_sources if new_resource.clear_sources
-    include_default_source if new_resource.include_default_source
-    gem_binary if new_resource.gem_binary
-    options if new_resource.options
-    package_name if new_resource.package_name
-    source if new_resource.source
-    timeout if new_resource.timeout
+    clear_sources new_resource.clear_sources if new_resource.clear_sources
+    include_default_source new_resource.include_default_source if new_resource.include_default_source
+    gem_binary binary
+    options new_resource.options if new_resource.options
+    package_name new_resource.package_name if new_resource.package_name
+    source new_resource.source if new_resource.source
+    timeout new_resource.timeout if new_resource.timeout
+    version new_resource.version if new_resource.version
     response if new_resource.response_file
-    version if new_resource.version
     action :reconfig
   end
 end
 
 action :remove do
   gem_package new_resource.package_name do
-    clear_sources if new_resource.clear_sources
-    include_default_source if new_resource.include_default_source
-    gem_binary if new_resource.gem_binary
-    options if new_resource.options
-    package_name if new_resource.package_name
-    source if new_resource.source
-    timeout if new_resource.timeout
-    version if new_resource.version
+    clear_sources new_resource.clear_sources if new_resource.clear_sources
+    include_default_source new_resource.include_default_source if new_resource.include_default_source
+    gem_binary binary
+    options new_resource.options if new_resource.options
+    package_name new_resource.package_name if new_resource.package_name
+    source new_resource.source if new_resource.source
+    timeout new_resource.timeout if new_resource.timeout
+    version new_resource.version if new_resource.version
     action :remove
   end
 end
+
 action :upgrade do
   gem_package new_resource.package_name do
-    clear_sources if new_resource.clear_sources
-    include_default_source if new_resource.include_default_source
-    gem_binary if new_resource.gem_binary
-    options if new_resource.options
-    package_name if new_resource.package_name
-    source if new_resource.source
-    timeout if new_resource.timeout
-    version if new_resource.version
+    clear_sources new_resource.clear_sources if new_resource.clear_sources
+    include_default_source new_resource.include_default_source if new_resource.include_default_source
+    gem_binary binary
+    options new_resource.options if new_resource.options
+    package_name new_resource.package_name if new_resource.package_name
+    source new_resource.source if new_resource.source
+    timeout new_resource.timeout if new_resource.timeout
+    version new_resource.version if new_resource.version
     action :upgrade
   end
 end
 
 action_class do
   include Chef::Rbenv::ScriptHelpers
+
+  def binary
+    "#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
+  end
 end

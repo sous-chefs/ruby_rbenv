@@ -38,7 +38,7 @@ env:
     - INSTANCE=system-install-opensuse-leap
     - INSTANCE=user-install-debian-8
     - INSTANCE=user-install-debian-9
-    - INSTANCE=user-install-centos-6
+    # - INSTANCE=user-install-centos-6
     - INSTANCE=user-install-centos-7
     - INSTANCE=user-install-fedora-latest
     - INSTANCE=user-install-ubuntu-1404
