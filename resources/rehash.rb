@@ -24,9 +24,8 @@ property :user, String
 
 action :run do
   rbenv_script "rbenv rehash #{which_rbenv}" do
-    code command
+    code %(rbenv rehash)
     user new_resource.user if new_resource.user
-    root_path new_resource.root_path if new_resource.root_path
     action :run
   end
 end
