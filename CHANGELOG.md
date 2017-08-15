@@ -1,11 +1,14 @@
+# 2.0.4 (2017-08-17)
+
+- Group support on user install #183
+
 # 2.0.3 (2017-08-04)
 
-- Fix rehash resource #179 
-
+- Fix rehash resource #179
 
 # 2.0.2 (2017-08-02)
 
-- Fix  gem_install resource so it can install gems to a non-global ruby gem.
+- Fix gem_install resource so it can install gems to a non-global ruby gem.
 
 # 2.0.1 (2017-08-02)
 
