@@ -22,6 +22,7 @@
 property :git_url, String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref, String, default: 'master'
 property :user, String, name_property: true
+property :group, String, default: lazy { user }
 property :home_dir, String, default: lazy { ::File.expand_path("~#{user}") }
 property :user_prefix, String, default: lazy { ::File.join(home_dir, '.rbenv') }
 property :update_rbenv, [true, false], default: true
@@ -49,14 +50,14 @@ action :install do
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
     user new_resource.user
-    group new_resource.user
+    group new_resource.group
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
   end
 
   %w(plugins shims versions).each do |d|
     directory "#{new_resource.user_prefix}/#{d}" do
       owner new_resource.user
-      group new_resource.user
+      group new_resource.group
       mode '0755'
     end
   end
