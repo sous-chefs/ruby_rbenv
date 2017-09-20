@@ -26,6 +26,12 @@ This cookbook requires Chef 12.9+.
 
 # Usage
 
+_Please read_
+
+Example installations are provided in test/fixtures/cookbooks/test/recipes/
+
+A `rbenv_system_insall` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
+
 ## Gem
 
 Used to install a gem into the selected rbenv environment.
