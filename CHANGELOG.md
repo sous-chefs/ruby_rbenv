@@ -1,3 +1,7 @@
+# 2.0.5 (2017-09-20)
+
+- Update README for general usage
+
 # 2.0.4 (2017-08-17)
 
 - Group support on user install #183
