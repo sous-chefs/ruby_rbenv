@@ -3,6 +3,8 @@ class Chef
     module PackageDeps
       def jruby_package_deps
         case node['platform_family']
+        when 'rhel', 'fedora', 'amazon'
+          %w(make gcc-c++)
         when 'debian'
           %w(make g++)
         when 'freebsd'
