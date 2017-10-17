@@ -1,5 +1,6 @@
-# 2.0.5 (2017-09-20)
+# 2.0.5 (2017-10-17)
 
+- Add missing jruby deps #191
 - Update README for general usage
 
 # 2.0.4 (2017-08-17)
