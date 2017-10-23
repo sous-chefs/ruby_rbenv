@@ -30,7 +30,7 @@ _Please read_
 
 Example installations are provided in test/fixtures/cookbooks/test/recipes/
 
-A `rbenv_system_insall` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
+A `rbenv_system_install` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
 
 ## Gem
 
@@ -113,7 +113,7 @@ end
 Installs rbenv to the system location, by default `/usr/local/rbenv`
 
 ```ruby
-rbenv_system_install 'foo'
+rbenv_system_install 'foo' do
   git_url # URL of the plugin repo you want to checkout
   git_ref # Optional: Git reference to checkout
   update_rbenv # Optional: Keeps the git repo up to date
