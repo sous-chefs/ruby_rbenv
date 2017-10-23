@@ -30,7 +30,7 @@ _Please read_
 
 Example installations are provided in test/fixtures/cookbooks/test/recipes/
 
-A `rbenv_system_insall` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
+A `rbenv_system_install` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
 
 ## Gem
 
