@@ -76,7 +76,7 @@ action_class do
   def package_prerequisites
     case node['platform_family']
     when 'rhel', 'fedora', 'amazon', 'arch'
-      %w(git grep)
+      %w(git grep tar)
     when 'debian', 'suse'
       %w(git-core grep)
     when 'mac_os_x', 'gentoo'
