@@ -30,20 +30,6 @@ class Chef
         ].join(' && ')
       end
 
-      # Execute the supplied block of code as the given user.
-      def run_as_user(username)
-        if username
-          user = Etc.getpwnam(username)
-          Process.fork do
-            Process.uid = user.uid
-            yield
-          end
-          Process.wait
-        else
-          yield
-        end
-      end
-
       def root_path
         node.run_state['root_path'] ||= {}
 

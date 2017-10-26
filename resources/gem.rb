@@ -110,6 +110,7 @@ action_class do
   include Chef::Rbenv::ScriptHelpers
 
   def binary
-    "#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
+    prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
+    "#{prefix}#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
   end
 end

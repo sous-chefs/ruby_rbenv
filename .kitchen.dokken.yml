@@ -75,6 +75,7 @@ platforms:
 suites:
 - name: gem
   run_list:
+    - recipe[test::dokken]
     - recipe[test::gem]
   includes: [centos-7]
 - name: global

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 global_ruby = '2.4.1'
 
-control 'Gem Install' do
+control 'Global Gem Install' do
   title 'Should install Mail Gem globally'
 
   desc "Can set global Ruby version to #{global_ruby}"
@@ -28,5 +28,15 @@ control 'Gem Install' do
   describe bash('source /etc/profile.d/rbenv.sh && gem env home') do
     its('exit_status') { should eq 0 }
     its('stdout') { should match(%r{/usr/local/rbenv/versions/#{Regexp.quote(global_ruby)}/lib/ruby/gems/2.4.0}) }
+  end
+end
+
+control 'User Gem Install' do
+  title 'Should install Bundler Gem to a user home'
+
+  desc 'Gemspec file should have correct ownership'
+  describe file('/home/vagrant/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/specifications/bundler-1.15.4.gemspec') do
+    it { should exist }
+    it { should be_owned_by 'vagrant' }
   end
 end
