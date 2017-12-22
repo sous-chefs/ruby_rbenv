@@ -7,6 +7,8 @@ if defined?(ChefSpec)
     rbenv_rehash: [:run],
     rbenv_ruby: [:install, :reinstall],
     rbenv_script: [:run],
+    rbenv_system_install: [:install],
+    rbenv_user_install: [:install],
   }.each do |resource, actions|
     actions.each do |action|
       define_method("#{action}_#{resource}") do |name|
