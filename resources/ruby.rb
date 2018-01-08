@@ -3,9 +3,10 @@
 # Resource:: ruby
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
-# Author:: Dan Webb <dan.wenn@damacus.io>
+# Author:: Dan Webb <dan.webb@damacus.io>
 #
-# Copyright:: 2011-2017, Fletcher Nichol
+# Copyright:: 2011-2018, Fletcher Nichol
+# Copyright:: 2017-2018, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

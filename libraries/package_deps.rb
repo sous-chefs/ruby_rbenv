@@ -26,9 +26,11 @@ class Chef
       def rbx_package_deps
         case node['platform_family']
         when 'rhel', 'fedora', 'amazon'
-          %w( ncurses-devel llvm-static llvm-devel ) + cruby_package_deps
+          %w( ncurses-devel llvm-static llvm-devel gcc-c++ clang ) + package_deps
         when 'suse'
-          %w( ncurses-devel ) + cruby_package_deps
+          %w( ncurses-devel ) + package_deps
+        when 'debian'
+          %w( g++ )
         end
       end
     end

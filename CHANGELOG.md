@@ -1,3 +1,8 @@
+# 2.0.6 (2018)
+
+- Fix rubinius install
+- Add tests for rubinius
+
 # 2.0.5 (2017-10-17)
 
 - Add missing jruby deps #191
@@ -35,14 +40,14 @@
 
 - Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1\. As patching is currently unavailable please pin to a prior version if you need this installing.
 
-# 1.2.1 (June 23, 2017)
+# 1.2.1 (2017-06-23)
 
 - Fixed resource failures on Chef 13
 - Updated the Apache license string to a SPDX compliant string
 - Added Travis testing for Chef 12 and 13
 - Switched testing from Rake to local delivery
 
-# 1.2.0 (April 11, 2017)
+# 1.2.0 (2017-04-11)
 
 - Migrated maintenance of this cookbook to Sous Chefs
 - Remove the check to see if the homebrew provider exists since this always exists in Chef 12 and the code failed on Chef 13
@@ -51,7 +56,7 @@
 - Removed the "suggests 'java'" metadata as suggests was never implemented in Chef and has been removed from Chef 13
 - Bumped the required Chef release from 12.0 to 12.1
 
-# 1.1.0 (July 17, 2016)
+# 1.1.0 (2016-06-17)
 
 - Restored compatibility for platforms that don't yet support multipackage installs in Chef (BSD and OS X in particular)
 - Updated to Grab rbenv from the new repo URL and use https vs. git for compatibility
@@ -64,18 +69,18 @@
 - Added a chefignore file to limit the files uploaded to the chef server
 - Switched linting from Rubocop to Cookstyle (rubocop wrapper by Chef)
 
-# 1.0.1 (October 24, 2015)
+# 1.0.1 (2015-10-24)
 
 - Fixed failure with rehashing after the cookbook was renamed
 
-# 1.0.0 (October 12, 2015)
+# 1.0.0 (2015-10-12)
 
 ## WARNING: Cookbook has been renamed
 
 - Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook). If you wrap this cookbook you're going to need to update the recipes you include. All providers have been updated to keep their existing rbenv_xyz names for backwards compatibility and attributes still maintain the rbenv namespace.
 - Updated Travis config to run integration tests in Travis using kitchen-docker
 
-# 0.9.0 (October 12, 2015)
+# 0.9.0 (2015-10-12)
 
 - Fixed base platform case statement in the cookbook that set install_pkgs and user_home_root attributes. This has been converted to a platform_family statement to better support derivitive operating systems and the attributes are set at default levels so they can be overwritten in wrapper cookbooks
 - Updated Travis to test using Chef DK vs. Gem installs
@@ -86,7 +91,7 @@
 - Removed the empty Vagrant recipe
 - Actually depend on ruby_version vs. suggests since suggests isn't implemented in Chef
 
-# 0.8.1 (August 28, 2015)
+# 0.8.1 (2015-08-28)
 
 - Add rbenv_action attribute to rbenv_ruby LWRP so to allow using rvm-download rbenv plugin to download ruby vs. installing ruby
 - Fix the ability to install gems to a specific version of ruby
@@ -94,13 +99,13 @@
 - Use default_action method in the LWRPs
 - Fix various rubocop warnings
 
-# 0.8.0 (July 27, 2015)
+# 0.8.0 (2015-07-27)
 
 - Drop support for Chef versions prior to 12
 - Add Arch linux support
 - Add Linux mint support
 
-# 0.7.3 (July 8, 2015)
+# 0.7.3 (2015-07-8)
 
 ## Bug Fixes
 
@@ -114,7 +119,7 @@
 
 - Fork from <https://github.com/fnichol/chef-rbenv>
 
-# 0.7.2 (December 31, 2012)
+# 0.7.2 (2012-12-31)
 
 ## Bug Fixes
 
@@ -145,7 +150,7 @@
 - Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75): Update testing support and add unit tests for existing resources ([@fnichol])
 - Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70): Support ruby 2.1.0 ([@WhyEee])
 
-# 0.7.0 (November 21, 2012)
+# 0.7.0 (2012-11-21)
 
 ## Bug Fixes
 
@@ -161,7 +166,7 @@
 - Update foodcritic configuration and update .travis.yml. ([@fnichol])
 - Update Installation section of README (welcome Berkshelf). ([@fnichol])
 
-# 0.6.10 (May 18, 2012)
+# 0.6.10 (2012-05-18)
 
 ## New features
 
@@ -171,13 +176,13 @@
 
 - Add other platform supports in metadata.rb and README. ([@fnichol])
 
-# 0.6.8 (May 6, 2012)
+# 0.6.8 (2012-05-06)
 
 ## Improvements
 
-- Add official hook resource log[rbenv-post-init-*] for inter-cookbook integration. ([@fnichol])
+- Add official hook resource `log[rbenv-post-init-*]` for inter-cookbook integration. ([@fnichol])
 
-# 0.6.6 (May 4, 2012)
+# 0.6.6 (2012-05-04)
 
 ## Bug Fixes
 
@@ -193,7 +198,7 @@
 - README updates. ([@fnichol])
 - Confirm debian platform support. ([@fnichol])
 
-# 0.6.4 (February 23, 2012)
+# 0.6.4 (2012-02-23)
 
 ## Bug Fixes
 
@@ -204,7 +209,7 @@
 - Foodcritic lint-driven code updates. ([@fnichol])
 - Update Git URL in README. ([@hedgehog])
 
-# 0.6.2 (February 22, 2012)
+# 0.6.2 (2012-02-22)
 
 ## Bug Fixes
 
@@ -217,7 +222,7 @@
 - Large formatting updates to README. ([@fnichol])
 - Add gh-pages branch for sectioned README at <https://fnichol.github.com/chef-rbenv>
 
-# 0.6.0 (December 21, 2011)
+# 0.6.0 (2011-12-21)
 
 The initial release.
 

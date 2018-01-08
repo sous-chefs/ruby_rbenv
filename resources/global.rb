@@ -3,8 +3,10 @@
 # Resource:: global
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
+# Author:: Dan Webb <dan.webb.damacus.io>
 #
-# Copyright:: 2011-2017, Fletcher Nichol
+# Copyright:: 2011-2018, Fletcher Nichol
+# Copyright:: 2017-2018, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,14 +40,11 @@ property :root_path, String, default: lazy {
 # e.g. "rbenv global" should return the version we set
 
 action :create do
-  if current_global_version_correct?
-    rbenv_script "globals #{which_rbenv}" do
-      code "rbenv global #{new_resource.rbenv_version}"
-      user new_resource.user if new_resource.user
-      action :run
-    end
-  else
-    Chef::Log.info("#{new_resource} is already set - nothing to do")
+  rbenv_script "globals #{which_rbenv}" do
+    code "rbenv global #{new_resource.rbenv_version}"
+    user new_resource.user if new_resource.user
+    action :run
+    not_if { current_global_version_correct? }
   end
 end
 
@@ -53,7 +52,7 @@ action_class do
   include Chef::Rbenv::ScriptHelpers
 
   def current_global_version_correct?
-    current_global_version != new_resource.rbenv_version
+    current_global_version == new_resource.rbenv_version
   end
 
   def current_global_version

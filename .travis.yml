@@ -44,6 +44,7 @@ env:
     - INSTANCE=user-install-ubuntu-1404
     - INSTANCE=user-install-ubuntu-1604
     - INSTANCE=user-install-opensuse-leap
+    # - INSTANCE=rubinius-centos-73
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
