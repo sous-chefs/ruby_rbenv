@@ -1,4 +1,4 @@
-# 2.0.6 (2018)
+# 2.0.6 (2018-01-08)
 
 - Fix rubinius install
 - Add tests for rubinius
