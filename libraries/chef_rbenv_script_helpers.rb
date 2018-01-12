@@ -43,6 +43,40 @@ class Chef
       def which_rbenv
         "(#{new_resource.user || 'system'})"
       end
+
+      def binary
+        prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
+        "#{prefix}#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
+      end
+
+      def script_code
+        script = []
+        script << %(export RBENV_ROOT="#{root_path}")
+        script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
+        script << %{eval "$(rbenv init -)"}
+        if new_resource.rbenv_version
+          script << %(export RBENV_VERSION="#{new_resource.rbenv_version}")
+        end
+        script << new_resource.code
+        script.join("\n").concat("\n")
+      end
+
+      def script_environment
+        script_env = { 'RBENV_ROOT' => root_path }
+
+        script_env.merge!(new_resource.environment) if new_resource.environment
+
+        if new_resource.path
+          script_env['PATH'] = "#{new_resource.path.join(':')}:#{ENV['PATH']}"
+        end
+
+        if new_resource.user
+          script_env['USER'] = new_resource.user
+          script_env['HOME'] = ::File.expand_path("~#{new_resource.user}")
+        end
+
+        script_env
+      end
     end
   end
 end

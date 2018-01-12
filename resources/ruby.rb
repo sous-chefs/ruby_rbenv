@@ -22,14 +22,16 @@
 #
 provides :rbenv_ruby
 
-property :version, String, name_property: true
+property :version,      String, name_property: true
 property :version_file, String
-property :user, String
-property :environment, Hash
+property :user,         String
+property :environment,  Hash
 property :rbenv_action, String, default: 'install'
-property :verbose, [true, false], default: false
+property :verbose,      [true, false], default: false
 
 action :install do
+  Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ 'rbx'
+
   install_start = Time.now
 
   Chef::Log.info("Building Ruby #{new_resource.version}, this could take a while...")
@@ -55,9 +57,6 @@ action :install do
     action :run
     live_stream true if new_resource.verbose
   end unless ruby_installed?
-  # rescue
-  # Chef::Log.info('Ruby version already installed')
-  # end
 
   Chef::Log.info("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")
 end
@@ -77,28 +76,6 @@ action_class do
       new_resource.version))
       true
     end
-  end
-
-  def install_ruby_dependencies
-    case ::File.basename(new_resource.version)
-    when /^jruby-/
-      package jruby_package_deps
-    when /^rbx-/
-      package rbx_package_deps
-    else
-      package package_deps
-    end
-
-    ensure_java_environment if new_resource.version =~ /^jruby-/
-  end
-
-  def ensure_java_environment
-    resource_collection.find(
-      'ruby_block[update-java-alternatives]'
-    ).run_action(:create)
-  rescue Chef::Exceptions::ResourceNotFound
-    # have pity on my soul
-    Chef::Log.info 'The java cookbook does not appear to in the run_list.'
   end
 
   def verbose
