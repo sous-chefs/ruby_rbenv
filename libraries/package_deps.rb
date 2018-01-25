@@ -20,6 +20,8 @@ class Chef
           %w(gcc autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev make)
         when 'suse'
           %w(gcc make automake gdbm-devel libyaml-devel ncurses-devel readline-devel zlib-devel libopenssl-devel )
+        when 'mac_os_x'
+          %w(pkg-config readline gdbm gmp libffi libyaml openssl)
         end
       end
 

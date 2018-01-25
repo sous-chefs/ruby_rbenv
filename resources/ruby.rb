@@ -79,14 +79,25 @@ action_class do
     end
   end
 
+  def multipackage_install(packages)
+    case node['platform_family']
+    when 'mac_os_x'
+      packages.each do |name|
+        package name
+      end
+    else
+      package packages
+    end
+  end
+
   def install_ruby_dependencies
     case ::File.basename(new_resource.version)
     when /^jruby-/
-      package jruby_package_deps
+      multipackage_install jruby_package_deps
     when /^rbx-/
-      package rbx_package_deps
+      multipackage_install rbx_package_deps
     else
-      package package_deps
+      multipackage_install package_deps
     end
 
     ensure_java_environment if new_resource.version =~ /^jruby-/
