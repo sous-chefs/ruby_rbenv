@@ -5,8 +5,6 @@ class Chef
         case ::File.basename(new_resource.version)
         when /^jruby-/
           package jruby_package_deps
-        when /^rbx-/
-          package rbx_package_deps
         else
           package package_deps
         end
