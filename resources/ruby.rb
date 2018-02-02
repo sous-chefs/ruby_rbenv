@@ -30,7 +30,7 @@ property :rbenv_action, String, default: 'install'
 property :verbose,      [true, false], default: false
 
 action :install do
-  Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ 'rbx'
+  Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ /rbx/
 
   install_start = Time.now
 
