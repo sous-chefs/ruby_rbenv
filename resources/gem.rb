@@ -24,16 +24,16 @@
 provides :rbenv_gem
 # Standard Gem Package Options
 # https://docs.chef.io/resource_gem_package.html#attributes
-property :clear_sources, [true, false]
+property :clear_sources,          [true, false]
 property :include_default_source, [true, false]
-property :options, [String, Hash]
-property :package_name, [String, Array], name_property: true
-property :source, [String, Array]
-property :timeout, Integer, default: 300
-property :version, String
-property :response_file, String # Only used to reconfig
-property :user, String
-property :rbenv_version, String
+property :options,                [String, Hash]
+property :package_name,           [String, Array], name_property: true
+property :source,                 [String, Array]
+property :timeout,                Integer, default: 300
+property :version,                String
+property :response_file,          String # Only used to reconfig
+property :user,                   String
+property :rbenv_version,          String
 
 default_action :install
 
@@ -110,9 +110,4 @@ end
 
 action_class do
   include Chef::Rbenv::ScriptHelpers
-
-  def binary
-    prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
-    "#{prefix}#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
-  end
 end

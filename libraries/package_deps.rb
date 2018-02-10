@@ -1,6 +1,26 @@
 class Chef
   module Rbenv
     module PackageDeps
+      def install_ruby_dependencies
+        case ::File.basename(new_resource.version)
+        when /^jruby-/
+          package jruby_package_deps
+        else
+          package package_deps
+        end
+
+        ensure_java_environment if new_resource.version =~ /^jruby-/
+      end
+
+      def ensure_java_environment
+        resource_collection.find(
+          'ruby_block[update-java-alternatives]'
+        ).run_action(:create)
+      rescue Chef::Exceptions::ResourceNotFound
+        # have pity on my soul
+        Chef::Log.info 'The java cookbook does not appear to in the run_list.'
+      end
+
       def jruby_package_deps
         case node['platform_family']
         when 'rhel', 'fedora', 'amazon'
@@ -20,17 +40,6 @@ class Chef
           %w(gcc autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev make)
         when 'suse'
           %w(gcc make automake gdbm-devel libyaml-devel ncurses-devel readline-devel zlib-devel libopenssl-devel )
-        end
-      end
-
-      def rbx_package_deps
-        case node['platform_family']
-        when 'rhel', 'fedora', 'amazon'
-          %w( ncurses-devel llvm-static llvm-devel gcc-c++ clang ) + package_deps
-        when 'suse'
-          %w( ncurses-devel ) + package_deps
-        when 'debian'
-          %w( g++ )
         end
       end
     end

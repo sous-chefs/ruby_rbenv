@@ -22,7 +22,7 @@ provides :rbenv_plugin
 
 property :git_url, String, required: true
 property :git_ref, String, default: 'master'
-property :user, String
+property :user,    String
 
 # https://github.com/rbenv/rbenv/wiki/Plugins
 action :install do

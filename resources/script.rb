@@ -23,17 +23,17 @@
 provides :rbenv_script
 
 property :rbenv_version, String
-property :code, String
-property :creates, String
-property :cwd, String
-property :environment, Hash
-property :group, String
-property :path, Array
-property :returns, Array, default: [0]
-property :timeout, Integer
-property :user, String
-property :umask, [String, Integer]
-property :live_stream, [true, false], default: false
+property :code,          String
+property :creates,       String
+property :cwd,           String
+property :environment,   Hash
+property :group,         String
+property :path,          Array
+property :returns,       Array, default: [0]
+property :timeout,       Integer
+property :user,          String
+property :umask,         [String, Integer]
+property :live_stream,   [true, false], default: false
 
 action :run do
   bash new_resource.name do
@@ -52,33 +52,4 @@ end
 
 action_class do
   include Chef::Rbenv::ScriptHelpers
-
-  def script_code
-    script = []
-    script << %(export RBENV_ROOT="#{root_path}")
-    script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
-    script << %{eval "$(rbenv init -)"}
-    if new_resource.rbenv_version
-      script << %(export RBENV_VERSION="#{new_resource.rbenv_version}")
-    end
-    script << new_resource.code
-    script.join("\n").concat("\n")
-  end
-
-  def script_environment
-    script_env = { 'RBENV_ROOT' => root_path }
-
-    script_env.merge!(new_resource.environment) if new_resource.environment
-
-    if new_resource.path
-      script_env['PATH'] = "#{new_resource.path.join(':')}:#{ENV['PATH']}"
-    end
-
-    if new_resource.user
-      script_env['USER'] = new_resource.user
-      script_env['HOME'] = ::File.expand_path("~#{new_resource.user}")
-    end
-
-    script_env
-  end
 end

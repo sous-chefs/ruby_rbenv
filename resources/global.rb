@@ -27,8 +27,8 @@
 provides :rbenv_global
 
 property :rbenv_version, String, name_property: true
-property :user, String
-property :root_path, String, default: lazy {
+property :user,          String
+property :root_path,     String, default: lazy {
   if user
     node.run_state['root_path'][user]
   else
