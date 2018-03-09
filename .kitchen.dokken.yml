@@ -30,7 +30,6 @@ platforms:
        - RUN /usr/bin/apt-get update
        - RUN /usr/bin/apt-get install sudo -y
 
-
 - name: centos-6
   driver:
     image: dokken/centos-6
@@ -60,6 +59,14 @@ platforms:
 - name: ubuntu-16.04
   driver:
     image: dokken/ubuntu-16.04
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+       - RUN /usr/bin/apt-get update
+       - RUN /usr/bin/apt-get install sudo -y
+
+- name: ubuntu-18.04
+  driver:
+    image: dokken/ubuntu-18.04
     pid_one_command: /bin/systemd
     intermediate_instructions:
        - RUN /usr/bin/apt-get update

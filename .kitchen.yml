@@ -2,9 +2,10 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
+  product_name: chef
+  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  install_strategy: once
   deprecations_as_errors: true
-  require_chef_omnibus: <%= ENV['CHEF_VERSION'] || 'latest' %>
 
 verifier:
   name: inspec
