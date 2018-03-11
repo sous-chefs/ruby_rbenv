@@ -1,3 +1,9 @@
+# 2.0.7 (2018-03-11)
+
+- Adding Ubuntu 18.04 support
+- Move all helpers into the helper file
+- Remove rubinius support, that never worked anyway. 
+
 # 2.0.6 (2018-01-08)
 
 - Fix rubinius install
