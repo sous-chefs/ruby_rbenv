@@ -21,11 +21,9 @@ env:
     - INSTANCE=gem-centos-7
     - INSTANCE=global-debian-8
     - INSTANCE=global-debian-9
-   # - INSTANCE=global-centos-6
     - INSTANCE=global-centos-7
     - INSTANCE=global-centos-7 CHEF_VERSION=12.9.41
     - INSTANCE=global-fedora-latest
-    - INSTANCE=global-ubuntu-1404
     - INSTANCE=global-ubuntu-1604
     - INSTANCE=global-ubuntu-1804
     - INSTANCE=global-opensuse-leap
@@ -34,20 +32,17 @@ env:
     - INSTANCE=system-install-centos-6
     - INSTANCE=system-install-centos-7
     - INSTANCE=system-install-fedora-latest
-    - INSTANCE=system-install-ubuntu-1404
     - INSTANCE=system-install-ubuntu-1604
     - INSTANCE=system-install-ubuntu-1804
     - INSTANCE=system-install-opensuse-leap
     - INSTANCE=user-install-debian-8
     - INSTANCE=user-install-debian-9
-    # - INSTANCE=user-install-centos-6
     - INSTANCE=user-install-centos-7
     - INSTANCE=user-install-fedora-latest
     - INSTANCE=user-install-ubuntu-1404
     - INSTANCE=user-install-ubuntu-1604
     - INSTANCE=user-install-ubuntu-1804
     - INSTANCE=user-install-opensuse-leap
-    # - INSTANCE=rubinius-centos-73
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
