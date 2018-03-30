@@ -33,7 +33,7 @@ property :timeout,                Integer, default: 300
 property :version,                String
 property :response_file,          String # Only used to reconfig
 property :user,                   String
-property :rbenv_version,          String
+property :rbenv_version,          String, default: 'global'
 
 default_action :install
 
