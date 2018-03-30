@@ -1,3 +1,7 @@
+# 2.0.8 (2018-03-30)
+
+- Add back rbenv_version default to global, previously removed in v2.0.2
+
 # 2.0.7 (2018-03-11)
 
 - Adding Ubuntu 18.04 support
