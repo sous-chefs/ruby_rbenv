@@ -11,6 +11,10 @@ rbenv_global '2.4.1'
 
 rbenv_gem 'mail' do
   version '2.6.5'
+end
+
+rbenv_gem 'mail' do
+  version '2.6.5'
   options '--no-rdoc --no-ri'
   rbenv_version '2.3.1'
 end
