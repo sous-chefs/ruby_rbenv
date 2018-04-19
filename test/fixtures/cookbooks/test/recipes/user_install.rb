@@ -1,6 +1,9 @@
 # Install rbenv and makes it avilable to the selected user
 version = '2.4.1'
 
+# Make sure that Vagarant user is on the box for dokken
+include_recipe 'test::dokken'
+
 # Keeps the rbenv install upto date
 rbenv_user_install 'vagrant'
 

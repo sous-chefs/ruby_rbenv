@@ -78,18 +78,3 @@ platforms:
     pid_one_command: /bin/systemd
     intermediate_instructions:
     - RUN zypper --non-interactive install sudo
-
-suites:
-- name: gem
-  run_list:
-    - recipe[test::dokken]
-    - recipe[test::gem]
-  includes: [centos-7]
-- name: global
-  run_list: recipe[test::global]
-- name: system_install
-  run_list: recipe[test::system_install]
-- name: user_install
-  run_list:
-    - recipe[test::dokken]
-    - recipe[test::user_install]

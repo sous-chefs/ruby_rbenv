@@ -1,5 +1,8 @@
 version = '2.4.1'
 
+# Make sure that Vagarant user is on the box for dokken
+include_recipe 'test::dokken'
+
 rbenv_user_install 'vagrant'
 
 rbenv_system_install 'system'

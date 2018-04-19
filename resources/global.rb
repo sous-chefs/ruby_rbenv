@@ -49,7 +49,7 @@ action :create do
 end
 
 action_class do
-  include Chef::Rbenv::ScriptHelpers
+  include Chef::Rbenv::Helpers
 
   def current_global_version_correct?
     current_global_version == new_resource.rbenv_version
