@@ -38,5 +38,5 @@ action :install do
 end
 
 action_class do
-  include Chef::Rbenv::ScriptHelpers
+  include Chef::Rbenv::Helpers
 end

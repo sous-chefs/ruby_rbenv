@@ -21,7 +21,7 @@
 
 class Chef
   module Rbenv
-    module ScriptHelpers
+    module Helpers
       def wrap_shim_cmd(cmd)
         [%(export RBENV_ROOT="#{rbenv_root}"),
          %(export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"),
@@ -77,6 +77,36 @@ class Chef
 
         script_env
       end
+
+      def package_prerequisites
+        case node['platform_family']
+        when 'rhel', 'fedora', 'amazon'
+          %w(git grep tar)
+        when 'debian', 'suse'
+          %w(git-core grep)
+        when 'mac_os_x', 'gentoo'
+          %w(git)
+        when 'freebsd'
+          %w(git bash)
+        when 'arch'
+          %w(git grep)
+        end
+      end
+
+      def ruby_installed?
+        if Array(new_resource.action).include?(:reinstall)
+          return false
+        elsif ::File.directory?(::File.join(root_path, 'versions', new_resource.version))
+          return true
+        end
+
+        false
+      end
+
+      def verbose
+        return '-v' if new_resource.verbose
+      end
+
     end
   end
 end

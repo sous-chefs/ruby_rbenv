@@ -65,20 +65,6 @@ action :reinstall do
 end
 
 action_class do
-  include Chef::Rbenv::ScriptHelpers
+  include Chef::Rbenv::Helpers
   include Chef::Rbenv::PackageDeps
-
-  def ruby_installed?
-    if Array(new_resource.action).include?(:reinstall)
-      false
-    elsif ::File.directory?(::File.join(root_path,
-      'versions',
-      new_resource.version))
-      true
-    end
-  end
-
-  def verbose
-    return '-v' if new_resource.verbose
-  end
 end

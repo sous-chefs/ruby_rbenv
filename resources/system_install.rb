@@ -18,6 +18,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Install rbenv to a system wide location
 provides :rbenv_system_install
 
 property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
@@ -73,16 +75,5 @@ action :install do
 end
 
 action_class do
-  def package_prerequisites
-    case node['platform_family']
-    when 'rhel', 'fedora', 'amazon', 'arch'
-      %w(git grep tar)
-    when 'debian', 'suse'
-      %w(git-core grep)
-    when 'mac_os_x', 'gentoo'
-      %w(git)
-    when 'freebsd'
-      %w(git bash)
-    end
-  end
+  include Chef::Rbenv::Helpers
 end
