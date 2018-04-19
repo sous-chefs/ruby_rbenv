@@ -161,9 +161,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 [custom_resources]: https://docs.chef.io/custom_resources.html
 [damacus]: https://github.com/damacus
 [fnichol]: https://github.com/fnichol
-[issues]: https://github.com/chef-rbenv/ruby-rbenv/issues
+[issues]: https://github.com/sous-chefs/ruby_rbenv/issues
 [mac_profile_d]: http://hints.macworld.com/article.php?story=20011221192012445
 [rb_readme]: https://github.com/sstephenson/ruby-build#readme
 [rbenv_site]: https://github.com/sstephenson/rbenv
-[repo]: https://github.com/sous-chefs/ruby-rbenv
+[repo]: https://github.com/sous-chefs/ruby_rbenv
 [ruby_build_cb]: https://supermarket.chef.io/cookbooks/ruby_build
