@@ -19,6 +19,9 @@
 # limitations under the License.
 #
 
+# Install rbenv to a user location
+provides :rbenv_user_install
+
 property :git_url,      String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,      String, default: 'master'
 property :user,         String, name_property: true
@@ -26,8 +29,6 @@ property :group,        String, default: lazy { user }
 property :home_dir,     String, default: lazy { ::File.expand_path("~#{user}") }
 property :user_prefix,  String, default: lazy { ::File.join(home_dir, '.rbenv') }
 property :update_rbenv, [true, false], default: true
-
-provides :rbenv_user_install
 
 action :install do
   package package_prerequisites
@@ -80,20 +81,5 @@ action :install do
 end
 
 action_class do
-  def package_prerequisites
-    case node['platform_family']
-    when 'rhel', 'fedora', 'amazon'
-      %w(git grep tar)
-    when 'debian', 'suse'
-      %w(git-core grep)
-    when 'mac_os_x'
-      %w(git)
-    when 'freebsd'
-      %w(git bash)
-    when 'gentoo'
-      %w(git)
-    when 'arch'
-      %w(git grep)
-    end
-  end
+  include Chef::Rbenv::Helpers
 end

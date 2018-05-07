@@ -6,21 +6,17 @@
 
 Manages [rbenv][rbenv_site] and its installed Rubies.
 
-Several custom_resources are defined facilitate this.
-
-**WARNING**: As of version 1.0 this cookbook was renamed from rbenv to ruby_rbenv so it could be uploaded to the Supermarket.
-
 ## Requirements
 
 ### Chef
 
-This cookbook requires Chef 12.9+.
+This cookbook requires Chef 13.0+.
 
 ### Platform
 
 - Debian derivatives
 - Fedora
-- macOS
+- macOS (not currently tested)
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 - openSUSE and openSUSE leap
 
@@ -43,15 +39,17 @@ rbenv_gem 'gem_name' do
   timeout # Optional: Gem install timeout
   version # Optional: Gem version to install
   response_file # Optional: response file to reconfigure a gem
-  rbenv_version # Which rbenv verison to install the gem to. Defaults to global
+  rbenv_version # Required: Which rbenv verison to install the gem to.
 end
 ```
 
 ## Global
 
+Sets the global ruby version. The name of the resource is the version to set.
+
 ```ruby
 rbenv_global '2.3.4' do
-  user # Optional: if passed sets the users global version. Do not set, to set the systems global version
+  user # Optional: if passed sets the users global version. Leave unset, to set the system global version
 end
 ```
 
@@ -78,6 +76,8 @@ rbenv_rehash 'rehash' do
   user 'vagrant' # Optional: if passed rehashes the user Ruby otherwise rehashes the system rbenv
 end
 ```
+
+If user is passed in, the user Ruby is rehashed rather than the system Ruby.
 
 ## Ruby
 

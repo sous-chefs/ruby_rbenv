@@ -31,9 +31,9 @@ property :package_name,           [String, Array], name_property: true
 property :source,                 [String, Array]
 property :timeout,                Integer, default: 300
 property :version,                String
-property :response_file,          String # Only used to reconfig
+property :response_file,          String # Only used to reconfigure
 property :user,                   String
-property :rbenv_version,          String
+property :rbenv_version,          String, required: true
 
 default_action :install
 
@@ -109,5 +109,5 @@ action :upgrade do
 end
 
 action_class do
-  include Chef::Rbenv::ScriptHelpers
+  include Chef::Rbenv::Helpers
 end
