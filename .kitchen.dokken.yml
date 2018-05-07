@@ -44,9 +44,9 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install sudo
 
-- name: fedora-latest
+- name: fedora-27
   driver:
-    image: dokken/fedora-latest
+    image: dokken/fedora-27
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
       - RUN dnf -y install sudo
