@@ -27,7 +27,6 @@ rbenv_gem 'mail' do
   action :remove
 end
 
-
 # User Install
 rbenv_user_install 'vagrant'
 

@@ -93,6 +93,7 @@ class Chef
         end
       end
 
+      # rubocop:disable Style/GuardClause
       def ruby_installed?
         if Array(new_resource.action).include?(:reinstall)
           return false
@@ -102,11 +103,11 @@ class Chef
 
         false
       end
+      # rubocop:enable Style/GuardClause
 
       def verbose
         return '-v' if new_resource.verbose
       end
-
     end
   end
 end
