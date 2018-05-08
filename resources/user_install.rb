@@ -71,7 +71,7 @@ action :install do
     action :nothing
   end
 
-  bash 'Initialize user #{new_resource.user} rbenv' do
+  bash "Initialize user #{new_resource.user} rbenv" do
     code %(PATH="#{new_resource.user_prefix}/bin:$PATH" rbenv init -)
     environment('RBENV_ROOT' => new_resource.user_prefix)
     action :nothing

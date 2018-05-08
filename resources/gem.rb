@@ -26,7 +26,7 @@ provides :rbenv_gem
 # https://docs.chef.io/resource_gem_package.html#attributes
 property :clear_sources,          [true, false]
 property :include_default_source, [true, false], default: true
-property :ignore_failures,        [true, false], default: false
+property :ignore_failure, [true, false], default: false
 property :options,                [String, Hash]
 property :package_name,           [String, Array], name_property: true
 property :source,                 [String, Array]
@@ -41,7 +41,7 @@ default_action :install
 action :install do
   gem_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
-    ignore_failures new_resource.ignore_failures if new_resource.ignore_failures
+    ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
     gem_binary binary
     options new_resource.options if new_resource.options
@@ -56,7 +56,7 @@ end
 action :purge do
   gem_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
-    ignore_failures new_resource.ignore_failures if new_resource.ignore_failures
+    ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
     gem_binary binary
     options new_resource.options if new_resource.options
@@ -71,7 +71,7 @@ end
 action :reconfig do
   gem_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
-    ignore_failures new_resource.ignore_failures if new_resource.ignore_failures
+    ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
     gem_binary binary
     options new_resource.options if new_resource.options
@@ -87,7 +87,7 @@ end
 action :remove do
   gem_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
-    ignore_failures new_resource.ignore_failures if new_resource.ignore_failures
+    ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
     gem_binary binary
     options new_resource.options if new_resource.options
@@ -102,7 +102,7 @@ end
 action :upgrade do
   gem_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
-    ignore_failures new_resource.ignore_failures if new_resource.ignore_failures
+    ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
     gem_binary binary
     options new_resource.options if new_resource.options
