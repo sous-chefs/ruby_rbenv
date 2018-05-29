@@ -1,6 +1,7 @@
 environment:
   machine_user: vagrant
   machine_pass: vagrant
+  winrm_por: 5986
   KITCHEN_YAML: .kitchen.appveyor.yml
 
 branches:
