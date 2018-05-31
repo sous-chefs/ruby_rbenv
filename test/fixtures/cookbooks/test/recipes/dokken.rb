@@ -8,4 +8,5 @@ end
 directory '/home/vagrant' do
   owner 'vagrant'
   group 'vagrant'
+  not_if { platform?('windows') }
 end
