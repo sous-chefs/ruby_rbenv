@@ -8,5 +8,5 @@ end
 directory '/home/vagrant' do
   owner 'vagrant'
   group 'vagrant'
-  not_if { node['platform_family'] == 'windows' }
+  not_if { platform?('windows') }
 end
