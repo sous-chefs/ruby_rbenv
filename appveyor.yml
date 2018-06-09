@@ -1,6 +1,7 @@
 environment:
   machine_user: vagrant
   machine_pass: vagrant
+  winrm_port: 5985
   KITCHEN_YAML: .kitchen.appveyor.yml
 
 branches:
@@ -30,9 +31,9 @@ build_script:
   - ps: c:\opscode\chefdk\bin\chef.bat shell-init powershell | iex; cmd /c c:\opscode\chefdk\bin\chef.bat --version
 
 test_script:
-  - c:\opscode\chefdk\bin\cookstyle --version
-  - c:\opscode\chefdk\bin\chef.bat exec foodcritic --version
-  - c:\opscode\chefdk\bin\chef.bat exec delivery local all
-  - c:\opscode\chefdk\bin\chef.bat exec kitchen verify
+  - cookstyle --version
+  - foodcritic --version
+  - delivery local all
+  - kitchen verify
 
 deploy: off
