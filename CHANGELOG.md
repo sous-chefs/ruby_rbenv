@@ -1,3 +1,9 @@
+
+
+# 2.0.8 (2018-06-09)
+
+- Install the git package rather than the git-core package (#217)
+
 # 2.0.7 (2018-03-11)
 
 - Adding Ubuntu 18.04 support

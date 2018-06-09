@@ -6,8 +6,8 @@ source_url 'https://github.com/sous-chefs/ruby_rbenv'
 license 'Apache-2.0'
 description 'Manages rbenv and installs Rbenv based Rubies'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '2.0.7'
-chef_version '>= 12.9' if respond_to?(:chef_version)
+version '2.0.8'
+chef_version '>= 12.9'
 
 supports 'ubuntu'
 supports 'linuxmint'
