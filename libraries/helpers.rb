@@ -83,7 +83,7 @@ class Chef
         when 'rhel', 'fedora', 'amazon'
           %w(git grep tar)
         when 'debian', 'suse'
-          %w(git-core grep)
+          %w(git grep)
         when 'mac_os_x', 'gentoo'
           %w(git)
         when 'freebsd'
