@@ -51,11 +51,6 @@ platforms:
     intermediate_instructions:
       - RUN dnf -y install sudo
 
-- name: ubuntu-14.04
-  driver:
-    image: dokken/ubuntu-14.04
-    pid_one_command: /sbin/init
-
 - name: ubuntu-16.04
   driver:
     image: dokken/ubuntu-16.04
