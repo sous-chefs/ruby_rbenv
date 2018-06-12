@@ -46,7 +46,8 @@ action :install do
   # TODO: ?
   # patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
   # patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version} #{verbose})
+  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version})
+  command << ' --verbose' if new_resource.verbose
 
   # begin
 
