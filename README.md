@@ -99,14 +99,24 @@ Runs a rbenv aware script.
 ```ruby
 rbenv_script 'foo' do
   rbenv_version #rbenv version to run the script against
-  environment # Optional: Environment to setup to run the script
+  environment # Optional: A Hash of environment variables in the form of ({"ENV_VARIABLE" => "VALUE"}).
   user # Optional: User to run as
   group # Optional: Group to run as
-  path # Optional: User to run as
   returns # Optional: Expected return code
   code # Script code to run
 end
 ```
+Note that environment overwrites the entire variable.
+For example. setting the $PATH variable can be done like this:
+```ruby
+rbenv_script 'bundle package' do
+  cwd node["bundle_dir"]
+  environment ({"PATH" => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:#{ENV["PATH"]}"})
+  code "bundle package --all"
+end
+```
+Where `#{ENV["PATH"]}` appends the existing PATH to the end of the newly set PATH.
+
 
 ## System_install
 
