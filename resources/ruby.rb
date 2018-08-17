@@ -22,12 +22,13 @@
 #
 provides :rbenv_ruby
 
-property :version,      String, name_property: true
-property :version_file, String
-property :user,         String
-property :environment,  Hash
-property :rbenv_action, String, default: 'install'
-property :verbose,      [true, false], default: false
+property :version,            String, name_property: true
+property :version_file,       String
+property :user,               String
+property :environment,        Hash
+property :rbenv_action,       String, default: 'install'
+property :verbose,            [true, false], default: false
+property :ruby_build_git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
 
 action :install do
   Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ /rbx/
@@ -37,7 +38,7 @@ action :install do
   Chef::Log.info("Building Ruby #{new_resource.version}, this could take a while...")
 
   rbenv_plugin 'ruby-build' do
-    git_url 'https://github.com/rbenv/ruby-build.git'
+    git_url new_resource.ruby_build_git_url
     user new_resource.user if new_resource.user
   end
 
