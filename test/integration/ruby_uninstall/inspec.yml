@@ -1,9 +1,8 @@
 name: rbenv
 title: rbenv profile
 maintainer: Sous Chefs
-copyright: Webb Agile Solutions Ltd.
 license: Apache-2.0
-summary: Verifies rbenv is installed correctly
+summary: Verifies that Rubies can be uninstalled
 version: 1.0.0
 supports:
   - os-family: linux
