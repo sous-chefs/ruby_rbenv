@@ -3,7 +3,7 @@ include_recipe 'test::dokken'
 
 # System Install
 rbenv_system_install 'system'
-# Install several rubies to /opt/rubies
+# Install several Rubies to a system wide location
 rbenv_ruby '2.4.1'
 rbenv_ruby '2.3.1'
 # Set System global version
@@ -30,7 +30,7 @@ end
 # User Install
 rbenv_user_install 'vagrant'
 
-# Install a Ruby to a user directory (~/.rubies)
+# Install a Ruby to a user directory
 rbenv_ruby '2.3.1' do
   user 'vagrant'
 end
