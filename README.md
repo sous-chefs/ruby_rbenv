@@ -22,11 +22,13 @@ This cookbook requires Chef 13.0+.
 
 # Usage
 
-_Please read_
+**Please read**
 
-Example installations are provided in test/fixtures/cookbooks/test/recipes/
+Example installations are provided in `test/fixtures/cookbooks/test/recipes/`.
 
 A `rbenv_system_install` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
+
+System wide installations of rbenv are supported by this cookbook, but discouraged by the rbenv maintainer, see [these][rbenv_issue_38] [two][rbenv_issue_306] issues in the rbenv repository.
 
 ## Gem
 
@@ -39,7 +41,7 @@ rbenv_gem 'gem_name' do
   timeout # Optional: Gem install timeout
   version # Optional: Gem version to install
   response_file # Optional: response file to reconfigure a gem
-  rbenv_version # Required: Which rbenv verison to install the gem to.
+  rbenv_version # Required: Which rbenv version to install the gem to.
 end
 ```
 
@@ -48,12 +50,12 @@ end
 Sets the global ruby version. The name of the resource is the version to set.
 
 ```ruby
-rbenv_global '2.3.4' do
+rbenv_global '2.5.1' do
   user # Optional: if passed sets the users global version. Leave unset, to set the system global version
 end
 ```
 
-If a user is passed in to this resource it sets the global version for the user, under the users root_path (usually `~/.rbenv/version`), otherwise it sets the system global version.
+If a user is passed in to this resource it sets the global version for the user, under the users `root_path` (usually `~/.rbenv/version`), otherwise it sets the system global version.
 
 ## Plugin
 
@@ -84,13 +86,13 @@ If user is passed in, the user Ruby is rehashed rather than the system Ruby.
 Installs a given Ruby version to the system or user location.
 
 ```ruby
-rbenv_ruby '2.3.4' do
-  user # Optional: If passed the user rbenv to install to
+rbenv_ruby '2.5.1' do
+  user # Optional, but recommended: If passed, the user to install rbenv to
   rbenv_action # Optional: the action to perform, install, remove etc
 end
 ```
 
-Shorter example `rbenv_ruby '2.4.1'`
+Shorter example `rbenv_ruby '2.5.1'`
 
 ## Script
 
@@ -107,7 +109,7 @@ rbenv_script 'foo' do
 end
 ```
 Note that environment overwrites the entire variable.
-For example. setting the $PATH variable can be done like this:
+For example. setting the `$PATH` variable can be done like this:
 ```ruby
 rbenv_script 'bundle package' do
   cwd node["bundle_dir"]
@@ -142,9 +144,9 @@ rbenv_user_install 'vagrant' do
 end
 ```
 
-## System-Wide Mac Installation Note
+## System-Wide macOS Installation Note
 
-This cookbook takes advantage of managing profile fragments in an `/etc/profile.d` directory, common on most Unix-flavored platforms. Unfortunately, Mac OS X does not support this idiom out of the box, so you may need to [modify][mac_profile_d] your user profile.
+This cookbook takes advantage of managing profile fragments in an `/etc/profile.d` directory, common on most Unix-flavored platforms. Unfortunately, macOS does not support this idiom out of the box, so you may need to [modify][mac_profile_d] your user profile.
 
 ## Development
 
@@ -174,6 +176,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
 [issues]: https://github.com/sous-chefs/ruby_rbenv/issues
 [mac_profile_d]: http://hints.macworld.com/article.php?story=20011221192012445
 [rb_readme]: https://github.com/sstephenson/ruby-build#readme
+[rbenv_issue_38]: https://github.com/rbenv/rbenv/issues/38#issuecomment-148413842
+[rbenv_issue_306]: https://github.com/rbenv/rbenv/issues/306#issuecomment-11848374
 [rbenv_site]: https://github.com/sstephenson/rbenv
 [repo]: https://github.com/sous-chefs/ruby_rbenv
 [ruby_build_cb]: https://supermarket.chef.io/cookbooks/ruby_build
