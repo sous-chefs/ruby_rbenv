@@ -26,7 +26,7 @@ provides :rbenv_gem
 # https://docs.chef.io/resource_gem_package.html#attributes
 property :clear_sources,          [true, false]
 property :include_default_source, [true, false], default: true
-property :ignore_failure, [true, false], default: false
+property :ignore_failure,         [true, false], default: false
 property :options,                [String, Hash]
 property :package_name,           [String, Array], name_property: true
 property :source,                 [String, Array]
