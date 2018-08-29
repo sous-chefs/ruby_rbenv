@@ -1,4 +1,8 @@
 
+# 2.1.0 (2018-08-28)
+
+- Drop support for Chef 12
+
 # 2.0.9 (2018-06-12)
 
 - Fix verbose option (#220)
