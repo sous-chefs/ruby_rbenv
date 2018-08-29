@@ -1,18 +1,16 @@
 # frozen_string_literal: true
-global_ruby = '2.3.4'
 
-control 'Rbenv should be installed' do
-  title 'Rbenv should be installed globally'
+control 'Rbenv system install' do
+  title 'Rbenv should be installed system wide'
 
-  desc "Can set global Ruby version to #{global_ruby}"
+  desc 'Rbenv should be installed and run successfully'
   describe bash('source /etc/profile.d/rbenv.sh && rbenv versions --bare') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should include(global_ruby) }
   end
 end
 
-control 'Rbenv should be to the system path' do
-  title 'Rbenv should be install in the system wide location'
+control 'Rbenv system path' do
+  title 'Rbenv should be installed in the system wide location'
 
   describe file('/usr/local/rbenv') do
     it { should exist }
