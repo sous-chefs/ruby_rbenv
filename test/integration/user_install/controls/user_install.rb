@@ -9,7 +9,7 @@ control 'Rbenv should be installed' do
   describe bash('sudo -H -u vagrant bash -c "source /etc/profile.d/rbenv.sh && rbenv global"') do
     its('exit_status') { should eq 0 }
     its('stdout') { should include(global_ruby) }
-    its('stdout') { should_not match(/system/) }
+    its('stdout') { should_not include(system) }
   end
 
   describe file('/home/vagrant/.rbenv/versions') do
@@ -22,7 +22,7 @@ control 'ruby-build plugin should be installed' do
   title 'ruby-build should be installed to the users home directory'
   describe bash('sudo -H -u vagrant bash -c "source /etc/profile.d/rbenv.sh && rbenv install -l"') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match(/2.3.4/) }
+    its('stdout') { should include('2.3.4') }
     its('stdout') { should include(global_ruby) }
   end
 end
