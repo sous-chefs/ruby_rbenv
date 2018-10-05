@@ -26,6 +26,9 @@ suites:
   includes: [centos-7]
 - name: global
   run_list: recipe[test::global]
+- name: ruby_uninstall
+  run_list: recipe[test::ruby_uninstall]
+  includes: [ubuntu-18.04]
 - name: system_install
   run_list: recipe[test::system_install]
   includes: [centos-7]

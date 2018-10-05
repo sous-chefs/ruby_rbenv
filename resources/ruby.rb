@@ -47,7 +47,13 @@ action :install do
   # TODO: ?
   # patch_command = "--patch < <(curl -sSL #{new_resource.patch_url})" if new_resource.patch_url
   # patch_command = "--patch < #{new_resource.patch_file}" if new_resource.patch_file
-  command = %(rbenv #{new_resource.rbenv_action} #{new_resource.version})
+  command = %(rbenv #{new_resource.rbenv_action})
+  # From `rbenv help uninstall`:
+  # -f  Attempt to remove the specified version without prompting
+  #     for confirmation. If the version does not exist, do not
+  #     display an error message.
+  command << ' -f' if new_resource.rbenv_action == 'uninstall'
+  command << " #{new_resource.version}"
   command << ' --verbose' if new_resource.verbose
 
   # begin
@@ -58,9 +64,21 @@ action :install do
     environment new_resource.environment if new_resource.environment
     action :run
     live_stream true if new_resource.verbose
-  end unless ruby_installed?
+    not_if { ruby_installed? && new_resource.rbenv_action != 'uninstall' }
+  end
 
-  Chef::Log.info("#{new_resource} build time was #{(Time.now - install_start) / 60.0} minutes")
+  log_message = new_resource.to_s
+  log_message << if new_resource.rbenv_action == 'uninstall'
+                   ' uninstalled'
+                 else
+                   " build time was #{(Time.now - install_start) / 60.0} minutes"
+                 end
+  Chef::Log.info(log_message)
+
+  # TODO: If there is no more Ruby installed on the system, the `version` file
+  # of rbenv still contains a version number which results in a warning. See
+  # this issue and comment for more details:
+  # https://github.com/rbenv/rbenv/pull/848#issuecomment-413857386
 end
 
 action :reinstall do
