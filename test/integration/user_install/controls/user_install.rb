@@ -9,7 +9,6 @@ control 'Rbenv should be installed' do
   describe bash('sudo -H -u vagrant bash -c "source /etc/profile.d/rbenv.sh && rbenv global"') do
     its('exit_status') { should eq 0 }
     its('stdout') { should include(global_ruby) }
-    its('stdout') { should_not include(system) }
   end
 
   describe file('/home/vagrant/.rbenv/versions') do

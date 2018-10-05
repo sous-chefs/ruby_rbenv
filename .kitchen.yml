@@ -13,7 +13,7 @@ verifier:
 platforms:
   - name: centos-6
   - name: centos-7
-  - name: fedora-27
+  - name: fedora-latest
   - name: debian-8
   - name: debian-9
   - name: ubuntu-16.04
