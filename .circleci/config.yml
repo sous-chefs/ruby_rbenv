@@ -6,23 +6,29 @@ orbs:
 workflows:
   kitchen:
     jobs:
-      - kitchen/lint
+      - kitchen/lint:
+          name: lint
       - kitchen/dokken:
+          name: global
           suite: global
-          requires: [ kitchen/lint ]
+          requires: [ lint ]
       - kitchen/dokken-single:
+          name: system-install
           suite: system-install
           platform: centos-7
-          requires: [ kitchen/lint ]
+          requires: [ lint ]
       - kitchen/dokken-single:
+          name: user-install
           suite: user-install
           platform: centos-7
-          requires: [ kitchen/lint ]
+          requires: [ lint ]
       - kitchen/dokken-single:
+          name: gem
           suite: gem
           platform: centos-7
-          requires: [ kitchen/lint ]
+          requires: [ lint ]
       - kitchen/dokken-single:
+          name: ruby-uninstall
           suite: ruby-uninstall
           platform: ubuntu-1804
-          requires: [ kitchen/lint ]
+          requires: [ lint ]
