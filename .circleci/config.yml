@@ -7,3 +7,18 @@ workflows:
   kitchen:
     jobs:
       - kitchen/lint
+      - kitchen/dokken:
+          suite: global
+          requires: [ kitchen/lint ]
+      - kitchen/dokken-single:
+          suite: system-install
+          platform: centos-7
+          requires: [ kitchen/lint ]
+      - kitchen/dokken-single:
+          suite: user-install
+          platform: centos-7
+          requires: [ kitchen/lint ]
+      - kitchen/dokken-single:
+          suite: gem
+          platform: centos-7
+          requires: [ kitchen/lint ]
