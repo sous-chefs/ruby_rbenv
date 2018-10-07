@@ -6,29 +6,61 @@ orbs:
 workflows:
   kitchen:
     jobs:
+      - kitchen/danger:
+          name: danger
       - kitchen/lint:
           name: lint
-      - kitchen/dokken:
-          name: global
+
+      - kitchen/dokken-single:
           suite: global
-          requires: [ lint ]
+          platform: debian-8
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: debian-9
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: centos-6
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: centos-7
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: fedora-latest
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: ubuntu-1604
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: ubuntu-1804
+          requires: [ lint, danger ]
+      - kitchen/dokken-single:
+          suite: global
+          platform: opensuse-leap
+          requires: [ lint, danger ]
+
       - kitchen/dokken-single:
           name: system-install
           suite: system-install
           platform: centos-7
-          requires: [ lint ]
+          requires: [ lint, danger ]
       - kitchen/dokken-single:
           name: user-install
           suite: user-install
           platform: centos-7
-          requires: [ lint ]
+          requires: [ lint, danger ]
       - kitchen/dokken-single:
           name: gem
           suite: gem
           platform: centos-7
-          requires: [ lint ]
+          requires: [ lint, danger ]
       - kitchen/dokken-single:
           name: ruby-uninstall
           suite: ruby-uninstall
           platform: ubuntu-1804
-          requires: [ lint ]
+          requires: [ lint, danger ]
