@@ -42,6 +42,7 @@ rbenv_gem 'gem_name' do
   version # Optional: Gem version to install
   response_file # Optional: response file to reconfigure a gem
   rbenv_version # Required: Which rbenv version to install the gem to.
+  user # Which user to install gem to. REQUIRED if you're using rbenv_user_install
 end
 ```
 
