@@ -1,4 +1,8 @@
 
+# 2.1.1 (2018-10-08)
+
+- Fixed `rbenv_action` to support actions like `uninstall` (#189)
+
 # 2.1.0 (2018-08-28)
 
 - Drop support for Chef 12
@@ -15,7 +19,7 @@
 
 - Adding Ubuntu 18.04 support
 - Move all helpers into the helper file
-- Remove rubinius support, that never worked anyway. 
+- Remove rubinius support, that never worked anyway.
 
 # 2.0.6 (2018-01-08)
 
