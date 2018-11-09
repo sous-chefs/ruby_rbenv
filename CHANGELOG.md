@@ -1,3 +1,6 @@
+# 2.1.2 (2018-11-09)
+
+- Fix `TypeError: no implicit conversion of nil into String` for `mac_os_x` platforms
 
 # 2.1.1 (2018-10-08)
 

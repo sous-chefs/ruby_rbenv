@@ -6,7 +6,9 @@ class Chef
         when /^jruby-/
           package jruby_package_deps
         else
-          package package_deps
+          package_deps.each do |deps|
+            package deps
+          end
         end
 
         ensure_java_environment if new_resource.version =~ /^jruby-/
@@ -34,6 +36,8 @@ class Chef
 
       def package_deps
         case node['platform_family']
+        when 'mac_os_x'
+          %w(openssl makedepend pkg-config libyaml libffi)
         when 'rhel', 'fedora', 'amazon'
           %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
         when 'debian'
