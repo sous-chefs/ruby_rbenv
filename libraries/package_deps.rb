@@ -36,8 +36,8 @@ class Chef
 
       def package_deps
         case node['platform_family']
-      	when 'mac_os_x'
-      	  %w(openssl makedepend pkg-config libyaml libffi)
+        when 'mac_os_x'
+          %w(openssl makedepend pkg-config libyaml libffi)
         when 'rhel', 'fedora', 'amazon'
           %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
         when 'debian'
