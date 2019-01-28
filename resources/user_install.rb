@@ -25,7 +25,7 @@ provides :rbenv_user_install
 property :git_url,      String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,      String, default: 'master'
 property :user,         String, name_property: true
-property :group,        String, default: lazy { user }
+property :group,        String
 property :home_dir,     String, default: lazy { ::File.expand_path("~#{user}") }
 property :user_prefix,  String, default: lazy { ::File.join(home_dir, '.rbenv') }
 property :update_rbenv, [true, false], default: true
