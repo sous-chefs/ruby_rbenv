@@ -51,14 +51,14 @@ action :install do
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
     user new_resource.user
-    group new_resource.group
+    group new_resource.group if new_resource.group
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
   end
 
   %w(plugins shims versions).each do |d|
     directory "#{new_resource.user_prefix}/#{d}" do
       owner new_resource.user
-      group new_resource.group
+      group new_resource.group if new_resource.group
       mode '0755'
     end
   end
