@@ -1,7 +1,7 @@
+---
 version: 2.1
-
 orbs:
-  kitchen: sous-chefs/kitchen@1.0.0
+  kitchen: sous-chefs/kitchen@1.0.1
 
 workflows:
   kitchen:
@@ -11,57 +11,63 @@ workflows:
           context: Danger
       - kitchen/lint:
           name: lint
-
       - kitchen/dokken-single:
           suite: global
           platform: debian-8
-          requires: [ lint, danger ]
+          name: global-debian-8
+          requires: [lint, danger]
       - kitchen/dokken-single:
           suite: global
           platform: debian-9
-          requires: [ lint, danger ]
+          name: global-debian-9
+          requires: [lint, danger]
       - kitchen/dokken-single:
           suite: global
           platform: centos-6
-          requires: [ lint, danger ]
+          name: global-centos-6
+          requires: [lint, danger]
       - kitchen/dokken-single:
           suite: global
           platform: centos-7
-          requires: [ lint, danger ]
-      - kitchen/dokken-single:
-          suite: global
-          platform: fedora-latest
-          requires: [ lint, danger ]
+          name: global-centos-7
+          requires: [lint, danger]
       - kitchen/dokken-single:
           suite: global
           platform: ubuntu-1604
-          requires: [ lint, danger ]
+          name: global-ubuntu-1604
+          requires: [lint, danger]
       - kitchen/dokken-single:
           suite: global
           platform: ubuntu-1804
-          requires: [ lint, danger ]
+          name: global-ubuntu-1804
+          requires: [lint, danger]
       - kitchen/dokken-single:
           suite: global
           platform: opensuse-leap
-          requires: [ lint, danger ]
-
+          name: global-opensuse-leap
+          requires: [lint, danger]
       - kitchen/dokken-single:
           name: system-install
           suite: system-install
           platform: centos-7
-          requires: [ lint, danger ]
+          requires: [lint, danger]
       - kitchen/dokken-single:
           name: user-install
           suite: user-install
           platform: centos-7
-          requires: [ lint, danger ]
+          requires: [lint, danger]
       - kitchen/dokken-single:
           name: gem
           suite: gem
           platform: centos-7
-          requires: [ lint, danger ]
+          requires: [lint, danger]
       - kitchen/dokken-single:
           name: ruby-uninstall
           suite: ruby-uninstall
           platform: ubuntu-1804
-          requires: [ lint, danger ]
+          requires: [lint, danger]
+      - kitchen/dokken-single:
+          name: custom-group
+          suite: custom-group-install
+          platform: centos-7
+          requires: [lint, danger]

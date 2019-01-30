@@ -35,3 +35,6 @@ suites:
 - name: user_install
   run_list: recipe[test::user_install]
   includes: [centos-7]
+- name: custom_group_install
+  run_list: recipe[test::custom_group_install]
+  includes: [centos-7]
