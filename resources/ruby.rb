@@ -56,8 +56,6 @@ action :install do
   command << " #{new_resource.version}"
   command << ' --verbose' if new_resource.verbose
 
-  # begin
-
   rbenv_script "#{command} #{which_rbenv}" do
     code command
     user new_resource.user if new_resource.user
@@ -79,9 +77,6 @@ action :install do
   # of rbenv still contains a version number which results in a warning. See
   # this issue and comment for more details:
   # https://github.com/rbenv/rbenv/pull/848#issuecomment-413857386
-end
-
-action :reinstall do
 end
 
 action_class do
