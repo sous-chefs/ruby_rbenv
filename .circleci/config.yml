@@ -5,6 +5,10 @@ orbs:
 workflows:
   kitchen:
     jobs:
+      - kitchen/yamllint:
+          name: lint-yaml
+      - kitchen/mdlint:
+          name: lint-markdown
       - kitchen/danger:
           name: danger
           context: Danger
