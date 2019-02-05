@@ -1,3 +1,4 @@
+---
 driver:
   name: dokken
   privileged: true
@@ -13,62 +14,62 @@ verifier:
   name: inspec
 
 platforms:
-- name: debian-8
-  driver:
-    image: dokken/debian-8
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+  - name: debian-8
+    driver:
+      image: dokken/debian-8
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
 
-- name: debian-9
-  driver:
-    image: dokken/debian-9
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+  - name: debian-9
+    driver:
+      image: dokken/debian-9
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
 
-- name: centos-6
-  driver:
-    image: dokken/centos-6
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN yum -y install sudo
+  - name: centos-6
+    driver:
+      image: dokken/centos-6
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN yum -y install sudo
 
-- name: centos-7
-  driver:
-    image: dokken/centos-7
-    pid_one_command: /usr/lib/systemd/systemd
-    intermediate_instructions:
-      - RUN yum -y install sudo
+  - name: centos-7
+    driver:
+      image: dokken/centos-7
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN yum -y install sudo
 
-- name: fedora-latest
-  driver:
-    image: dokken/fedora-latest
-    pid_one_command: /usr/lib/systemd/systemd
-    intermediate_instructions:
-      - RUN dnf -y install sudo
+  - name: fedora-latest
+    driver:
+      image: dokken/fedora-latest
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN dnf -y install sudo
 
-- name: ubuntu-16.04
-  driver:
-    image: dokken/ubuntu-16.04
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+  - name: ubuntu-16.04
+    driver:
+      image: dokken/ubuntu-16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
 
-- name: ubuntu-18.04
-  driver:
-    image: dokken/ubuntu-18.04
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+  - name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
 
-- name: opensuse-leap
-  driver:
-    image: dokken/opensuse-leap
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-    - RUN zypper --non-interactive install sudo
+  - name: opensuse-leap
+    driver:
+      image: dokken/opensuse-leap
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN zypper --non-interactive install sudo

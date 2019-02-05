@@ -21,9 +21,7 @@ This cookbook requires Chef 13.0+.
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 - openSUSE and openSUSE leap
 
-# Usage
-
-**Please read**
+## Usage
 
 Example installations are provided in `test/fixtures/cookbooks/test/recipes/`.
 
@@ -110,8 +108,10 @@ rbenv_script 'foo' do
   code # Script code to run
 end
 ```
+
 Note that environment overwrites the entire variable.
 For example. setting the `$PATH` variable can be done like this:
+
 ```ruby
 rbenv_script 'bundle package' do
   cwd node["bundle_dir"]
@@ -119,8 +119,8 @@ rbenv_script 'bundle package' do
   code "bundle package --all"
 end
 ```
-Where `#{ENV["PATH"]}` appends the existing PATH to the end of the newly set PATH.
 
+Where `#{ENV["PATH"]}` appends the existing PATH to the end of the newly set PATH.
 
 ## System_install
 
@@ -166,7 +166,7 @@ Copyright 2011, Fletcher Nichol
 
 Copyright 2017, Dan Webb
 
-```
+```text
 http://www.apache.org/licenses/LICENSE-2.0
 ```
 
