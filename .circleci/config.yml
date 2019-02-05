@@ -11,6 +11,7 @@ orbs:
 workflows:
   kitchen:
     jobs:
+      # Lint and Unit Test
       - kitchen/yamllint:
           name: lint-yaml
       - kitchen/mdlint:
@@ -20,6 +21,8 @@ workflows:
           context: Danger
       - kitchen/delivery:
           name: delivery
+
+      # Test Kitchen
       - kitchen/dokken-single:
           suite: global
           platform: debian-8
