@@ -1,4 +1,10 @@
 ---
+requires: &requires
+  - delivery
+  - danger
+  - lint-yaml
+  - lint-markdown
+
 version: 2.1
 orbs:
   kitchen: sous-chefs/kitchen@dev:first
@@ -18,7 +24,7 @@ workflows:
           suite: global
           platform: debian-8
           name: global-debian-8
-          requires: [delivery, danger, lint-yaml, lint-markdown]
+          requires: <<* requires
       - kitchen/dokken-single:
           suite: global
           platform: debian-9
