@@ -1,11 +1,11 @@
 # Contributing to this cookbook
 
-We are glad you want to contribute to the sysctl cookbook! The first
+We are glad you want to contribute to the rubyt_rbenv cookbook! The first
 step is the desire to improve the project.
 
 ## Quick-contribute
 
-* Create an issue on the github [issue tracker](https://github.com/sous-chefs/sysctl/issues)
+* Create an issue on the github [issue tracker](https://github.com/sous-chefs/ruby_rbenv/issues)
 * Link to your patch as a rebased git branch or pull request from the ticket
 
 We regularly review contributions and will get back to you if we have any suggestions or concerns.

@@ -18,59 +18,59 @@ workflows:
           suite: global
           platform: debian-8
           name: global-debian-8
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           suite: global
           platform: debian-9
           name: global-debian-9
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           suite: global
           platform: centos-6
           name: global-centos-6
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           suite: global
           platform: centos-7
           name: global-centos-7
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           suite: global
           platform: ubuntu-1604
           name: global-ubuntu-1604
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           suite: global
           platform: ubuntu-1804
           name: global-ubuntu-1804
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           suite: global
           platform: opensuse-leap
           name: global-opensuse-leap
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           name: system-install
           suite: system-install
           platform: centos-7
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           name: user-install
           suite: user-install
           platform: centos-7
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           name: gem
           suite: gem
           platform: centos-7
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           name: ruby-uninstall
           suite: ruby-uninstall
           platform: ubuntu-1804
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
       - kitchen/dokken-single:
           name: custom-group
           suite: custom-group-install
           platform: centos-7
-          requires: [delivery, danger]
+          requires: [delivery, danger, lint-yaml, lint-markdown]
