@@ -1,7 +1,7 @@
 # Chef ruby_rbenv Cookbook
 
-[![CircleCI Status](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master.svg?style=shield)](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master)
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
+[![CircleCI Status](https://img.shields.io/circleci/project/github/sous-chefs/ruby_rbenv/master.svg)](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master)
 
 ## Description
 
