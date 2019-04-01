@@ -20,16 +20,17 @@
 #
 provides :rbenv_plugin
 
-property :git_url, String, required: true
-property :git_ref, String, default: 'master'
-property :user,    String
+property :git_url,    String, required: true
+property :git_ref,    String, default: 'master'
+property :user,       String
+property :root_path,  String, default: lazy { Chef::Rbenv.root_path(node, user) }
 
 # https://github.com/rbenv/rbenv/wiki/Plugins
 action :install do
   # If we pass in a username, we then to a plugin install to the users home_dir
   # See chef_rbenv_script_helpers.rb for root_path
   git "Install #{new_resource.name} plugin" do
-    destination ::File.join(root_path, 'plugins', new_resource.name)
+    destination ::File.join(new_resource.root_path, 'plugins', new_resource.name)
     repository new_resource.git_url
     reference new_resource.git_ref
     user new_resource.user if new_resource.user
