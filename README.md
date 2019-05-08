@@ -1,7 +1,10 @@
 # Chef ruby_rbenv Cookbook
 
-[![CircleCI Status](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master.svg?style=shield)](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master)
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
+[![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/ruby_rbenv/master.svg)](https://circleci.com/gh/sous-chefs/ruby_rbenv)
+[![OpenCollective](https://opencollective.com/sous-chefs/backers/badge.svg)](#backers)
+[![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
 
@@ -157,29 +160,27 @@ This cookbook takes advantage of managing profile fragments in an `/etc/profile.
 
 Pull requests are very welcome! Make sure your patches are well tested.
 
-## License and Author
+## Contributors
 
-- Author:: [Fletcher Nichol][fnichol] ([fnichol@nichol.ca](mailto:fnichol@nichol.ca))
-- Author:: [Dan Webb][damacus]
+This project exists thanks to all the people who [contribute.](https://opencollective.com/sous-chefs/contributors.svg?width=890&button=false)
 
-Copyright 2011, Fletcher Nichol
+### Backers
 
-Copyright 2017, Dan Webb
+Thank you to all our backers!
 
-```
-http://www.apache.org/licenses/LICENSE-2.0
-```
+![https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40)
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+### Sponsors
 
-[custom_resources]: https://docs.chef.io/custom_resources.html
-[damacus]: https://github.com/damacus
-[fnichol]: https://github.com/fnichol
-[issues]: https://github.com/sous-chefs/ruby_rbenv/issues
-[mac_profile_d]: http://hints.macworld.com/article.php?story=20011221192012445
-[rb_readme]: https://github.com/sstephenson/ruby-build#readme
-[rbenv_issue_38]: https://github.com/rbenv/rbenv/issues/38#issuecomment-148413842
-[rbenv_issue_306]: https://github.com/rbenv/rbenv/issues/306#issuecomment-11848374
-[rbenv_site]: https://github.com/sstephenson/rbenv
-[repo]: https://github.com/sous-chefs/ruby_rbenv
-[ruby_build_cb]: https://supermarket.chef.io/cookbooks/ruby_build
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+
+![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/2/website](https://opencollective.com/sous-chefs/sponsor/2/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/3/website](https://opencollective.com/sous-chefs/sponsor/3/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/4/website](https://opencollective.com/sous-chefs/sponsor/4/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/5/website](https://opencollective.com/sous-chefs/sponsor/5/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/6/website](https://opencollective.com/sous-chefs/sponsor/6/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/7/website](https://opencollective.com/sous-chefs/sponsor/7/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/8/website](https://opencollective.com/sous-chefs/sponsor/8/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/9/website](https://opencollective.com/sous-chefs/sponsor/9/avatar.svg?avatarHeight=100)
