@@ -1,10 +1,7 @@
 # Chef ruby_rbenv Cookbook
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
-[![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/ruby_rbenv/master.svg)](https://circleci.com/gh/sous-chefs/ruby_rbenv)
-[![OpenCollective](https://opencollective.com/sous-chefs/backers/badge.svg)](#backers)
-[![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CircleCI Status](https://img.shields.io/circleci/project/github/sous-chefs/ruby_rbenv/master.svg)](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master)
 
 ## Description
 
@@ -28,9 +25,7 @@ This cookbook requires Chef 13.0+.
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 - openSUSE and openSUSE leap
 
-# Usage
-
-**Please read**
+## Usage
 
 Example installations are provided in `test/fixtures/cookbooks/test/recipes/`.
 
@@ -117,8 +112,10 @@ rbenv_script 'foo' do
   code # Script code to run
 end
 ```
+
 Note that environment overwrites the entire variable.
 For example. setting the `$PATH` variable can be done like this:
+
 ```ruby
 rbenv_script 'bundle package' do
   cwd node["bundle_dir"]
@@ -126,8 +123,8 @@ rbenv_script 'bundle package' do
   code "bundle package --all"
 end
 ```
-Where `#{ENV["PATH"]}` appends the existing PATH to the end of the newly set PATH.
 
+Where `#{ENV["PATH"]}` appends the existing PATH to the end of the newly set PATH.
 
 ## System_install
 
@@ -172,11 +169,9 @@ This project exists thanks to all the people who [contribute.](https://opencolle
 
 Thank you to all our backers!
 
-![https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40)
-
-### Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+```text
+http://www.apache.org/licenses/LICENSE-2.0
+```
 
 ![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
 ![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)

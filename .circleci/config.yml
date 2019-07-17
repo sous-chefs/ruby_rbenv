@@ -1,73 +1,86 @@
 ---
+lint_and_unit: &lint_and_unit
+  - delivery
+  - danger
+  - lint-yaml
+  - lint-markdown
+
 version: 2.1
 orbs:
-  kitchen: sous-chefs/kitchen@1.0.1
+  kitchen: sous-chefs/kitchen@2.0.2
 
 workflows:
   kitchen:
     jobs:
+      # Lint and Unit Test
+      - kitchen/yamllint:
+          name: lint-yaml
+      - kitchen/mdlint:
+          name: lint-markdown
       - kitchen/danger:
           name: danger
           context: Danger
-      - kitchen/lint:
-          name: lint
+      - kitchen/delivery:
+          name: delivery
+
+      # Test Kitchen
       - kitchen/dokken-single:
           suite: global
-          platform: debian-8
-          name: global-debian-8
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: debian-9
           name: global-debian-9
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           suite: global
-          platform: centos-6
+          name: global-debian-10
+          requires:
+            *lint_and_unit
+      - kitchen/dokken-single:
+          suite: global
           name: global-centos-6
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           suite: global
-          platform: centos-7
           name: global-centos-7
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           suite: global
-          platform: ubuntu-1604
           name: global-ubuntu-1604
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           suite: global
-          platform: ubuntu-1804
           name: global-ubuntu-1804
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           suite: global
-          platform: opensuse-leap
           name: global-opensuse-leap
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           name: system-install
           suite: system-install
-          platform: centos-7
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           name: user-install
           suite: user-install
-          platform: centos-7
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           name: gem
           suite: gem
-          platform: centos-7
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           name: ruby-uninstall
           suite: ruby-uninstall
-          platform: ubuntu-1804
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
       - kitchen/dokken-single:
           name: custom-group
           suite: custom-group-install
-          platform: centos-7
-          requires: [lint, danger]
+          requires:
+            *lint_and_unit
