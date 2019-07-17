@@ -26,12 +26,12 @@ workflows:
       # Test Kitchen
       - kitchen/dokken-single:
           suite: global
-          name: global-debian-8
+          name: global-debian-9
           requires:
             *lint_and_unit
       - kitchen/dokken-single:
           suite: global
-          name: global-debian-9
+          name: global-debian-10
           requires:
             *lint_and_unit
       - kitchen/dokken-single:

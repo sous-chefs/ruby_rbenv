@@ -16,7 +16,7 @@ verifier:
 platforms:
   - name: debian-8
     driver:
-      image: dokken/debian-8
+      image: dokken/debian-9
       pid_one_command: /sbin/init
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
@@ -24,7 +24,7 @@ platforms:
 
   - name: debian-9
     driver:
-      image: dokken/debian-9
+      image: dokken/debian-10
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
