@@ -14,9 +14,9 @@ verifier:
   name: inspec
 
 platforms:
-  - name: debian-8
+  - name: debian-10
     driver:
-      image: dokken/debian-8
+      image: dokken/debian-10
       pid_one_command: /sbin/init
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
