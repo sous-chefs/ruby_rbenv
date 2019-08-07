@@ -41,7 +41,7 @@ class Chef
         when 'rhel', 'fedora', 'amazon'
           %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
         when 'debian'
-          if node['platform_version'].to_i >= 18
+          if node['platform_version'].to_i >= 10
             %w(gcc autoconf bison build-essential libssl1.0-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev make)
           else
             %w(gcc autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev make)
