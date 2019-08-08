@@ -4,7 +4,9 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## Unreleased
 
-- Migrate to new orb
+## 2.2.0 (2019-08-08)
+
+- Use CircleCI 2.0 Orb
 
 ## 2.1.3 (2019-07-17)
 
