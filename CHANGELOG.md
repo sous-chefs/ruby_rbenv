@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## Unreleased
 
+## 2.3.0
+
 - Allow to specify the root_path so global rbenv install can run rbenv_scripts as non root (#247)
 
 ## 2.2.0 (2019-08-08)
