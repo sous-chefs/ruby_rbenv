@@ -22,6 +22,16 @@
 class Chef
   module Rbenv
     module Helpers
+      def self.root_path(node, resource_user = nil)
+        node.run_state['root_path'] ||= {}
+
+        if resource_user
+          node.run_state['root_path'][resource_user]
+        else
+          node.run_state['root_path']['system']
+        end
+      end
+
       def wrap_shim_cmd(cmd)
         [%(export RBENV_ROOT="#{rbenv_root}"),
          %(export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"),
@@ -31,13 +41,7 @@ class Chef
       end
 
       def root_path
-        node.run_state['root_path'] ||= {}
-
-        if new_resource.user
-          node.run_state['root_path'][new_resource.user]
-        else
-          node.run_state['root_path']['system']
-        end
+        Chef::Rbenv.root_path(node, new_resource.user)
       end
 
       def which_rbenv
@@ -46,12 +50,12 @@ class Chef
 
       def binary
         prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
-        "#{prefix}#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
+        "#{prefix}#{new_resource.root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
       end
 
       def script_code
         script = []
-        script << %(export RBENV_ROOT="#{root_path}")
+        script << %(export RBENV_ROOT="#{new_resource.root_path}")
         script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
         script << %{eval "$(rbenv init -)"}
         if new_resource.rbenv_version
@@ -62,7 +66,7 @@ class Chef
       end
 
       def script_environment
-        script_env = { 'RBENV_ROOT' => root_path }
+        script_env = { 'RBENV_ROOT' => new_resource.root_path }
 
         script_env.merge!(new_resource.environment) if new_resource.environment
 
@@ -96,7 +100,7 @@ class Chef
       def ruby_installed?
         if Array(new_resource.action).include?(:reinstall)
           return false
-        elsif ::File.directory?(::File.join(root_path, 'versions', new_resource.version))
+        elsif ::File.directory?(::File.join(new_resource.root_path, 'versions', new_resource.version))
           return true
         end
 
