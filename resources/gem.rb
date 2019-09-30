@@ -35,7 +35,7 @@ property :version,                String
 property :response_file,          String # Only used to reconfigure
 property :user,                   String
 property :rbenv_version,          String, required: true
-property :root_path,              String, default: lazy { Chef::Rbenv.root_path(node, user) }
+property :root_path,              String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
 default_action :install
 

@@ -41,7 +41,7 @@ class Chef
       end
 
       def root_path
-        Chef::Rbenv.root_path(node, new_resource.user)
+        Chef::Rbenv::Helpers.root_path(node, new_resource.user)
       end
 
       def which_rbenv
