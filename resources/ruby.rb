@@ -29,6 +29,7 @@ property :environment,        Hash
 property :rbenv_action,       String, default: 'install'
 property :verbose,            [true, false], default: false
 property :ruby_build_git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
+property :root_path,          String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
 action :install do
   Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ /rbx/
@@ -40,6 +41,7 @@ action :install do
   rbenv_plugin 'ruby-build' do
     git_url new_resource.ruby_build_git_url
     user new_resource.user if new_resource.user
+    root_path new_resource.root_path
   end
 
   install_ruby_dependencies
@@ -59,6 +61,7 @@ action :install do
   rbenv_script "#{command} #{which_rbenv}" do
     code command
     user new_resource.user if new_resource.user
+    root_path new_resource.root_path
     environment new_resource.environment if new_resource.environment
     action :run
     live_stream true if new_resource.verbose

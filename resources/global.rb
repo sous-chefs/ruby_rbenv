@@ -28,13 +28,7 @@ provides :rbenv_global
 
 property :rbenv_version, String, name_property: true
 property :user,          String
-property :root_path,     String, default: lazy {
-  if user
-    node.run_state['root_path'][user]
-  else
-    node.run_state['root_path']['system']
-  end
-}
+property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
 # This sets the Global rbenv version
 # e.g. "rbenv global" should return the version we set
@@ -43,6 +37,7 @@ action :create do
   rbenv_script "globals #{which_rbenv}" do
     code "rbenv global #{new_resource.rbenv_version}"
     user new_resource.user if new_resource.user
+    root_path new_resource.root_path
     action :run
     not_if { current_global_version_correct? }
   end
