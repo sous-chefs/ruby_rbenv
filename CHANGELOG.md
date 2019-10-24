@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## Unreleased
 
+- Remove the unnecessary long_metadata value in metadata.rb
+
 ## 2.3.0
 
 - Allow to specify the root_path so global rbenv install can run rbenv_scripts as non root (#247)
