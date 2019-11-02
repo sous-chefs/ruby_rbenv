@@ -1,18 +1,23 @@
 ---
+jobs:
+  final:
+    docker:
+      - image: bash:latest
+    steps:
+      - run:
+          name: Finish cooking
+          command: echo "Finished cooking"
 lint_and_unit: &lint_and_unit
   - delivery
   - danger
   - lint-yaml
   - lint-markdown
-
 version: 2.1
 orbs:
   kitchen: sous-chefs/kitchen@2
-
 workflows:
   kitchen:
     jobs:
-      # Lint and Unit Test
       - kitchen/yamllint:
           name: lint-yaml
       - kitchen/mdlint:
@@ -22,60 +27,65 @@ workflows:
           context: Danger
       - kitchen/delivery:
           name: delivery
-
-      # Test Kitchen
       - kitchen/dokken-single:
-          suite: global-debian-9
+          name: gem-centos-7
+          suite: gem-centos-7
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
           name: global-debian-9
-          requires:
-            *lint_and_unit
+          suite: global-debian-9
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          suite: global-centos-6
           name: global-centos-6
-          requires:
-            *lint_and_unit
+          suite: global-centos-6
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          suite: global-centos-7
           name: global-centos-7
-          requires:
-            *lint_and_unit
+          suite: global-centos-7
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          suite: global-ubuntu-1604
+          name: global-fedora-latest
+          suite: global-fedora-latest
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
           name: global-ubuntu-1604
-          requires:
-            *lint_and_unit
+          suite: global-ubuntu-1604
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          suite: global-ubuntu-1804
           name: global-ubuntu-1804
-          requires:
-            *lint_and_unit
+          suite: global-ubuntu-1804
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          suite: global-opensuse-leap
           name: global-opensuse-leap
-          requires:
-            *lint_and_unit
+          suite: global-opensuse-leap
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: system-install
-          suite: system-install
-          requires:
-            *lint_and_unit
+          name: ruby-uninstall-ubuntu-1804
+          suite: ruby-uninstall-ubuntu-1804
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: user-install
-          suite: user-install
-          requires:
-            *lint_and_unit
+          name: system-install-centos-7
+          suite: system-install-centos-7
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: gem
-          suite: gem
-          requires:
-            *lint_and_unit
+          name: user-install-centos-7
+          suite: user-install-centos-7
+          requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: ruby-uninstall
-          suite: ruby-uninstall
+          name: custom-group-install-centos-7
+          suite: custom-group-install-centos-7
+          requires: *lint_and_unit
+      - final:
           requires:
-            *lint_and_unit
-      - kitchen/dokken-single:
-          name: custom-group
-          suite: custom-group-install
-          requires:
-            *lint_and_unit
+            - gem-centos-7
+            - global-debian-9
+            - global-centos-6
+            - global-centos-7
+            - global-fedora-latest
+            - global-ubuntu-1604
+            - global-ubuntu-1804
+            - global-opensuse-leap
+            - ruby-uninstall-ubuntu-1804
+            - system-install-centos-7
+            - user-install-centos-7
+            - custom-group-install-centos-7
