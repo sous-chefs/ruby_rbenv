@@ -33,7 +33,7 @@ property :returns,       Array, default: [0]
 property :timeout,       Integer
 property :user,          String
 property :umask,         [String, Integer]
-property :live_stream,   [true, false], default: false
+property :live_stream,   [TrueClass, FalseClass], default: false
 property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
 action :run do
