@@ -5,6 +5,7 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 ## Unreleased
 
 - Remove the unnecessary long_metadata value in metadata.rb
+- Use TrueClass and FalseClass in resources
 
 ## 2.3.0
 
