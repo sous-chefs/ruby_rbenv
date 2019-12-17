@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove the unnecessary long_metadata value in metadata.rb
 - Fix Debian 10 dependency: libgdm6
+- Use TrueClass and FalseClass in resources
 
 ## [[2.3.0] -] - 2019-09-30
 
