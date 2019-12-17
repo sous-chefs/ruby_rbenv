@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.3.1] - 2019-12-17
 
 ### Fixed
 
@@ -13,15 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix Debian 10 dependency: libgdm6
 - Use TrueClass and FalseClass in resources
 
-## [[2.3.0] -] - 2019-09-30
+## [2.3.0] - 2019-09-30
 
 - Allow to specify the root_path so global rbenv install can run rbenv_scripts as non root (#247)
 
-## [[2.2.0] -] - 2019-08-08
+## [2.2.0] - 2019-08-08
 
 - Use CircleCI 2.0 Orb
 
-## [[2.1.3] -] - 2019-07-17
+## [2.1.3] - 2019-07-17
 
 - Update CircleCI testing orb
 - Update platforms, remove Debian 8 testing support
