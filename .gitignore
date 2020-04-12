@@ -1,6 +1,5 @@
 *.rbc
 .config
-.envrc
 coverage
 InstalledFiles
 lib/bundler/man
