@@ -27,7 +27,7 @@ property :version_file,       String
 property :user,               String
 property :environment,        Hash
 property :rbenv_action,       String, default: 'install'
-property :verbose,            [TrueClass, FalseClass], default: false
+property :verbose,            [true, false], default: false
 property :ruby_build_git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
 property :root_path,          String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
