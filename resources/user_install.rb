@@ -28,7 +28,7 @@ property :user,         String, name_property: true
 property :group,        String, default: lazy { user }
 property :home_dir,     String, default: lazy { ::File.expand_path("~#{user}") }
 property :user_prefix,  String, default: lazy { ::File.join(home_dir, '.rbenv') }
-property :update_rbenv, [TrueClass, FalseClass], default: true
+property :update_rbenv, [true, false], default: true
 
 action :install do
   package package_prerequisites
