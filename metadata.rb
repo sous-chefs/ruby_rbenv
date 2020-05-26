@@ -5,7 +5,7 @@ issues_url 'https://github.com/sous-chefs/ruby_rbenv/issues'
 source_url 'https://github.com/sous-chefs/ruby_rbenv'
 license 'Apache-2.0'
 description 'Manages rbenv and installs Rbenv based Rubies'
-version '2.3.2'
+version '2.4.0'
 chef_version '>= 13.0'
 
 supports 'ubuntu'
