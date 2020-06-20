@@ -23,12 +23,12 @@ class Chef
   module Rbenv
     module Helpers
       def self.root_path(node, resource_user = nil)
-        node.run_state['root_path'] ||= {}
+        node.run_state['sous-chefs']['ruby_rbenv']['root_path'] ||= {}
 
         if resource_user
-          node.run_state['root_path'][resource_user]
+          node.run_state['sous-chefs']['ruby_rbenv']['root_path'][resource_user]
         else
-          node.run_state['root_path']['system']
+          node.run_state['sous-chefs']['ruby_rbenv']['root_path']['system']
         end
       end
 

@@ -33,10 +33,10 @@ property :update_rbenv, [true, false], default: true
 action :install do
   package package_prerequisites
 
-  node.run_state['root_path'] ||= {}
-  node.run_state['root_path'][new_resource.user] ||= new_resource.user_prefix
+  node.run_state['sous-chefs']['ruby_rbenv']['root_path'] ||= {}
+  node.run_state['sous-chefs']['ruby_rbenv']['root_path'][new_resource.user] ||= new_resource.user_prefix
 
-  system_prefix = node.run_state['root_path']['system']
+  system_prefix = node.run_state['sous-chefs']['ruby_rbenv']['root_path']['system']
 
   template '/etc/profile.d/rbenv.sh' do
     cookbook 'ruby_rbenv'
