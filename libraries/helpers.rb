@@ -23,6 +23,8 @@ class Chef
   module Rbenv
     module Helpers
       def self.root_path(node, resource_user = nil)
+        node.run_state['sous-chefs'] ||= {}
+        node.run_state['sous-chefs']['ruby_rbenv'] ||= {}
         node.run_state['sous-chefs']['ruby_rbenv']['root_path'] ||= {}
 
         if resource_user
