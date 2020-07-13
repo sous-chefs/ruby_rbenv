@@ -44,6 +44,7 @@ jobs:
           - 'centos-7'
           - 'ubuntu-1604'
           - 'ubuntu-1804'
+          - 'ubuntu-2004'
         suite:
           - 'global'
       fail-fast: false
