@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Add placeholder for spec directory to tests run properly
 - Fix InSpec tests
+- Fix Ubuntu 18.04 dependency: libssl-dev
 
 ## 2.5.0 - 2020-07-24
 
