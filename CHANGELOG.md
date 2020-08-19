@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Add placeholder for spec directory to tests run properly
+- Fix InSpec tests
+
+## 2.5.0 - 2020-07-24
+
+- Add support for Ubuntu 20.04
+- Fix dependancy issue for suse
+
 ## 2.3.2 - 2020-05-05
 
 - Migrate to actions for testing
