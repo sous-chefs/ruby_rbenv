@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## Unreleased
 
 - Add placeholder for spec directory to tests run properly
+- Fix InSpec tests
 
 ## 2.5.0 - 2020-07-24
 
