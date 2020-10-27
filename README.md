@@ -17,6 +17,8 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 This cookbook requires Chef 13.0+.
 
+**NOTE:** Some Chef version >=16 and <16.4.41 have a bug in the git resource causing some failues (see [#289](https://github.com/sous-chefs/ruby_rbenv/issues/289)). If you experience any troubles please try a more recent version of Chef 16.
+
 ### Platform
 
 - Debian derivatives
