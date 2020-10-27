@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Remove workaround for chef bug in git resource (fixes #289)
+
 ## 2.5.1 - 2020-08-20
 
 - Add placeholder for spec directory to tests run properly

@@ -34,7 +34,6 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     user new_resource.user if new_resource.user
-    checkout_branch 'deploy'
     action :sync
   end
 end
