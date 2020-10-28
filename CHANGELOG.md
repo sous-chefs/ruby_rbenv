@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 2.6.0 - 2020-10-28
 
 **NOTE:** Some Chef versions (>= 16 and < 16.4.41) have a bug in the git resource causing some failures (see [#289](https://github.com/sous-chefs/ruby_rbenv/issues/289)). If you experience any troubles please try a more recent version of Chef 16.
 
