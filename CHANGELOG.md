@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+**NOTE:** Some Chef versions (>= 16 and < 16.4.41) have a bug in the git resource causing some failures (see [#289](https://github.com/sous-chefs/ruby_rbenv/issues/289)). If you experience any troubles please try a more recent version of Chef 16.
+
+- Remove workaround for chef bug in git resource (fixes #289)
+
 ## 2.5.1 - 2020-08-20
 
 - Add placeholder for spec directory to tests run properly
