@@ -52,7 +52,6 @@ action :install do
   git new_resource.global_prefix do
     repository new_resource.git_url
     reference new_resource.git_ref
-    checkout_branch 'deploy'
     action :checkout if new_resource.update_rbenv == false
     notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
     notifies :run, 'bash[Initialize system rbenv]', :immediately

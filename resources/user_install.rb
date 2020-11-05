@@ -52,7 +52,6 @@ action :install do
   git new_resource.user_prefix do
     repository new_resource.git_url
     reference new_resource.git_ref
-    checkout_branch 'deploy'
     action :checkout if new_resource.update_rbenv == false
     user new_resource.user
     group new_resource.group
