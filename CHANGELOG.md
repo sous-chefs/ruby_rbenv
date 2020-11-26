@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
 ## 3.0.0 - *2020-11-26*
 
 - Namespace the root_path variables to avoid naming conflicts with other sous-chef cookbooks.
