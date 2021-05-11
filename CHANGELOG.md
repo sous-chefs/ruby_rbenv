@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- resolved cookstyle error: resources/gem.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/global.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/plugin.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/rehash.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/ruby.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/script.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/system_install.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- resolved cookstyle error: resources/user_install.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
 ## 3.0.0 - *2020-11-26*
 
 - Namespace the root_path variables to avoid naming conflicts with other sous-chef cookbooks.

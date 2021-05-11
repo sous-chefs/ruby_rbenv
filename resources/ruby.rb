@@ -21,6 +21,7 @@
 # limitations under the License.
 #
 provides :rbenv_ruby
+unified_mode true
 
 property :version,            String, name_property: true
 property :version_file,       String

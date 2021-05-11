@@ -25,6 +25,7 @@
 # If we pass in a user check that users global
 
 provides :rbenv_global
+unified_mode true
 
 property :rbenv_version, String, name_property: true
 property :user,          String

@@ -21,6 +21,7 @@
 # limitations under the License.
 #
 provides :rbenv_script
+unified_mode true
 
 property :rbenv_version, String
 property :code,          String

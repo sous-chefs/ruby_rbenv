@@ -19,6 +19,7 @@
 # limitations under the License.
 #
 provides :rbenv_plugin
+unified_mode true
 
 property :git_url,    String, required: true
 property :git_ref,    String, default: 'master'

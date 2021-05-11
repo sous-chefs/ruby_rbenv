@@ -22,6 +22,7 @@
 #
 
 provides :rbenv_gem
+unified_mode true
 # Standard Gem Package Options
 # https://docs.chef.io/resource_gem_package.html#properties
 property :clear_sources,          [true, false]

@@ -21,6 +21,7 @@
 
 # Install rbenv to a user location
 provides :rbenv_user_install
+unified_mode true
 
 property :git_url,      String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,      String, default: 'master'
