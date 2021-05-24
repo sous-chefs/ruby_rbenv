@@ -24,11 +24,11 @@ provides :rbenv_user_install
 unified_mode true
 
 property :git_url,      String, default: 'https://github.com/rbenv/rbenv.git'
-property :git_ref,      String, default: 'master'
+property :git_ref,      String, default: 'main'
 property :user,         String, name_property: true
 property :group,        String, default: user
-property :home_dir,     String, default: ::File.expand_path("~#{user}")
-property :user_prefix,  String, default: ::File.join(home_dir, '.rbenv')
+property :home_dir,     String, default: ::File.expand_path("~#{new_resource.user}")
+property :user_prefix,  String, default: ::File.join(new_resource.home_dir, '.rbenv')
 property :update_rbenv, [true, false], default: true
 
 action :install do
