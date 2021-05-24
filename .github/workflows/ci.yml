@@ -4,16 +4,16 @@ name: ci
 "on":
   pull_request:
   push:
-    branches: [master]
+    branches: [master, main]
 
 jobs:
   delivery:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Run Chef Delivery
-        uses: actionshub/chef-delivery@master
+        uses: actionshub/chef-delivery@main
         env:
           CHEF_LICENSE: accept-no-persist
 
@@ -21,17 +21,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Run yaml Lint
-        uses: actionshub/yamllint@master
+        uses: actionshub/yamllint@main
 
   mdl:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Run Markdown Lint
-        uses: actionshub/markdownlint@master
+        uses: actionshub/markdownlint@main
 
   dokken:
     needs: [mdl, yamllint, delivery]
@@ -39,23 +39,23 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'debian-9'
-          - 'debian-10'
-          - 'centos-7'
-          - 'centos-8'
-          - 'ubuntu-1804'
-          - 'ubuntu-2004'
+          - "debian-9"
+          - "debian-10"
+          - "centos-7"
+          - "centos-8"
+          - "ubuntu-1804"
+          - "ubuntu-2004"
         suite:
-          - 'global'
+          - "global"
       fail-fast: false
 
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Install Chef
-        uses: actionshub/chef-install@master
+        uses: actionshub/chef-install@main
       - name: Dokken
-        uses: actionshub/kitchen-dokken@master
+        uses: actionshub/kitchen-dokken@main
         env:
           CHEF_LICENSE: accept-no-persist
           KITCHEN_LOCAL_YAML: kitchen.dokken.yml
@@ -69,21 +69,21 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'centos-8'
+          - "centos-8"
         suite:
-          - 'gem'
-          - 'system-install'
-          - 'user-install'
-          - 'custom-group-install'
+          - "gem"
+          - "system-install"
+          - "user-install"
+          - "custom-group-install"
       fail-fast: false
 
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Install Chef
-        uses: actionshub/chef-install@master
+        uses: actionshub/chef-install@main
       - name: Dokken
-        uses: actionshub/kitchen-dokken@master
+        uses: actionshub/kitchen-dokken@main
         env:
           CHEF_LICENSE: accept-no-persist
           KITCHEN_LOCAL_YAML: kitchen.dokken.yml
@@ -97,18 +97,18 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'ubuntu-1804'
+          - "ubuntu-1804"
         suite:
-          - 'ruby-uninstall'
+          - "ruby-uninstall"
       fail-fast: false
 
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Install Chef
-        uses: actionshub/chef-install@master
+        uses: actionshub/chef-install@main
       - name: Dokken
-        uses: actionshub/kitchen-dokken@master
+        uses: actionshub/kitchen-dokken@main
         env:
           CHEF_LICENSE: accept-no-persist
           KITCHEN_LOCAL_YAML: kitchen.dokken.yml
@@ -121,4 +121,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@master
+        uses: actions/checkout@main

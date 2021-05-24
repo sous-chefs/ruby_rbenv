@@ -1,7 +1,6 @@
 # Chef ruby_rbenv Cookbook
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
-[![CircleCI Status](https://img.shields.io/circleci/project/github/sous-chefs/ruby_rbenv/master.svg)](https://circleci.com/gh/sous-chefs/ruby_rbenv/tree/master)
 
 ## Description
 
@@ -147,7 +146,7 @@ Installs rbenv to the user path, making rbenv available to that user only.
 ```ruby
 rbenv_user_install 'vagrant' do
   git_url # Optional: Git URL to checkout rbenv from.
-  git_ref # Optional: Git reference to checkout e.g. 'master'
+  git_ref # Optional: Git reference to checkout e.g. 'main'
   user # Which user to install rbenv to (also specified in the resources name above)
 end
 ```

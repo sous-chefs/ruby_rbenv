@@ -22,7 +22,7 @@ provides :rbenv_plugin
 unified_mode true
 
 property :git_url,    String, required: true
-property :git_ref,    String, default: 'master'
+property :git_ref,    String, default: 'main'
 property :user,       String
 property :root_path,  String, default: Chef::Rbenv::Helpers.root_path(node, new_resource.user)
 
