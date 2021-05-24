@@ -25,10 +25,11 @@
 # If we pass in a user check that users global
 
 provides :rbenv_global
+unified_mode true
 
 property :rbenv_version, String, name_property: true
 property :user,          String
-property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :root_path,     String, default: Chef::Rbenv::Helpers.root_path(node, user)
 
 # This sets the Global rbenv version
 # e.g. "rbenv global" should return the version we set

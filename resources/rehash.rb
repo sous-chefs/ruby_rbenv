@@ -21,9 +21,10 @@
 # limitations under the License.
 #
 provides :rbenv_rehash
+unified_mode true
 
 property :user,       String
-property :root_path,  String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :root_path,  String, default: Chef::Rbenv::Helpers.root_path(node, user)
 
 action :run do
   rbenv_script "rbenv rehash #{which_rbenv}" do

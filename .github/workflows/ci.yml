@@ -1,11 +1,10 @@
 ---
 name: ci
 
-on:
+"on":
   pull_request:
   push:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   delivery:
@@ -41,8 +40,9 @@ jobs:
       matrix:
         os:
           - 'debian-9'
+          - 'debian-10'
           - 'centos-7'
-          - 'ubuntu-1604'
+          - 'centos-8'
           - 'ubuntu-1804'
           - 'ubuntu-2004'
         suite:
@@ -69,7 +69,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'centos-7'
+          - 'centos-8'
         suite:
           - 'gem'
           - 'system-install'

@@ -21,6 +21,7 @@
 # limitations under the License.
 #
 provides :rbenv_script
+unified_mode true
 
 property :rbenv_version, String
 property :code,          String
@@ -34,7 +35,7 @@ property :timeout,       Integer
 property :user,          String
 property :umask,         [String, Integer]
 property :live_stream,   [true, false], default: false
-property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :root_path,     String, default: Chef::Rbenv::Helpers.root_path(node, user)
 
 action :run do
   bash new_resource.name do

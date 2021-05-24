@@ -19,11 +19,12 @@
 # limitations under the License.
 #
 provides :rbenv_plugin
+unified_mode true
 
 property :git_url,    String, required: true
 property :git_ref,    String, default: 'master'
 property :user,       String
-property :root_path,  String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :root_path,  String, default: Chef::Rbenv::Helpers.root_path(node, user)
 
 # https://github.com/rbenv/rbenv/wiki/Plugins
 action :install do
