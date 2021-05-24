@@ -24,7 +24,7 @@ provides :rbenv_system_install
 unified_mode true
 
 property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
-property :git_ref,       String, default: 'main'
+property :git_ref,       String, default: 'master'
 property :global_prefix, String, default: '/usr/local/rbenv'
 property :update_rbenv,  [true, false], default: true
 
