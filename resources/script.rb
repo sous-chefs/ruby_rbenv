@@ -6,7 +6,7 @@
 # Author:: Dan Webb <dan.webb.damacus.io>
 #
 # Copyright:: 2011-2018, Fletcher Nichol
-# Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2017-2021, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 #
 provides :rbenv_script
 unified_mode true
+# use '_partial/_common'
 
 property :rbenv_version, String
 property :code,          String
@@ -32,9 +33,9 @@ property :group,         String
 property :path,          Array
 property :returns,       Array, default: [0]
 property :timeout,       Integer
-property :user,          String
 property :umask,         [String, Integer]
 property :live_stream,   [true, false], default: false
+property :user,          String
 property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
 action :run do

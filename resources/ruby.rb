@@ -6,7 +6,7 @@
 # Author:: Dan Webb <dan.webb@damacus.io>
 #
 # Copyright:: 2011-2018, Fletcher Nichol
-# Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2017-2021, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,14 +22,15 @@
 #
 provides :rbenv_ruby
 unified_mode true
+# use '_partial/_common'
 
 property :version,            String, name_property: true
 property :version_file,       String
-property :user,               String
 property :environment,        Hash
 property :rbenv_action,       String, default: 'install'
 property :verbose,            [true, false], default: false
 property :ruby_build_git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
+property :user,               String
 property :root_path,          String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
 
 action :install do
