@@ -32,7 +32,7 @@ end
 ```
 
 Note that environment overwrites the entire variable.
-For example. setting the `$PATH` variable can be done like this:
+For example, setting the `$PATH` variable can be done like this:
 
 ```ruby
 rbenv_script 'bundle package' do
