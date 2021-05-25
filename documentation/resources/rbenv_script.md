@@ -6,8 +6,8 @@ Runs a rbenv aware script.
 
 | Name          | Type                | Default              | Description |
 | ------------- | ------------------- | -------------------- | ----------- |
-| user          | String              |                      |             |
-| root_path     | String              | See root_path helper |             |
+| user          | `String`            |                      |             |
+| root_path     | `String`            | See root_path helper |             |
 | rbenv_version | `String`            |                      |             |
 | code          | `String`            |                      |             |
 | creates       | `String`            |                      |             |
@@ -15,8 +15,8 @@ Runs a rbenv aware script.
 | environment   | `Hash`              |                      |             |
 | group         | `String`            |                      |             |
 | path          | `Array`             |                      |             |
-| returns       | `Array`             | [0]                  |             |
-| timeout       | Integer             |                      |             |
+| returns       | `Array`             | `[0]`                |             |
+| timeout       | `Integer`           |                      |             |
 | umask         | `String`, `Integer` |                      |             |
 | live_stream   | `true`, `false`     | `false`              |
 

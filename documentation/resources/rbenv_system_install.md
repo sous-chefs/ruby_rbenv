@@ -4,12 +4,12 @@ Installs rbenv to the system location, by default `/usr/local/rbenv`
 
 ## Properties
 
-| Name          | Type            | Default                                | Description |
-| ------------- | --------------- | -------------------------------------- | ----------- |
-| git_url       | String          | '<https://github.com/rbenv/rbenv.git>' |             |
-| git_ref       | String          | 'master'                               |             |
-| global_prefix | String          | '/usr/local/rbenv'                     |             |
-| update_rbenv  | `true`, `false` | `true`                                 |             |
+| Name          | Type            | Default                              | Description |
+| ------------- | --------------- | ------------------------------------ | ----------- |
+| git_url       | `String`        | `https://github.com/rbenv/rbenv.git` |             |
+| git_ref       | `String`        | `master`                             |             |
+| global_prefix | `String`        | `/usr/local/rbenv`                   |             |
+| update_rbenv  | `true`, `false` | `true`                               |             |
 
 ## Example
 
