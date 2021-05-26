@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 4.0.0 - *2021-05-26*
 
 - Update platform to include CentOS 8 and Debian 10
 - Remove testing for CentOS 6 and Ubuntu 16.04
