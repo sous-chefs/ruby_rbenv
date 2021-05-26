@@ -22,11 +22,17 @@
 # Install rbenv to a system wide location
 provides :rbenv_system_install
 unified_mode true
+use '_partial/git'
 
-property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
-property :git_ref,       String, default: 'master'
-property :global_prefix, String, default: '/usr/local/rbenv'
-property :update_rbenv,  [true, false], default: true
+property :global_prefix,
+        String,
+        default: '/usr/local/rbenv',
+        description: 'Location for the global Ruby.'
+
+property :update_rbenv,
+        [true, false],
+        default: true,
+        description: 'Update rbenv definitions.'
 
 action :install do
   node.run_state['sous-chefs'] ||= {}

@@ -22,16 +22,31 @@
 #
 provides :rbenv_ruby
 unified_mode true
-# use '_partial/_common'
+use '_partial/_common'
 
-property :version,            String, name_property: true
-property :version_file,       String
-property :environment,        Hash
-property :rbenv_action,       String, default: 'install'
-property :verbose,            [true, false], default: false
-property :ruby_build_git_url, String, default: 'https://github.com/rbenv/ruby-build.git'
-property :user,               String
-property :root_path,          String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :version,
+        String,
+        name_property: true,
+        description: 'Ruby version to install.'
+
+property :environment,
+        Hash,
+        description: 'Environment to pass to the Ruby script.'
+
+property :rbenv_action,
+        String,
+        default: 'install',
+        description: 'Action to pass to rbenv.'
+
+property :verbose,
+        [true, false],
+        default: false,
+        description: 'Build Ruby with verbose output.'
+
+property :ruby_build_git_url,
+        String,
+        default: 'https://github.com/rbenv/ruby-build.git',
+        description: 'Git URL for Ruby build.'
 
 action :install do
   Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ /rbx/

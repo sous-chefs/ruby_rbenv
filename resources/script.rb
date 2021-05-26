@@ -22,21 +22,52 @@
 #
 provides :rbenv_script
 unified_mode true
-# use '_partial/_common'
+use '_partial/_common'
 
-property :rbenv_version, String
-property :code,          String
-property :creates,       String
-property :cwd,           String
-property :environment,   Hash
-property :group,         String
-property :path,          Array
-property :returns,       Array, default: [0]
-property :timeout,       Integer
-property :umask,         [String, Integer]
-property :live_stream,   [true, false], default: false
-property :user,          String
-property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :rbenv_version,
+        String,
+        description: 'Ruby version to run the script on.'
+
+property :code,
+         String,
+        description: 'Script code to run.'
+
+property :creates,
+        String,
+        description: 'Prevent the script from creating a file when that file already exists.'
+
+property :cwd,
+        String,
+        description: 'The current working directory from which the command will be run.'
+
+property :environment,
+        Hash,
+        description: 'A Hash of environment variables in the form of ({"ENV_VARIABLE" => "VALUE"}).'
+
+property :group,
+        String,
+        description: 'The group ID to run the command as.'
+
+property :path,
+        Array,
+        description: 'Path to add to environment.'
+
+property :returns,
+        Array, default: [0],
+        description: 'The return value for a command. This may be an array of accepted values.'
+
+property :timeout,
+        Integer,
+        description: 'The amount of time (in seconds) to wait for the script to complete.'
+
+property :umask,
+        [String, Integer],
+        description: 'The file mode creation mask, or umask.'
+
+property :live_stream,
+        [true, false],
+        default: false,
+        description: 'Live stream the output from the script to the console.'
 
 action :run do
   bash new_resource.name do

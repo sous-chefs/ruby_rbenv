@@ -4,11 +4,11 @@ Sets the global ruby version. The name of the resource is the version to set.
 
 ## Properties
 
-| Name          | Type     | Default              | Description |
-| ------------- | -------- | -------------------- | ----------- |
-| rbenv_version | `String` |                      |             |
-| user          | `String` |                      |             |
-| root_path     | `String` | See root_path helper |             |
+| Name          | Type     | Default              | Description                        |
+| ------------- | -------- | -------------------- | ---------------------------------- |
+| rbenv_version | `String` |                      | Version to set as the global Ruby. |
+| user          | `String` |                      | Username to run the script as.     |
+| root_path     | `String` | See root_path helper | Path to install Ruby to.           |
 
 ## Examples
 
