@@ -35,7 +35,7 @@ control 'User Gem Install' do
   title 'Should install Bundler Gem to a user home'
 
   desc 'Gemspec file should have correct ownership'
-  describe file('/home/vagrant/.rbenv/versions/2.7.1/lib/ruby/gems/2.3.0/specifications/bundler-1.15.4.gemspec') do
+  describe file('/home/vagrant/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/specifications/bundler-1.15.4.gemspec') do
     it { should exist }
     it { should be_owned_by 'vagrant' }
   end
