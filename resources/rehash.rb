@@ -6,7 +6,7 @@
 # Author:: Dan Webb <dan.webb.damacus.io>
 #
 # Copyright:: 2011-2018, Fletcher Nichol
-# Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2017-2021, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@
 # limitations under the License.
 #
 provides :rbenv_rehash
+unified_mode true
+# use '_partial/_common'
 
 property :user,       String
 property :root_path,  String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }

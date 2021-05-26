@@ -12,11 +12,11 @@ verifier:
   name: inspec
 
 platforms:
-  - name: centos-6
   - name: centos-7
+  - name: centos-8
   - name: fedora-latest
   - name: debian-9
-  - name: ubuntu-16.04
+  - name: debian-10
   - name: ubuntu-18.04
   - name: ubuntu-20.04
   - name: opensuse-leap
@@ -24,7 +24,7 @@ platforms:
 suites:
   - name: gem
     run_list: recipe[test::gem]
-    includes: [centos-7]
+    includes: [centos-8]
   - name: global
     run_list: recipe[test::global]
   - name: ruby_uninstall
@@ -32,10 +32,10 @@ suites:
     includes: [ubuntu-18.04]
   - name: system_install
     run_list: recipe[test::system_install]
-    includes: [centos-7]
+    includes: [centos-8]
   - name: user_install
     run_list: recipe[test::user_install]
-    includes: [centos-7]
+    includes: [centos-8]
   - name: custom_group_install
     run_list: recipe[test::custom_group_install]
-    includes: [centos-7]
+    includes: [centos-8]

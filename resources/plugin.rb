@@ -4,7 +4,7 @@
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
 #
-# Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2017-2021, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@
 # limitations under the License.
 #
 provides :rbenv_plugin
+unified_mode true
+# use '_partial/_common'
 
 property :git_url,    String, required: true
 property :git_ref,    String, default: 'master'

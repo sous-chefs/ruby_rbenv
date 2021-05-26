@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Update platform to include CentOS 8 and Debian 10
+- Remove testing for CentOS 6 and Ubuntu 16.04
+- Add unifed mode to all resources for Chef 17 compatibility
+- Require Chef 15.3 for unfied mode
+
 ## 3.0.0 - *2020-11-26*
 
 - Namespace the root_path variables to avoid naming conflicts with other sous-chef cookbooks.

@@ -8,7 +8,7 @@ rbenv_ruby '2.4.1' do
   verbose true
 end
 
-rbenv_ruby '2.3.1' do
+rbenv_ruby '2.7.1' do
   verbose true
 end
 
@@ -17,13 +17,11 @@ rbenv_global '2.4.1'
 
 rbenv_gem 'mail' do
   version '2.6.5'
-  options '--no-rdoc --no-ri'
-  rbenv_version '2.3.1'
+  rbenv_version '2.7.1'
 end
 
 rbenv_gem 'mail' do
   version '2.6.5'
-  options '--no-rdoc --no-ri'
   rbenv_version '2.4.1'
 end
 
@@ -37,17 +35,17 @@ end
 rbenv_user_install 'vagrant'
 
 # Install a Ruby to a user directory
-rbenv_ruby '2.3.1' do
+rbenv_ruby '2.7.1' do
   user 'vagrant'
 end
 
 # Set the vagrant global version
-rbenv_global '2.3.1' do
+rbenv_global '2.7.1' do
   user 'vagrant'
 end
 
 rbenv_gem 'bundler' do
   version '1.15.4'
   user 'vagrant'
-  rbenv_version '2.3.1'
+  rbenv_version '2.7.1'
 end

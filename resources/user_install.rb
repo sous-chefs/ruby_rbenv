@@ -4,7 +4,7 @@
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
 #
-# Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2017-2021, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
 
 # Install rbenv to a user location
 provides :rbenv_user_install
+unified_mode true
 
 property :git_url,      String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,      String, default: 'master'
@@ -36,7 +37,6 @@ action :install do
   node.run_state['sous-chefs'] ||= {}
   node.run_state['sous-chefs']['ruby_rbenv'] ||= {}
   node.run_state['sous-chefs']['ruby_rbenv']['root_path'] ||= {}
-
   node.run_state['sous-chefs']['ruby_rbenv']['root_path'][new_resource.user] ||= new_resource.user_prefix
 
   system_prefix = node.run_state['sous-chefs']['ruby_rbenv']['root_path']['system']

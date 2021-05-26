@@ -4,7 +4,7 @@
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
 #
-# Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2017-2021, Dan Webb
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
 
 # Install rbenv to a system wide location
 provides :rbenv_system_install
+unified_mode true
 
 property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,       String, default: 'master'
