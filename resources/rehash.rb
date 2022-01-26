@@ -22,10 +22,7 @@
 #
 provides :rbenv_rehash
 unified_mode true
-# use '_partial/_common'
-
-property :user,       String
-property :root_path,  String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+use '_partial/_common'
 
 action :run do
   rbenv_script "rbenv rehash #{which_rbenv}" do

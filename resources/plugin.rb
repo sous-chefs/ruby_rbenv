@@ -20,12 +20,17 @@
 #
 provides :rbenv_plugin
 unified_mode true
-# use '_partial/_common'
+use '_partial/_common'
 
-property :git_url,    String, required: true
-property :git_ref,    String, default: 'master'
-property :user,       String
-property :root_path,  String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :git_url,
+        String,
+        required: true,
+        description: 'Git URL to download the plugin from'
+
+property :git_ref,
+        String,
+        default: 'master',
+        description: 'Git reference to download, can be a SHA, tag or branch name'
 
 # https://github.com/rbenv/rbenv/wiki/Plugins
 action :install do

@@ -22,14 +22,32 @@
 # Install rbenv to a user location
 provides :rbenv_user_install
 unified_mode true
+use '_partial/_git'
 
-property :git_url,      String, default: 'https://github.com/rbenv/rbenv.git'
-property :git_ref,      String, default: 'master'
-property :user,         String, name_property: true
-property :group,        String, default: lazy { user }
-property :home_dir,     String, default: lazy { ::File.expand_path("~#{user}") }
-property :user_prefix,  String, default: lazy { ::File.join(home_dir, '.rbenv') }
-property :update_rbenv, [true, false], default: true
+property :user,
+        String,
+        name_property: true,
+        description: 'User to install the Ruby to.'
+
+property :group,
+        String,
+        default: lazy { user },
+        description: 'Group to create the resources with.'
+
+property :home_dir,
+        String,
+        default: lazy { ::File.expand_path("~#{user}") },
+        description: 'Directory to point user_prefix to.'
+
+property :user_prefix,
+        String,
+        default: lazy { ::File.join(home_dir, '.rbenv') },
+        description: 'Location to install Ruby.'
+
+property :update_rbenv,
+        [true,
+        false], default: true,
+        description: 'Update rbenv definitions.'
 
 action :install do
   package package_prerequisites

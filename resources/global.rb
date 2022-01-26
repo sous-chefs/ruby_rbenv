@@ -20,17 +20,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# Check for the user or system global verison
-# If we pass in a user check that users global
-
 provides :rbenv_global
 unified_mode true
-# use '_partial/_common'
+use '_partial/_common'
 
-property :rbenv_version, String, name_property: true
-property :user,          String
-property :root_path,     String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :rbenv_version,
+        String,
+        name_property: true,
+        description: 'Version to set as the global Ruby.'
 
 # This sets the Global rbenv version
 # e.g. "rbenv global" should return the version we set

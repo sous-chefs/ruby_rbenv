@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Add resource partials for git and common (users and root path helper)
+- Bump Chef version to 16 for partials
+
 ## 4.0.1 - *2021-08-30*
 
 - Standardise files with files in sous-chefs/repo-management

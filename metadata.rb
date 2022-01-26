@@ -6,7 +6,7 @@ source_url        'https://github.com/sous-chefs/ruby_rbenv'
 license           'Apache-2.0'
 description       'Manages rbenv and installs Rbenv based Rubies'
 version           '4.0.1'
-chef_version      '>= 15.3'
+chef_version      '>= 16.0'
 
 supports 'amazon'
 supports 'centos'

@@ -23,20 +23,53 @@
 
 provides :rbenv_gem
 unified_mode true
+use '_partial/_common'
 # Standard Gem Package Options
 # https://docs.chef.io/resource_gem_package.html#properties
-property :clear_sources,          [true, false]
-property :include_default_source, [true, false], default: true
-property :ignore_failure,         [true, false], default: false
-property :options,                [String, Hash]
-property :package_name,           [String, Array], name_property: true
-property :source,                 [String, Array]
-property :timeout,                Integer, default: 300
-property :version,                String
-property :response_file,          String # Only used to reconfigure
-property :rbenv_version,          String, required: true
-property :user,                   String
-property :root_path,              String, default: lazy { Chef::Rbenv::Helpers.root_path(node, user) }
+property :clear_sources,
+        [true, false],
+        description: 'Clear the gem sources.'
+
+property :include_default_source,
+        [true, false],
+        default: true,
+        description: 'Set to false to not include Chef::Config[:rubygems_url] in the sources.'
+
+property :ignore_failure,
+        [true, false],
+        default: false,
+        description: 'Continue running a recipe if a resource fails for any reason.'
+
+property :options,
+        [String, Hash],
+        description: 'Options to pass to the gem command.'
+
+property :package_name,
+        [String, Array],
+        name_property: true,
+        description: 'The Gem package name to install.'
+
+property :source,
+        [String, Array],
+        description: 'Source URL/location for gem.'
+
+property :timeout,
+        Integer,
+        default: 300,
+        description: 'Timeout in seconds to wait for Gem installation.'
+
+property :version,
+        String,
+        description: 'Gem version to install.'
+
+property :response_file,
+        String,
+        description: 'Response file to reconfigure a gem.'
+
+property :rbenv_version,
+        String,
+        required: true,
+        description: 'Which rbenv version to install the Gem to.'
 
 default_action :install
 
