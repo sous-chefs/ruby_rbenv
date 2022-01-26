@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
 ## 5.0.0 - *2022-01-26*
 
 - Add resource partials for git and common (users and root path helper)
