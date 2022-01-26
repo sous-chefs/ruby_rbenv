@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 - Add resource partials for git and common (users and root path helper)
 - Bump Chef version to 16 for partials
 
+## 4.0.1 - *2021-08-30*
+
+- Standardise files with files in sous-chefs/repo-management
+
 ## 4.0.0 - *2021-05-26*
 
 - Update platform to include CentOS 8 and Debian 10
