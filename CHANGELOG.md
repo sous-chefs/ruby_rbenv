@@ -6,9 +6,13 @@ All notable changes to this project will be documented in this file.
 
 Standardise files with files in sous-chefs/repo-management
 
+## 5.0.12 - *2023-04-04*
+
 Standardise files with files in sous-chefs/repo-management
 
 ## 5.0.11 - *2023-04-01*
+
+Standardise files with files in sous-chefs/repo-management
 
 ## 5.0.10 - *2023-04-01*
 
@@ -20,13 +24,7 @@ Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
-Standardise files with files in sous-chefs/repo-management
-
-Standardise files with files in sous-chefs/repo-management
-
 ## 5.0.7 - *2023-02-20*
-
-Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
@@ -41,8 +39,6 @@ Standardise files with files in sous-chefs/repo-management
 ## 5.0.3 - *2023-02-13*
 
 ## 5.0.2 - *2022-12-08*
-
-Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
