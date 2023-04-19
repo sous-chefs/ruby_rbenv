@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 Update CI matrix
 
+## 5.0.14 - *2023-04-19*
+
 ## 5.0.13 - *2023-04-11*
 
 Standardise files with files in sous-chefs/repo-management
