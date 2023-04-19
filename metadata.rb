@@ -8,6 +8,8 @@ description       'Manages rbenv and installs Rbenv based Rubies'
 version           '5.0.14'
 chef_version      '>= 16.0'
 
+depends 'yum-almalinux'
+
 supports 'amazon'
 supports 'centos'
 supports 'debian'

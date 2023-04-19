@@ -41,6 +41,8 @@ action :install do
 
   node.run_state['sous-chefs']['ruby_rbenv']['root_path']['system'] = new_resource.global_prefix
 
+  yum_alma_powertools 'alma' if platform_family?('rhel') && node['platform_version'].to_i >= 8
+
   package package_prerequisites
 
   directory '/etc/profile.d' do
