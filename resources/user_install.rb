@@ -50,6 +50,7 @@ property :update_rbenv,
         description: 'Update rbenv definitions.'
 
 action :install do
+  yum_alma_powertools 'alma' if platform_family?('rhel') && node['platform_version'].to_i >= 8
   package package_prerequisites
 
   node.run_state['sous-chefs'] ||= {}
