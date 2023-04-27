@@ -15,6 +15,7 @@ if platform_family?('rhel') && node['platform_version'].to_i >= 8
   yum_alma_baseos 'base'
   yum_alma_extras 'extras'
   yum_alma_appstream 'appstream'
+  yum_alma_powertools 'powertools'
 end
 
 # package
