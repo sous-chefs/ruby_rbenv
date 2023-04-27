@@ -88,14 +88,12 @@ class Chef
         case node['platform_family']
         when 'rhel', 'fedora', 'amazon'
           %w(git grep tar)
-        when 'debian', 'suse'
+        when 'debian', 'suse', 'arch'
           %w(git grep)
-        when 'mac_os_x', 'gentoo'
-          %w(git)
         when 'freebsd'
           %w(git bash)
-        when 'arch'
-          %w(git grep)
+        else
+          %w(git)
         end
       end
 
