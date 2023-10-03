@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+Update CI matrix
+
 ## 5.0.18 - *2023-09-28*
 
 ## 5.0.17 - *2023-09-28*
@@ -253,42 +255,42 @@ Standardise files with files in sous-chefs/repo-management
 
 ## [0.7.3] - (2015-07-8)
 
-- Issue [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) [#92](https://github.com/fnichol/chef-rbenv/pull/92): Add matchers for rbenv_gem and rbenv_ruby. ([@tduffield](https://github.com/tduffield) and many others)
-- Issue [#107](https://github.com/fnichol/chef-rbenv/issues/107): "Option name must be a kind of String!" when installing gems.
-- Issue [#101](https://github.com/fnichol/chef-rbenv/issues/101): Use full class name for rbenv_rehash resource
+- Issue [#91](https://github.com/sous-chefs/ruby_rbenv/issues/91) [#79](https://github.com/sous-chefs/ruby_rbenv/issues/79) [#92](https://github.com/sous-chefs/ruby_rbenv/pull/92): Add matchers for rbenv_gem and rbenv_ruby. ([@tduffield](https://github.com/tduffield) and many others)
+- Issue [#107](https://github.com/sous-chefs/ruby_rbenv/issues/107): "Option name must be a kind of String!" when installing gems.
+- Issue [#101](https://github.com/sous-chefs/ruby_rbenv/issues/101): Use full class name for rbenv_rehash resource
 - Fix undefined method `timeout' for LWRP resource rbenv_gem. ([@nathantsoi](https://github.com/nathantsoi) and others)
-- Issue [#110](https://github.com/fnichol/chef-rbenv/issues/110): Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem. ([@tatat](https://github.com/tatat) and others)
-- Fork from <https://github.com/fnichol/chef-rbenv>
+- Issue [#110](https://github.com/sous-chefs/ruby_rbenv/issues/110): Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem. ([@tatat](https://github.com/tatat) and others)
+- Fork from <https://github.com/sous-chefs/ruby_rbenv>
 
 ## [0.7.2] - 2012-12-31
 
-- Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't call libexec commands directly. ([@mhoran])
+- Pull request [#26](https://github.com/sous-chefs/ruby_rbenv/pull/26): Don't call libexec commands directly. ([@mhoran])
 - Add integration tests for a system Ruby version. ([@fnichol])
-- Pull request [#36](https://github.com/fnichol/chef-rbenv/pull/36): Use the ruby name as the definition to install ([@gsandie])
-- Pull request [#55](https://github.com/fnichol/chef-rbenv/pull/55): Fix some CHEF-3694 warnings when using with ruby_build ([@trinitronx])
+- Pull request [#36](https://github.com/sous-chefs/ruby_rbenv/pull/36): Use the ruby name as the definition to install ([@gsandie])
+- Pull request [#55](https://github.com/sous-chefs/ruby_rbenv/pull/55): Fix some CHEF-3694 warnings when using with ruby_build ([@trinitronx])
 
 ### New features
 
-- Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Allow setting environment vars per ruby install ([@jasherai])
-- Pull request [#37](https://github.com/fnichol/chef-rbenv/pull/37): Allows use `include_recipe("ruby_build")` instead of having to put it in the `run_list` ([@tjwallace])
-- Pull request [#42](https://github.com/fnichol/chef-rbenv/pull/42): Load rbenv environment after install ([@msaffitz])
-- Pull request [#62](https://github.com/fnichol/chef-rbenv/pull/62): Add Gentoo as supported platform ([@gentooboontoo])
-- Pull request [#46](https://github.com/fnichol/chef-rbenv/pull/46): Add a `definition_file` attribute to the `rbenv_ruby` resource to prevent continually trying to build a custom ruby when passed a build file name instead of a built-in definition ([@jf647])
-- Pull request [#60](https://github.com/fnichol/chef-rbenv/pull/60): Support `definition_file` in rubies definition ([@cyu])
-- Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75): Update testing support and add unit tests for existing resources ([@fnichol])
-- Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70): Support ruby 2.1.0 ([@WhyEee])
+- Pull request [#26](https://github.com/sous-chefs/ruby_rbenv/pull/26): Allow setting environment vars per ruby install ([@jasherai])
+- Pull request [#37](https://github.com/sous-chefs/ruby_rbenv/pull/37): Allows use `include_recipe("ruby_build")` instead of having to put it in the `run_list` ([@tjwallace])
+- Pull request [#42](https://github.com/sous-chefs/ruby_rbenv/pull/42): Load rbenv environment after install ([@msaffitz])
+- Pull request [#62](https://github.com/sous-chefs/ruby_rbenv/pull/62): Add Gentoo as supported platform ([@gentooboontoo])
+- Pull request [#46](https://github.com/sous-chefs/ruby_rbenv/pull/46): Add a `definition_file` attribute to the `rbenv_ruby` resource to prevent continually trying to build a custom ruby when passed a build file name instead of a built-in definition ([@jf647])
+- Pull request [#60](https://github.com/sous-chefs/ruby_rbenv/pull/60): Support `definition_file` in rubies definition ([@cyu])
+- Pull request [#75](https://github.com/sous-chefs/ruby_rbenv/pull/75): Update testing support and add unit tests for existing resources ([@fnichol])
+- Pull request [#70](https://github.com/sous-chefs/ruby_rbenv/pull/70): Support ruby 2.1.0 ([@WhyEee])
 
 ## [0.7.0] - 2012-11-21
 
-- Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create /etc/profile.d on system-wide and add note for Mac. ([@fnichol])
-- Pull request [#20](https://github.com/fnichol/chef-rbenv/pull/20): Set an attribute to create profile.d for user install. ([@jtimberman])
-- Pull request [#12](https://github.com/fnichol/chef-rbenv/pull/12): Add name attribute to metadata. ([@jtimberman])
+- Issue [#14](https://github.com/sous-chefs/ruby_rbenv/pull/14): Create /etc/profile.d on system-wide and add note for Mac. ([@fnichol])
+- Pull request [#20](https://github.com/sous-chefs/ruby_rbenv/pull/20): Set an attribute to create profile.d for user install. ([@jtimberman])
+- Pull request [#12](https://github.com/sous-chefs/ruby_rbenv/pull/12): Add name attribute to metadata. ([@jtimberman])
 - Update foodcritic configuration and update .travis.yml. ([@fnichol])
 - Update Installation section of README (welcome Berkshelf). ([@fnichol])
 
 ## [0.6.10] - 2012-05-18
 
-- Pull request [#11](https://github.com/fnichol/chef-rbenv/pull/11): Add FreeBSD support. ([@jssjr])
+- Pull request [#11](https://github.com/sous-chefs/ruby_rbenv/pull/11): Add FreeBSD support. ([@jssjr])
 - Add other platform supports in metadata.rb and README. ([@fnichol])
 
 ## [0.6.8] - 2012-05-06
@@ -300,9 +302,9 @@ Standardise files with files in sous-chefs/repo-management
 - Fix FC022: Resource condition within loop may not behave as expected. ([@fnichol])
 - Add plaform equivalents in default attrs (FC024). ([@fnichol])
 - Ensure update-java-alternatives is called before JRuby is built. ([@fnichol])
-- Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add /etc/profile.d/rbenv.sh support for user installs. ([@thoughtless])
+- Pull request [#8](https://github.com/sous-chefs/ruby_rbenv/pull/8): Add /etc/profile.d/rbenv.sh support for user installs. ([@thoughtless])
 - Add TravisCI to run Foodcritic linter. ([@fnichol])
-- Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README proofreading. ([@jdsiegel])
+- Pull request [#10](https://github.com/sous-chefs/ruby_rbenv/pull/10): README proofreading. ([@jdsiegel])
 - README updates. ([@fnichol])
 - Confirm debian platform support. ([@fnichol])
 
@@ -314,11 +316,10 @@ Standardise files with files in sous-chefs/repo-management
 
 ## [0.6.2] - 2012-02-22
 
-- Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1), [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in RbenvRubygems to avoid libraries load ordering issues. ([@fnichol])
-- Pull request [#5](https://github.com/fnichol/chef-rbenv/pull/5): Include user setting in rehash calls. ([@magnetised])
-- Issue [#4](https://github.com/fnichol/chef-rbenv/issues/4): Fix rbenv/gems hash parsing. ([@fnichol])
+- Issues [#1](https://github.com/sous-chefs/ruby_rbenv/issues/1), [#2](https://github.com/sous-chefs/ruby_rbenv/issues/2): Stub mixins in RbenvRubygems to avoid libraries load ordering issues. ([@fnichol])
+- Pull request [#5](https://github.com/sous-chefs/ruby_rbenv/pull/5): Include user setting in rehash calls. ([@magnetised])
+- Issue [#4](https://github.com/sous-chefs/ruby_rbenv/issues/4): Fix rbenv/gems hash parsing. ([@fnichol])
 - Large formatting updates to README. ([@fnichol])
-- Add gh-pages branch for sectioned README at <https://fnichol.github.com/chef-rbenv>
 
 ## [0.6.0] - 2011-12-21
 

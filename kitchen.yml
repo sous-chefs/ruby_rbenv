@@ -15,10 +15,12 @@ platforms:
   - name: centos-7
   - name: centos-8
   - name: fedora-latest
-  - name: debian-9
   - name: debian-10
+  - name: debian-11
+  - name: debian-12
   - name: ubuntu-18.04
   - name: ubuntu-20.04
+  - name: ubuntu-22.04
   - name: opensuse-leap
 
 suites:
