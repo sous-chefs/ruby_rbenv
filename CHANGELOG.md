@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 Update CI matrix
 
+## 5.0.18 - *2023-09-28*
+
+## 5.0.17 - *2023-09-28*
+
+## 5.0.16 - *2023-07-10*
+
+## 5.0.15 - *2023-05-17*
+
 ## 5.0.14 - *2023-04-19*
 
 ## 5.0.13 - *2023-04-11*
