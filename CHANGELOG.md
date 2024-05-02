@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 5.0.20 - *2024-05-02*
 
 ## 5.0.19 - *2023-10-03*
 
