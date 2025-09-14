@@ -27,16 +27,16 @@ class Chef
       def enable_crb_repository_if_needed
         return unless node['platform_family'] == 'rhel' && node['platform_version'].to_i >= 9
 
-        case node['platform']
-        when 'centos'
-          repository_name = 'crb'
-        when 'almalinux', 'rocky'
-          repository_name = 'crb'
-        when 'redhat'
-          repository_name = 'codeready-builder-for-rhel-9-x86_64-rpms'
-        else
-          repository_name = 'crb' # Default for other RHEL 9+ derivatives
-        end
+        repository_name = case node['platform']
+                          when 'centos'
+                            'crb'
+                          when 'almalinux', 'rocky'
+                            'crb'
+                          when 'redhat'
+                            'codeready-builder-for-rhel-9-x86_64-rpms'
+                          else
+                            'crb' # Default for other RHEL 9+ derivatives
+                          end
 
         # Install dnf-plugins-core if not already present
         package 'dnf-plugins-core'

@@ -54,7 +54,7 @@ property :path,
 
 property :returns,
         Array, default: [0],
-        description: 'The return value for a command. This may be an array of accepted values.'
+               description: 'The return value for a command. This may be an array of accepted values.'
 
 property :timeout,
         Integer,
