@@ -46,8 +46,8 @@ property :user_prefix,
 
 property :update_rbenv,
         [true,
-        false], default: true,
-        description: 'Update rbenv definitions.'
+         false], default: true,
+                 description: 'Update rbenv definitions.'
 
 action :install do
   package package_prerequisites
