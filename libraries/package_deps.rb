@@ -6,6 +6,7 @@ class Chef
         when /^jruby-/
           package jruby_package_deps
         else
+          enable_crb_repository_if_needed
           package_deps.each do |deps|
             package deps
           end
@@ -21,6 +22,29 @@ class Chef
       rescue Chef::Exceptions::ResourceNotFound
         # have pity on my soul
         Chef::Log.info 'The java cookbook does not appear to in the run_list.'
+      end
+
+      def enable_crb_repository_if_needed
+        return unless node['platform_family'] == 'rhel' && node['platform_version'].to_i >= 9
+
+        repository_name = case node['platform']
+                          when 'centos'
+                            'crb'
+                          when 'almalinux', 'rocky'
+                            'crb'
+                          when 'redhat'
+                            'codeready-builder-for-rhel-9-x86_64-rpms'
+                          else
+                            'crb' # Default for other RHEL 9+ derivatives
+                          end
+
+        # Install dnf-plugins-core if not already present
+        package 'dnf-plugins-core'
+
+        execute "enable #{repository_name} repository" do
+          command "dnf config-manager --set-enabled #{repository_name}"
+          not_if "dnf repolist enabled | grep -q #{repository_name}"
+        end
       end
 
       def jruby_package_deps
