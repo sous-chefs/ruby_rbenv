@@ -108,7 +108,7 @@ class Chef
       end
 
       def verbose
-        return '-v' if new_resource.verbose
+        '-v' if new_resource.verbose
       end
     end
   end
