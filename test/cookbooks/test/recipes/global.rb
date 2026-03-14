@@ -1,6 +1,8 @@
-global_version = '2.4.1'
+# frozen_string_literal: true
 
-# Make sure that Vagarant user is on the box for dokken
+global_version = '3.4.9'
+
+# Make sure that Vagrant user is on the box for dokken
 include_recipe 'test::dokken'
 
 # Install Rbenv Globally

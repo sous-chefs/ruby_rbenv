@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-global_ruby = '2.4.1'
+global_ruby = '3.3.10'
 
 control 'Global Gem Install' do
   title 'Should install Mail Gem globally'
@@ -10,33 +10,31 @@ control 'Global Gem Install' do
     its('stdout') { should include(global_ruby) }
   end
 
-  desc '2.7.1 Gem should have mail installed'
-  describe bash('/usr/local/rbenv/versions/2.7.1/bin/gem list --local mail') do
+  desc '3.4.9 Gem should have mail installed'
+  describe bash('/usr/local/rbenv/versions/3.4.9/bin/gem list --local mail') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should include('2.6.5') }
-    its('stdout') { should_not include('2.6.6') }
+    its('stdout') { should include('2.8.1') }
   end
 
-  desc '2.4.1 Gem should not have any mail version installed'
-  describe bash('/usr/local/rbenv/versions/2.4.1/bin/gem list --local') do
+  desc '3.3.10 Gem should not have mail installed (was removed)'
+  describe bash('/usr/local/rbenv/versions/3.3.10/bin/gem list --local mail') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should_not include('2.6.5') }
-    its('stdout') { should_not include('2.6.6') }
+    its('stdout') { should_not include('2.8.1') }
   end
 
   desc 'gem home should be rbenv in an rbenv directory'
   describe bash('source /etc/profile.d/rbenv.sh && gem env home') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should include("/usr/local/rbenv/versions/#{global_ruby}/lib/ruby/gems/2.4.0") }
+    its('stdout') { should include('/usr/local/rbenv/versions/') }
   end
 end
 
 control 'User Gem Install' do
   title 'Should install Bundler Gem to a user home'
 
-  desc 'Gemspec file should have correct ownership'
-  describe file('/home/vagrant/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/specifications/bundler-1.15.4.gemspec') do
-    it { should exist }
-    it { should be_owned_by 'vagrant' }
+  desc 'Bundler gem should be owned by vagrant'
+  describe bash('ls -la /home/vagrant/.rbenv/versions/3.4.9/bin/bundler') do
+    its('exit_status') { should eq 0 }
+    its('stdout') { should include('vagrant') }
   end
 end

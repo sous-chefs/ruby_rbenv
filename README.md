@@ -17,7 +17,7 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 ### Chef
 
-This cookbook requires Chef 13.0+.
+This cookbook requires Chef 16.0+.
 
 **NOTE:** Some Chef versions (>= 16 and < 16.4.41) have a bug in the git resource causing some failures (see [#289](https://github.com/sous-chefs/ruby_rbenv/issues/289)). If you experience any troubles please try a more recent version of Chef 16.
 
@@ -26,23 +26,23 @@ This cookbook requires Chef 13.0+.
 - Debian derivatives
 - Fedora
 - macOS (not currently tested)
-- RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
-- openSUSE and openSUSE leap
+- RHEL derivatives (RHEL, AlmaLinux, Rocky Linux, Amazon Linux, Oracle Linux)
+- openSUSE Leap
 
 ## Resources
 
-- [rbenv_gem](documentation/resources/rbenv_gem.md)
-- [rbenv_global](documentation/resources/rbenv_global.md)
-- [rbenv_plugin](documentation/resources/rbenv_plugin.md)
-- [rbenv_rehash](documentation/resources/rbenv_rehash.md)
-- [rbenv_ruby](documentation/resources/rbenv_ruby.md)
-- [rbenv_script](documentation/resources/rbenv_script.md)
-- [rbenv_system_install](documentation/resources/rbenv_system_install.md)
-- [rbenv_user_install](documentation/resources/rbenv_user_install.md)
+- [rbenv_gem](documentation/rbenv_gem.md)
+- [rbenv_global](documentation/rbenv_global.md)
+- [rbenv_plugin](documentation/rbenv_plugin.md)
+- [rbenv_rehash](documentation/rbenv_rehash.md)
+- [rbenv_ruby](documentation/rbenv_ruby.md)
+- [rbenv_script](documentation/rbenv_script.md)
+- [rbenv_system_install](documentation/rbenv_system_install.md)
+- [rbenv_user_install](documentation/rbenv_user_install.md)
 
 ## Usage
 
-Example installations are provided in `test/fixtures/cookbooks/test/recipes/`.
+Example installations are provided in `test/cookbooks/test/recipes/`.
 
 A `rbenv_system_install` or `rbenv_user_install` is required to be set so that rbenv knows which version you want to use, and is installed on the system.
 

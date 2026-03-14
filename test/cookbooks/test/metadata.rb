@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 name 'test'
 version '0.99.0'
 
