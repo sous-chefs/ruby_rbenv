@@ -1,7 +1,9 @@
-# Install rbenv and makes it avilable to the selected user
-version = '2.4.1'
+# frozen_string_literal: true
 
-# Make sure that Vagarant user is on the box for dokken
+# Install rbenv and makes it available to the selected user
+version = '3.4.9'
+
+# Make sure that Vagrant user is on the box for dokken
 include_recipe 'test::dokken'
 
 group 'new-group' do
@@ -19,7 +21,7 @@ rbenv_plugin 'ruby-build' do
   user 'vagrant'
 end
 
-rbenv_ruby '2.4.1' do
+rbenv_ruby '3.4.9' do
   user 'vagrant'
 end
 

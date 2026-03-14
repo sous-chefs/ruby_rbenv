@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook:: ruby_rbenv
 # Resource:: system_install
@@ -22,7 +24,7 @@
 # Install rbenv to a system wide location
 provides :rbenv_system_install
 unified_mode true
-use '_partial/git'
+use '_partial/_git'
 
 property :global_prefix,
         String,

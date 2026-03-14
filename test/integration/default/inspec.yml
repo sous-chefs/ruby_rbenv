@@ -1,0 +1,10 @@
+---
+name: default
+title: Default rbenv profile
+maintainer: Sous Chefs
+copyright: Sous Chefs
+license: Apache-2.0
+summary: Verifies primary rbenv workflow (system install, ruby, global, gem)
+version: 1.0.0
+supports:
+  - os-family: linux

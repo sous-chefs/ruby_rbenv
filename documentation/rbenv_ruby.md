@@ -5,7 +5,7 @@ Installs a given Ruby version to the system or user location.
 ## Properties
 
 | Name               | Type            | Default                                   | Description                             |
-| ------------------ | --------------- | ----------------------------------------- | --------------------------------------- |
+|--------------------|-----------------|-------------------------------------------|-----------------------------------------|
 | version            | `String`        |                                           | Ruby version to install.                |
 | environment        | `Hash`          |                                           | Environment to pass to the Ruby script. |
 | rbenv_action       | `String`        | `install`                                 | Action to pass to rbenv.                |
@@ -17,11 +17,11 @@ Installs a given Ruby version to the system or user location.
 ## Examples
 
 ```ruby
-rbenv_ruby '2.5.1' do
+rbenv_ruby '3.4.9' do
   user 'vagrant'
 end
 ```
 
 ```ruby
-rbenv_ruby '2.5.1'
+rbenv_ruby '3.4.9'
 ```

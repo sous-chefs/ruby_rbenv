@@ -1,4 +1,2 @@
----
-AllCops:
-  Exclude:
-    - 'Dangerfile'
+require:
+  - cookstyle

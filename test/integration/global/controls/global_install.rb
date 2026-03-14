@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-global_ruby = '2.4.1'
+global_ruby = '3.4.9'
 
 control 'Rbenv should be installed' do
   title 'Rbenv should be installed globally'

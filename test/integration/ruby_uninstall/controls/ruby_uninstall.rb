@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-global_system_ruby = '2.5.1'
+global_system_ruby = '3.3.10'
 
 control 'Ruby uninstall' do
   title 'Ruby should be uninstalled'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 name              'ruby_rbenv'
 maintainer        'Sous Chefs'
 maintainer_email  'help@sous-chefs.org'
@@ -10,13 +12,14 @@ chef_version      '>= 16.0'
 
 depends 'yum-almalinux'
 
+supports 'almalinux'
 supports 'amazon'
-supports 'centos'
+supports 'centos_stream'
 supports 'debian'
 supports 'fedora'
-supports 'linuxmint'
 supports 'mac_os_x'
-supports 'opensuse'
+supports 'opensuseleap'
+supports 'oracle'
 supports 'redhat'
-supports 'scientific'
+supports 'rocky'
 supports 'ubuntu'
