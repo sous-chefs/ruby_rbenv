@@ -2,9 +2,9 @@
 # Local modifications will be overridden
 
 # prefer a user rbenv over a system wide install
-if [ -s "${HOME}/.rbenv/bin" ]; then
+if [ -d "${HOME}/.rbenv/bin" ]; then
   rbenv_root="${HOME}/.rbenv"
-elif [ -s "<%= @global_prefix %>" ]; then
+elif [ -d "<%= @global_prefix %>" ]; then
   rbenv_root="<%= @global_prefix %>"
   export RBENV_ROOT="$rbenv_root"
 fi
