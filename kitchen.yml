@@ -18,13 +18,15 @@ verifier:
   name: inspec
 
 platforms:
-  - name: almalinux-9
   - name: amazonlinux-2023
-  - name: centos-stream-9
-  - name: debian-12
-  - name: debian-13
   - name: fedora-latest
   - name: opensuse-leap-15
+  - name: almalinux-9
+  - name: almalinux-10
+  - name: centos-stream-9
+  - name: centos-stream-10
+  - name: debian-12
+  - name: debian-13
   - name: ubuntu-22.04
   - name: ubuntu-24.04
 
