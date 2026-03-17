@@ -9,6 +9,6 @@ elif [ -n "<%= @global_prefix %>" ] && [ -d "<%= @global_prefix %>" ]; then
 fi
 
 if [ -n "$RBENV_ROOT" ]; then
-  export PATH="${RBENV_ROOT}/bin:$PATH"
-  eval "$(rbenv init -)"
+  export PATH="${RBENV_ROOT}/shims:${RBENV_ROOT}/bin:$PATH"
+  eval "$(rbenv init - 2>/dev/null)" || true
 fi
