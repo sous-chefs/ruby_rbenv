@@ -41,11 +41,11 @@ class Chef
         when 'mac_os_x'
           %w(openssl makedepend pkg-config libffi)
         when 'rhel', 'fedora', 'amazon'
-          %w(gcc bzip2 openssl-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
+          %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
         when 'debian'
-          %w(gcc autoconf bison build-essential libssl-dev libreadline-dev zlib1g-dev libncurses-dev libffi-dev libgdbm-dev make)
+          %w(gcc autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses-dev libffi-dev libgdbm-dev make)
         when 'suse'
-          %w(gcc make automake gdbm-devel ncurses-devel readline-devel zlib-devel libopenssl-devel bzip2)
+          %w(gcc make automake gdbm-devel libyaml-devel ncurses-devel readline-devel zlib-devel libopenssl-devel bzip2)
         end
       end
     end

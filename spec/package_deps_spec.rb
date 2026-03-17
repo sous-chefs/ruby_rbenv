@@ -35,7 +35,7 @@ describe Chef::Rbenv::PackageDeps do
   describe '#package_deps' do
     context 'on debian family' do
       it 'returns debian build dependencies' do
-        expect(helper.package_deps).to eq %w(gcc autoconf bison build-essential libssl-dev libreadline-dev zlib1g-dev libncurses-dev libffi-dev libgdbm-dev make)
+        expect(helper.package_deps).to eq %w(gcc autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses-dev libffi-dev libgdbm-dev make)
       end
     end
 
@@ -48,7 +48,7 @@ describe Chef::Rbenv::PackageDeps do
       end
 
       it 'returns rhel build dependencies' do
-        expect(helper.package_deps).to eq %w(gcc bzip2 openssl-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
+        expect(helper.package_deps).to eq %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
       end
     end
 
@@ -61,7 +61,7 @@ describe Chef::Rbenv::PackageDeps do
       end
 
       it 'returns rhel-style build dependencies' do
-        expect(helper.package_deps).to eq %w(gcc bzip2 openssl-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
+        expect(helper.package_deps).to eq %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
       end
     end
 
@@ -74,7 +74,7 @@ describe Chef::Rbenv::PackageDeps do
       end
 
       it 'returns rhel-style build dependencies' do
-        expect(helper.package_deps).to eq %w(gcc bzip2 openssl-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
+        expect(helper.package_deps).to eq %w(gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel make)
       end
     end
 
@@ -87,7 +87,7 @@ describe Chef::Rbenv::PackageDeps do
       end
 
       it 'returns suse build dependencies' do
-        expect(helper.package_deps).to eq %w(gcc make automake gdbm-devel ncurses-devel readline-devel zlib-devel libopenssl-devel bzip2)
+        expect(helper.package_deps).to eq %w(gcc make automake gdbm-devel libyaml-devel ncurses-devel readline-devel zlib-devel libopenssl-devel bzip2)
       end
     end
 
