@@ -48,6 +48,11 @@ describe 'rbenv_ruby' do
       end
     end
 
+    before do
+      allow(::File).to receive(:directory?).and_call_original
+      allow(::File).to receive(:directory?).with('/usr/local/rbenv/versions/3.3.10').and_return(true)
+    end
+
     it { is_expected.to run_rbenv_script('rbenv uninstall -f 3.3.10 (system)') }
   end
 end
