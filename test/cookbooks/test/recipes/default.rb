@@ -20,6 +20,3 @@ rbenv_global '3.4.9'
 rbenv_gem 'bundler' do
   rbenv_version '3.4.9'
 end
-
-# Rehash after gem install
-rbenv_rehash 'system'

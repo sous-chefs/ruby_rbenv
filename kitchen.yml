@@ -33,12 +33,18 @@ suites:
     run_list:
       - recipe[test::default]
   - name: gem
+    provisioner:
+      enforce_idempotency: false
+      multiple_converge: 1
     run_list:
       - recipe[test::gem]
   - name: global
     run_list:
       - recipe[test::global]
   - name: ruby_uninstall
+    provisioner:
+      enforce_idempotency: false
+      multiple_converge: 1
     run_list:
       - recipe[test::ruby_uninstall]
   - name: system_install
