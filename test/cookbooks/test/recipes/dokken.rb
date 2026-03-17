@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Refresh apt cache in dokken containers to avoid stale package 404s
+apt_update
+
 # Make sure Vagrant user is on the box. This should fix the dokken user install
 user 'vagrant'
 
