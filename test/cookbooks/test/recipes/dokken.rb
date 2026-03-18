@@ -19,6 +19,20 @@ directory '/home/vagrant' do
   not_if { platform?('windows') }
 end
 
+# Ensure sudo is installed and vagrant can use it without a password.
+# Dokken containers on RHEL-family lack PAM configuration for non-root users,
+# causing "PAM account management error" when Chef runs sudo -u vagrant.
+package 'sudo'
+
+directory '/etc/sudoers.d' do
+  mode '0750'
+end
+
+file '/etc/sudoers.d/vagrant' do
+  content "vagrant ALL=(ALL) NOPASSWD:ALL\n"
+  mode '0440'
+end
+
 # Enable CRB/PowerTools repo on RHEL-family for libyaml-devel and other -devel packages.
 # The repo exists on all RHEL derivatives but is disabled by default.
 if platform_family?('rhel') && !platform?('fedora')
