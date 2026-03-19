@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [6.0.0](https://github.com/sous-chefs/ruby_rbenv/compare/v5.0.24...v6.0.0) (2026-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* modernise ruby_rbenv cookbook ([#354](https://github.com/sous-chefs/ruby_rbenv/issues/354))
+
+### Features
+
+* modernise ruby_rbenv cookbook ([#354](https://github.com/sous-chefs/ruby_rbenv/issues/354)) ([cf08d0d](https://github.com/sous-chefs/ruby_rbenv/commit/cf08d0d687c57fcd776811cae59c8b9c50f7e372))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#350](https://github.com/sous-chefs/ruby_rbenv/issues/350)) ([84a63d9](https://github.com/sous-chefs/ruby_rbenv/commit/84a63d9c25a700cc94e1f9a618fda36ab3bbf859))
+
 ## [5.0.24](https://github.com/sous-chefs/ruby_rbenv/compare/5.0.23...v5.0.24) (2025-10-16)
 
 
