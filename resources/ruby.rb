@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook:: ruby_rbenv
 # Resource:: ruby
@@ -82,7 +84,7 @@ action :install do
     environment new_resource.environment if new_resource.environment
     action :run
     live_stream true if new_resource.verbose
-    not_if { ruby_installed? && new_resource.rbenv_action != 'uninstall' }
+    not_if { new_resource.rbenv_action == 'uninstall' ? !ruby_installed? : ruby_installed? }
   end
 
   log_message = new_resource.to_s

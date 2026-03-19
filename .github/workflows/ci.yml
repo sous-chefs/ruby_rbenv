@@ -22,20 +22,19 @@ jobs:
     strategy:
       matrix:
         os:
-          - "almalinux-8"
-          - "almalinux-9"
           - "amazonlinux-2023"
-          - "centos-7"
-          - "centos-stream-8"
-          - "centos-stream-9"
-          - "debian-10"
-          - "debian-11"
-          - "debian-12"
           - "fedora-latest"
-          - "ubuntu-1804"
-          - "ubuntu-2004"
+          - "opensuse-leap-15"
+          - "almalinux-9"
+          - "almalinux-10"
+          - "centos-stream-9"
+          - "centos-stream-10"
+          - "debian-12"
+          - "debian-13"
           - "ubuntu-2204"
+          - "ubuntu-2404"
         suite:
+          - "default"
           - "gem"
           - "global"
           - "ruby-uninstall"
@@ -48,6 +47,8 @@ jobs:
         uses: actions/checkout@v6
       - name: Install Chef
         uses: actionshub/chef-install@6.0.0
+        with:
+          version: latest
       - name: Dokken
         uses: actionshub/test-kitchen@3.0.0
         env:

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-system_version = '2.5.1'
+system_version = '3.3.10'
 
-# Make sure that Vagarant user is on the box for dokken
+# Make sure that Vagrant user is on the box for dokken
 include_recipe 'test::dokken'
 
 # System Install

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 property :git_url,
         String,
         default: 'https://github.com/rbenv/rbenv.git',

@@ -2,14 +2,13 @@
 # Local modifications will be overridden
 
 # prefer a user rbenv over a system wide install
-if [ -s "${HOME}/.rbenv/bin" ]; then
-  rbenv_root="${HOME}/.rbenv"
-elif [ -s "<%= @global_prefix %>" ]; then
-  rbenv_root="<%= @global_prefix %>"
-  export RBENV_ROOT="$rbenv_root"
+if [ -d "${HOME}/.rbenv" ]; then
+  export RBENV_ROOT="${HOME}/.rbenv"
+elif [ -n "<%= @global_prefix %>" ] && [ -d "<%= @global_prefix %>" ]; then
+  export RBENV_ROOT="<%= @global_prefix %>"
 fi
 
-if [ -n "$rbenv_root" ]; then
-  export PATH="${rbenv_root}/bin:$PATH"
-  eval "$(rbenv init -)"
+if [ -n "$RBENV_ROOT" ]; then
+  export PATH="${RBENV_ROOT}/shims:${RBENV_ROOT}/bin:$PATH"
+  eval "$(rbenv init - 2>/dev/null)" || true
 fi

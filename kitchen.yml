@@ -3,36 +3,58 @@ driver:
   name: vagrant
 
 provisioner:
+  name: chef_infra
   product_name: chef
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  channel: stable
   install_strategy: once
+  chef_license: accept
+  enforce_idempotency: <%= ENV['ENFORCE_IDEMPOTENCY'] || true %>
+  multiple_converge: <%= ENV['MULTIPLE_CONVERGE'] || 2 %>
   deprecations_as_errors: true
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
 
 verifier:
   name: inspec
 
 platforms:
-  - name: centos-7
-  - name: centos-8
+  - name: amazonlinux-2023
   - name: fedora-latest
-  - name: debian-10
-  - name: debian-11
+  - name: opensuse-leap-15
+  - name: almalinux-9
+  - name: almalinux-10
+  - name: centos-stream-9
+  - name: centos-stream-10
   - name: debian-12
-  - name: ubuntu-18.04
-  - name: ubuntu-20.04
+  - name: debian-13
   - name: ubuntu-22.04
-  - name: opensuse-leap
+  - name: ubuntu-24.04
 
 suites:
+  - name: default
+    run_list:
+      - recipe[test::default]
   - name: gem
-    run_list: recipe[test::gem]
+    provisioner:
+      enforce_idempotency: false
+      multiple_converge: 1
+    run_list:
+      - recipe[test::gem]
   - name: global
-    run_list: recipe[test::global]
+    run_list:
+      - recipe[test::global]
   - name: ruby_uninstall
-    run_list: recipe[test::ruby_uninstall]
+    provisioner:
+      enforce_idempotency: false
+      multiple_converge: 1
+    run_list:
+      - recipe[test::ruby_uninstall]
   - name: system_install
-    run_list: recipe[test::system_install]
+    run_list:
+      - recipe[test::system_install]
   - name: user_install
-    run_list: recipe[test::user_install]
+    run_list:
+      - recipe[test::user_install]
   - name: custom_group_install
-    run_list: recipe[test::custom_group_install]
+    run_list:
+      - recipe[test::custom_group_install]
