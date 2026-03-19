@@ -21,8 +21,16 @@ end
 
 # Ensure sudo is installed and vagrant can use it without a password.
 # Dokken containers on RHEL-family lack PAM configuration for non-root users,
-# causing "PAM account management error" when Chef runs sudo -u vagrant.
+# causing "PAM account management error" when sudo -u vagrant is used.
+# Setting a password via chpasswd creates the /etc/shadow entry that PAM needs
+# for account management, and sudoers grants NOPASSWD access for InSpec tests.
 package 'sudo'
+
+execute 'set-vagrant-password' do
+  command 'echo "vagrant:vagrant" | chpasswd'
+  sensitive true
+  not_if 'getent shadow vagrant | grep -q "\\$"'
+end
 
 directory '/etc/sudoers.d' do
   mode '0750'

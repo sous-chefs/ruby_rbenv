@@ -53,7 +53,7 @@ class Chef
       end
 
       def binary
-        prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
+        prefix = new_resource.user ? "runuser -u #{new_resource.user} -- " : ''
         "#{prefix}#{new_resource.root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
       end
 
