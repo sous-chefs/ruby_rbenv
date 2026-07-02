@@ -38,23 +38,21 @@ suites:
     provisioner:
       enforce_idempotency: false
       multiple_converge: 1
-    run_list:
-      - recipe[test::gem]
+      named_run_list: gem
   - name: global
-    run_list:
-      - recipe[test::global]
+    provisioner:
+      named_run_list: global
   - name: ruby_uninstall
     provisioner:
       enforce_idempotency: false
       multiple_converge: 1
-    run_list:
-      - recipe[test::ruby_uninstall]
+      named_run_list: ruby_uninstall
   - name: system_install
-    run_list:
-      - recipe[test::system_install]
+    provisioner:
+      named_run_list: system_install
   - name: user_install
-    run_list:
-      - recipe[test::user_install]
+    provisioner:
+      named_run_list: user_install
   - name: custom_group_install
-    run_list:
-      - recipe[test::custom_group_install]
+    provisioner:
+      named_run_list: custom_group_install
